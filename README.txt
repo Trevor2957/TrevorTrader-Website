@@ -1,8 +1,11 @@
-TrevorTrader Morning Panic website reset - September 25, 2026
+TrevorTrader Public Website
 
-This package intentionally removes the prior Daily Review archive and other strategy pages from the website package.
-Homepage focus: Morning Panic research.
-Current review: Life of the Trade - September 25, 2026.
+This repository contains public-facing TrevorTrader website files only.
 
-Upload/publish only after backing up the currently deployed site.
-Paper trading only.
+Current research focus: controlled paper validation of the Morning Panic research strategy and V1.1 observation/data-capture engine.
+
+Daily reviews begin September 25, 2026. Older public daily-review pages were intentionally removed from this fresh archive; underlying trade data and Cloud Memory remain retained privately.
+
+Private trading code, API credentials, .env files, databases, and logs are not part of this repository.
+
+Publishing flow: verified daily review -> Git commit/push -> GitHub -> Porkbun -> TrevorTrader.com
