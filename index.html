@@ -443,6 +443,75 @@ footer{padding-top:36px}
 }
 .life-trade{margin-top:16px;padding-top:14px;border-top:1px solid rgba(100,150,200,.22);display:flex;flex-direction:column;gap:5px}.life-trade strong{font-size:12px;letter-spacing:.14em;color:#2da8ff}.life-trade span{color:#9fb0c5;font-size:14px}</style>
 
+
+<style id="strategy-validation-css">
+.strategy-validation{
+  padding:88px 5vw;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(0,169,255,.10),transparent 34%),
+    #04111f;
+  border-top:1px solid #12344c;
+  border-bottom:1px solid #12344c
+}
+.strategy-wrap{max-width:1240px;margin:0 auto}
+.strategy-head{text-align:center;max-width:820px;margin:0 auto 38px}
+.strategy-head h2{font-size:clamp(36px,4.5vw,56px);letter-spacing:-2px;margin:0 0 12px}
+.strategy-head>p:not(.eyebrow){color:#a9c1d1;font-size:17px;margin:0}
+.strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.strategy-card{
+  position:relative;overflow:hidden;
+  border:1px solid #17517a;border-radius:20px;padding:28px;
+  background:linear-gradient(145deg,#08243a,#051522);
+  box-shadow:0 24px 65px rgba(0,0,0,.22)
+}
+.strategy-number{font-size:10px;letter-spacing:2px;color:#55c8ff;font-weight:800}
+.strategy-card h3{font-size:27px;margin:7px 0 8px}
+.strategy-desc{color:#9eb8c9;font-size:14px;line-height:1.6;min-height:68px}
+.validation-badge{
+  display:inline-block;margin-top:4px;padding:6px 10px;border-radius:999px;
+  border:1px solid rgba(39,226,139,.55);background:rgba(39,226,139,.08);
+  color:#63eca8;font-size:9px;letter-spacing:1.5px;font-weight:800
+}
+.strategy-chart{
+  margin:24px 0 18px;padding:18px 12px 10px;
+  border:1px solid rgba(56,189,248,.20);border-radius:14px;
+  background:rgba(3,17,29,.55)
+}
+.strategy-chart svg{display:block;width:100%;height:auto}
+.strategy-path-label{font-size:10px;letter-spacing:1.3px;color:#55c8ff;font-weight:800;margin:18px 0 9px}
+.strategy-flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.flow-chip{
+  padding:8px 10px;border-radius:9px;border:1px solid #174a69;
+  background:#071d30;color:#cce0eb;font-size:10px;font-weight:750
+}
+.flow-chip.action{border-color:rgba(39,226,139,.55);color:#68edaa;background:rgba(39,226,139,.07)}
+.flow-chip.put{border-color:rgba(251,113,133,.50);color:#ff9aa6;background:rgba(251,113,133,.07)}
+.flow-arrow{color:#42cfff;font-weight:900}
+.strategy-mirror{
+  margin-top:18px;padding-top:16px;border-top:1px solid #16435f;
+  color:#91adbf;font-size:12px;line-height:1.55
+}
+.strategy-mirror strong{color:#d9ebf5}
+.strategy-question{
+  margin:24px auto 0;max-width:980px;text-align:center;padding:18px 22px;
+  border:1px solid rgba(56,189,248,.24);border-radius:14px;background:#061a2b;
+  color:#9eb8c9;font-size:13px
+}
+.strategy-question strong{color:#55c8ff}
+@media(max-width:800px){
+  .strategy-grid{grid-template-columns:1fr}
+  .strategy-desc{min-height:0}
+}
+@media(max-width:560px){
+  .strategy-validation{padding:58px 18px}
+  .strategy-card{padding:20px}
+  .strategy-card h3{font-size:24px}
+  .strategy-head>p:not(.eyebrow){font-size:15px}
+  .strategy-flow{gap:5px}
+  .flow-chip{font-size:9px;padding:7px 8px}
+}
+</style>
+
 </head>
 <body>
 <header class="nav">
@@ -485,7 +554,7 @@ footer{padding-top:36px}
 <div>
 <p class="eyebrow dark-eye">CURRENT PHASE</p>
 <h2>Paper <span class="blue">Validation</span></h2>
-<p>TrevorTrader is currently validating two SPY Panic Dip Buy strategies. Both are designed to identify sharp intraday SPY declines and wait for evidence that the selloff may be reversing before entering a bullish options position.</p>
+<p>TrevorTrader is currently validating two SPY Panic Dip Buy strategies. Both are designed to identify sharp intraday SPY moves and wait for evidence that momentum may be reversing before entering a directional options position.</p>
 <div class="current"><strong>Current focus:</strong> Compare two different confirmation approaches to determine which method identifies higher-quality reversals while avoiding false starts. Every TRADE and NO TRADE decision is captured and reviewed through controlled paper testing.</div>
 </div>
 <div class="roadmap">
@@ -499,6 +568,115 @@ footer{padding-top:36px}
 </div>
 </section>
 
+
+
+<section class="strategy-validation" id="strategies">
+  <div class="strategy-wrap">
+    <div class="strategy-head">
+      <p class="eyebrow">STRATEGIES IN VALIDATION</p>
+      <h2>Two opportunities. <span class="blue">One discipline.</span></h2>
+      <p>TrevorTrader is comparing two SPY reversal approaches using controlled paper trading. One looks for the first confirmed turn. The other waits for a second opportunity.</p>
+    </div>
+
+    <div class="strategy-grid">
+
+      <article class="strategy-card">
+        <span class="strategy-number">STRATEGY 01</span>
+        <h3>Morning Panic Reversal</h3>
+        <span class="validation-badge">PAPER VALIDATION</span>
+        <p class="strategy-desc">Designed to recognize a sharp opening move, wait for evidence that momentum is turning, and act only after the reversal is confirmed.</p>
+
+        <div class="strategy-chart">
+          <svg viewBox="0 0 500 190" role="img" aria-label="Sharp decline followed by a confirmed first reversal">
+            <defs>
+              <linearGradient id="s1line" x1="0" x2="1">
+                <stop offset="0" stop-color="#ff6575"/>
+                <stop offset=".55" stop-color="#55c8ff"/>
+                <stop offset="1" stop-color="#52ec9d"/>
+              </linearGradient>
+            </defs>
+            <line x1="18" y1="155" x2="482" y2="155" stroke="#174a69" stroke-width="1"/>
+            <polyline points="24,40 82,48 138,82 190,142 225,153 260,132 305,91 360,67 420,54 476,46"
+              fill="none" stroke="url(#s1line)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="225" cy="153" r="7" fill="#55c8ff"/>
+            <circle cx="305" cy="91" r="7" fill="#52ec9d"/>
+            <text x="150" y="177" fill="#ff8d9a" font-size="12" font-weight="700">PANIC</text>
+            <text x="320" y="86" fill="#72f1b3" font-size="12" font-weight="700">CONFIRMED TURN</text>
+          </svg>
+        </div>
+
+        <div class="strategy-path-label">BULLISH PATH</div>
+        <div class="strategy-flow">
+          <span class="flow-chip">PANIC &darr;</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip">TURN &uarr;</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip action">CALL</span>
+        </div>
+
+        <div class="strategy-path-label">TRADE MANAGEMENT</div>
+        <div class="strategy-flow">
+          <span class="flow-chip">ENTRY</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip">SCALE OUT</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip">SCALE OUT</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip action">MANAGE RUNNER</span>
+        </div>
+
+        <div class="strategy-mirror"><strong>Bearish mirror:</strong> A sharp move higher followed by a confirmed reversal lower can produce a PUT opportunity.</div>
+      </article>
+
+      <article class="strategy-card">
+        <span class="strategy-number">STRATEGY 02</span>
+        <h3>Second Dip Reversal</h3>
+        <span class="validation-badge">PAPER VALIDATION</span>
+        <p class="strategy-desc">Instead of chasing the first recovery, this approach waits for the market to pull back again and looks for a second confirmed reversal opportunity.</p>
+
+        <div class="strategy-chart">
+          <svg viewBox="0 0 500 190" role="img" aria-label="Sharp decline, recovery, second dip and second confirmed reversal">
+            <defs>
+              <linearGradient id="s2line" x1="0" x2="1">
+                <stop offset="0" stop-color="#ff6575"/>
+                <stop offset=".55" stop-color="#b9a1ff"/>
+                <stop offset="1" stop-color="#52ec9d"/>
+              </linearGradient>
+            </defs>
+            <line x1="18" y1="155" x2="482" y2="155" stroke="#174a69" stroke-width="1"/>
+            <polyline points="24,40 78,52 126,142 175,93 220,72 272,125 310,116 352,78 410,56 476,45"
+              fill="none" stroke="url(#s2line)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="126" cy="142" r="6" fill="#55c8ff"/>
+            <circle cx="272" cy="125" r="7" fill="#b9a1ff"/>
+            <circle cx="352" cy="78" r="7" fill="#52ec9d"/>
+            <text x="82" y="166" fill="#ff8d9a" font-size="12" font-weight="700">PANIC</text>
+            <text x="182" y="61" fill="#9eb8c9" font-size="11">1ST RECOVERY</text>
+            <text x="238" y="148" fill="#b9a1ff" font-size="12" font-weight="700">2ND DIP</text>
+            <text x="362" y="74" fill="#72f1b3" font-size="12" font-weight="700">TURN</text>
+          </svg>
+        </div>
+
+        <div class="strategy-path-label">BULLISH PATH</div>
+        <div class="strategy-flow">
+          <span class="flow-chip">PANIC &darr;</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip">RECOVER</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip">2ND DIP</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip action">CALL</span>
+        </div>
+
+        <div class="strategy-path-label">TRADE MANAGEMENT</div>
+        <div class="strategy-flow">
+          <span class="flow-chip">ENTRY</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip">SCALE OUT</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip">SCALE OUT</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip action">MANAGE RUNNER</span>
+        </div>
+
+        <div class="strategy-mirror"><strong>Bearish mirror:</strong> The same structure can be evaluated in reverse, waiting for a second push higher and confirmed turn lower before a PUT opportunity.</div>
+      </article>
+
+    </div>
+
+    <div class="strategy-question">
+      <strong>THE EXPERIMENT:</strong> Is the first confirmed reversal the better opportunity, or does waiting for the second setup produce a cleaner signal? TrevorTrader records every TRADE and NO TRADE decision so the evidence can answer the question.
+    </div>
+  </div>
+</section>
 
 <section class="simple-review">
 <div>
