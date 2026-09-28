@@ -318,6 +318,45 @@ th {
     }
 }
 </style>
+
+<style>
+.archive-nav {
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:18px;
+}
+.archive-nav a,
+.archive-nav .disabled {
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 14px;
+    border:1px solid #1f4f78;
+    border-radius:10px;
+    color:#d8eaf5;
+    text-decoration:none;
+    font-weight:700;
+    font-size:13px;
+}
+.archive-nav a:hover,
+.archive-nav a:focus-visible {
+    border-color:#36d7e7;
+    outline:none;
+}
+.archive-nav .disabled {
+    color:#6f8498;
+    border-color:#173451;
+}
+@media(max-width:700px) {
+    .archive-nav {
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+}
+</style>
+
 </head>
 
 <body>
@@ -486,6 +525,13 @@ and validation before modification of an active strategy.
     <a href="../../">Home &rarr;</a>
 </div>
 
+
+    <div class="archive-nav"
+         aria-label="Review date navigation">
+        <span class="disabled">Newest Review</span>
+        <a href="../2026-09-25/">&#8595; Older Review</a>
+    </div>
+    
 </main>
 </body>
 </html>

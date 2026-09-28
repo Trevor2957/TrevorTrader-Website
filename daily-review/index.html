@@ -2,49 +2,63 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061426">
-<meta name="description" content="TrevorTrader verified paper-trading Daily Review archive.">
+<meta name="description"
+      content="TrevorTrader verified paper-trading Daily Review archive.">
 <title>TrevorTrader | Daily Review Archive</title>
 
 <style>
-:root{
+:root {
   --bg:#061426;
   --panel:#0b1d33;
-  --panel2:#081a2e;
   --line:#1f4f78;
   --text:#f4f8fc;
   --muted:#9eb1c5;
   --cyan:#36d7e7;
   --green:#63e6a6;
+  --red:#ff7185;
 }
 
-*{box-sizing:border-box}
+* {
+  box-sizing:border-box;
+}
 
-html{
+html {
   -webkit-text-size-adjust:100%;
 }
 
-body{
+body {
   margin:0;
   background:
-    radial-gradient(circle at 50% 0%,rgba(54,215,231,.08),transparent 30%),
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(54,215,231,.08),
+      transparent 30%
+    ),
     var(--bg);
   color:var(--text);
-  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  line-height:1.5;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
 }
 
-a{
+a {
   color:inherit;
   text-decoration:none;
   -webkit-tap-highlight-color:transparent;
 }
 
-.topbar{
+.topbar {
   min-height:68px;
-  padding:0 max(20px,env(safe-area-inset-right))
-           0 max(20px,env(safe-area-inset-left));
+  padding:
+    0 max(20px,env(safe-area-inset-right))
+    0 max(20px,env(safe-area-inset-left));
   display:flex;
   align-items:center;
   gap:20px;
@@ -57,22 +71,24 @@ a{
   -webkit-backdrop-filter:blur(14px);
 }
 
-.brand{
+.brand {
   font-size:22px;
   font-weight:800;
   letter-spacing:-.6px;
 }
 
-.brand span{color:#22aaf4}
+.brand span {
+  color:#22aaf4;
+}
 
-.nav{
+.nav {
   margin-left:auto;
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-.nav a{
+.nav a {
   min-height:44px;
   display:flex;
   align-items:center;
@@ -85,54 +101,54 @@ a{
   font-weight:700;
 }
 
-.nav a.primary{
+.nav a.primary {
   background:#079cf1;
   border-color:#079cf1;
   color:white;
 }
 
-.wrap{
+.wrap {
   width:min(1080px,calc(100% - 40px));
   margin:0 auto;
   padding:68px 0 80px;
 }
 
-.eyebrow{
+.eyebrow {
   color:var(--cyan);
   font-size:12px;
   font-weight:800;
   letter-spacing:.16em;
 }
 
-h1{
+h1 {
   font-size:clamp(38px,6vw,64px);
   line-height:1;
   letter-spacing:-2px;
   margin:10px 0 18px;
 }
 
-.intro{
+.intro {
   max-width:720px;
   color:var(--muted);
   font-size:17px;
   margin:0;
 }
 
-.summary{
+.summary {
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:14px;
   margin:34px 0 44px;
 }
 
-.summary-card{
+.summary-card {
   padding:18px;
   border:1px solid var(--line);
   border-radius:15px;
   background:rgba(11,29,51,.82);
 }
 
-.summary-card small{
+.summary-card small {
   display:block;
   color:var(--muted);
   text-transform:uppercase;
@@ -141,13 +157,13 @@ h1{
   font-weight:700;
 }
 
-.summary-card strong{
+.summary-card strong {
   display:block;
   margin-top:7px;
   font-size:21px;
 }
 
-.section-head{
+.section-head {
   display:flex;
   justify-content:space-between;
   align-items:end;
@@ -155,22 +171,22 @@ h1{
   margin-bottom:16px;
 }
 
-.section-head h2{
+.section-head h2 {
   margin:0;
   font-size:25px;
 }
 
-.section-head span{
+.section-head span {
   color:var(--muted);
   font-size:12px;
 }
 
-.reviews{
+.reviews {
   display:grid;
   gap:14px;
 }
 
-.review{
+.review {
   display:grid;
   grid-template-columns:1fr auto;
   gap:24px;
@@ -179,28 +195,40 @@ h1{
   border:1px solid var(--line);
   border-radius:17px;
   background:
-    linear-gradient(135deg,rgba(11,35,58,.98),rgba(7,24,42,.98));
+    linear-gradient(
+      135deg,
+      rgba(11,35,58,.98),
+      rgba(7,24,42,.98)
+    );
   transition:transform .15s ease,border-color .15s ease;
 }
 
-.review:hover{
+.review:hover {
   transform:translateY(-2px);
   border-color:var(--cyan);
 }
 
-.review-date{
+.latest {
+  color:var(--green);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.14em;
+  margin-bottom:7px;
+}
+
+.review-date {
   color:var(--cyan);
   font-size:11px;
   font-weight:800;
   letter-spacing:.12em;
 }
 
-.review h3{
+.review h3 {
   margin:5px 0 7px;
   font-size:23px;
 }
 
-.meta{
+.meta {
   display:flex;
   flex-wrap:wrap;
   gap:8px 16px;
@@ -208,30 +236,41 @@ h1{
   font-size:13px;
 }
 
-.verified{
+.verified {
   color:var(--green);
   font-weight:700;
 }
 
-.result{
+.result {
   text-align:right;
   min-width:130px;
 }
 
-.pnl{
-  color:var(--green);
+.pnl {
   font-size:27px;
   font-weight:800;
 }
 
-.open{
+.positive {
+  color:var(--green);
+}
+
+.negative {
+  color:var(--red);
+}
+
+.neutral {
+  color:var(--text);
+}
+
+.open {
   margin-top:7px;
   color:var(--cyan);
   font-size:12px;
   font-weight:800;
 }
 
-.note{
+.note {
   margin-top:36px;
   padding:20px;
   border:1px solid rgba(54,215,231,.22);
@@ -241,79 +280,85 @@ h1{
   font-size:13px;
 }
 
-.note strong{
+.note strong {
   color:#dff7ff;
 }
 
-footer{
-  padding:30px 20px calc(30px + env(safe-area-inset-bottom));
+footer {
+  padding:
+    30px 20px
+    calc(30px + env(safe-area-inset-bottom));
   text-align:center;
   border-top:1px solid rgba(54,215,231,.15);
   color:#7893a5;
   font-size:11px;
 }
 
-@media(max-width:700px){
-  .topbar{
+@media(max-width:700px) {
+  .topbar {
     min-height:64px;
     padding-left:max(14px,env(safe-area-inset-left));
     padding-right:max(14px,env(safe-area-inset-right));
   }
 
-  .brand{font-size:19px}
+  .brand {
+    font-size:19px;
+  }
 
-  .nav a{
+  .nav a {
     padding:0 12px;
     font-size:12px;
   }
 
-  .nav .latest-label{display:none}
-
-  .wrap{
+  .wrap {
     width:calc(100% - 28px);
     padding:44px 0 60px;
   }
 
-  h1{
+  h1 {
     font-size:42px;
     letter-spacing:-1.5px;
   }
 
-  .intro{font-size:15px}
+  .intro {
+    font-size:15px;
+  }
 
-  .summary{
+  .summary {
     grid-template-columns:1fr;
     gap:9px;
     margin:26px 0 36px;
   }
 
-  .summary-card{
+  .summary-card {
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:14px 16px;
   }
 
-  .summary-card strong{
+  .summary-card strong {
     margin:0;
     font-size:18px;
   }
 
-  .section-head{
+  .section-head {
     align-items:flex-start;
     flex-direction:column;
     gap:3px;
   }
 
-  .review{
+  .review {
     grid-template-columns:1fr;
     gap:18px;
     padding:19px;
   }
 
-  .review h3{font-size:21px}
+  .review h3 {
+    font-size:21px;
+  }
 
-  .result{
+  .result {
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -323,20 +368,18 @@ footer{
     border-top:1px solid #173b59;
   }
 
-  .pnl{font-size:24px}
+  .pnl {
+    font-size:24px;
+  }
 
-  .open{margin:0}
+  .open {
+    margin:0;
+  }
 
-  .note{
+  .note {
     margin-top:28px;
     padding:17px;
   }
-}
-
-@media(max-width:390px){
-  .nav a{padding:0 10px}
-  .brand{font-size:18px}
-  h1{font-size:37px}
 }
 </style>
 </head>
@@ -344,95 +387,194 @@ footer{
 <body>
 
 <header class="topbar">
-  <a class="brand" href="../">Trevor<span>Trader</span></a>
+  <a class="brand" href="../">
+    Trevor<span>Trader</span>
+  </a>
 
   <nav class="nav" aria-label="Daily Review navigation">
     <a href="../">Home</a>
     <a class="primary" href="latest/">
-      <span class="latest-label">Latest Review</span>
-      <span aria-hidden="true">&nbsp;&rarr;</span>
+      Latest Review &rarr;
     </a>
   </nav>
 </header>
 
 <main class="wrap">
 
-  <div class="eyebrow">TREVORTRADER &bull; DAILY REVIEWS</div>
+<div class="eyebrow">
+  TREVORTRADER &bull; DAILY REVIEWS
+</div>
 
-  <h1>Daily Review Archive</h1>
+<h1>Daily Review Archive</h1>
 
-  <p class="intro">
-    A chronological record of verified TrevorTrader paper-trading sessions.
-    Each published review is reconciled against the trading record before
-    becoming part of the archive.
-  </p>
+<p class="intro">
+  A chronological record of verified TrevorTrader paper-trading sessions.
+  Each published review is reconciled against the trading record before
+  becoming part of the archive.
+</p>
 
-  <section class="summary" aria-label="Archive summary">
-    <div class="summary-card">
-      <small>Published Reviews</small>
-      <strong>2</strong>
-    </div>
+<section class="summary" aria-label="Archive summary">
 
-    <div class="summary-card">
-      <small>Current Phase</small>
-      <strong>Paper Validation</strong>
-    </div>
-
-    <div class="summary-card">
-      <small>Latest Review</small>
-      <strong>Sep 28, 2026</strong>
-    </div>
-  </section>
-
-  <div class="section-head">
-    <h2>Verified Reviews</h2>
-    <span>Newest first</span>
+  <div class="summary-card">
+    <small>Published Reviews</small>
+    <strong>4</strong>
   </div>
 
-  <section class="reviews">
+  <div class="summary-card">
+    <small>Current Phase</small>
+    <strong>Paper Validation</strong>
+  </div>
 
-    <a class="review" href="2026-09-28/" aria-label="Open Daily Review for September 28, 2026">
-      <div>
-        <div class="review-date">SEPTEMBER 28, 2026</div>
-        <h3>SPY Morning Panic</h3>
-        <div class="meta">
-          <span>1 completed trade</span>
-          <span>1 win / 0 losses</span>
-          <span class="verified">&#10003; Alpaca + Cloud verified</span>
-        </div>
-      </div>
+  <div class="summary-card">
+    <small>Latest Review</small>
+    <strong>September 28, 2026</strong>
+  </div>
 
-      <div class="result">
-        <div class="pnl">+$38.00</div>
-        <div class="open">View Review &rarr;</div>
-      </div>
-    </a>
+</section>
 
-    <a class="review" href="2026-09-25/" aria-label="Open Daily Review for September 25, 2026">
-      <div>
-        <div class="review-date">SEPTEMBER 25, 2026</div>
-        <h3>SPY Morning Panic</h3>
-        <div class="meta">
-          <span>1 completed trade</span>
-          <span>1 win / 0 losses</span>
-          <span class="verified">&#10003; Alpaca + Cloud verified</span>
-        </div>
-      </div>
+<div class="section-head">
+  <h2>Verified Reviews</h2>
+  <span>Newest first</span>
+</div>
 
-      <div class="result">
-        <div class="pnl">+$39.00</div>
-        <div class="open">View Review &rarr;</div>
-      </div>
-    </a>
+<section class="reviews">
 
-  </section>
+            <a class="review"
+               href="2026-09-28/"
+               aria-label="Open Daily Review for September 28, 2026">
+                <div>
+                    <div class="latest">LATEST VERIFIED REVIEW</div>
+                    <div class="review-date">
+                        SEPTEMBER 28, 2026
+                    </div>
 
-  <aside class="note">
-    <strong>Evidence first.</strong>
-    TrevorTrader is currently in paper validation. Published Daily Reviews
-    document verified research results and do not represent live trading,
-    investment advice, or a guarantee of future performance.
-  </aside>
+                    <h3>
+                        SPY
+                    </h3>
+
+                    <div class="meta">
+                        <span>1 completed trade</span>
+                        <span>1 win / 0 losses</span>
+                        <span class="verified">
+                            &#10003; Alpaca + Cloud verified
+                        </span>
+                    </div>
+                </div>
+
+                <div class="result">
+                    <div class="pnl positive">
+                        $+38.00
+                    </div>
+                    <div class="open">
+                        View Review &rarr;
+                    </div>
+                </div>
+            </a>
+            
+            <a class="review"
+               href="2026-09-25/"
+               aria-label="Open Daily Review for September 25, 2026">
+                <div>
+                    
+                    <div class="review-date">
+                        SEPTEMBER 25, 2026
+                    </div>
+
+                    <h3>
+                        SPY
+                    </h3>
+
+                    <div class="meta">
+                        <span>1 completed trade</span>
+                        <span>1 win / 0 losses</span>
+                        <span class="verified">
+                            &#10003; Alpaca + Cloud verified
+                        </span>
+                    </div>
+                </div>
+
+                <div class="result">
+                    <div class="pnl positive">
+                        $+39.00
+                    </div>
+                    <div class="open">
+                        View Review &rarr;
+                    </div>
+                </div>
+            </a>
+            
+            <a class="review"
+               href="2026-09-24/"
+               aria-label="Open Daily Review for September 24, 2026">
+                <div>
+                    
+                    <div class="review-date">
+                        SEPTEMBER 24, 2026
+                    </div>
+
+                    <h3>
+                        C, SPY
+                    </h3>
+
+                    <div class="meta">
+                        <span>26 completed trades</span>
+                        <span>10 wins / 16 losses</span>
+                        <span class="verified">
+                            &#10003; Alpaca + Cloud verified
+                        </span>
+                    </div>
+                </div>
+
+                <div class="result">
+                    <div class="pnl negative">
+                        $-786.00
+                    </div>
+                    <div class="open">
+                        View Review &rarr;
+                    </div>
+                </div>
+            </a>
+            
+            <a class="review"
+               href="2026-09-23/"
+               aria-label="Open Daily Review for September 23, 2026">
+                <div>
+                    
+                    <div class="review-date">
+                        SEPTEMBER 23, 2026
+                    </div>
+
+                    <h3>
+                        C, SPY
+                    </h3>
+
+                    <div class="meta">
+                        <span>24 completed trades</span>
+                        <span>9 wins / 15 losses</span>
+                        <span class="verified">
+                            &#10003; Alpaca + Cloud verified
+                        </span>
+                    </div>
+                </div>
+
+                <div class="result">
+                    <div class="pnl negative">
+                        $-81.00
+                    </div>
+                    <div class="open">
+                        View Review &rarr;
+                    </div>
+                </div>
+            </a>
+            
+</section>
+
+<aside class="note">
+  <strong>Evidence first.</strong>
+  TrevorTrader is currently in paper validation. Published Daily Reviews
+  document verified research results and do not represent live trading,
+  investment advice, or a guarantee of future performance.
+</aside>
 
 </main>
 
