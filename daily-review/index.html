@@ -1,222 +1,283 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TrevorTrader Daily Reviews</title>
+
+<title>TrevorTrader Daily Review | 2026-09-25</title>
 
 <style>
-:root{
-  --bg:#061426;
-  --card:#0c1c31;
-  --text:#f4f7fb;
-  --muted:#9fb0c5;
-  --line:#263c57;
-  --blue:#2da8ff;
-  --green:#20e890;
+:root {
+    --bg:#061426;
+    --panel:#0b1d33;
+    --line:#1f4f78;
+    --text:#f4f8fc;
+    --muted:#9eb1c5;
+    --cyan:#36d7e7;
+    --green:#63e6a6;
+    --red:#ff7185;
 }
 
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
+* {
+    box-sizing:border-box;
 }
 
-main{
-  max-width:980px;
-  margin:auto;
-  padding:32px 20px 60px;
+body {
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+.wrap {
+    max-width:1180px;
+    margin:auto;
+    padding:28px 20px 60px;
 }
 
-.back{
-  color:var(--muted);
-  font-size:14px;
+.eyebrow {
+    color:var(--cyan);
+    font-weight:700;
+    letter-spacing:.12em;
 }
 
-.eyebrow{
-  font-size:11px;
-  letter-spacing:.18em;
-  color:var(--blue);
-  font-weight:800;
-  margin:28px 0 8px;
+h1 {
+    font-size:42px;
+    margin:8px 0;
 }
 
-h1{
-  font-size:clamp(32px,7vw,46px);
-  margin:0 0 8px;
+.sub {
+    color:var(--muted);
+    font-size:18px;
 }
 
-.lead{
-  color:var(--muted);
-  line-height:1.6;
-  max-width:760px;
-  margin-bottom:28px;
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin:24px 0;
 }
 
-.review{
-  display:block;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:22px;
-  margin:14px 0;
+.metric,
+.section {
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px;
 }
 
-.review:hover{
-  border-color:var(--blue);
+.label {
+    color:var(--muted);
+    text-transform:uppercase;
+    font-size:12px;
+    letter-spacing:.08em;
 }
 
-.latest{
-  font-size:10px;
-  letter-spacing:.14em;
-  color:var(--green);
-  font-weight:800;
-  margin-bottom:8px;
+.big {
+    font-size:26px;
+    font-weight:700;
+    margin-top:7px;
 }
 
-.date{
-  font-size:23px;
-  font-weight:800;
+.small {
+    color:var(--muted);
+    margin-top:5px;
 }
 
-.meta{
-  color:var(--muted);
-  margin-top:7px;
-  font-size:14px;
+.pos {
+    color:var(--green);
+    font-weight:700;
 }
 
-.summary{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  margin-top:18px;
+.neg {
+    color:var(--red);
+    font-weight:700;
 }
 
-.stat{
-  border-top:1px solid var(--line);
-  padding-top:12px;
+.status {
+    border-left:4px solid var(--cyan);
 }
 
-.stat b{
-  display:block;
-  font-size:19px;
+table {
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
 }
 
-.stat span{
-  color:var(--muted);
-  font-size:10px;
-  letter-spacing:.08em;
+th,
+td {
+    padding:10px;
+    border-bottom:1px solid #173451;
+    text-align:left;
+    white-space:nowrap;
 }
 
-.life{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:18px;
-  margin-top:24px;
+th {
+    color:var(--muted);
 }
 
-.life strong{
-  display:block;
-  color:var(--blue);
-  font-size:11px;
-  letter-spacing:.16em;
-  margin-bottom:6px;
+.scroll {
+    overflow:auto;
 }
 
-.life span{
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.5;
+h2 {
+    margin-top:0;
 }
 
-.note{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.6;
-  margin-top:24px;
+.loop {
+    font-weight:700;
+    color:var(--cyan);
 }
 
-@media(max-width:620px){
-  main{padding:22px 14px 50px}
-  .summary{grid-template-columns:1fr 1fr}
-  .review{padding:17px}
+@media(max-width:700px) {
+    h1 {
+        font-size:32px;
+    }
+
+    .wrap {
+        padding:20px 12px;
+    }
 }
 </style>
 </head>
 
 <body>
-<main>
 
-<a class="back" href="../">← TrevorTrader Home</a>
+<main class="wrap">
 
-<div class="eyebrow">DAILY REVIEW</div>
+<div class="eyebrow">
+TREVORTRADER &bull; DAILY REVIEW
+</div>
 
-<h1>Every trading day becomes a record.</h1>
+<h1>2026-09-25</h1>
 
-<p class="lead">
-Verified paper-trading results, strategy-by-strategy evidence, and what
-TrevorTrader learned. Every trade and every NO TRADE decision belongs
-to the record.
+<div class="sub">
+PAPER validation &bull; Life of Every Trade&trade;
+</div>
+
+<div class="grid">
+
+<div class="metric">
+    <div class="label">Completed trades in Cloud</div>
+    <div class="big">1</div>
+    <div class="small">1 wins / 0 losses</div>
+</div>
+
+<div class="metric">
+    <div class="label">Cloud P&amp;L</div>
+    <div class="big pos">
+        $+39.00
+    </div>
+</div>
+
+
+        <div class="metric">
+            <div class="label">SPY</div>
+            <div class="big">1 trades</div>
+            <div class="small">
+                1 wins /
+                0 losses
+                &nbsp;
+                $+39.00
+            </div>
+        </div>
+        
+
+</div>
+
+<section class="section status">
+
+<h2>Reconciliation Status</h2>
+
+<p>PASS: Alpaca and Cloud reconcile at 1 completed trades.</p>
+
+<p>
+Broker activity and Cloud completed-trade counts
+reconciled successfully.
 </p>
 
-<a class="review" href="2026-09-25/">
+</section>
 
-<div class="latest">LATEST PUBLISHED REVIEW</div>
+<section class="section" style="margin-top:16px">
 
-<div class="date">September 25, 2026</div>
+<h2>Life of Every Trade&trade;</h2>
 
-<div class="meta">
-Morning Panic research • 1 paper trade • Life of the Trade™ evidence
+<div class="scroll">
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Ticker</th>
+<th>Strategy</th>
+<th>Version</th>
+<th>Entry PT</th>
+<th>Exit PT</th>
+<th>Option</th>
+<th>Side</th>
+<th>Qty</th>
+<th>Entry</th>
+<th>Exit</th>
+<th>P&amp;L</th>
+<th>Return</th>
+<th>Hold</th>
+</tr>
+</thead>
+
+<tbody>
+
+            <tr>
+                <td>60</td>
+                <td>SPY</td>
+                <td>SPY_MORNING_PANIC</td>
+                <td>V1_0DTE_2026-09-25</td>
+                <td>7:35:03 AM</td>
+                <td>8:08:21 AM</td>
+                <td>SPY260925C00772000</td>
+                <td>CALL</td>
+                <td>4</td>
+                <td>0.170000</td>
+                <td>0.267500</td>
+                <td class="pos">$+39.00</td>
+                <td class="pos">+57.35%</td>
+                <td>0h 33m 17s</td>
+            </tr>
+            
+</tbody>
+
+</table>
+
 </div>
+</section>
 
-<div class="summary">
+<section class="section" style="margin-top:16px">
 
-<div class="stat">
-<b>1</b>
-<span>TRADE</span>
-</div>
+<h2>Daily Learning</h2>
 
-<div class="stat">
-<b>1 / 0</b>
-<span>WIN / LOSS</span>
-</div>
-
-<div class="stat">
-<b>+$38.81</b>
-<span>REALIZED P&amp;L</span>
-</div>
-
-<div class="stat">
-<b>~+57%</b>
-<span>RETURN</span>
-</div>
-
-</div>
-</a>
-
-<div class="life">
-<strong>LIFE OF EVERY TRADE™</strong>
-<span>
-Daily summary → strategy results → individual trades → buy and exit
-prices → percentage gain/loss → evidence → lessons learned.
-</span>
-</div>
-
-<p class="note">
-Beginning with the next multi-strategy session, Daily Review will report
-each active strategy independently, including TRADE and NO TRADE outcomes,
-buy price, exit prices, realized P&amp;L, percentage gain or loss per trade,
-strategy totals, and the combined daily paper-trading result.
+<p>
+No separate verified Daily Learning record was captured for this session.
+The reconciled trade evidence above remains the authoritative record.
 </p>
+
+</section>
+
+<section class="section" style="margin-top:16px">
+
+<h2>Adjustments to Test</h2>
+
+<p class="loop">
+MEMORY &rarr; LEARN &rarr; PROPOSE &rarr; BACKTEST
+&rarr; VALIDATE &rarr; MODIFY
+</p>
+
+<p>
+No verified strategy adjustment is being proposed from this Daily Review.
+Potential changes require captured evidence, human review, backtesting,
+and validation before modification of an active strategy.
+</p>
+
+</section>
 
 </main>
 </body>

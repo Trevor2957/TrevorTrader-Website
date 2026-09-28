@@ -1,326 +1,283 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TrevorTrader | Daily Review | September 25, 2026</title>
+
+<title>TrevorTrader Daily Review | 2026-09-25</title>
 
 <style>
-:root{
- --bg:#07111f;--card:#101f34;--card2:#0c192b;
- --text:#f4f7fb;--muted:#91a2b8;--line:#253750;
- --blue:#6da8ff;--green:#20e890;--gold:#f2c66d;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px Arial,Helvetica,sans-serif}
-.wrap{max-width:1100px;margin:auto;padding:28px 18px 60px}
-nav{margin-bottom:28px}
-nav a{color:#55c8ff;text-decoration:none;font-weight:700;margin-right:22px}
-.eyebrow{color:var(--blue);font-size:11px;font-weight:800;letter-spacing:.16em}
-h1{font-size:clamp(30px,6vw,44px);margin:7px 0}
-h2{margin:0 0 13px}
-.muted{color:var(--muted);line-height:1.6}
-
-.badge{
- display:inline-block;padding:6px 10px;border:1px solid #315170;
- border-radius:999px;color:#9ecbff;font-size:10px;font-weight:800;
- letter-spacing:.1em;margin-top:6px
+:root {
+    --bg:#061426;
+    --panel:#0b1d33;
+    --line:#1f4f78;
+    --text:#f4f8fc;
+    --muted:#9eb1c5;
+    --cyan:#36d7e7;
+    --green:#63e6a6;
+    --red:#ff7185;
 }
 
-.stats{
- display:grid;grid-template-columns:repeat(5,1fr);
- gap:10px;margin:26px 0
-}
-.card,.panel{
- background:var(--card);border:1px solid var(--line);
- border-radius:14px;padding:17px
-}
-.label{color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.1em}
-.value{font-size:25px;font-weight:800;margin-top:6px}
-.positive{color:var(--green)}
-
-.strategy{
- background:var(--card);border:1px solid var(--line);
- border-radius:16px;padding:20px;margin-top:16px
-}
-.strategy-head{
- display:flex;justify-content:space-between;gap:15px;
- align-items:flex-start;border-bottom:1px solid var(--line);
- padding-bottom:15px;margin-bottom:17px
-}
-.strategy-name{font-size:21px;font-weight:800}
-.status{
- color:var(--green);font-size:10px;font-weight:800;
- letter-spacing:.12em
+* {
+    box-sizing:border-box;
 }
 
-.trade-grid{
- display:grid;grid-template-columns:repeat(6,1fr);
- gap:9px
-}
-.trade-stat{
- background:var(--card2);border:1px solid var(--line);
- border-radius:11px;padding:13px
-}
-.trade-stat b{display:block;font-size:18px;margin-top:5px}
-
-.exit-list{
- margin-top:14px;background:var(--card2);
- border:1px solid var(--line);border-radius:11px;padding:14px
-}
-.exit-row{
- display:flex;justify-content:space-between;gap:15px;
- padding:7px 0;border-bottom:1px solid #1d3049
-}
-.exit-row:last-child{border-bottom:0}
-
-.panel{margin-top:16px}
-.notes{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-svg{width:100%;height:auto}
-
-.footer-note{
- color:var(--muted);font-size:12px;line-height:1.6;margin-top:20px
+body {
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-@media(max-width:850px){
- .stats{grid-template-columns:1fr 1fr}
- .trade-grid{grid-template-columns:1fr 1fr 1fr}
+.wrap {
+    max-width:1180px;
+    margin:auto;
+    padding:28px 20px 60px;
 }
-@media(max-width:600px){
- .trade-grid{grid-template-columns:1fr 1fr}
- .notes{grid-template-columns:1fr}
- .strategy-head{display:block}
- .status{margin-top:8px}
+
+.eyebrow {
+    color:var(--cyan);
+    font-weight:700;
+    letter-spacing:.12em;
+}
+
+h1 {
+    font-size:42px;
+    margin:8px 0;
+}
+
+.sub {
+    color:var(--muted);
+    font-size:18px;
+}
+
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin:24px 0;
+}
+
+.metric,
+.section {
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px;
+}
+
+.label {
+    color:var(--muted);
+    text-transform:uppercase;
+    font-size:12px;
+    letter-spacing:.08em;
+}
+
+.big {
+    font-size:26px;
+    font-weight:700;
+    margin-top:7px;
+}
+
+.small {
+    color:var(--muted);
+    margin-top:5px;
+}
+
+.pos {
+    color:var(--green);
+    font-weight:700;
+}
+
+.neg {
+    color:var(--red);
+    font-weight:700;
+}
+
+.status {
+    border-left:4px solid var(--cyan);
+}
+
+table {
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+}
+
+th,
+td {
+    padding:10px;
+    border-bottom:1px solid #173451;
+    text-align:left;
+    white-space:nowrap;
+}
+
+th {
+    color:var(--muted);
+}
+
+.scroll {
+    overflow:auto;
+}
+
+h2 {
+    margin-top:0;
+}
+
+.loop {
+    font-weight:700;
+    color:var(--cyan);
+}
+
+@media(max-width:700px) {
+    h1 {
+        font-size:32px;
+    }
+
+    .wrap {
+        padding:20px 12px;
+    }
 }
 </style>
 </head>
 
 <body>
+
 <main class="wrap">
 
-<nav>
-<a href="../../">← TrevorTrader Home</a>
-<a href="../">Daily Review Archive</a>
-</nav>
+<div class="eyebrow">
+TREVORTRADER &bull; DAILY REVIEW
+</div>
 
-<div class="eyebrow">DAILY REVIEW • PAPER VALIDATION</div>
-<h1>September 25, 2026</h1>
-<p class="muted">
-A complete record of the strategies active during the session,
-the trades they produced, and what TrevorTrader learned.
+<h1>2026-09-25</h1>
+
+<div class="sub">
+PAPER validation &bull; Life of Every Trade&trade;
+</div>
+
+<div class="grid">
+
+<div class="metric">
+    <div class="label">Completed trades in Cloud</div>
+    <div class="big">1</div>
+    <div class="small">1 wins / 0 losses</div>
+</div>
+
+<div class="metric">
+    <div class="label">Cloud P&amp;L</div>
+    <div class="big pos">
+        $+39.00
+    </div>
+</div>
+
+
+        <div class="metric">
+            <div class="label">SPY</div>
+            <div class="big">1 trades</div>
+            <div class="small">
+                1 wins /
+                0 losses
+                &nbsp;
+                $+39.00
+            </div>
+        </div>
+        
+
+</div>
+
+<section class="section status">
+
+<h2>Reconciliation Status</h2>
+
+<p>PASS: Alpaca and Cloud reconcile at 1 completed trades.</p>
+
+<p>
+Broker activity and Cloud completed-trade counts
+reconciled successfully.
 </p>
-<span class="badge">PAPER TRADING</span>
-
-<div class="stats">
-
-<div class="card">
-<div class="label">TRADES</div>
-<div class="value">1</div>
-</div>
-
-<div class="card">
-<div class="label">WINS / LOSSES</div>
-<div class="value">1 / 0</div>
-</div>
-
-<div class="card">
-<div class="label">REALIZED P&amp;L</div>
-<div class="value positive">+$38.81</div>
-</div>
-
-<div class="card">
-<div class="label">DAILY RETURN</div>
-<div class="value positive">~+57%</div>
-</div>
-
-<div class="card">
-<div class="label">STRATEGIES ACTIVE</div>
-<div class="value">1</div>
-</div>
-
-</div>
-
-<section class="strategy">
-
-<div class="strategy-head">
-<div>
-<div class="eyebrow">STRATEGY 01</div>
-<div class="strategy-name">Morning Panic V1</div>
-<div class="muted">SPY 772 Call • 0DTE</div>
-</div>
-<div class="status">1 TRADE • WIN</div>
-</div>
-
-<div class="trade-grid">
-
-<div class="trade-stat">
-<div class="label">DIRECTION</div>
-<b>CALL</b>
-</div>
-
-<div class="trade-stat">
-<div class="label">CONTRACTS</div>
-<b>4</b>
-</div>
-
-<div class="trade-stat">
-<div class="label">BUY PRICE</div>
-<b>$0.17</b>
-</div>
-
-<div class="trade-stat">
-<div class="label">HIGH WATER</div>
-<b>$0.38</b>
-</div>
-
-<div class="trade-stat">
-<div class="label">P&amp;L</div>
-<b class="positive">+$38.81</b>
-</div>
-
-<div class="trade-stat">
-<div class="label">RETURN</div>
-<b class="positive">~+57%</b>
-</div>
-
-</div>
-
-<div class="exit-list">
-<div class="eyebrow">TRADE #1 • EXIT RECORD</div>
-
-<div class="exit-row">
-<span>Entry</span>
-<strong>4 contracts @ $0.17</strong>
-</div>
-
-<div class="exit-row">
-<span>Target 1</span>
-<strong>$0.26</strong>
-</div>
-
-<div class="exit-row">
-<span>Target 2</span>
-<strong>$0.29</strong>
-</div>
-
-<div class="exit-row">
-<span>High Water</span>
-<strong>$0.38</strong>
-</div>
-
-<div class="exit-row">
-<span>Runner Exit</span>
-<strong>$0.26</strong>
-</div>
-
-<div class="exit-row">
-<span>Realized Result</span>
-<strong class="positive">+$38.81 • ~+57%</strong>
-</div>
-
-</div>
 
 </section>
 
-<section class="panel">
+<section class="section" style="margin-top:16px">
 
-<div class="eyebrow">LIFE OF EVERY TRADE™</div>
-<h2>Trade #1</h2>
+<h2>Life of Every Trade&trade;</h2>
 
-<p class="muted">
-Actual execution milestones from the Morning Panic V1 paper trade.
-</p>
+<div class="scroll">
 
-<svg viewBox="0 0 900 300">
+<table>
 
-<line stroke="#253750" x1="55" x2="850" y1="245" y2="245"/>
+<thead>
+<tr>
+<th>ID</th>
+<th>Ticker</th>
+<th>Strategy</th>
+<th>Version</th>
+<th>Entry PT</th>
+<th>Exit PT</th>
+<th>Option</th>
+<th>Side</th>
+<th>Qty</th>
+<th>Entry</th>
+<th>Exit</th>
+<th>P&amp;L</th>
+<th>Return</th>
+<th>Hold</th>
+</tr>
+</thead>
 
-<polyline
- fill="none"
- stroke="#6da8ff"
- stroke-width="5"
- points="75,215 260,155 445,130 630,55 820,155">
-</polyline>
+<tbody>
 
-<line
- stroke="#f2c66d"
- stroke-dasharray="8 7"
- stroke-width="2"
- x1="630" x2="850"
- y1="155" y2="155">
-</line>
+            <tr>
+                <td>60</td>
+                <td>SPY</td>
+                <td>SPY_MORNING_PANIC</td>
+                <td>V1_0DTE_2026-09-25</td>
+                <td>7:35:03 AM</td>
+                <td>8:08:21 AM</td>
+                <td>SPY260925C00772000</td>
+                <td>CALL</td>
+                <td>4</td>
+                <td>0.170000</td>
+                <td>0.267500</td>
+                <td class="pos">$+39.00</td>
+                <td class="pos">+57.35%</td>
+                <td>0h 33m 17s</td>
+            </tr>
+            
+</tbody>
 
-<g fill="#101f34" stroke="#6da8ff" stroke-width="3">
-<circle cx="75" cy="215" r="7"/>
-<circle cx="260" cy="155" r="7"/>
-<circle cx="445" cy="130" r="7"/>
-<circle cx="630" cy="55" r="7"/>
-<circle cx="820" cy="155" r="7"/>
-</g>
+</table>
 
-<g fill="#f4f7fb" font-size="13" text-anchor="middle">
-<text x="75" y="195">$0.17</text>
-<text x="260" y="135">$0.26</text>
-<text x="445" y="110">$0.29</text>
-<text x="630" y="35">$0.38</text>
-<text x="820" y="135">$0.26</text>
-</g>
-
-<g fill="#91a2b8" font-size="11" text-anchor="middle">
-<text x="75" y="275">ENTRY</text>
-<text x="260" y="275">TARGET 1</text>
-<text x="445" y="275">TARGET 2</text>
-<text x="630" y="275">HIGH WATER</text>
-<text x="820" y="275">TRAIL EXIT</text>
-</g>
-
-</svg>
-
-</section>
-
-<section class="panel notes">
-
-<div>
-<div class="eyebrow">EXECUTION</div>
-<h2>What the bot did</h2>
-<p class="muted">
-Scaled out one contract at the first target and one at the second.
-The remaining two contracts continued as runners until trailing
-protection was activated and the pullback crossed the trailing floor.
-</p>
 </div>
+</section>
 
-<div>
-<div class="eyebrow">LEARNING</div>
-<h2>What TrevorTrader learned</h2>
-<p class="muted">
-Continue measuring price behavior after the final exit to determine
-whether the trailing methodology protects gains efficiently or exits
-during a temporary 0DTE pullback.
+<section class="section" style="margin-top:16px">
+
+<h2>Daily Learning</h2>
+
+<p>
+No separate verified Daily Learning record was captured for this session.
+The reconciled trade evidence above remains the authoritative record.
 </p>
-</div>
 
 </section>
 
-<section class="panel">
-<div class="eyebrow">POST-EXIT EVIDENCE</div>
-<h2>The market kept teaching after the trade.</h2>
+<section class="section" style="margin-top:16px">
 
-<p class="muted">
-After the first trade closed, the same 772 Call later reset to roughly
-$0.08 and subsequently expanded above $1.00. This was not a second V1
-trade. It remains a research observation used to study whether a fresh
-second panic, base, and confirmed reversal can identify a separate
-future opportunity.
+<h2>Adjustments to Test</h2>
+
+<p class="loop">
+MEMORY &rarr; LEARN &rarr; PROPOSE &rarr; BACKTEST
+&rarr; VALIDATE &rarr; MODIFY
 </p>
+
+<p>
+No verified strategy adjustment is being proposed from this Daily Review.
+Potential changes require captured evidence, human review, backtesting,
+and validation before modification of an active strategy.
+</p>
+
 </section>
-
-<p class="footer-note">
-Paper-trading results only. Return is based on the recorded deployed
-premium and transaction amounts. No single trading day establishes
-a repeatable edge. TrevorTrader evaluates results across repeated
-paper-validation sessions.
-</p>
 
 </main>
 </body>
