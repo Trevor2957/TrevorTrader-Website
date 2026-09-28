@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#061426">
 
 <title>TrevorTrader Daily Review | 2026-09-25</title>
 
@@ -10,6 +11,7 @@
 :root {
     --bg:#061426;
     --panel:#0b1d33;
+    --panel2:#0d223b;
     --line:#1f4f78;
     --text:#f4f8fc;
     --muted:#9eb1c5;
@@ -22,17 +24,77 @@
     box-sizing:border-box;
 }
 
+html {
+    background:var(--bg);
+}
+
 body {
     margin:0;
     background:var(--bg);
     color:var(--text);
     font-family:Arial,Helvetica,sans-serif;
+    line-height:1.5;
+}
+
+a {
+    color:inherit;
+}
+
+.topbar {
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(6,20,38,.96);
+    border-bottom:1px solid var(--line);
+    padding-top:env(safe-area-inset-top);
+}
+
+.nav {
+    max-width:1180px;
+    margin:auto;
+    min-height:60px;
+    padding:8px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.brand {
+    color:var(--cyan);
+    font-weight:800;
+    letter-spacing:.08em;
+    text-decoration:none;
+}
+
+.navlinks {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.navlinks a {
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+    padding:0 14px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:700;
+}
+
+.navlinks a:hover,
+.navlinks a:focus-visible {
+    border-color:var(--cyan);
+    outline:none;
 }
 
 .wrap {
     max-width:1180px;
     margin:auto;
-    padding:28px 20px 60px;
+    padding:32px 20px calc(60px + env(safe-area-inset-bottom));
 }
 
 .eyebrow {
@@ -98,6 +160,20 @@ h1 {
     border-left:4px solid var(--cyan);
 }
 
+h2 {
+    margin-top:0;
+}
+
+.loop {
+    font-weight:700;
+    color:var(--cyan);
+}
+
+.scroll {
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
 table {
     width:100%;
     border-collapse:collapse;
@@ -116,26 +192,129 @@ th {
     color:var(--muted);
 }
 
-.scroll {
-    overflow:auto;
+.mobile-trades {
+    display:none;
 }
 
-h2 {
-    margin-top:0;
+.trade-card {
+    background:var(--panel2);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px;
 }
 
-.loop {
+.trade-head {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+}
+
+.trade-symbol {
+    font-size:18px;
+    font-weight:800;
+}
+
+.trade-id,
+.trade-version {
+    color:var(--muted);
+    font-size:13px;
+}
+
+.trade-pnl {
+    font-size:20px;
+    white-space:nowrap;
+}
+
+.trade-strategy {
+    margin-top:12px;
     font-weight:700;
-    color:var(--cyan);
+    overflow-wrap:anywhere;
+}
+
+.trade-version {
+    overflow-wrap:anywhere;
+}
+
+.trade-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:16px;
+}
+
+.trade-grid div {
+    min-width:0;
+}
+
+.trade-grid span {
+    display:block;
+    color:var(--muted);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+}
+
+.trade-grid strong {
+    display:block;
+    margin-top:3px;
+    overflow-wrap:anywhere;
+}
+
+.footer-nav {
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:18px;
+}
+
+.footer-nav a {
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 14px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:700;
 }
 
 @media(max-width:700px) {
-    h1 {
-        font-size:32px;
+    .nav {
+        padding-left:12px;
+        padding-right:12px;
+    }
+
+    .navlinks a {
+        padding:0 10px;
     }
 
     .wrap {
-        padding:20px 12px;
+        padding:22px 12px calc(40px + env(safe-area-inset-bottom));
+    }
+
+    h1 {
+        font-size:34px;
+    }
+
+    .sub {
+        font-size:16px;
+    }
+
+    .desktop-trades {
+        display:none;
+    }
+
+    .mobile-trades {
+        display:grid;
+        gap:12px;
+    }
+
+    .metric,
+    .section {
+        border-radius:14px;
+        padding:16px;
     }
 }
 </style>
@@ -143,13 +322,23 @@ h2 {
 
 <body>
 
+<header class="topbar">
+    <nav class="nav" aria-label="Daily Review navigation">
+        <a class="brand" href="../../">TREVORTRADER</a>
+        <div class="navlinks">
+            <a href="../">All Reviews</a>
+            <a href="../latest/">Latest</a>
+        </div>
+    </nav>
+</header>
+
 <main class="wrap">
 
 <div class="eyebrow">
 TREVORTRADER &bull; DAILY REVIEW
 </div>
 
-<h1>2026-09-25</h1>
+<h1>September 25, 2026</h1>
 
 <div class="sub">
 PAPER validation &bull; Life of Every Trade&trade;
@@ -177,8 +366,7 @@ PAPER validation &bull; Life of Every Trade&trade;
             <div class="small">
                 1 wins /
                 0 losses
-                &nbsp;
-                $+39.00
+                &nbsp; $+39.00
             </div>
         </div>
         
@@ -186,47 +374,39 @@ PAPER validation &bull; Life of Every Trade&trade;
 </div>
 
 <section class="section status">
-
 <h2>Reconciliation Status</h2>
-
 <p>PASS: Alpaca and Cloud reconcile at 1 completed trades.</p>
-
 <p>
-Broker activity and Cloud completed-trade counts
-reconciled successfully.
+Broker activity and Cloud completed-trade counts reconciled successfully.
 </p>
-
 </section>
 
 <section class="section" style="margin-top:16px">
-
 <h2>Life of Every Trade&trade;</h2>
 
-<div class="scroll">
-
-<table>
-
-<thead>
-<tr>
-<th>ID</th>
-<th>Ticker</th>
-<th>Strategy</th>
-<th>Version</th>
-<th>Entry PT</th>
-<th>Exit PT</th>
-<th>Option</th>
-<th>Side</th>
-<th>Qty</th>
-<th>Entry</th>
-<th>Exit</th>
-<th>P&amp;L</th>
-<th>Return</th>
-<th>Hold</th>
-</tr>
-</thead>
-
-<tbody>
-
+<div class="desktop-trades">
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ticker</th>
+                    <th>Strategy</th>
+                    <th>Version</th>
+                    <th>Entry PT</th>
+                    <th>Exit PT</th>
+                    <th>Option</th>
+                    <th>Side</th>
+                    <th>Qty</th>
+                    <th>Entry</th>
+                    <th>Exit</th>
+                    <th>P&amp;L</th>
+                    <th>Return</th>
+                    <th>Hold</th>
+                </tr>
+            </thead>
+            <tbody>
+                
             <tr>
                 <td>60</td>
                 <td>SPY</td>
@@ -244,26 +424,49 @@ reconciled successfully.
                 <td>0h 33m 17s</td>
             </tr>
             
-</tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-</table>
+<div class="mobile-trades">
+    
+            <article class="trade-card">
+                <div class="trade-head">
+                    <div>
+                        <div class="trade-symbol">SPY &bull; CALL</div>
+                        <div class="trade-id">Trade #60</div>
+                    </div>
+                    <div class="trade-pnl pos">$+39.00</div>
+                </div>
 
+                <div class="trade-strategy">SPY_MORNING_PANIC</div>
+                <div class="trade-version">V1_0DTE_2026-09-25</div>
+
+                <div class="trade-grid">
+                    <div><span>Entry PT</span><strong>7:35:03 AM</strong></div>
+                    <div><span>Exit PT</span><strong>8:08:21 AM</strong></div>
+                    <div><span>Entry</span><strong>0.170000</strong></div>
+                    <div><span>Exit</span><strong>0.267500</strong></div>
+                    <div><span>Return</span><strong class="pos">+57.35%</strong></div>
+                    <div><span>Hold</span><strong>0h 33m 17s</strong></div>
+                    <div><span>Qty</span><strong>4</strong></div>
+                    <div><span>Option</span><strong>SPY260925C00772000</strong></div>
+                </div>
+            </article>
+            
 </div>
 </section>
 
 <section class="section" style="margin-top:16px">
-
 <h2>Daily Learning</h2>
-
 <p>
 No separate verified Daily Learning record was captured for this session.
 The reconciled trade evidence above remains the authoritative record.
 </p>
-
 </section>
 
 <section class="section" style="margin-top:16px">
-
 <h2>Adjustments to Test</h2>
 
 <p class="loop">
@@ -276,8 +479,12 @@ No verified strategy adjustment is being proposed from this Daily Review.
 Potential changes require captured evidence, human review, backtesting,
 and validation before modification of an active strategy.
 </p>
-
 </section>
+
+<div class="footer-nav">
+    <a href="../">&larr; All Reviews</a>
+    <a href="../../">Home &rarr;</a>
+</div>
 
 </main>
 </body>
