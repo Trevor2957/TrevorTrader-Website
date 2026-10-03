@@ -577,14 +577,14 @@ footer{padding-top:36px}
 <div>
 <p class="eyebrow dark-eye">CURRENT PHASE</p>
 <h2>Paper <span class="blue">Validation</span></h2>
-<p>TrevorTrader is currently running a three-account SPY options paper-validation experiment built around one CORE entry methodology. The entry stays consistent while exit targets are tested as controlled variations.</p>
-<div class="current"><strong>Current focus:</strong> Keep the CORE entry consistent, compare the exit variants, reconcile the results, and improve only when the evidence supports a change.</div>
+<p>TrevorTrader is currently running a dedicated SPY Range Breakout 25/20 paper-validation experiment. The current engine is testing an objective range → breakout → confirmation sequence with a +25% target and −20% stop framework.</p>
+<div class="current"><strong>Current focus:</strong> Let the Range Breakout engine observe real sessions, record TRADE and NO TRADE decisions, reconcile outcomes, and improve only when the evidence supports a change.</div>
 </div>
 <div class="roadmap">
 <h3>What comes next</h3>
 <ol>
 <li class="done"><strong>Paper execution foundation</strong><small>Automated runners, risk controls, Trade Memory, reconciliation, and Daily Review.</small></li>
-<li class="active"><strong>CORE paper validation</strong><small>Run the same CORE entry methodology across three paper accounts while testing controlled exit variations.</small></li>
+<li class="active"><strong>Range Breakout 25/20 validation</strong><small>Prospectively test the defined range → 3-minute breakout close → 4-minute confirmation sequence in paper trading.</small></li>
 <li><strong>Check + learn</strong><small>Review TRADE and NO TRADE decisions, execution quality, market context, and Life of Every Trade™.</small></li>
 <li><strong>Improve + revalidate</strong><small>Change one variable at a time, then paper-test again before promoting the change.</small></li>
 </ol>
@@ -597,37 +597,31 @@ footer{padding-top:36px}
 <div class="strategy-wrap">
   <div class="strategy-head">
     <p class="eyebrow">CURRENT PAPER VALIDATION</p>
-    <h2>One CORE. <span class="blue">Three controlled tests.</span></h2>
-    <p>All three SPY options paper accounts now use the same CORE entry methodology. The exit target is the primary variable being tested so the comparison stays simple and interpretable.</p>
+    <h2>Range Breakout <span class="blue">25/20.</span></h2>
+    <p>One dedicated SPY paper experiment is now active. The engine looks for post-open stabilization, freezes the resulting range, requires a completed 3-minute close outside that range, then requires independent 4-minute confirmation before a paper entry.</p>
   </div>
-  <div class="strategy-grid current-validation-grid">
+  <div class="strategy-grid current-validation-grid" style="grid-template-columns:minmax(0,420px);">
     <article class="strategy-card">
-      <span class="strategy-number">PAPER ACCOUNT 01</span>
-      <h3>CORE</h3>
+      <span class="strategy-number">ACTIVE PAPER ENGINE</span>
+      <h3>Range Breakout 25/20</h3>
       <span class="validation-badge">PAPER VALIDATION</span>
-      <p class="strategy-desc">Same CORE entry. Earlier profit-taking profile.</p><div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+17%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
-      <div class="strategy-path-label">SAME ENTRY FLOW</div>
-      <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
-    </article>
-    <article class="strategy-card">
-      <span class="strategy-number">PAPER ACCOUNT 02</span>
-      <h3>CORE</h3>
-      <span class="validation-badge">PAPER VALIDATION</span>
-      <p class="strategy-desc">Same CORE entry. Middle profit-taking profile.</p><div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+20%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
-      <div class="strategy-path-label">SAME ENTRY FLOW</div>
-      <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
-    </article>
-    <article class="strategy-card">
-      <span class="strategy-number">PAPER ACCOUNT 03</span>
-      <h3>CORE</h3>
-      <span class="validation-badge">PAPER VALIDATION</span>
-      <p class="strategy-desc">Same CORE entry. Extended profit-taking profile.</p><div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+30%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
-      <div class="strategy-path-label">SAME ENTRY FLOW</div>
-      <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
+      <p class="strategy-desc">Objective range → breakout → confirmation. No entry on a wick-only break.</p>
+      <div class="strategy-exit-profile">
+        <div class="profit"><small>PROFIT TARGET</small><strong>+25%</strong></div>
+        <div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div>
+      </div>
+      <div class="strategy-path-label">CURRENT ENTRY FLOW</div>
+      <div class="strategy-flow">
+        <span class="flow-chip">STABILIZE</span><span class="flow-arrow">&rarr;</span>
+        <span class="flow-chip">FREEZE RANGE</span><span class="flow-arrow">&rarr;</span>
+        <span class="flow-chip action">3M BREAKOUT</span><span class="flow-arrow">&rarr;</span>
+        <span class="flow-chip action">4M CONFIRM</span>
+      </div>
+      <div class="strategy-mirror"><strong>Execution window:</strong> 7:15 AM–12:15 PM PT &nbsp;•&nbsp; <strong>Force-flat:</strong> 12:45 PM PT &nbsp;•&nbsp; <strong>Max:</strong> 2 submitted trades/day</div>
     </article>
   </div>
   <div class="strategy-question">
-    <strong>CONTROLLED TEST:</strong> Same CORE entry, same downside risk framework, three exit profiles. Each paper account is capped at <strong>2 submitted trades per trading day</strong>. Reconcile first, then learn and adjust.
+    <strong>RESEARCH STANDARD:</strong> This is a paper research hypothesis, not a validated edge. Actual sessions will determine whether the range definition, breakout confirmation, option selection, and +25% / −20% management framework deserve further testing.
   </div>
 </div>
 </section>
@@ -660,7 +654,7 @@ footer{padding-top:36px}
 <section class="journey" id="journey">
 <p class="eyebrow">BUILDING IN PUBLIC</p>
 <h2>Follow the Journey</h2>
-<p>Follow one CORE methodology through controlled paper validation as TrevorTrader measures, learns, and improves from real market evidence.</p>
+<p>Follow the Range Breakout 25/20 experiment as TrevorTrader measures, learns, and improves from real market evidence.</p>
 <a class="button ghost" href="#development">See What We're Building <span>→</span></a>
 </section>
 </main>
