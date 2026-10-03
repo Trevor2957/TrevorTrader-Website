@@ -15,6 +15,7 @@ main{width:min(1120px,88vw);margin:auto;padding:70px 0 90px}.eyebrow{color:var(-
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:24px}.card{border:1px solid var(--line);border-radius:15px;padding:22px;background:#061827}.card b{color:var(--blue);font-size:11px;letter-spacing:1.3px}.card h3{margin:9px 0}.card p{color:var(--muted);font-size:13px;margin:0}
 .note{text-align:center;color:#718da0;font-size:12px;max-width:800px;margin:32px auto 0}footer{text-align:center;padding:34px;border-top:1px solid #123148;background:#020b13;color:#7893a5;font-size:12px}
 @media(max-width:800px){.timeline{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}@media(max-width:520px){main{width:calc(100% - 36px)}.timeline{grid-template-columns:1fr}.hero h1{letter-spacing:-2px}}
+.preview{margin-top:28px;border:1px solid #174a69;border-radius:18px;background:#061827;padding:24px}.preview-head{text-align:center;margin-bottom:16px}.preview-head b{color:#29baff;font-size:11px;letter-spacing:1.5px}.preview-head h2{margin:6px 0;font-size:28px}.preview-head p{margin:0;color:#9bb5c8;font-size:13px}.chart{position:relative;height:330px;background:#04111f;border-radius:14px;overflow:hidden;border:1px solid #123148}.gridline{position:absolute;left:4%;right:4%;height:1px;background:#123148}.trade-window{position:absolute;left:38%;width:34%;top:8%;bottom:10%;background:rgba(41,186,255,.06);border-left:1px dashed #29baff;border-right:1px dashed #29baff}.trade-window span{position:absolute;top:7px;left:10px;color:#73d6ff;font-size:10px;font-weight:800}.candle{position:absolute;width:18px}.candle:before{content:"";position:absolute;width:2px;left:8px;top:-13px;bottom:-13px;background:currentColor}.candle:after{content:"";position:absolute;inset:0;background:currentColor;border-radius:2px}.up{color:#45df7d}.down{color:#ff5f6d}.marker{position:absolute;top:8%;bottom:10%;width:1px;border-left:2px dashed}.marker span{position:absolute;top:-1px;left:7px;font-size:10px;font-weight:800;white-space:nowrap}.confirm{left:35%;border-color:#facc15;color:#facc15}.entry{left:41%;border-color:#45df7d;color:#45df7d}.exit{left:72%;border-color:#29baff;color:#73d6ff}.legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:15px;color:#9bb5c8;font-size:11px}.dot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}.preview-note{text-align:center;color:#718da0;font-size:11px;margin:14px auto 0;max-width:820px}@media(max-width:600px){.chart{height:250px}.preview{padding:16px}}
 </style>
 </head>
 <body>
@@ -46,6 +47,27 @@ main{width:min(1120px,88vw);margin:auto;padding:70px 0 90px}.eyebrow{color:var(-
 <article class="card"><b>CONTEXT</b><h3>What happened after exit</h3><p>Post-exit movement is useful research context, but it is never counted as realized performance.</p></article>
 </section>
 
+<section class="preview">
+<div class="preview-head"><b>ILLUSTRATIVE PREVIEW</b><h2>What a completed trade will look like</h2><p>The final visual will tell the story from confirmation through entry, exit, and what happened afterward.</p></div>
+<div class="chart">
+<div class="gridline" style="top:20%"></div><div class="gridline" style="top:40%"></div><div class="gridline" style="top:60%"></div><div class="gridline" style="top:80%"></div>
+<div class="trade-window"><span>TRADE WINDOW</span></div>
+<div class="candle up" style="left:8%;top:64%;height:38px"></div>
+<div class="candle up" style="left:16%;top:56%;height:34px"></div>
+<div class="candle down" style="left:24%;top:59%;height:31px"></div>
+<div class="candle up" style="left:32%;top:49%;height:39px"></div>
+<div class="candle up" style="left:40%;top:42%;height:38px"></div>
+<div class="candle up" style="left:48%;top:34%;height:36px"></div>
+<div class="candle down" style="left:56%;top:37%;height:32px"></div>
+<div class="candle up" style="left:64%;top:28%;height:35px"></div>
+<div class="candle down" style="left:72%;top:31%;height:31px"></div>
+<div class="candle up" style="left:80%;top:23%;height:34px"></div>
+<div class="candle down" style="left:88%;top:28%;height:36px"></div>
+<div class="marker confirm"><span>CONFIRM</span></div><div class="marker entry"><span>ENTRY</span></div><div class="marker exit"><span>EXIT</span></div>
+</div>
+<div class="legend"><span><i class="dot" style="background:#45df7d"></i>Up candle</span><span><i class="dot" style="background:#ff5f6d"></i>Down candle</span><span><i class="dot" style="background:#29baff"></i>Broker-confirmed exit</span></div>
+<p class="preview-note">Illustrative example only. Real Life of the Trade charts will use broker-reconciled paper-trade evidence. Post-exit movement is shown for research context and is not counted as realized performance.</p>
+</section>
 <p class="note">Automated trade-specific charts will appear only when the evidence pipeline has broker-reconciled data that passes the publication gate. One trade is evidence, not proof.</p>
 </main>
 <footer>TrevorTrader • Paper-trading research and validation • 2026</footer>
