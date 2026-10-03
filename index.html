@@ -534,7 +534,35 @@ footer{padding-top:36px}
 @media(max-width:560px){.platform-future{padding:62px 22px}.platform-grid{grid-template-columns:1fr}}
 </style>
 
-<style id="engine-brand-clarity">.engine-subtitle{font-size:.52em;letter-spacing:1.4px;font-weight:700;opacity:.72;margin-left:6px;white-space:nowrap}@media(max-width:760px){.engine-subtitle{display:block;margin:4px 0 0;font-size:.46em}}</style></head>
+<style id="engine-brand-clarity">
+.engine-subtitle{font-size:.52em;letter-spacing:1.4px;font-weight:700;opacity:.72;margin-left:6px;white-space:nowrap}
+.engine-group{max-width:1080px;margin:0 auto 30px;padding:26px;border:1px solid rgba(56,189,248,.18);border-radius:20px;background:rgba(5,25,42,.42)}
+.engine-group-head{max-width:980px;margin:0 auto 18px;padding:0 2px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.engine-group-head h3{margin:4px 0 0;font-size:22px}
+.engine-label{display:block;font-size:9px;letter-spacing:1.8px;color:#55c8ff;font-weight:800}
+.engine-status{flex:none}
+.core-engine-grid{max-width:980px!important;margin:0 auto!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important}
+.core-engine-grid .strategy-card{min-width:0}
+.range-engine-card{max-width:980px!important;margin:0 auto!important}
+.range-engine-main{grid-template-columns:minmax(0,1fr) 260px!important}
+.strategy-card{border-radius:16px;padding:24px}
+.strategy-card h3{font-size:24px}
+.strategy-desc{min-height:0}
+.strategy-head{margin-bottom:30px}
+.strategy-head h2{font-size:clamp(32px,4vw,50px)}
+.strategy-head>p:not(.eyebrow){font-size:15px;line-height:1.6}
+.strategy-question{max-width:980px}
+@media(max-width:800px){
+  .engine-group{padding:20px}
+  .core-engine-grid{grid-template-columns:1fr!important}
+  .range-engine-main{grid-template-columns:1fr!important}
+}
+@media(max-width:560px){
+  .engine-group{padding:16px;border-radius:16px}
+  .engine-group-head{align-items:flex-start;flex-direction:column}
+  .engine-subtitle{display:block;margin:4px 0 0;font-size:.46em}
+}
+</style></head>
 <body>
 <header class="nav">
 <a aria-label="TrevorTrader home" class="brand" href="#top">
@@ -597,7 +625,7 @@ footer{padding-top:36px}
 <div class="strategy-wrap">
   <div class="strategy-head">
     <p class="eyebrow">ACTIVE PAPER ENGINES</p>
-    <h2>Three Engines. <span class="blue">Three Tests.</span></h2>
+    <h2>Two Engine Families. <span class="blue">Three Active Tests.</span></h2>
     <p><strong>Two engine families are currently active in paper validation.</strong> <strong>CORE™</strong> is TrevorTrader’s reversal engine, with two active exit experiments. <strong>RANGE™</strong> is a separate breakout engine with its own entry logic, account, logs, and results.</p>
   </div>
 
