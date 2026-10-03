@@ -596,44 +596,69 @@ footer{padding-top:36px}
 <section class="strategy-validation" id="strategies">
 <div class="strategy-wrap">
   <div class="strategy-head">
-    <p class="eyebrow">CURRENT PAPER VALIDATION</p>
-    <h2>Range Breakout <span class="blue">25/20.</span></h2>
-    <p>All three experiments are active paper-validation profiles: CORE 17/20, Range Breakout 25/20, and CORE 30/20. Each test remains independently tracked so the results can be reconciled without mixing strategies or assumptions.</p>
+    <p class="eyebrow">ACTIVE PAPER ENGINES</p>
+    <h2>Three Engines. <span class="blue">Three Tests.</span></h2>
+    <p>TrevorTrader is currently running three independent paper experiments. The two CORE profiles share the CORE entry engine and test different profit targets. Range Breakout is a separate entry engine with its own rules, account, logs, and results.</p>
   </div>
-  <div class="strategy-grid current-validation-grid">
-    <article class="strategy-card">
-      <span class="strategy-number">ACTIVE PAPER EXPERIMENT 01</span>
-      <h3>CORE 17/20</h3>
-      <span class="validation-badge">PAPER VALIDATION</span>
-      <p class="strategy-desc">Existing CORE comparison profile with earlier profit-taking.</p>
-      <div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+17%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
-      <div class="strategy-path-label">CORE COMPARISON</div>
-      <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
-      <div class="strategy-mirror"><strong>Execution:</strong> 7:00 AM–12:15 PM PT &nbsp;•&nbsp; <strong>Force-flat:</strong> 12:45 PM PT &nbsp;•&nbsp; <strong>Max:</strong> 2 submitted trades/day</div>
-    </article>
-    <article class="strategy-card">
-      <span class="strategy-number">ACTIVE PAPER EXPERIMENT 02</span>
-      <h3>RANGE BREAKOUT 25/20</h3>
-      <span class="validation-badge">ACTIVE PAPER EXPERIMENT</span>
-      <p class="strategy-desc">Post-open stabilization → frozen range → completed 3-minute breakout close → independent 4-minute confirmation.</p>
-      <div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+25%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
-      <div class="strategy-path-label">CURRENT ENTRY FLOW</div>
+
+  <div class="engine-group">
+    <div class="engine-group-head">
+      <div>
+        <span class="engine-label">ENGINE 01</span>
+        <h3>CORE ENGINE</h3>
+      </div>
+      <span class="engine-status">ACTIVE PAPER ENGINE</span>
+    </div>
+    <div class="strategy-grid core-engine-grid">
+      <article class="strategy-card">
+        <span class="strategy-number">CORE EXPERIMENT 01</span>
+        <h3>CORE 17/20</h3>
+        <span class="validation-badge">ACTIVE PAPER EXPERIMENT</span>
+        <p class="strategy-desc">CORE entry methodology with a +17% profit target and −20% stop.</p>
+        <div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+17%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
+        <div class="strategy-path-label">CORE ENTRY FLOW</div>
+        <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
+        <div class="strategy-mirror"><strong>Execution:</strong> 7:00 AM–12:15 PM PT &nbsp;•&nbsp; <strong>Force-flat:</strong> 12:45 PM PT &nbsp;•&nbsp; <strong>Max:</strong> 2 submitted trades/day</div>
+      </article>
+      <article class="strategy-card">
+        <span class="strategy-number">CORE EXPERIMENT 02</span>
+        <h3>CORE 30/20</h3>
+        <span class="validation-badge">ACTIVE PAPER EXPERIMENT</span>
+        <p class="strategy-desc">Same CORE entry methodology with a +30% profit target and −20% stop.</p>
+        <div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+30%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
+        <div class="strategy-path-label">CORE ENTRY FLOW</div>
+        <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
+        <div class="strategy-mirror"><strong>Execution:</strong> 7:00 AM–12:15 PM PT &nbsp;•&nbsp; <strong>Force-flat:</strong> 12:45 PM PT &nbsp;•&nbsp; <strong>Max:</strong> 2 submitted trades/day</div>
+      </article>
+    </div>
+  </div>
+
+  <div class="engine-group range-engine-group">
+    <div class="engine-group-head">
+      <div>
+        <span class="engine-label">ENGINE 02</span>
+        <h3>RANGE BREAKOUT ENGINE</h3>
+      </div>
+      <span class="engine-status">ACTIVE PAPER ENGINE</span>
+    </div>
+    <div class="range-engine-card strategy-card">
+      <div class="range-engine-main">
+        <div>
+          <span class="strategy-number">RANGE BREAKOUT EXPERIMENT 01</span>
+          <h3>RANGE BREAKOUT 25/20</h3>
+          <span class="validation-badge">ACTIVE PAPER EXPERIMENT</span>
+          <p class="strategy-desc">A separate entry engine: post-open stabilization → frozen range → completed 3-minute breakout close → independent 4-minute confirmation.</p>
+        </div>
+        <div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+25%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
+      </div>
+      <div class="strategy-path-label">RANGE BREAKOUT ENTRY FLOW</div>
       <div class="strategy-flow"><span class="flow-chip">STABILIZE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">FREEZE RANGE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">3M BREAKOUT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">4M CONFIRM</span></div>
       <div class="strategy-mirror"><strong>Execution:</strong> 7:15 AM–12:15 PM PT &nbsp;•&nbsp; <strong>Force-flat:</strong> 12:45 PM PT &nbsp;•&nbsp; <strong>Max:</strong> 2 submitted trades/day</div>
-    </article>
-    <article class="strategy-card">
-      <span class="strategy-number">ACTIVE PAPER EXPERIMENT 03</span>
-      <h3>CORE 30/20</h3>
-      <span class="validation-badge">PAPER VALIDATION</span>
-      <p class="strategy-desc">Existing CORE comparison profile with extended profit-taking.</p>
-      <div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+30%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
-      <div class="strategy-path-label">CORE COMPARISON</div>
-      <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
-      <div class="strategy-mirror"><strong>Execution:</strong> 7:00 AM–12:15 PM PT &nbsp;•&nbsp; <strong>Force-flat:</strong> 12:45 PM PT &nbsp;•&nbsp; <strong>Max:</strong> 2 submitted trades/day</div>
-    </article>
+    </div>
   </div>
+
   <div class="strategy-question">
-    <strong>RESEARCH STANDARD:</strong> All three experiments are active paper research profiles and are shown separately for transparency. Each has its own rules, account, logs, and results. None of the displayed profiles should be treated as a validated edge until reconciled evidence supports that conclusion.
+    <strong>RESEARCH STANDARD:</strong> All three are active paper experiments. CORE 17/20 and CORE 30/20 are independent exit-profile tests within the CORE engine; Range Breakout 25/20 is a separate engine. Each is tracked independently, and none should be treated as a validated edge until reconciled evidence supports that conclusion.
   </div>
 </div>
 </section>
