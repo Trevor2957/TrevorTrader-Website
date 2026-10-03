@@ -598,30 +598,40 @@ footer{padding-top:36px}
   <div class="strategy-head">
     <p class="eyebrow">CURRENT PAPER VALIDATION</p>
     <h2>Range Breakout <span class="blue">25/20.</span></h2>
-    <p>One dedicated SPY paper experiment is now active. The engine looks for post-open stabilization, freezes the resulting range, requires a completed 3-minute close outside that range, then requires independent 4-minute confirmation before a paper entry.</p>
+    <p>The current paper-validation lineup preserves the two comparison profiles while adding the new Range Breakout 25/20 experiment. Each test remains independently tracked so the results can be reconciled without mixing strategies or assumptions.</p>
   </div>
-  <div class="strategy-grid current-validation-grid" style="grid-template-columns:minmax(0,420px);">
+  <div class="strategy-grid current-validation-grid">
     <article class="strategy-card">
-      <span class="strategy-number">ACTIVE PAPER ENGINE</span>
-      <h3>Range Breakout 25/20</h3>
+      <span class="strategy-number">PAPER TEST 01</span>
+      <h3>CORE 17/20</h3>
       <span class="validation-badge">PAPER VALIDATION</span>
-      <p class="strategy-desc">Objective range → breakout → confirmation. No entry on a wick-only break.</p>
-      <div class="strategy-exit-profile">
-        <div class="profit"><small>PROFIT TARGET</small><strong>+25%</strong></div>
-        <div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div>
-      </div>
+      <p class="strategy-desc">Existing CORE comparison profile with earlier profit-taking.</p>
+      <div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+17%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
+      <div class="strategy-path-label">CORE COMPARISON</div>
+      <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
+    </article>
+    <article class="strategy-card">
+      <span class="strategy-number">PAPER TEST 02</span>
+      <h3>RANGE BREAKOUT 25/20</h3>
+      <span class="validation-badge">ACTIVE PAPER EXPERIMENT</span>
+      <p class="strategy-desc">Post-open stabilization → frozen range → completed 3-minute breakout close → independent 4-minute confirmation.</p>
+      <div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+25%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
       <div class="strategy-path-label">CURRENT ENTRY FLOW</div>
-      <div class="strategy-flow">
-        <span class="flow-chip">STABILIZE</span><span class="flow-arrow">&rarr;</span>
-        <span class="flow-chip">FREEZE RANGE</span><span class="flow-arrow">&rarr;</span>
-        <span class="flow-chip action">3M BREAKOUT</span><span class="flow-arrow">&rarr;</span>
-        <span class="flow-chip action">4M CONFIRM</span>
-      </div>
-      <div class="strategy-mirror"><strong>Execution window:</strong> 7:15 AM–12:15 PM PT &nbsp;•&nbsp; <strong>Force-flat:</strong> 12:45 PM PT &nbsp;•&nbsp; <strong>Max:</strong> 2 submitted trades/day</div>
+      <div class="strategy-flow"><span class="flow-chip">STABILIZE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">FREEZE RANGE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">3M BREAKOUT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">4M CONFIRM</span></div>
+      <div class="strategy-mirror"><strong>Execution:</strong> 7:15 AM–12:15 PM PT &nbsp;•&nbsp; <strong>Force-flat:</strong> 12:45 PM PT &nbsp;•&nbsp; <strong>Max:</strong> 2 submitted trades/day</div>
+    </article>
+    <article class="strategy-card">
+      <span class="strategy-number">PAPER TEST 03</span>
+      <h3>CORE 30/20</h3>
+      <span class="validation-badge">PAPER VALIDATION</span>
+      <p class="strategy-desc">Existing CORE comparison profile with extended profit-taking.</p>
+      <div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+30%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
+      <div class="strategy-path-label">CORE COMPARISON</div>
+      <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
     </article>
   </div>
   <div class="strategy-question">
-    <strong>RESEARCH STANDARD:</strong> This is a paper research hypothesis, not a validated edge. Actual sessions will determine whether the range definition, breakout confirmation, option selection, and +25% / −20% management framework deserve further testing.
+    <strong>RESEARCH STANDARD:</strong> The three tests are shown separately for transparency. The Range Breakout 25/20 engine is the current active research focus; the CORE comparison profiles remain visible for continuity. None of the displayed profiles should be treated as a validated edge until reconciled evidence supports that conclusion.
   </div>
 </div>
 </section>
