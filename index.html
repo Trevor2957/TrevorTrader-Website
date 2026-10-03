@@ -571,8 +571,8 @@ footer{padding-top:36px}
 <div>
 <p class="eyebrow dark-eye">CURRENT PHASE</p>
 <h2>Paper <span class="blue">Validation</span></h2>
-<p>TrevorTrader is currently paper-validating three independent SPY options strategies. Two study structured intraday reversal opportunities, while a third is developing pattern recognition as an additional confirmation layer under controlled research and validation.</p>
-<div class="current"><strong>Current focus:</strong> Run the active reversal strategies under controlled paper validation while developing Pattern Recognition as an observation-first confirmation layer. Capture TRADE and NO TRADE decisions and use real market evidence to determine what earns promotion.</div>
+<p>TrevorTrader is currently focused on controlled paper validation of the SPY Reversal Engine Core and integration of the centralized TREM risk and execution layer.</p>
+<div class="current"><strong>Current focus:</strong> Validate the Reversal Engine Core under real market conditions, integrate TREM between strategy decisions and broker execution, and verify reconciliation and evidence capture before expanding the active test set.</div>
 </div>
 <div class="roadmap">
 <h3>What comes next</h3>
@@ -590,23 +590,23 @@ footer{padding-top:36px}
 <section class="strategy-validation" id="strategies">
   <div class="strategy-wrap">
     <div class="strategy-head">
-      <p class="eyebrow">STRATEGIES IN VALIDATION</p>
-      <h2>Three strategies. <span class="blue">One discipline.</span></h2>
-      <p>TrevorTrader is testing three independent SPY options strategies through controlled paper trading. Each approaches the market differently, while every decision follows the same evidence-first validation process.</p>
+      <p class="eyebrow">CURRENT PAPER VALIDATION</p>
+      <h2>Reversal Engine. <span class="blue">Controlled execution.</span></h2>
+      <p>TrevorTrader's current focus is the SPY Reversal Engine Core: recognize a meaningful opening move, wait for objective evidence of a turn, and act only when the setup is confirmed. The next validation layer is TREM, the platform's centralized risk and execution manager.</p>
     </div>
 
-    <div class="strategy-grid">
+    <div class="strategy-grid current-validation-grid">
 
       <article class="strategy-card">
-        <span class="strategy-number">STRATEGY 01</span>
-        <h3>Morning Panic Reversal</h3>
+        <span class="strategy-number">TRADING ENGINE</span>
+        <h3>Reversal Engine™ Core</h3>
         <span class="validation-badge">PAPER VALIDATION</span>
-        <p class="strategy-desc">Designed to recognize a sharp opening move, wait for evidence that momentum is turning, and act only after the reversal is confirmed.</p>
+        <p class="strategy-desc">The current baseline engine. It evaluates sharp opening SPY moves in either direction, waits for confirmed reversal evidence, and stands aside when the required setup is not present.</p>
 
         <div class="strategy-chart">
-          <svg viewBox="0 0 500 190" role="img" aria-label="Sharp decline followed by a confirmed first reversal">
+          <svg viewBox="0 0 500 190" role="img" aria-label="Opening move followed by a confirmed reversal">
             <defs>
-              <linearGradient id="s1line" x1="0" x2="1">
+              <linearGradient id="coreline" x1="0" x2="1">
                 <stop offset="0" stop-color="#ff6575"/>
                 <stop offset=".55" stop-color="#55c8ff"/>
                 <stop offset="1" stop-color="#52ec9d"/>
@@ -614,127 +614,69 @@ footer{padding-top:36px}
             </defs>
             <line x1="18" y1="155" x2="482" y2="155" stroke="#174a69" stroke-width="1"/>
             <polyline points="24,40 82,48 138,82 190,142 225,153 260,132 305,91 360,67 420,54 476,46"
-              fill="none" stroke="url(#s1line)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              fill="none" stroke="url(#coreline)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="225" cy="153" r="7" fill="#55c8ff"/>
             <circle cx="305" cy="91" r="7" fill="#52ec9d"/>
-            <text x="150" y="177" fill="#ff8d9a" font-size="12" font-weight="700">PANIC</text>
+            <text x="145" y="177" fill="#ff8d9a" font-size="12" font-weight="700">OPENING MOVE</text>
             <text x="320" y="86" fill="#72f1b3" font-size="12" font-weight="700">CONFIRMED TURN</text>
-          </svg>
-        </div>
-
-        <div class="strategy-path-label">BULLISH PATH</div>
-        <div class="strategy-flow">
-          <span class="flow-chip">PANIC &darr;</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip">TURN &uarr;</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip action">CALL</span>
-        </div>
-
-        <div class="strategy-path-label">TRADE MANAGEMENT</div>
-        <div class="strategy-flow">
-          <span class="flow-chip">ENTRY</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip">SCALE OUT</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip">SCALE OUT</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip action">MANAGE RUNNER</span>
-        </div>
-
-        <div class="strategy-mirror"><strong>Bearish mirror:</strong> A sharp move higher followed by a confirmed reversal lower can produce a PUT opportunity.</div>
-      </article>
-
-      <article class="strategy-card">
-        <span class="strategy-number">STRATEGY 02</span>
-        <h3>Second Dip Reversal</h3>
-        <span class="validation-badge">PAPER VALIDATION</span>
-        <p class="strategy-desc">Instead of chasing the first recovery, this approach waits for the market to pull back again and looks for a second confirmed reversal opportunity.</p>
-
-        <div class="strategy-chart">
-          <svg viewBox="0 0 500 190" role="img" aria-label="Sharp decline, recovery, second dip and second confirmed reversal">
-            <defs>
-              <linearGradient id="s2line" x1="0" x2="1">
-                <stop offset="0" stop-color="#ff6575"/>
-                <stop offset=".55" stop-color="#b9a1ff"/>
-                <stop offset="1" stop-color="#52ec9d"/>
-              </linearGradient>
-            </defs>
-            <line x1="18" y1="155" x2="482" y2="155" stroke="#174a69" stroke-width="1"/>
-            <polyline points="24,40 78,52 126,142 175,93 220,72 272,125 310,116 352,78 410,56 476,45"
-              fill="none" stroke="url(#s2line)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="126" cy="142" r="6" fill="#55c8ff"/>
-            <circle cx="272" cy="125" r="7" fill="#b9a1ff"/>
-            <circle cx="352" cy="78" r="7" fill="#52ec9d"/>
-            <text x="82" y="166" fill="#ff8d9a" font-size="12" font-weight="700">PANIC</text>
-            <text x="182" y="61" fill="#9eb8c9" font-size="11">1ST RECOVERY</text>
-            <text x="238" y="148" fill="#b9a1ff" font-size="12" font-weight="700">2ND DIP</text>
-            <text x="362" y="74" fill="#72f1b3" font-size="12" font-weight="700">TURN</text>
-          </svg>
-        </div>
-
-        <div class="strategy-path-label">BULLISH PATH</div>
-        <div class="strategy-flow">
-          <span class="flow-chip">PANIC &darr;</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip">RECOVER</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip">2ND DIP</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip action">CALL</span>
-        </div>
-
-        <div class="strategy-path-label">TRADE MANAGEMENT</div>
-        <div class="strategy-flow">
-          <span class="flow-chip">ENTRY</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip">SCALE OUT</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip">SCALE OUT</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip action">MANAGE RUNNER</span>
-        </div>
-
-        <div class="strategy-mirror"><strong>Bearish mirror:</strong> The same structure can be evaluated in reverse, waiting for a second push higher and confirmed turn lower before a PUT opportunity.</div>
-      </article>
-
-      <article class="strategy-card pattern-card">
-        <span class="strategy-number">STRATEGY 03</span>
-        <h3>Pattern Recognition Engine</h3>
-        <span class="validation-badge">RESEARCH + VALIDATION</span>
-        <p class="strategy-desc">A market-structure confirmation engine being developed to identify selected bullish and bearish patterns, evaluate where they form, and require objective confirmation before they can influence a trading decision.</p>
-
-        <div class="strategy-chart">
-          <svg viewBox="0 0 500 190" role="img" aria-label="Market structure developing into a confirmed pattern breakout">
-            <defs>
-              <linearGradient id="s3line" x1="0" x2="1">
-                <stop offset="0" stop-color="#b9a1ff"/>
-                <stop offset=".55" stop-color="#55c8ff"/>
-                <stop offset="1" stop-color="#52ec9d"/>
-              </linearGradient>
-            </defs>
-            <line x1="18" y1="155" x2="482" y2="155" stroke="#174a69" stroke-width="1"/>
-            <polyline points="24,112 70,72 116,122 162,80 208,118 254,88 300,110 346,82 388,68 430,43 476,31"
-              fill="none" stroke="url(#s3line)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="58" y1="61" x2="354" y2="61" stroke="#55c8ff" stroke-width="2" stroke-dasharray="7 7" opacity=".65"/>
-            <circle cx="388" cy="68" r="7" fill="#55c8ff"/>
-            <circle cx="430" cy="43" r="7" fill="#52ec9d"/>
-            <text x="108" y="148" fill="#b9a1ff" font-size="12" font-weight="700">STRUCTURE</text>
-            <text x="346" y="94" fill="#55c8ff" font-size="11">CONTEXT</text>
-            <text x="402" y="24" fill="#72f1b3" font-size="12" font-weight="700">CONFIRM</text>
           </svg>
         </div>
 
         <div class="strategy-path-label">DECISION PATH</div>
         <div class="strategy-flow">
-          <span class="flow-chip">STRUCTURE</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip">CONTEXT</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip action">CONFIRM</span>
+          <span class="flow-chip">OPENING MOVE</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip action">CONFIRM TURN</span>
         </div>
 
-        <div class="strategy-path-label">EVIDENCE LOOP</div>
+        <div class="strategy-path-label">DIRECTION</div>
         <div class="strategy-flow">
-          <span class="flow-chip">DETECT</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip">OBSERVE</span><span class="flow-arrow">&rarr;</span>
-          <span class="flow-chip action">REVIEW + LEARN</span>
+          <span class="flow-chip">PANIC ↓ → CALL</span><span class="flow-arrow">|</span>
+          <span class="flow-chip">POP ↑ → PUT</span>
         </div>
 
-        <div class="strategy-mirror"><strong>Evidence before execution:</strong> Pattern shape alone is not enough. TrevorTrader evaluates market context and confirmation signals, then backtests and paper-validates the evidence before a pattern can influence execution. No qualifying setup means NO TRADE.</div>
+        <div class="strategy-mirror"><strong>Core principle:</strong> No chasing. No qualifying reversal means NO TRADE. Every paper decision becomes evidence for review.</div>
+      </article>
+
+      <article class="strategy-card pattern-card">
+        <span class="strategy-number">RISK + EXECUTION LAYER</span>
+        <h3>TREM</h3>
+        <span class="validation-badge">INTEGRATION + PAPER VALIDATION</span>
+        <p class="strategy-desc"><strong>TrevorTrader Risk &amp; Execution Manager</strong> is the centralized control layer being integrated between strategy signals and broker execution.</p>
+
+        <div class="strategy-chart">
+          <svg viewBox="0 0 500 190" role="img" aria-label="Strategy signal passing through TREM controls before broker execution">
+            <line x1="42" y1="95" x2="458" y2="95" stroke="#174a69" stroke-width="2"/>
+            <circle cx="82" cy="95" r="18" fill="#55c8ff"/>
+            <circle cx="250" cy="95" r="27" fill="#52ec9d"/>
+            <circle cx="418" cy="95" r="18" fill="#55c8ff"/>
+            <text x="49" y="139" fill="#9eb8c9" font-size="12" font-weight="700">SIGNAL</text>
+            <text x="226" y="100" fill="#061a2b" font-size="13" font-weight="900">TREM</text>
+            <text x="389" y="139" fill="#9eb8c9" font-size="12" font-weight="700">BROKER</text>
+          </svg>
+        </div>
+
+        <div class="strategy-path-label">CONTROL PATH</div>
+        <div class="strategy-flow">
+          <span class="flow-chip">SIGNAL</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip">VALIDATE</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip action">AUTHORIZE</span>
+        </div>
+
+        <div class="strategy-path-label">AFTER EXECUTION</div>
+        <div class="strategy-flow">
+          <span class="flow-chip">BROKER</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip">RECONCILE</span><span class="flow-arrow">&rarr;</span>
+          <span class="flow-chip action">TRADE MEMORY</span>
+        </div>
+
+        <div class="strategy-mirror"><strong>Fail-closed design:</strong> When execution state or risk cannot be verified, the system is designed to withhold authorization until the discrepancy is resolved.</div>
       </article>
 
     </div>
 
     <div class="strategy-question">
-      <strong>THE EXPERIMENT:</strong> TrevorTrader is testing independent strategy logic and an observation-first pattern confirmation layer against real market conditions. TRADE and NO TRADE decisions are recorded so evidence, not emotion, determines what advances.
+      <strong>MONDAY'S VALIDATION FOCUS:</strong> Reversal Engine Core generates the trading decision. TREM governs whether that decision is permitted to reach the broker. The work remains PAPER ONLY while execution controls, reconciliation, and evidence capture are validated.
     </div>
   </div>
 </section>
