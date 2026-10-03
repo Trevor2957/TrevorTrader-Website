@@ -481,6 +481,12 @@ footer{padding-top:36px}
 }
 .strategy-chart svg{display:block;width:100%;height:auto}
 .strategy-path-label{font-size:10px;letter-spacing:1.3px;color:#55c8ff;font-weight:800;margin:18px 0 9px}
+.strategy-exit-profile{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 4px}
+.strategy-exit-profile div{padding:10px 8px;border:1px solid #174a69;border-radius:10px;background:rgba(3,17,29,.5)}
+.strategy-exit-profile small{display:block;color:#86a4b7;font-size:8px;font-weight:800;letter-spacing:.1em}
+.strategy-exit-profile strong{display:block;margin-top:3px;font-size:17px}
+.strategy-exit-profile .profit strong{color:#63eca8}
+.strategy-exit-profile .stop strong{color:#ff9aa6}
 .strategy-flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .flow-chip{
   padding:8px 10px;border-radius:9px;border:1px solid #174a69;
@@ -599,7 +605,7 @@ footer{padding-top:36px}
       <span class="strategy-number">PAPER ACCOUNT 01</span>
       <h3>CORE</h3>
       <span class="validation-badge">PAPER VALIDATION</span>
-      <p class="strategy-desc">Same CORE entry. Earlier profit-taking profile.</p>
+      <p class="strategy-desc">Same CORE entry. Earlier profit-taking profile.</p><div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+17%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
       <div class="strategy-path-label">SAME ENTRY FLOW</div>
       <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
     </article>
@@ -607,7 +613,7 @@ footer{padding-top:36px}
       <span class="strategy-number">PAPER ACCOUNT 02</span>
       <h3>CORE</h3>
       <span class="validation-badge">PAPER VALIDATION</span>
-      <p class="strategy-desc">Same CORE entry. Middle profit-taking profile.</p>
+      <p class="strategy-desc">Same CORE entry. Middle profit-taking profile.</p><div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+20%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
       <div class="strategy-path-label">SAME ENTRY FLOW</div>
       <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
     </article>
@@ -615,7 +621,7 @@ footer{padding-top:36px}
       <span class="strategy-number">PAPER ACCOUNT 03</span>
       <h3>CORE</h3>
       <span class="validation-badge">PAPER VALIDATION</span>
-      <p class="strategy-desc">Same CORE entry. Extended profit-taking profile.</p>
+      <p class="strategy-desc">Same CORE entry. Extended profit-taking profile.</p><div class="strategy-exit-profile"><div class="profit"><small>PROFIT TARGET</small><strong>+30%</strong></div><div class="stop"><small>STOP LOSS</small><strong>−20%</strong></div></div>
       <div class="strategy-path-label">SAME ENTRY FLOW</div>
       <div class="strategy-flow"><span class="flow-chip">MOVE</span><span class="flow-arrow">&rarr;</span><span class="flow-chip">WAIT</span><span class="flow-arrow">&rarr;</span><span class="flow-chip action">CONFIRM</span></div>
     </article>
