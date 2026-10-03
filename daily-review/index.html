@@ -381,7 +381,9 @@ footer {
   }
 }
 </style>
-</head>
+<style>
+.life-preview{margin-top:38px;border:1px solid #1f4f78;border-radius:18px;background:#0b1d33;padding:26px;text-align:left}.life-preview h2{margin:0;font-size:22px}.life-preview .soon{float:right;color:#63e6a6;font-size:10px;font-weight:800;letter-spacing:.12em}.life-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:22px 0}.life-step{border:1px solid #1b4567;border-radius:11px;padding:13px;background:#08182a}.life-step b{display:block;color:#36d7e7;font-size:10px;letter-spacing:.08em}.life-step strong{display:block;margin-top:6px;font-size:13px}.life-step span{display:block;margin-top:5px;color:#9eb1c5;font-size:10px;line-height:1.35}.life-chart{margin-top:18px;border-top:1px solid #173b59;padding-top:20px}.life-chart svg{width:100%;height:auto;display:block}.life-caption{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}.life-caption div{border:1px solid #173b59;border-radius:10px;padding:13px}.life-caption strong{display:block;font-size:12px}.life-caption span{display:block;color:#9eb1c5;font-size:10px;line-height:1.4;margin-top:4px}@media(max-width:700px){.life-steps{grid-template-columns:1fr}.life-caption{grid-template-columns:1fr}.life-preview{padding:18px}}
+</style></head>
 
 <body>
 
@@ -399,16 +401,42 @@ footer {
 <main class="wrap">
 <div class="eyebrow">TREVORTRADER &bull; DAILY REVIEW</div>
 <h1>Life of the Trade&trade;</h1>
-<p class="intro">Coming soon: a simple visual story of each TrevorTrader paper trade, showing what SPY did, what the option did, and where the system entered, managed, and exited.</p>
-<section class="summary" aria-label="Life of the Trade preview">
-  <div class="summary-card"><small>SPY</small><strong>Market + Decision</strong></div>
-  <div class="summary-card"><small>OPTION</small><strong>Entry + Exit</strong></div>
-  <div class="summary-card"><small>STATUS</small><strong>Coming Soon</strong></div>
+<p class="intro">Coming soon: one visual story for every TrevorTrader paper trade. See what SPY did, what the option did, why the system acted, and how the trade was managed from signal through exit.</p>
+
+<section class="life-preview" aria-label="Life of the Trade visual preview">
+<span class="soon">COMING SOON &bull; ILLUSTRATIVE PREVIEW</span>
+<h2>From signal to settled</h2>
+<div class="life-steps">
+<div class="life-step"><b>01</b><strong>Signal</strong><span>Market setup qualifies.</span></div>
+<div class="life-step"><b>02</b><strong>Confirm</strong><span>Required evidence is present.</span></div>
+<div class="life-step"><b>03</b><strong>Entry</strong><span>Option order is executed.</span></div>
+<div class="life-step"><b>04</b><strong>Manage</strong><span>Risk and trade state are tracked.</span></div>
+<div class="life-step"><b>05</b><strong>Exit + Review</strong><span>Result is reconciled and recorded.</span></div>
+</div>
+
+<div class="life-chart">
+<svg viewBox="0 0 900 300" role="img" aria-label="Illustrative synchronized SPY and option Life of the Trade chart">
+<text x="0" y="18" fill="#9eb1c5" font-size="12" font-weight="700">SPY</text>
+<line x1="0" y1="125" x2="900" y2="125" stroke="#173b59"/>
+<polyline points="0,70 70,62 140,82 205,55 270,48 335,70 390,102 430,116 485,90 550,84 620,72 690,80 760,70 830,76 900,69" fill="none" stroke="#a8bdcc" stroke-width="2"/>
+<text x="0" y="158" fill="#9eb1c5" font-size="12" font-weight="700">OPTION</text>
+<line x1="0" y1="275" x2="900" y2="275" stroke="#173b59"/>
+<polyline points="0,205 70,216 140,198 205,220 270,228 335,250 390,270 430,268 485,235 550,224 620,230 690,248 760,258 830,250 900,238" fill="none" stroke="#36d7e7" stroke-width="3"/>
+<line x1="430" y1="35" x2="430" y2="280" stroke="#36d7e7" stroke-dasharray="5 5"/>
+<circle cx="430" cy="268" r="7" fill="#63e6a6"/><text x="442" y="263" fill="#63e6a6" font-size="11" font-weight="700">ENTRY</text>
+<line x1="620" y1="35" x2="620" y2="280" stroke="#f4c95d" stroke-dasharray="5 5"/>
+<circle cx="620" cy="230" r="7" fill="#f4c95d"/><text x="632" y="225" fill="#f4c95d" font-size="11" font-weight="700">EXIT</text>
+</svg>
+</div>
+
+<div class="life-caption">
+<div><strong>Why it traded</strong><span>The setup and confirmation behind the decision.</span></div>
+<div><strong>What the option did</strong><span>Entry, movement, management and exit on the same timeline.</span></div>
+<div><strong>What we learned</strong><span>Verified outcome becomes evidence for the next review cycle.</span></div>
+</div>
 </section>
-<aside class="note">
-  <strong>Signal &rarr; Entry &rarr; Manage &rarr; Exit &rarr; Review</strong><br><br>
-  Verified paper-trading data will become an easy-to-read visual record showing what happened before, during, and after each trade. TRADE and NO TRADE evidence will be added as TrevorTrader continues validation.
-</aside>
+
+<aside class="note"><strong>Preview only.</strong> The chart above is illustrative, not a real trade. Verified paper data will replace the preview as the automated Life of the Trade is completed.</aside>
 </main>
 
 <footer>
