@@ -26,7 +26,7 @@
       "sessions": [
         {
           "date": "2026-10-05",
-          "status": "reconciled"
+          "status": "broker_matched"
         },
         {
           "date": "2026-10-06",
@@ -56,7 +56,7 @@
       "sessions": [
         {
           "date": "2026-10-05",
-          "status": "reconciled"
+          "status": "broker_matched"
         },
         {
           "date": "2026-10-06",
@@ -97,7 +97,7 @@
       "sessions": [
         {
           "date": "2026-10-05",
-          "status": "reconciled"
+          "status": "broker_matched"
         },
         {
           "date": "2026-10-06",
@@ -116,7 +116,8 @@
       "qty": 4,
       "reason": "STOP",
       "gross": -16,
-      "fees": null
+      "fees": null,
+      "status": "broker_matched"
     },
     {
       "engine": "core",
@@ -127,7 +128,8 @@
       "qty": 4,
       "reason": "STOP",
       "gross": -16,
-      "fees": null
+      "fees": null,
+      "status": "broker_matched"
     },
     {
       "engine": "range",
@@ -138,7 +140,8 @@
       "qty": 4,
       "reason": "STOP",
       "gross": -4,
-      "fees": null
+      "fees": null,
+      "status": "broker_matched"
     },
     {
       "engine": "range",
@@ -149,7 +152,8 @@
       "qty": 4,
       "reason": "STOP",
       "gross": -4,
-      "fees": null
+      "fees": null,
+      "status": "broker_matched"
     },
     {
       "engine": "surge",
@@ -160,7 +164,8 @@
       "qty": 239,
       "reason": "STOP",
       "gross": -19.12,
-      "fees": null
+      "fees": null,
+      "status": "broker_matched"
     },
     {
       "engine": "surge",
@@ -171,7 +176,8 @@
       "qty": 395,
       "reason": "TIME",
       "gross": 27.46,
-      "fees": null
+      "fees": null,
+      "status": "broker_matched"
     },
     {
       "engine": "surge",
@@ -182,7 +188,8 @@
       "qty": 334,
       "reason": "TIME",
       "gross": -10.02,
-      "fees": null
+      "fees": null,
+      "status": "broker_matched"
     },
     {
       "engine": "surge",
@@ -193,7 +200,8 @@
       "qty": 327,
       "reason": "TARGET",
       "gross": 58.99,
-      "fees": null
+      "fees": null,
+      "status": "broker_matched"
     },
     {
       "engine": "surge",
@@ -204,7 +212,8 @@
       "qty": 398,
       "reason": "STOP",
       "gross": -31.84,
-      "fees": null
+      "fees": null,
+      "status": "broker_matched"
     },
     {
       "engine": "surge",
@@ -215,7 +224,8 @@
       "qty": 405,
       "reason": "TIME",
       "gross": 12.15,
-      "fees": null
+      "fees": null,
+      "status": "broker_matched"
     },
     {
       "engine": "surge",
@@ -226,7 +236,8 @@
       "qty": 226,
       "reason": "STOP",
       "gross": -22.6,
-      "fees": null
+      "fees": null,
+      "status": "broker_matched"
     },
     {
       "engine": "core",
@@ -237,7 +248,8 @@
       "qty": 4,
       "reason": "TARGET",
       "gross": 12,
-      "fees": null
+      "fees": null,
+      "status": "reconciled"
     },
     {
       "engine": "surge",
