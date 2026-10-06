@@ -61,7 +61,8 @@
           "installed": "2026-10-06",
           "cohort_start": "2026-10-07"
         }
-      ]
+      ],
+      "starting_balance": 2000
     }
   ],
   "trades": [
