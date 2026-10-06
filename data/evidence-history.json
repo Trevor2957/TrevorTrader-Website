@@ -37,7 +37,9 @@
           "label": "Entry repair v2",
           "installed": "2026-10-05"
         }
-      ]
+      ],
+      "starting_balance": 300,
+      "current_balance": 291.31
     },
     {
       "id": "surge",
@@ -62,7 +64,8 @@
           "cohort_start": "2026-10-07"
         }
       ],
-      "starting_balance": 2000
+      "starting_balance": 2000,
+      "current_balance": 1939.02
     }
   ],
   "trades": [
