@@ -1,7 +1,7 @@
 {
   "updated": "2026-10-06",
   "basis": "gross_before_fees",
-  "note": "Current paper lineup only. Sessions before Oct 5, 2026 are excluded until historical reconciliation is complete. October 6 SURGE trades are displayed as ledger-recorded, reconciliation-pending evidence and must not be described as broker-verified until the EOD reconciliation passes.",
+  "note": "Current paper lineup only. Sessions before Oct 5, 2026 are excluded until historical reconciliation is complete. Status definitions: Reconciled = passed the EOD reconciliation; Broker-matched = checked against broker records outside the EOD pipeline; Pending = recorded but reconciliation has not passed. October 6 SURGE trades remain Pending.",
   "engines": [
     {
       "id": "core",
@@ -22,7 +22,17 @@
       ],
       "starting_balance": 723,
       "current_balance": 703,
-      "balance_note": "User-designated baseline; historical CORE account predates the current evidence period."
+      "balance_note": "User-designated baseline; historical CORE account predates the current evidence period.",
+      "sessions": [
+        {
+          "date": "2026-10-05",
+          "status": "reconciled"
+        },
+        {
+          "date": "2026-10-06",
+          "status": "reconciled"
+        }
+      ]
     },
     {
       "id": "range",
@@ -42,7 +52,17 @@
         }
       ],
       "starting_balance": 300,
-      "current_balance": 291.31
+      "current_balance": 291.31,
+      "sessions": [
+        {
+          "date": "2026-10-05",
+          "status": "reconciled"
+        },
+        {
+          "date": "2026-10-06",
+          "status": "valid_zero_trade"
+        }
+      ]
     },
     {
       "id": "surge",
@@ -61,6 +81,11 @@
           "installed": "2026-10-05"
         },
         {
+          "id": "surge-2to10-100gate",
+          "label": "$2–$10 · $100 gate",
+          "installed": "2026-10-06"
+        },
+        {
           "id": "surge-v2-technical-risk-final",
           "label": "Technical Risk v2",
           "installed": "2026-10-06",
@@ -68,7 +93,17 @@
         }
       ],
       "starting_balance": 2000,
-      "current_balance": 1939.02
+      "current_balance": 1939.02,
+      "sessions": [
+        {
+          "date": "2026-10-05",
+          "status": "reconciled"
+        },
+        {
+          "date": "2026-10-06",
+          "status": "pending"
+        }
+      ]
     }
   ],
   "trades": [
@@ -230,7 +265,7 @@
     },
     {
       "engine": "surge",
-      "build": "surge-risk-v3",
+      "build": "surge-2to10-100gate",
       "session": "2026-10-06",
       "exit_pt": "12:22:06",
       "symbol": "IPDN",
@@ -242,7 +277,7 @@
     },
     {
       "engine": "surge",
-      "build": "surge-risk-v3",
+      "build": "surge-2to10-100gate",
       "session": "2026-10-06",
       "exit_pt": "12:28:44",
       "symbol": "JAGX",
