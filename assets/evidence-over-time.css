@@ -24,3 +24,7 @@
 .eot-chart .bar.pending{fill-opacity:.5;stroke:var(--engine);stroke-width:1.5;stroke-dasharray:2 2}
 .eot-status-split{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
 .eot-status-split .broker-matched{color:#c9dceb;border-color:#7893a5}
+
+.eot-build-history{margin-top:12px;padding-top:12px;border-top:1px solid #ffffff14;font-size:11px;line-height:1.55;color:#8faabc}
+.eot-build-history strong{display:block;color:#c9dceb;margin-bottom:4px}
+.eot-build-history span{display:block}
