@@ -19,8 +19,8 @@
 .eot-status-split .reconciled{color:#bdebd0}.eot-status-split .pending{color:#ffd08a;border-style:dashed}
 @media(max-width:560px){.eot-chart .tick{font-size:12px}.eot-chart .session-label{font-size:12px}.eot-chart .empty-session{font-size:11px}}
 
-.eot-chart .pt.broker-matched{fill:var(--engine);fill-opacity:.65;stroke:#eef7ff;stroke-width:1.5}
-.eot-chart .bar.broker-matched{fill:var(--engine);fill-opacity:.65;stroke:#eef7ff;stroke-width:1}
+.eot-chart .pt.broker-matched{fill-opacity:.65;stroke:#eef7ff;stroke-width:1.5}
+.eot-chart .bar.broker-matched{fill-opacity:.65;stroke:#eef7ff;stroke-width:1}
 .eot-chart .bar.pending{fill-opacity:.5;stroke:var(--engine);stroke-width:1.5;stroke-dasharray:2 2}
 .eot-status-split{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
 .eot-status-split .broker-matched{color:#c9dceb;border-color:#7893a5}
