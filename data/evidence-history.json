@@ -1,21 +1,201 @@
 {
-  "updated":"2026-10-05","basis":"gross_before_fees","note":"Current paper lineup only. Sessions before Oct 5, 2026 are excluded until historical reconciliation is complete.",
-  "engines":[
-    {"id":"core","name":"CORE","role":"Reversal Engine","experiment":"CORE 17/20","color":"#56aeff","builds":[{"id":"core-earlier","label":"Earlier build"},{"id":"core-repair-v1","label":"Entry repair v1","installed":"2026-10-05"}]},
-    {"id":"range","name":"RANGE","role":"Breakout Engine","experiment":"RANGE 25/20","color":"#48dfc6","builds":[{"id":"range-earlier","label":"Earlier build"},{"id":"range-repair-v2","label":"Entry repair v2","installed":"2026-10-05"}]},
-    {"id":"surge","name":"SURGE","role":"Momentum Engine","experiment":"SURGE $2K Challenge","color":"#ffbe61","builds":[{"id":"surge-earlier","label":"Earlier build"},{"id":"surge-risk-v3","label":"Risk v3","installed":"2026-10-05"}]}
+  "updated": "2026-10-06",
+  "basis": "gross_before_fees",
+  "note": "Current paper lineup only. Sessions before Oct 5, 2026 are excluded until historical reconciliation is complete. October 6 SURGE ledger results remain outside verified cumulative evidence pending broker reconciliation.",
+  "engines": [
+    {
+      "id": "core",
+      "name": "CORE",
+      "role": "Reversal Engine",
+      "experiment": "CORE 17/20",
+      "color": "#56aeff",
+      "builds": [
+        {
+          "id": "core-earlier",
+          "label": "Earlier build"
+        },
+        {
+          "id": "core-repair-v1",
+          "label": "Entry repair v1",
+          "installed": "2026-10-05"
+        }
+      ]
+    },
+    {
+      "id": "range",
+      "name": "RANGE",
+      "role": "Breakout Engine",
+      "experiment": "RANGE 25/20",
+      "color": "#48dfc6",
+      "builds": [
+        {
+          "id": "range-earlier",
+          "label": "Earlier build"
+        },
+        {
+          "id": "range-repair-v2",
+          "label": "Entry repair v2",
+          "installed": "2026-10-05"
+        }
+      ]
+    },
+    {
+      "id": "surge",
+      "name": "SURGE",
+      "role": "Momentum Engine",
+      "experiment": "SURGE $2K Challenge",
+      "color": "#ffbe61",
+      "builds": [
+        {
+          "id": "surge-earlier",
+          "label": "Earlier build"
+        },
+        {
+          "id": "surge-risk-v3",
+          "label": "Risk v3",
+          "installed": "2026-10-05"
+        },
+        {
+          "id": "surge-v2-technical-risk-final",
+          "label": "Technical Risk v2",
+          "installed": "2026-10-06",
+          "cohort_start": "2026-10-07"
+        }
+      ]
+    }
   ],
-  "trades":[
-    {"engine":"core","build":"core-earlier","session":"2026-10-05","exit_pt":"07:37:24","symbol":"SPY261005P00768000","qty":4,"reason":"STOP","gross":-16.0,"fees":null},
-    {"engine":"core","build":"core-earlier","session":"2026-10-05","exit_pt":"07:56:35","symbol":"SPY261005P00768000","qty":4,"reason":"STOP","gross":-16.0,"fees":null},
-    {"engine":"range","build":"range-earlier","session":"2026-10-05","exit_pt":"09:26:04","symbol":"SPY261005C00777000","qty":4,"reason":"STOP","gross":-4.0,"fees":null},
-    {"engine":"range","build":"range-earlier","session":"2026-10-05","exit_pt":"09:27:06","symbol":"SPY261005C00777000","qty":4,"reason":"STOP","gross":-4.0,"fees":null},
-    {"engine":"surge","build":"surge-earlier","session":"2026-10-05","exit_pt":"09:35:25","symbol":"VEEA","qty":239,"reason":"STOP","gross":-19.12,"fees":null},
-    {"engine":"surge","build":"surge-earlier","session":"2026-10-05","exit_pt":"09:51:27","symbol":"VEEA","qty":395,"reason":"TIME","gross":27.46,"fees":null},
-    {"engine":"surge","build":"surge-earlier","session":"2026-10-05","exit_pt":"10:26:38","symbol":"JAGX","qty":334,"reason":"TIME","gross":-10.02,"fees":null},
-    {"engine":"surge","build":"surge-earlier","session":"2026-10-05","exit_pt":"10:40:53","symbol":"VEEA","qty":327,"reason":"TARGET","gross":58.99,"fees":null},
-    {"engine":"surge","build":"surge-earlier","session":"2026-10-05","exit_pt":"10:52:02","symbol":"JAGX","qty":398,"reason":"STOP","gross":-31.84,"fees":null},
-    {"engine":"surge","build":"surge-earlier","session":"2026-10-05","exit_pt":"11:49:37","symbol":"AMOD","qty":405,"reason":"TIME","gross":12.15,"fees":null},
-    {"engine":"surge","build":"surge-earlier","session":"2026-10-05","exit_pt":"12:34:07","symbol":"JAGX","qty":226,"reason":"STOP","gross":-22.6,"fees":null}
+  "trades": [
+    {
+      "engine": "core",
+      "build": "core-earlier",
+      "session": "2026-10-05",
+      "exit_pt": "07:37:24",
+      "symbol": "SPY261005P00768000",
+      "qty": 4,
+      "reason": "STOP",
+      "gross": -16,
+      "fees": null
+    },
+    {
+      "engine": "core",
+      "build": "core-earlier",
+      "session": "2026-10-05",
+      "exit_pt": "07:56:35",
+      "symbol": "SPY261005P00768000",
+      "qty": 4,
+      "reason": "STOP",
+      "gross": -16,
+      "fees": null
+    },
+    {
+      "engine": "range",
+      "build": "range-earlier",
+      "session": "2026-10-05",
+      "exit_pt": "09:26:04",
+      "symbol": "SPY261005C00777000",
+      "qty": 4,
+      "reason": "STOP",
+      "gross": -4,
+      "fees": null
+    },
+    {
+      "engine": "range",
+      "build": "range-earlier",
+      "session": "2026-10-05",
+      "exit_pt": "09:27:06",
+      "symbol": "SPY261005C00777000",
+      "qty": 4,
+      "reason": "STOP",
+      "gross": -4,
+      "fees": null
+    },
+    {
+      "engine": "surge",
+      "build": "surge-earlier",
+      "session": "2026-10-05",
+      "exit_pt": "09:35:25",
+      "symbol": "VEEA",
+      "qty": 239,
+      "reason": "STOP",
+      "gross": -19.12,
+      "fees": null
+    },
+    {
+      "engine": "surge",
+      "build": "surge-earlier",
+      "session": "2026-10-05",
+      "exit_pt": "09:51:27",
+      "symbol": "VEEA",
+      "qty": 395,
+      "reason": "TIME",
+      "gross": 27.46,
+      "fees": null
+    },
+    {
+      "engine": "surge",
+      "build": "surge-earlier",
+      "session": "2026-10-05",
+      "exit_pt": "10:26:38",
+      "symbol": "JAGX",
+      "qty": 334,
+      "reason": "TIME",
+      "gross": -10.02,
+      "fees": null
+    },
+    {
+      "engine": "surge",
+      "build": "surge-earlier",
+      "session": "2026-10-05",
+      "exit_pt": "10:40:53",
+      "symbol": "VEEA",
+      "qty": 327,
+      "reason": "TARGET",
+      "gross": 58.99,
+      "fees": null
+    },
+    {
+      "engine": "surge",
+      "build": "surge-earlier",
+      "session": "2026-10-05",
+      "exit_pt": "10:52:02",
+      "symbol": "JAGX",
+      "qty": 398,
+      "reason": "STOP",
+      "gross": -31.84,
+      "fees": null
+    },
+    {
+      "engine": "surge",
+      "build": "surge-earlier",
+      "session": "2026-10-05",
+      "exit_pt": "11:49:37",
+      "symbol": "AMOD",
+      "qty": 405,
+      "reason": "TIME",
+      "gross": 12.15,
+      "fees": null
+    },
+    {
+      "engine": "surge",
+      "build": "surge-earlier",
+      "session": "2026-10-05",
+      "exit_pt": "12:34:07",
+      "symbol": "JAGX",
+      "qty": 226,
+      "reason": "STOP",
+      "gross": -22.6,
+      "fees": null
+    },
+    {
+      "engine": "core",
+      "build": "core-repair-v1",
+      "session": "2026-10-06",
+      "exit_pt": "07:30:16",
+      "symbol": "SPY261006P00775000",
+      "qty": 4,
+      "reason": "TARGET",
+      "gross": 12,
+      "fees": null
+    }
   ]
 }
