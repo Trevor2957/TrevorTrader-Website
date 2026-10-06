@@ -1,7 +1,7 @@
 {
   "updated": "2026-10-06",
   "basis": "gross_before_fees",
-  "note": "Current paper lineup only. Sessions before Oct 5, 2026 are excluded until historical reconciliation is complete. October 6 SURGE ledger results remain outside verified cumulative evidence pending broker reconciliation.",
+  "note": "Current paper lineup only. Sessions before Oct 5, 2026 are excluded until historical reconciliation is complete. October 6 SURGE trades are displayed as ledger-recorded, reconciliation-pending evidence and must not be described as broker-verified until the EOD reconciliation passes.",
   "engines": [
     {
       "id": "core",
@@ -196,6 +196,54 @@
       "reason": "TARGET",
       "gross": 12,
       "fees": null
+    },
+    {
+      "engine": "surge",
+      "build": "surge-risk-v3",
+      "session": "2026-10-06",
+      "exit_pt": "02:07:20",
+      "symbol": "AIXI",
+      "qty": 275,
+      "reason": "STOP",
+      "gross": -21.53,
+      "fees": null,
+      "status": "reconciliation_pending"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-risk-v3",
+      "session": "2026-10-06",
+      "exit_pt": "03:07:07",
+      "symbol": "AIXI",
+      "qty": 280,
+      "reason": "STOP",
+      "gross": -30.8,
+      "fees": null,
+      "status": "reconciliation_pending"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-risk-v3",
+      "session": "2026-10-06",
+      "exit_pt": "12:22:06",
+      "symbol": "IPDN",
+      "qty": 206,
+      "reason": "STOP",
+      "gross": -17.89,
+      "fees": null,
+      "status": "reconciliation_pending"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-risk-v3",
+      "session": "2026-10-06",
+      "exit_pt": "12:28:44",
+      "symbol": "JAGX",
+      "qty": 79,
+      "reason": "STOP",
+      "gross": -5.53,
+      "fees": null,
+      "status": "reconciliation_pending"
     }
   ]
 }
