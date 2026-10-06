@@ -7,3 +7,14 @@
 .eot-balance div{padding:8px 10px}.eot-balance dt{font-size:10.5px;color:#8faabc;text-transform:uppercase;letter-spacing:.04em}.eot-balance dd{margin:4px 0 0;font-size:17px;font-weight:750;color:#eef7ff;font-variant-numeric:tabular-nums}
 .eot-panel .eot-total{margin-top:14px}.eot-chart:after{content:"DATE / TIME →";display:block;text-align:right;margin-top:-3px;font-size:9px;letter-spacing:.12em;color:#66859a}
 @media(max-width:560px){.eot-balance{grid-template-columns:1fr 1fr}.eot-stats{grid-template-columns:1fr 1fr}}
+
+/* Claude audit fixes · 2026-10-06 */
+.eot-head,.eot-bar,.eot-grid,.eot-note{max-width:1320px;margin-left:auto;margin-right:auto}
+.eot-chart .pt.pending{fill:#05131f;stroke:var(--engine);stroke-width:2.5;stroke-dasharray:2 2;opacity:.7}
+.eot-chart .bar.pending{fill:var(--engine);fill-opacity:.25;stroke:var(--engine);stroke-width:1.5;stroke-dasharray:2 2}
+.eot-chart .empty-session{fill:#7893a5;font-size:10px;font-family:inherit}
+.eot-balance-note,.eot-account-note{font-size:11px;line-height:1.5;color:#8faabc;margin:0 0 12px}
+.eot-status-split{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 6px;font-size:12px;font-weight:750}
+.eot-status-split div{padding:9px 10px;border-radius:8px;border:1px solid #ffffff14}
+.eot-status-split .reconciled{color:#bdebd0}.eot-status-split .pending{color:#ffd08a;border-style:dashed}
+@media(max-width:560px){.eot-chart .tick{font-size:12px}.eot-chart .session-label{font-size:12px}.eot-chart .empty-session{font-size:11px}}
