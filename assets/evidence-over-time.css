@@ -28,3 +28,30 @@
 .eot-build-history{margin-top:12px;padding-top:12px;border-top:1px solid #ffffff14;font-size:11px;line-height:1.55;color:#8faabc}
 .eot-build-history strong{display:block;color:#c9dceb;margin-bottom:4px}
 .eot-build-history span{display:block}
+
+/* Simplified card · 2026-10-06 */
+.eot-bar{justify-content:flex-end}
+.eot-headline{display:flex;align-items:baseline;gap:12px;margin:18px 0 2px}
+.eot-headline .eot-total{margin:0}
+.eot-return{font-size:18px;font-weight:750;font-variant-numeric:tabular-nums}
+.eot-return.neg{color:#ff8f8f}.eot-return.pos{color:#7ee59a}.eot-return.flat{color:#eef7ff}
+.eot-summary-line{margin:8px 0 0;font-size:15px;color:#d4e5ef;font-weight:600}
+.eot-warn{margin:12px 0 0;padding:9px 11px;border:1px dashed #b48a45;border-radius:8px;font-size:12.5px;line-height:1.5;color:#ffd08a}
+.eot-chart-title{margin:18px 0 4px;font-size:12px;color:#8faabc}
+.eot-sample-line{margin:6px 0 0;font-size:12px;color:#91aabd}
+.eot-chart .pt.pending{fill:#05131f;stroke-width:2.5}
+.eot-chart .pt.pending.loss{stroke:#ff8f8f}.eot-chart .pt.pending.win{stroke:#7ee59a}
+.eot-details{margin:16px 0 0;border-top:1px solid #ffffff14;padding-top:12px}
+.eot-details summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--engine);list-style:none}
+.eot-details summary::-webkit-details-marker{display:none}
+.eot-details summary::before{content:"\25B8  ";color:var(--engine)}
+.eot-details[open] summary::before{content:"\25BE  "}
+.eot-details summary:focus-visible{outline:2px solid #55c8ff;outline-offset:3px;border-radius:4px}
+.eot-details .eot-balance{margin:12px 0 8px}
+.eot-detail-note{font-size:11.5px;line-height:1.5;color:#8faabc;margin:6px 0 0}
+.eot-detail-head{display:block;margin:14px 0 0;font-size:11px;color:#c9dceb;text-transform:uppercase;letter-spacing:.06em}
+.eot-details .eot-status-split{margin:8px 0 0}
+.eot-chart:after{content:none}
+.eot-chart .time-tick{fill:#7f9bb0;font-size:9.5px;font-family:inherit}
+.eot-chart .axis-title{fill:#8faabc;font-size:9.5px;font-weight:700;letter-spacing:.04em;font-family:inherit}
+@media(max-width:560px){.eot-chart .time-tick,.eot-chart .axis-title{font-size:11px}}
