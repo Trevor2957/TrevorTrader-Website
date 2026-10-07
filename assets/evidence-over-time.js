@@ -186,6 +186,27 @@
     p.appendChild(h("p", "eot-summary-line",
       plural(n, "trade") + " \u00b7 " + plural(wins, "win") + " \u00b7 " + plural(losses, "loss").replace("losss", "losses") + " \u00b7 " + (wins / n * 100).toFixed(1) + "% win rate"));
 
+    // Performance breakdown: calculate from recorded trades, never from a fixed headline.
+    var winTrades = trades.filter(function (t) { return t.gross > 0.005; });
+    var lossTrades = trades.filter(function (t) { return t.gross < -0.005; });
+    var performance = h("div", "eot-performance");
+    performance.appendChild(h("div", "eot-performance-heading", "Win rate · " + (wins / n * 100).toFixed(1) + "%"));
+    var bar = h("div", "eot-winbar");
+    bar.setAttribute("role", "img");
+    bar.setAttribute("aria-label", wins + " wins and " + losses + " losses across " + n + " trades");
+    var winSegment = h("span", "eot-winbar-win");
+    winSegment.style.width = (wins / n * 100) + "%";
+    var lossSegment = h("span", "eot-winbar-loss");
+    lossSegment.style.width = (losses / n * 100) + "%";
+    bar.appendChild(winSegment); bar.appendChild(lossSegment);
+    performance.appendChild(bar);
+    performance.appendChild(h("p", "eot-performance-counts", wins + " wins (" + (wins / n * 100).toFixed(1) + "%) · " + losses + " losses (" + (losses / n * 100).toFixed(1) + "%)"));
+    var averages = h("div", "eot-averages");
+    averages.appendChild(h("span", null, "Average win · " + (winTrades.length ? money(sum(winTrades) / winTrades.length) : "N/A")));
+    averages.appendChild(h("span", null, "Average loss · " + (lossTrades.length ? money(sum(lossTrades) / lossTrades.length) : "N/A")));
+    performance.appendChild(averages);
+    p.appendChild(performance);
+
     // 4. Warning only when needed.
     if (pen.length)
       p.appendChild(h("p", "eot-warn", "Includes " + plural(pen.length, "trade") + " (" + money(sum(pen)) +
