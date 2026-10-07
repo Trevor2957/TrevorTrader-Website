@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-06",
+  "updated": "2026-10-07",
   "basis": "gross_before_fees",
-  "note": "Current paper lineup only. Sessions before Oct 5, 2026 are excluded until historical reconciliation is complete. Status definitions: Reconciled = passed the EOD reconciliation; Broker-matched = checked against broker records outside the EOD pipeline; Pending = recorded but reconciliation has not passed. October 6 SURGE trades remain Pending.",
+  "note": "Gross before fees; Oct 7 SURGE and CORE passed EOD reconciliation. Oct 6 SURGE remains pending historical reconciliation. RANGE retired. SURGE-R is not yet covered by the EOD evidence feed. No validated edge.",
   "engines": [
     {
       "id": "core",
@@ -31,6 +31,10 @@
         {
           "date": "2026-10-06",
           "status": "reconciled"
+        },
+        {
+          "date": "2026-10-07",
+          "status": "valid_zero_trade"
         }
       ]
     },
@@ -62,7 +66,8 @@
           "date": "2026-10-06",
           "status": "valid_zero_trade"
         }
-      ]
+      ],
+      "retired": "2026-10-07"
     },
     {
       "id": "surge",
@@ -90,10 +95,16 @@
           "label": "Technical Risk v2",
           "installed": "2026-10-06",
           "cohort_start": "2026-10-07"
+        },
+        {
+          "id": "surge-30bar",
+          "label": "30-bar breakout",
+          "installed": "2026-10-07",
+          "cohort_start": "2026-10-08"
         }
       ],
       "starting_balance": 2000,
-      "current_balance": 1939.02,
+      "current_balance": null,
       "sessions": [
         {
           "date": "2026-10-05",
@@ -102,8 +113,32 @@
         {
           "date": "2026-10-06",
           "status": "pending"
+        },
+        {
+          "date": "2026-10-07",
+          "status": "reconciled"
         }
-      ]
+      ],
+      "balance_note": "Oct 7 gross P&L reconciled; current broker balance not verified in this publication."
+    },
+    {
+      "id": "surge-r",
+      "name": "SURGE-R",
+      "role": "Pullback Momentum Engine",
+      "experiment": "SURGE-R $2K Challenge",
+      "color": "#ad94ff",
+      "builds": [
+        {
+          "id": "surge-r-candidate6",
+          "label": "Candidate 6 · 30-bar impulse / all candidates",
+          "installed": "2026-10-07",
+          "cohort_start": "2026-10-08"
+        }
+      ],
+      "starting_balance": 2000,
+      "current_balance": null,
+      "balance_note": "Separate paper account; not included in Oct 7 EOD-PAPER-V2 reconciliation.",
+      "sessions": []
     }
   ],
   "trades": [
@@ -298,6 +333,146 @@
       "gross": -5.53,
       "fees": null,
       "status": "reconciliation_pending"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "BIYA",
+      "reason": "TIME",
+      "gross": -13.79,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "BIYA",
+      "reason": "TARGET",
+      "gross": 42.3,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "SXTC",
+      "reason": "TIME",
+      "gross": -5.24,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "LPCN",
+      "reason": "CONFIRMED_STOP",
+      "gross": -19.91,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "LPCN",
+      "reason": "TIME",
+      "gross": -13.93,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "SMXT",
+      "reason": "TIME",
+      "gross": -6.65,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "BIYA",
+      "reason": "TIME",
+      "gross": 44.82,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "LGCL",
+      "reason": "TIME",
+      "gross": 11.1,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "LGCL",
+      "reason": "TIME",
+      "gross": 7.47,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "LGCL",
+      "reason": "TIME",
+      "gross": 15.12,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "SPAI",
+      "reason": "TIME",
+      "gross": -4.98,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "SPAI",
+      "reason": "TIME",
+      "gross": 5.31,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "SPAI",
+      "reason": "CONFIRMED_STOP",
+      "gross": -15.05,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-v2-technical-risk-final",
+      "session": "2026-10-07",
+      "symbol": "LGCL",
+      "reason": "CONFIRMED_STOP",
+      "gross": -12.75,
+      "fees": null,
+      "status": "reconciled"
     }
   ]
 }
