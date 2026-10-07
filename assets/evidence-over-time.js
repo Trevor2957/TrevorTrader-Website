@@ -150,6 +150,11 @@
     head.appendChild(h("h3", null, eng.name));
     head.appendChild(h("span", "eot-role", eng.role));
     p.appendChild(head);
+    if (rootAudit && eng.id === "range") {
+      p.id = "range-history";
+      p.appendChild(h("p", "eot-warn", "RANGE · Retired Oct 6, 2026 · replaced by SURGE-R"));
+      p.appendChild(h("p", "eot-detail-note", "Full historical results remain published below, including losses. These are RANGE results, not SURGE-R results."));
+    }
     var since = n ? trades[0].session : ((eng.sessions || [])[0] || {}).date;
     p.appendChild(h("p", "eot-exp", (rootAudit ? eng.experiment : eng.name + " paper record") + (since ? " \u00b7 since " + longDay(since) : "")));
     if (!n) { p.appendChild(h("p", "eot-pending", "No completed trades in the record yet.")); return p; }
@@ -254,7 +259,23 @@
   function render(root, data) {
     var grid = root.querySelector(".eot-grid");
     grid.innerHTML = "";
-    prepare(data).forEach(function (item) { grid.appendChild(panel(item, data, root.hasAttribute("data-audit-view"))); });
+    var audit = root.hasAttribute("data-audit-view"), items = prepare(data);
+    items.filter(function (item) { return audit || item.eng.id !== "range"; })
+      .forEach(function (item) { grid.appendChild(panel(item, data, audit)); });
+    if (!audit && !items.some(function (item) { return item.eng.id === "surge-r"; })) {
+      var p = h("article", "eot-panel"), head = h("header");
+      p.style.setProperty("--engine", "#b39aff");
+      head.appendChild(h("h3", null, "SURGE-R"));
+      head.appendChild(h("span", "eot-role", "Small-Cap Momentum Engine"));
+      p.appendChild(head);
+      p.appendChild(h("p", "eot-pending", "No published results yet."));
+      p.appendChild(h("p", "eot-summary-line", "Starting capital: $2,000 paper. Performance is unavailable, not zero."));
+      p.appendChild(h("p", "eot-sample-line", "Results appear only after EOD reconciliation. Paper, not live · Edge unvalidated."));
+      var link = h("a", null, "Full audit record");
+      link.href = "daily-review/engine-audit/#engine-surge-r";
+      p.appendChild(link);
+      grid.appendChild(p);
+    }
   }
 
   function init(root) {
@@ -277,7 +298,7 @@
         } else {
           note.innerHTML = "<strong>How to read this.</strong> The big number is the paper account balance change. Charts show recorded trade P&L, gross before fees. " +
             "Hollow points are awaiting verification. Fees pending means net results remain unavailable. Paper, not live; edge unvalidated. " +
-            "RANGE is retained as history, not an active engine. SURGE-R has no published results yet. Open the Full audit record for details.";
+            'Retired engine results remain published in the <a href="daily-review/engine-audit/#range-history">Full audit record</a>, including losses.';
         }
         render(root, data);
       })
