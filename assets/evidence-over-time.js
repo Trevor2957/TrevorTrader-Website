@@ -150,11 +150,6 @@
     head.appendChild(h("h3", null, eng.name));
     head.appendChild(h("span", "eot-role", eng.role));
     p.appendChild(head);
-    if (rootAudit && eng.id === "range") {
-      p.id = "range-history";
-      p.appendChild(h("p", "eot-warn", "RANGE · Retired Oct 6, 2026 · replaced by SURGE-R"));
-      p.appendChild(h("p", "eot-detail-note", "Full historical results remain published below, including losses. These are RANGE results, not SURGE-R results."));
-    }
     var since = n ? trades[0].session : ((eng.sessions || [])[0] || {}).date;
     p.appendChild(h("p", "eot-exp", (rootAudit ? eng.experiment : eng.name + " paper record") + (since ? " \u00b7 since " + longDay(since) : "")));
     if (!n) { p.appendChild(h("p", "eot-pending", "No completed trades in the record yet.")); return p; }
@@ -260,7 +255,7 @@
     var grid = root.querySelector(".eot-grid");
     grid.innerHTML = "";
     var audit = root.hasAttribute("data-audit-view"), items = prepare(data);
-    items.filter(function (item) { return audit || item.eng.id !== "range"; })
+    items.filter(function (item) { return item.eng.id !== "range"; })
       .forEach(function (item) { grid.appendChild(panel(item, data, audit)); });
     if (!audit && !items.some(function (item) { return item.eng.id === "surge-r"; })) {
       var p = h("article", "eot-panel"), head = h("header");
