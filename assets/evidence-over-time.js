@@ -47,7 +47,7 @@
   function prepare(data) {
     return data.engines.map(function (eng) {
       var trades = data.trades.filter(function (t) { return t.engine === eng.id; })
-        .sort(function (a, b) { return (a.session + a.exit_pt).localeCompare(b.session + b.exit_pt); });
+        .sort(function (a, b) { return a.session.localeCompare(b.session) || (a.exit_pt && b.exit_pt ? a.exit_pt.localeCompare(b.exit_pt) : 0); });
       var run = 0;
       trades.forEach(function (t, i) { run += t.gross; t.n = i + 1; t.running = Math.round(run * 100) / 100; });
       return { eng: eng, trades: trades };
@@ -73,10 +73,11 @@
     sessions.sort();
     var bounds = eng.id === "surge" ? [1, 13] : [6.5, 13], gap = 12;
     var segW = (w - gap * (sessions.length - 1)) / Math.max(1, sessions.length);
-    function mins(t) { var p = t.exit_pt.split(":"); return +p[0] * 60 + (+p[1]) + (+p[2] / 60); }
+    function mins(t) { if (!t.exit_pt) return null; var p = t.exit_pt.split(":"); return +p[0] * 60 + (+p[1]) + (+p[2] / 60); }
     function x(t) {
       var si = Math.max(0, sessions.indexOf(t.session)), start = bounds[0] * 60, end = bounds[1] * 60;
-      var f = Math.max(0, Math.min(1, (mins(t) - start) / (end - start)));
+      var m = mins(t);
+      var f = m === null ? (t.plot_order + 1) / (t.plot_count + 1) : Math.max(0, Math.min(1, (m - start) / (end - start)));
       return L + si * (segW + gap) + f * segW;
     }
 
@@ -105,9 +106,15 @@
         el("text", { x: mid, y: T + ih / 2, "text-anchor": "middle", "class": "empty-session" }, svg).textContent = "No trades";
     });
 
+    // Preserve source order when timestamps are missing; never invent exit times.
+    sessions.forEach(function (session) {
+      var missing = trades.filter(function (t) { return t.session === session && !t.exit_pt; });
+      missing.forEach(function (t, i) { t.plot_order = i; t.plot_count = missing.length; });
+    });
+
     function describe(t) {
       var st = state(t) === "pending" ? "Awaiting verification" : state(t) === "broker-matched" ? "Checked against broker records" : "Verified";
-      return "<strong>" + t.symbol + "</strong> \u00b7 " + day(t.session) + " \u00b7 closed " + t.exit_pt + " PT \u00b7 " + t.reason +
+      return "<strong>" + t.symbol + "</strong> \u00b7 " + day(t.session) + " \u00b7 " + (t.exit_pt ? "closed " + t.exit_pt + " PT" : "exit time unavailable") + " \u00b7 " + t.reason +
         "<br><strong>" + money(t.gross) + "</strong> this trade \u00b7 <strong>" + money(t.running) + "</strong> running total \u00b7 " + st;
     }
     function bind(node, t) {
@@ -197,7 +204,7 @@
     var det = h("details", "eot-details");
     det.appendChild(h("summary", null, "Evidence details"));
 
-    if (startBal !== null) {
+    if (startBal !== null && currentBal !== null) {
       det.appendChild(statsList([
         [eng.balance_note ? "Baseline (user-designated)" : "Starting balance", plainMoney(startBal)],
         ["Current balance", plainMoney(currentBal)],
