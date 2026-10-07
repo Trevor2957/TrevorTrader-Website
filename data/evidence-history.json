@@ -1,7 +1,7 @@
 {
   "updated": "2026-10-07",
   "basis": "gross_before_fees",
-  "note": "Gross before fees; Oct 7 SURGE and CORE passed EOD reconciliation. Oct 6 SURGE remains pending historical reconciliation. RANGE retired. SURGE-R is not yet covered by the EOD evidence feed. No validated edge.",
+  "note": "Gross before fees; Oct 7 SURGE and CORE passed EOD reconciliation. Oct 6 SURGE passed EOD reconciliation after the corrected PC rerun. RANGE retired. SURGE-R is not yet covered by the EOD evidence feed. No validated edge.",
   "engines": [
     {
       "id": "core",
@@ -112,7 +112,7 @@
         },
         {
           "date": "2026-10-06",
-          "status": "pending"
+          "status": "reconciled"
         },
         {
           "date": "2026-10-07",
@@ -296,7 +296,7 @@
       "reason": "STOP",
       "gross": -21.53,
       "fees": null,
-      "status": "reconciliation_pending"
+      "status": "reconciled"
     },
     {
       "engine": "surge",
@@ -308,7 +308,7 @@
       "reason": "STOP",
       "gross": -30.8,
       "fees": null,
-      "status": "reconciliation_pending"
+      "status": "reconciled"
     },
     {
       "engine": "surge",
@@ -320,7 +320,7 @@
       "reason": "STOP",
       "gross": -17.89,
       "fees": null,
-      "status": "reconciliation_pending"
+      "status": "reconciled"
     },
     {
       "engine": "surge",
@@ -332,7 +332,7 @@
       "reason": "STOP",
       "gross": -5.53,
       "fees": null,
-      "status": "reconciliation_pending"
+      "status": "reconciled"
     },
     {
       "engine": "surge",
