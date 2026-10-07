@@ -184,7 +184,7 @@
 
     // 2. One plain line.
     p.appendChild(h("p", "eot-summary-line",
-      plural(n, "trade") + " \u00b7 " + plural(wins, "win") + " \u00b7 " + plural(losses, "loss").replace("losss", "losses") + " \u00b7 " + (wins / n * 100).toFixed(1) + "% win rate"));
+      plural(n, "trade") + " \u00b7 " + plural(wins, "win") + " \u00b7 " + plural(losses, "loss").replace("losss", "losses")));
 
     // Performance breakdown: calculate from recorded trades, never from a fixed headline.
     var winTrades = trades.filter(function (t) { return t.gross > 0.005; });
@@ -200,7 +200,7 @@
     lossSegment.style.width = (losses / n * 100) + "%";
     bar.appendChild(winSegment); bar.appendChild(lossSegment);
     performance.appendChild(bar);
-    performance.appendChild(h("p", "eot-performance-counts", wins + " wins (" + (wins / n * 100).toFixed(1) + "%) · " + losses + " losses (" + (losses / n * 100).toFixed(1) + "%)"));
+    performance.appendChild(h("p", "eot-performance-counts", wins + " " + (wins === 1 ? "win" : "wins") + " (" + (wins / n * 100).toFixed(1) + "%) · " + losses + " " + (losses === 1 ? "loss" : "losses") + " (" + (losses / n * 100).toFixed(1) + "%)"));
     var averages = h("div", "eot-averages");
     averages.appendChild(h("span", null, "Average win · " + (winTrades.length ? money(sum(winTrades) / winTrades.length) : "N/A")));
     averages.appendChild(h("span", null, "Average loss · " + (lossTrades.length ? money(sum(lossTrades) / lossTrades.length) : "N/A")));
