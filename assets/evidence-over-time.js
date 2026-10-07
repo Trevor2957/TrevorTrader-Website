@@ -106,7 +106,7 @@
     });
 
     function describe(t) {
-      var st = state(t) === "pending" ? "Pending reconciliation" : state(t) === "broker-matched" ? "Broker-matched" : "Reconciled";
+      var st = state(t) === "pending" ? "Awaiting verification" : state(t) === "broker-matched" ? "Checked against broker records" : "Verified";
       return "<strong>" + t.symbol + "</strong> \u00b7 " + day(t.session) + " \u00b7 closed " + t.exit_pt + " PT \u00b7 " + t.reason +
         "<br><strong>" + money(t.gross) + "</strong> this trade \u00b7 <strong>" + money(t.running) + "</strong> running total \u00b7 " + st;
     }
@@ -142,7 +142,7 @@
     return dl;
   }
 
-  function panel(item, data) {
+  function panel(item, data, rootAudit) {
     var eng = item.eng, trades = item.trades, n = trades.length;
     var p = h("article", "eot-panel");
     p.style.setProperty("--engine", eng.color || "#56aeff");
@@ -151,7 +151,7 @@
     head.appendChild(h("span", "eot-role", eng.role));
     p.appendChild(head);
     var since = n ? trades[0].session : ((eng.sessions || [])[0] || {}).date;
-    p.appendChild(h("p", "eot-exp", eng.experiment + (since ? " \u00b7 since " + longDay(since) : "")));
+    p.appendChild(h("p", "eot-exp", (rootAudit ? eng.experiment : eng.name + " paper record") + (since ? " \u00b7 since " + longDay(since) : "")));
     if (!n) { p.appendChild(h("p", "eot-pending", "No completed trades in the record yet.")); return p; }
 
     var total = trades[n - 1].running;
@@ -182,7 +182,7 @@
     // 4. Warning only when needed.
     if (pen.length)
       p.appendChild(h("p", "eot-warn", "Includes " + plural(pen.length, "trade") + " (" + money(sum(pen)) +
-        ") still pending reconciliation. Hollow points on the chart."));
+        ") still awaiting verification. Hollow points on the chart."));
 
     // 3. One simple chart: P&L over time.
     p.appendChild(h("p", "eot-chart-title", "Trade P&L over time \u00b7 gross before fees"));
@@ -242,14 +242,19 @@
       });
       det.appendChild(bh);
     }
-    p.appendChild(det);
+    if (rootAudit) p.appendChild(det);
+    else {
+      var auditLink = h("a", null, "Full audit record");
+      auditLink.href = "daily-review/engine-audit/#evidence";
+      p.appendChild(auditLink);
+    }
     return p;
   }
 
   function render(root, data) {
     var grid = root.querySelector(".eot-grid");
     grid.innerHTML = "";
-    prepare(data).forEach(function (item) { grid.appendChild(panel(item, data)); });
+    prepare(data).forEach(function (item) { grid.appendChild(panel(item, data, root.hasAttribute("data-audit-view"))); });
   }
 
   function init(root) {
@@ -264,10 +269,16 @@
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (data) {
         basis.textContent = "Paper trading \u00b7 updated " + longDay(data.updated);
+        if (root.hasAttribute("data-audit-view")) {
         note.innerHTML = "<strong>How to read this.</strong> The big number is the change in each paper account's broker balance. " +
           "The chart shows recorded trade P&L over time, gross before fees: one point per completed trade, each trading day its own section. " +
           "Hollow points are still pending reconciliation. Open <em>Evidence details</em> on any card for balances, evidence status and build history. " +
           (data.note ? data.note + " " : "") + "Paper fills may be better than live fills. These results are a record, not a validated edge.";
+        } else {
+          note.innerHTML = "<strong>How to read this.</strong> The big number is the paper account balance change. Charts show recorded trade P&L, gross before fees. " +
+            "Hollow points are awaiting verification. Fees pending means net results remain unavailable. Paper, not live; edge unvalidated. " +
+            "RANGE is retained as history, not an active engine. SURGE-R has no published results yet. Open the Full audit record for details.";
+        }
         render(root, data);
       })
       .catch(function () {
