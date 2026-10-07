@@ -184,7 +184,7 @@
 
     // 2. One plain line.
     p.appendChild(h("p", "eot-summary-line",
-      plural(n, "trade") + " \u00b7 " + plural(wins, "win") + " \u00b7 " + plural(losses, "loss").replace("losss", "losses")));
+      plural(n, "trade") + " \u00b7 " + plural(wins, "win") + " \u00b7 " + plural(losses, "loss").replace("losss", "losses") + " \u00b7 " + (wins / n * 100).toFixed(1) + "% win rate"));
 
     // 4. Warning only when needed.
     if (pen.length)
