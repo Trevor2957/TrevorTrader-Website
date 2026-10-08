@@ -1,0 +1,36 @@
+{
+  "session_date_ny": "2026-10-08",
+  "status": "PASS_GROSS_FEES_PENDING",
+  "fees_status": "PENDING",
+  "net_pnl": null,
+  "gross_pnl": "-44.79",
+  "engines": {
+    "CORE": {
+      "verified": true,
+      "closed_trades": 1,
+      "gross_pnl": "-60.00",
+      "wins": 0,
+      "losses": 1,
+      "zero_trade_day": false,
+      "fee_activities_collected": 0,
+      "attribution": "VERIFIED"
+    },
+    "RANGE": {
+      "status": "RETIRED",
+      "verified": null,
+      "closed_trades": null,
+      "gross_pnl": null
+    },
+    "SURGE": {
+      "verified": true,
+      "closed_trades": 3,
+      "gross_pnl": "15.21",
+      "wins": 1,
+      "losses": 2,
+      "zero_trade_day": false,
+      "fee_activities_collected": 2,
+      "attribution": "INFERRED"
+    }
+  },
+  "private_evidence_digest": "df7c8eee19f7570856e8aa1e6569086945e0c80d445c0c4f8afcbcbd0c035c5b"
+}

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-07",
+  "updated": "2026-10-08",
   "basis": "gross_before_fees",
   "note": "Gross before fees; Oct 7 SURGE and CORE passed EOD reconciliation. Oct 6 SURGE passed EOD reconciliation after the corrected PC rerun. RANGE retired. SURGE-R is not yet covered by the EOD evidence feed. No validated edge.",
   "engines": [
@@ -41,6 +41,10 @@
         {
           "date": "2026-10-07",
           "status": "valid_zero_trade"
+        },
+        {
+          "date": "2026-10-08",
+          "status": "reconciled"
         }
       ]
     },
@@ -122,6 +126,10 @@
         },
         {
           "date": "2026-10-07",
+          "status": "reconciled"
+        },
+        {
+          "date": "2026-10-08",
           "status": "reconciled"
         }
       ],
@@ -505,6 +513,54 @@
       "qty": 85,
       "reason": "CONFIRMED_STOP",
       "gross": -12.75,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-30bar",
+      "session": "2026-10-08",
+      "exit_pt": "09:13:42",
+      "symbol": "BYRN",
+      "qty": 103,
+      "reason": "CONFIRMED_STOP",
+      "gross": -9.27,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-30bar",
+      "session": "2026-10-08",
+      "exit_pt": "09:31:14",
+      "symbol": "AIXI",
+      "qty": 368,
+      "reason": "TARGET",
+      "gross": 36.8,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "core",
+      "build": "core-1145-4x-300",
+      "session": "2026-10-08",
+      "exit_pt": "10:16:44",
+      "symbol": "SPY261008C00776000",
+      "qty": 15,
+      "reason": "STOP",
+      "gross": -60.0,
+      "fees": null,
+      "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-30bar",
+      "session": "2026-10-08",
+      "exit_pt": "11:39:31",
+      "symbol": "BYRN",
+      "qty": 176,
+      "reason": "CONFIRMED_STOP",
+      "gross": -12.32,
       "fees": null,
       "status": "reconciled"
     }
