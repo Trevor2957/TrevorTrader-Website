@@ -1,506 +1,514 @@
-{
-  "updated": "2026-10-07",
-  "basis": "gross_before_fees",
-  "note": "Gross before fees; Oct 7 SURGE and CORE passed EOD reconciliation. Oct 6 SURGE passed EOD reconciliation after the corrected PC rerun. RANGE retired. SURGE-R is not yet covered by the EOD evidence feed. No validated edge.",
-  "engines": [
-    {
-      "id": "core",
-      "name": "CORE",
-      "role": "Reversal Engine",
-      "experiment": "CORE 17/20",
-      "color": "#56aeff",
-      "builds": [
-        {
-          "id": "core-earlier",
-          "label": "Earlier build"
-        },
-        {
-          "id": "core-repair-v1",
-          "label": "Entry repair v1",
-          "installed": "2026-10-05"
-        }
-      ],
-      "starting_balance": 723,
-      "current_balance": 703,
-      "balance_note": "User-designated baseline; historical CORE account predates the current evidence period.",
-      "sessions": [
-        {
-          "date": "2026-10-05",
-          "status": "broker_matched"
-        },
-        {
-          "date": "2026-10-06",
-          "status": "reconciled"
-        },
-        {
-          "date": "2026-10-07",
-          "status": "valid_zero_trade"
-        }
-      ]
-    },
-    {
-      "id": "range",
-      "name": "RANGE",
-      "role": "Breakout Engine",
-      "experiment": "RANGE 25/20",
-      "color": "#48dfc6",
-      "builds": [
-        {
-          "id": "range-earlier",
-          "label": "Earlier build"
-        },
-        {
-          "id": "range-repair-v2",
-          "label": "Entry repair v2",
-          "installed": "2026-10-05"
-        }
-      ],
-      "starting_balance": 300,
-      "current_balance": 291.31,
-      "sessions": [
-        {
-          "date": "2026-10-05",
-          "status": "broker_matched"
-        },
-        {
-          "date": "2026-10-06",
-          "status": "valid_zero_trade"
-        }
-      ],
-      "retired": "2026-10-07"
-    },
-    {
-      "id": "surge",
-      "name": "SURGE",
-      "role": "Momentum Engine",
-      "experiment": "SURGE $2K Challenge",
-      "color": "#ffbe61",
-      "builds": [
-        {
-          "id": "surge-earlier",
-          "label": "Earlier build"
-        },
-        {
-          "id": "surge-risk-v3",
-          "label": "Risk v3",
-          "installed": "2026-10-05"
-        },
-        {
-          "id": "surge-2to10-100gate",
-          "label": "$2–$10 · $100 gate",
-          "installed": "2026-10-06"
-        },
-        {
-          "id": "surge-v2-technical-risk-final",
-          "label": "Technical Risk v2",
-          "installed": "2026-10-06",
-          "cohort_start": "2026-10-07"
-        },
-        {
-          "id": "surge-30bar",
-          "label": "30-bar breakout",
-          "installed": "2026-10-07",
-          "cohort_start": "2026-10-08"
-        }
-      ],
-      "starting_balance": 2000,
-      "current_balance": null,
-      "sessions": [
-        {
-          "date": "2026-10-05",
-          "status": "broker_matched"
-        },
-        {
-          "date": "2026-10-06",
-          "status": "reconciled"
-        },
-        {
-          "date": "2026-10-07",
-          "status": "reconciled"
-        }
-      ],
-      "balance_note": "Oct 7 gross P&L reconciled; current broker balance not verified in this publication."
-    },
-    {
-      "id": "surge-r",
-      "name": "SURGE-R",
-      "role": "Pullback Momentum Engine",
-      "experiment": "SURGE-R $2K Challenge",
-      "color": "#ad94ff",
-      "builds": [
-        {
-          "id": "surge-r-candidate6",
-          "label": "Candidate 6 · 30-bar impulse / all candidates",
-          "installed": "2026-10-07",
-          "cohort_start": "2026-10-08"
-        }
-      ],
-      "starting_balance": 2000,
-      "current_balance": null,
-      "balance_note": "Separate paper account; not included in Oct 7 EOD-PAPER-V2 reconciliation.",
-      "sessions": []
-    }
-  ],
-  "trades": [
-    {
-      "engine": "core",
-      "build": "core-earlier",
-      "session": "2026-10-05",
-      "exit_pt": "07:37:24",
-      "symbol": "SPY261005P00768000",
-      "qty": 4,
-      "reason": "STOP",
-      "gross": -16,
-      "fees": null,
-      "status": "broker_matched"
-    },
-    {
-      "engine": "core",
-      "build": "core-earlier",
-      "session": "2026-10-05",
-      "exit_pt": "07:56:35",
-      "symbol": "SPY261005P00768000",
-      "qty": 4,
-      "reason": "STOP",
-      "gross": -16,
-      "fees": null,
-      "status": "broker_matched"
-    },
-    {
-      "engine": "range",
-      "build": "range-earlier",
-      "session": "2026-10-05",
-      "exit_pt": "09:26:04",
-      "symbol": "SPY261005C00777000",
-      "qty": 4,
-      "reason": "STOP",
-      "gross": -4,
-      "fees": null,
-      "status": "broker_matched"
-    },
-    {
-      "engine": "range",
-      "build": "range-earlier",
-      "session": "2026-10-05",
-      "exit_pt": "09:27:06",
-      "symbol": "SPY261005C00777000",
-      "qty": 4,
-      "reason": "STOP",
-      "gross": -4,
-      "fees": null,
-      "status": "broker_matched"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-earlier",
-      "session": "2026-10-05",
-      "exit_pt": "09:35:25",
-      "symbol": "VEEA",
-      "qty": 239,
-      "reason": "STOP",
-      "gross": -19.12,
-      "fees": null,
-      "status": "broker_matched"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-earlier",
-      "session": "2026-10-05",
-      "exit_pt": "09:51:27",
-      "symbol": "VEEA",
-      "qty": 395,
-      "reason": "TIME",
-      "gross": 27.46,
-      "fees": null,
-      "status": "broker_matched"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-earlier",
-      "session": "2026-10-05",
-      "exit_pt": "10:26:38",
-      "symbol": "JAGX",
-      "qty": 334,
-      "reason": "TIME",
-      "gross": -10.02,
-      "fees": null,
-      "status": "broker_matched"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-earlier",
-      "session": "2026-10-05",
-      "exit_pt": "10:40:53",
-      "symbol": "VEEA",
-      "qty": 327,
-      "reason": "TARGET",
-      "gross": 58.99,
-      "fees": null,
-      "status": "broker_matched"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-earlier",
-      "session": "2026-10-05",
-      "exit_pt": "10:52:02",
-      "symbol": "JAGX",
-      "qty": 398,
-      "reason": "STOP",
-      "gross": -31.84,
-      "fees": null,
-      "status": "broker_matched"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-earlier",
-      "session": "2026-10-05",
-      "exit_pt": "11:49:37",
-      "symbol": "AMOD",
-      "qty": 405,
-      "reason": "TIME",
-      "gross": 12.15,
-      "fees": null,
-      "status": "broker_matched"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-earlier",
-      "session": "2026-10-05",
-      "exit_pt": "12:34:07",
-      "symbol": "JAGX",
-      "qty": 226,
-      "reason": "STOP",
-      "gross": -22.6,
-      "fees": null,
-      "status": "broker_matched"
-    },
-    {
-      "engine": "core",
-      "build": "core-repair-v1",
-      "session": "2026-10-06",
-      "exit_pt": "07:30:16",
-      "symbol": "SPY261006P00775000",
-      "qty": 4,
-      "reason": "TARGET",
-      "gross": 12,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-risk-v3",
-      "session": "2026-10-06",
-      "exit_pt": "02:07:20",
-      "symbol": "AIXI",
-      "qty": 275,
-      "reason": "STOP",
-      "gross": -21.53,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-risk-v3",
-      "session": "2026-10-06",
-      "exit_pt": "03:07:07",
-      "symbol": "AIXI",
-      "qty": 280,
-      "reason": "STOP",
-      "gross": -30.8,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-2to10-100gate",
-      "session": "2026-10-06",
-      "exit_pt": "12:22:06",
-      "symbol": "IPDN",
-      "qty": 206,
-      "reason": "STOP",
-      "gross": -17.89,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-2to10-100gate",
-      "session": "2026-10-06",
-      "exit_pt": "12:28:44",
-      "symbol": "JAGX",
-      "qty": 79,
-      "reason": "STOP",
-      "gross": -5.53,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "04:19:51",
-      "symbol": "BIYA",
-      "qty": 197,
-      "reason": "TIME",
-      "gross": -13.79,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "04:35:52",
-      "symbol": "BIYA",
-      "qty": 282,
-      "reason": "TARGET",
-      "gross": 42.3,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "05:04:31",
-      "symbol": "SXTC",
-      "qty": 262,
-      "reason": "TIME",
-      "gross": -5.24,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "05:46:38",
-      "symbol": "LPCN",
-      "qty": 181,
-      "reason": "CONFIRMED_STOP",
-      "gross": -19.91,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "06:17:40",
-      "symbol": "LPCN",
-      "qty": 163,
-      "reason": "TIME",
-      "gross": -13.93,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "08:35:38",
-      "symbol": "SMXT",
-      "qty": 133,
-      "reason": "TIME",
-      "gross": -6.65,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "08:59:04",
-      "symbol": "BIYA",
-      "qty": 249,
-      "reason": "TIME",
-      "gross": 44.82,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "09:11:22",
-      "symbol": "LGCL",
-      "qty": 222,
-      "reason": "TIME",
-      "gross": 11.1,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "09:23:15",
-      "symbol": "LGCL",
-      "qty": 249,
-      "reason": "TIME",
-      "gross": 7.47,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "10:31:23",
-      "symbol": "LGCL",
-      "qty": 126,
-      "reason": "TIME",
-      "gross": 15.12,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "10:49:20",
-      "symbol": "SPAI",
-      "qty": 166,
-      "reason": "TIME",
-      "gross": -4.98,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "11:24:07",
-      "symbol": "SPAI",
-      "qty": 200,
-      "reason": "TIME",
-      "gross": 5.31,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "12:06:27",
-      "symbol": "SPAI",
-      "qty": 215,
-      "reason": "CONFIRMED_STOP",
-      "gross": -15.05,
-      "fees": null,
-      "status": "reconciled"
-    },
-    {
-      "engine": "surge",
-      "build": "surge-v2-technical-risk-final",
-      "session": "2026-10-07",
-      "exit_pt": "12:20:03",
-      "symbol": "LGCL",
-      "qty": 85,
-      "reason": "CONFIRMED_STOP",
-      "gross": -12.75,
-      "fees": null,
-      "status": "reconciled"
-    }
-  ]
+﻿{
+    "updated":  "2026-10-07",
+    "basis":  "gross_before_fees",
+    "note":  "Gross before fees; Oct 7 SURGE and CORE passed EOD reconciliation. Oct 6 SURGE passed EOD reconciliation after the corrected PC rerun. RANGE retired. SURGE-R is not yet covered by the EOD evidence feed. No validated edge.",
+    "engines":  [
+                    {
+                        "id":  "core",
+                        "name":  "CORE",
+                        "role":  "Reversal Engine",
+                        "experiment":  "CORE 17/20",
+                        "color":  "#56aeff",
+                        "builds":  [
+                                       {
+                                           "id":  "core-earlier",
+                                           "label":  "Earlier build"
+                                       },
+                                       {
+                                           "id":  "core-repair-v1",
+                                           "label":  "Entry repair v1",
+                                           "installed":  "2026-10-05"
+                                       },
+                                       {
+                                           "id":  "core-1145-4x-300",
+                                           "label":  "11:45 entry · 4 trades · $300 max",
+                                           "installed":  "2026-10-07",
+                                           "cohort_start":  "2026-10-08"
+                                       }
+                                   ],
+                        "starting_balance":  723,
+                        "current_balance":  703,
+                        "balance_note":  "User-designated baseline; historical CORE account predates the current evidence period.",
+                        "sessions":  [
+                                         {
+                                             "date":  "2026-10-05",
+                                             "status":  "broker_matched"
+                                         },
+                                         {
+                                             "date":  "2026-10-06",
+                                             "status":  "reconciled"
+                                         },
+                                         {
+                                             "date":  "2026-10-07",
+                                             "status":  "valid_zero_trade"
+                                         }
+                                     ]
+                    },
+                    {
+                        "id":  "range",
+                        "name":  "RANGE",
+                        "role":  "Breakout Engine",
+                        "experiment":  "RANGE 25/20",
+                        "color":  "#48dfc6",
+                        "builds":  [
+                                       {
+                                           "id":  "range-earlier",
+                                           "label":  "Earlier build"
+                                       },
+                                       {
+                                           "id":  "range-repair-v2",
+                                           "label":  "Entry repair v2",
+                                           "installed":  "2026-10-05"
+                                       }
+                                   ],
+                        "starting_balance":  300,
+                        "current_balance":  291.31,
+                        "sessions":  [
+                                         {
+                                             "date":  "2026-10-05",
+                                             "status":  "broker_matched"
+                                         },
+                                         {
+                                             "date":  "2026-10-06",
+                                             "status":  "valid_zero_trade"
+                                         }
+                                     ],
+                        "retired":  "2026-10-07"
+                    },
+                    {
+                        "id":  "surge",
+                        "name":  "SURGE",
+                        "role":  "Momentum Engine",
+                        "experiment":  "SURGE $2K Challenge",
+                        "color":  "#ffbe61",
+                        "builds":  [
+                                       {
+                                           "id":  "surge-earlier",
+                                           "label":  "Earlier build"
+                                       },
+                                       {
+                                           "id":  "surge-risk-v3",
+                                           "label":  "Risk v3",
+                                           "installed":  "2026-10-05"
+                                       },
+                                       {
+                                           "id":  "surge-2to10-100gate",
+                                           "label":  "$2-$10 / $100 gate",
+                                           "installed":  "2026-10-06"
+                                       },
+                                       {
+                                           "id":  "surge-v2-technical-risk-final",
+                                           "label":  "Technical Risk v2",
+                                           "installed":  "2026-10-06",
+                                           "cohort_start":  "2026-10-07"
+                                       },
+                                       {
+                                           "id":  "surge-30bar",
+                                           "label":  "30-bar breakout",
+                                           "installed":  "2026-10-07",
+                                           "cohort_start":  "2026-10-08"
+                                       }
+                                   ],
+                        "starting_balance":  2000,
+                        "current_balance":  null,
+                        "sessions":  [
+                                         {
+                                             "date":  "2026-10-05",
+                                             "status":  "broker_matched"
+                                         },
+                                         {
+                                             "date":  "2026-10-06",
+                                             "status":  "reconciled"
+                                         },
+                                         {
+                                             "date":  "2026-10-07",
+                                             "status":  "reconciled"
+                                         }
+                                     ],
+                        "balance_note":  "Oct 7 gross P\u0026L reconciled; current broker balance not verified in this publication."
+                    },
+                    {
+                        "id":  "surge-r",
+                        "name":  "SURGE-R",
+                        "role":  "Pullback Momentum Engine",
+                        "experiment":  "SURGE-R $2K Challenge",
+                        "color":  "#ad94ff",
+                        "builds":  [
+                                       {
+                                           "id":  "surge-r-candidate6",
+                                           "label":  "Candidate 6 / 30-bar impulse / all candidates",
+                                           "installed":  "2026-10-07",
+                                           "cohort_start":  "2026-10-08"
+                                       }
+                                   ],
+                        "starting_balance":  2000,
+                        "current_balance":  null,
+                        "balance_note":  "Separate paper account; not included in Oct 7 EOD-PAPER-V2 reconciliation.",
+                        "sessions":  [
+
+                                     ]
+                    }
+                ],
+    "trades":  [
+                   {
+                       "engine":  "core",
+                       "build":  "core-earlier",
+                       "session":  "2026-10-05",
+                       "exit_pt":  "07:37:24",
+                       "symbol":  "SPY261005P00768000",
+                       "qty":  4,
+                       "reason":  "STOP",
+                       "gross":  -16,
+                       "fees":  null,
+                       "status":  "broker_matched"
+                   },
+                   {
+                       "engine":  "core",
+                       "build":  "core-earlier",
+                       "session":  "2026-10-05",
+                       "exit_pt":  "07:56:35",
+                       "symbol":  "SPY261005P00768000",
+                       "qty":  4,
+                       "reason":  "STOP",
+                       "gross":  -16,
+                       "fees":  null,
+                       "status":  "broker_matched"
+                   },
+                   {
+                       "engine":  "range",
+                       "build":  "range-earlier",
+                       "session":  "2026-10-05",
+                       "exit_pt":  "09:26:04",
+                       "symbol":  "SPY261005C00777000",
+                       "qty":  4,
+                       "reason":  "STOP",
+                       "gross":  -4,
+                       "fees":  null,
+                       "status":  "broker_matched"
+                   },
+                   {
+                       "engine":  "range",
+                       "build":  "range-earlier",
+                       "session":  "2026-10-05",
+                       "exit_pt":  "09:27:06",
+                       "symbol":  "SPY261005C00777000",
+                       "qty":  4,
+                       "reason":  "STOP",
+                       "gross":  -4,
+                       "fees":  null,
+                       "status":  "broker_matched"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-earlier",
+                       "session":  "2026-10-05",
+                       "exit_pt":  "09:35:25",
+                       "symbol":  "VEEA",
+                       "qty":  239,
+                       "reason":  "STOP",
+                       "gross":  -19.12,
+                       "fees":  null,
+                       "status":  "broker_matched"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-earlier",
+                       "session":  "2026-10-05",
+                       "exit_pt":  "09:51:27",
+                       "symbol":  "VEEA",
+                       "qty":  395,
+                       "reason":  "TIME",
+                       "gross":  27.46,
+                       "fees":  null,
+                       "status":  "broker_matched"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-earlier",
+                       "session":  "2026-10-05",
+                       "exit_pt":  "10:26:38",
+                       "symbol":  "JAGX",
+                       "qty":  334,
+                       "reason":  "TIME",
+                       "gross":  -10.02,
+                       "fees":  null,
+                       "status":  "broker_matched"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-earlier",
+                       "session":  "2026-10-05",
+                       "exit_pt":  "10:40:53",
+                       "symbol":  "VEEA",
+                       "qty":  327,
+                       "reason":  "TARGET",
+                       "gross":  58.99,
+                       "fees":  null,
+                       "status":  "broker_matched"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-earlier",
+                       "session":  "2026-10-05",
+                       "exit_pt":  "10:52:02",
+                       "symbol":  "JAGX",
+                       "qty":  398,
+                       "reason":  "STOP",
+                       "gross":  -31.84,
+                       "fees":  null,
+                       "status":  "broker_matched"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-earlier",
+                       "session":  "2026-10-05",
+                       "exit_pt":  "11:49:37",
+                       "symbol":  "AMOD",
+                       "qty":  405,
+                       "reason":  "TIME",
+                       "gross":  12.15,
+                       "fees":  null,
+                       "status":  "broker_matched"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-earlier",
+                       "session":  "2026-10-05",
+                       "exit_pt":  "12:34:07",
+                       "symbol":  "JAGX",
+                       "qty":  226,
+                       "reason":  "STOP",
+                       "gross":  -22.6,
+                       "fees":  null,
+                       "status":  "broker_matched"
+                   },
+                   {
+                       "engine":  "core",
+                       "build":  "core-repair-v1",
+                       "session":  "2026-10-06",
+                       "exit_pt":  "07:30:16",
+                       "symbol":  "SPY261006P00775000",
+                       "qty":  4,
+                       "reason":  "TARGET",
+                       "gross":  12,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-risk-v3",
+                       "session":  "2026-10-06",
+                       "exit_pt":  "02:07:20",
+                       "symbol":  "AIXI",
+                       "qty":  275,
+                       "reason":  "STOP",
+                       "gross":  -21.53,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-risk-v3",
+                       "session":  "2026-10-06",
+                       "exit_pt":  "03:07:07",
+                       "symbol":  "AIXI",
+                       "qty":  280,
+                       "reason":  "STOP",
+                       "gross":  -30.8,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-2to10-100gate",
+                       "session":  "2026-10-06",
+                       "exit_pt":  "12:22:06",
+                       "symbol":  "IPDN",
+                       "qty":  206,
+                       "reason":  "STOP",
+                       "gross":  -17.89,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-2to10-100gate",
+                       "session":  "2026-10-06",
+                       "exit_pt":  "12:28:44",
+                       "symbol":  "JAGX",
+                       "qty":  79,
+                       "reason":  "STOP",
+                       "gross":  -5.53,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "04:19:51",
+                       "symbol":  "BIYA",
+                       "qty":  197,
+                       "reason":  "TIME",
+                       "gross":  -13.79,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "04:35:52",
+                       "symbol":  "BIYA",
+                       "qty":  282,
+                       "reason":  "TARGET",
+                       "gross":  42.3,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "05:04:31",
+                       "symbol":  "SXTC",
+                       "qty":  262,
+                       "reason":  "TIME",
+                       "gross":  -5.24,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "05:46:38",
+                       "symbol":  "LPCN",
+                       "qty":  181,
+                       "reason":  "CONFIRMED_STOP",
+                       "gross":  -19.91,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "06:17:40",
+                       "symbol":  "LPCN",
+                       "qty":  163,
+                       "reason":  "TIME",
+                       "gross":  -13.93,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "08:35:38",
+                       "symbol":  "SMXT",
+                       "qty":  133,
+                       "reason":  "TIME",
+                       "gross":  -6.65,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "08:59:04",
+                       "symbol":  "BIYA",
+                       "qty":  249,
+                       "reason":  "TIME",
+                       "gross":  44.82,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "09:11:22",
+                       "symbol":  "LGCL",
+                       "qty":  222,
+                       "reason":  "TIME",
+                       "gross":  11.1,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "09:23:15",
+                       "symbol":  "LGCL",
+                       "qty":  249,
+                       "reason":  "TIME",
+                       "gross":  7.47,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "10:31:23",
+                       "symbol":  "LGCL",
+                       "qty":  126,
+                       "reason":  "TIME",
+                       "gross":  15.12,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "10:49:20",
+                       "symbol":  "SPAI",
+                       "qty":  166,
+                       "reason":  "TIME",
+                       "gross":  -4.98,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "11:24:07",
+                       "symbol":  "SPAI",
+                       "qty":  200,
+                       "reason":  "TIME",
+                       "gross":  5.31,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "12:06:27",
+                       "symbol":  "SPAI",
+                       "qty":  215,
+                       "reason":  "CONFIRMED_STOP",
+                       "gross":  -15.05,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   },
+                   {
+                       "engine":  "surge",
+                       "build":  "surge-v2-technical-risk-final",
+                       "session":  "2026-10-07",
+                       "exit_pt":  "12:20:03",
+                       "symbol":  "LGCL",
+                       "qty":  85,
+                       "reason":  "CONFIRMED_STOP",
+                       "gross":  -12.75,
+                       "fees":  null,
+                       "status":  "reconciled"
+                   }
+               ]
 }
