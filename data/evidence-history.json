@@ -27,8 +27,8 @@
         }
       ],
       "starting_balance": 723,
-      "current_balance": 703,
-      "balance_note": "User-designated baseline; historical CORE account predates the current evidence period.",
+      "current_balance": null,
+      "balance_note": "Current CORE broker account balance not verified for the October 8 publication; historical CORE account predates the current evidence period.",
       "sessions": [
         {
           "date": "2026-10-05",
