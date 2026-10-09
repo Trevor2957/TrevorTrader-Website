@@ -131,6 +131,11 @@
         {
           "date": "2026-10-08",
           "status": "reconciled"
+        },
+        {
+          "date": "2026-10-09",
+          "status": "runner_recorded_broker_matched_manual_excluded",
+          "note": "Runner trade matched broker fills; full-account EOD blocked by a separate user-confirmed manual 100-share VEEA round trip excluded from strategy performance."
         }
       ],
       "balance_note": "Oct 7 gross P&L reconciled; current broker balance not verified in this publication."
@@ -580,6 +585,19 @@
       "gross": -12.32,
       "fees": null,
       "status": "reconciled"
+    },
+    {
+      "engine": "surge",
+      "build": "surge-30bar",
+      "session": "2026-10-09",
+      "exit_pt": "09:35:59",
+      "symbol": "VEEA",
+      "qty": 111,
+      "reason": "CONFIRMED_STOP",
+      "gross": -23.07,
+      "fees": null,
+      "status": "runner_recorded_broker_matched_manual_excluded",
+      "note": "Original SURGE runner trade; separate manual trade excluded. Full-account EOD not reconciled."
     }
   ]
 }
