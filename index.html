@@ -691,10 +691,7 @@ var engine=(d.engines||[]).find(function(e){return e.id==='surge-simple'});if(!e
 var sessions=(engine.sessions||[]).filter(function(x){return x.status==='reconciled'||x.status==='valid_zero_trade'});if(!sessions.length)return;
 var t=(d.trades||[]).filter(function(x){return x.engine==='surge-simple'&&x.status==='reconciled'}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
 var sum=t.reduce(function(a,b){return a+Number(b.gross)},0),win=t.filter(function(x){return x.gross>0.005}).length,loss=t.filter(function(x){return x.gross<-.005}).length;
-function money(v){return (v<-.005?'−':v>.005?'+':'')+'
-</body>
-</html>
-+Math.abs(v).toFixed(2)}
+function money(v){return (v<-.005?'−':v>.005?'+':'')+'$'+Math.abs(v).toFixed(2)}
 card.querySelector('.headline').textContent=t.length?money(sum):'No trades yet';
 card.querySelector('.headline + .muted').textContent='Gross before fees · '+sessions.length+' verified sessions';
 card.querySelector('.scorestats').innerHTML='Trades '+t.length+' · Wins '+win+' · Losses '+loss+'<p class="muted">Win rate '+(t.length?(100*win/t.length).toFixed(1)+'%':'—')+' · Gross P&amp;L '+money(sum)+' · Net P&amp;L pending</p>';
