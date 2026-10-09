@@ -71,7 +71,7 @@
     sessions.forEach(function (s) { seen[s] = 1; });
     trades.forEach(function (t) { if (!seen[t.session]) { sessions.push(t.session); seen[t.session] = 1; } });
     sessions.sort();
-    var bounds = eng.id === "surge" ? [1, 13] : [6.5, 13], gap = 12;
+    var bounds = (eng.id === "surge" || eng.id === "surge-simple") ? [1, 13] : [6.5, 13], gap = 12;
     var segW = (w - gap * (sessions.length - 1)) / Math.max(1, sessions.length);
     function mins(t) { if (!t.exit_pt) return null; var p = t.exit_pt.split(":"); return +p[0] * 60 + (+p[1]) + (+p[2] / 60); }
     function x(t) {
@@ -93,7 +93,7 @@
       var sx = L + si * (segW + gap), mid = sx + segW / 2;
       if (si) el("line", { x1: sx - gap / 2, x2: sx - gap / 2, y1: T, y2: T + ih, "class": "session" }, svg);
       // Time ticks (Pacific) inside each session, date label underneath.
-      var hrs = eng.id === "surge" ? [2, 6, 10] : [7, 9, 11];
+      var hrs = (eng.id === "surge" || eng.id === "surge-simple") ? [2, 6, 10] : [7, 9, 11];
       hrs.forEach(function (hr) {
         var tx = sx + (hr - bounds[0]) / (bounds[1] - bounds[0]) * segW;
         el("line", { x1: tx, x2: tx, y1: T + ih, y2: T + ih + 4, "class": "axis" }, svg);
@@ -159,7 +159,7 @@
     p.appendChild(head);
     var since = n ? trades[0].session : ((eng.sessions || [])[0] || {}).date;
     p.appendChild(h("p", "eot-exp", (rootAudit ? eng.experiment : eng.name + " paper record") + (since ? " \u00b7 since " + longDay(since) : "")));
-    if (!n) { p.appendChild(h("p", "eot-pending", "No completed trades in the record yet.")); return p; }
+    if (!n) { p.appendChild(h("p", "eot-pending", "No completed trades recorded yet. The SURGE Simple v1 cohort begins only after its verified paper deployment; earlier SURGE trades are excluded.")); return p; }
 
     var total = trades[n - 1].running;
     var startBal = typeof eng.starting_balance === "number" ? eng.starting_balance : null;
@@ -283,22 +283,9 @@
     var grid = root.querySelector(".eot-grid");
     grid.innerHTML = "";
     var audit = root.hasAttribute("data-audit-view"), items = prepare(data);
-    items.filter(function (item) { return item.eng.id !== "range"; })
+    items.filter(function (item) { return audit ? true : item.eng.id === "surge-simple"; })
       .forEach(function (item) { grid.appendChild(panel(item, data, audit)); });
-    if (!audit && !items.some(function (item) { return item.eng.id === "surge-r"; })) {
-      var p = h("article", "eot-panel"), head = h("header");
-      p.style.setProperty("--engine", "#b39aff");
-      head.appendChild(h("h3", null, "SURGE-R"));
-      head.appendChild(h("span", "eot-role", "Small-Cap Momentum Engine"));
-      p.appendChild(head);
-      p.appendChild(h("p", "eot-pending", "No published results yet."));
-      p.appendChild(h("p", "eot-summary-line", "Starting capital: $2,000 paper. Performance is unavailable, not zero."));
-      p.appendChild(h("p", "eot-sample-line", "Results appear only after EOD reconciliation. Paper, not live · Edge unvalidated."));
-      var link = h("a", null, "Full audit record");
-      link.href = "daily-review/engine-audit/#engine-surge-r";
-      p.appendChild(link);
-      grid.appendChild(p);
-    }
+
   }
 
   function init(root) {
@@ -319,7 +306,7 @@
           "Hollow points are still pending reconciliation. Open <em>Evidence details</em> on any card for balances, evidence status and build history. " +
           (data.note ? data.note + " " : "") + "Paper fills may be better than live fills. These results are a record, not a validated edge.";
         } else {
-          note.innerHTML = "<strong>How to read this.</strong> The big number is the paper account balance change. Charts show recorded trade P&L, gross before fees. " +
+          note.innerHTML = "<strong>How to read this.</strong> The homepage shows only SURGE Simple v1. Once verified trades are published, its chart will show cumulative gross P&L over time. " +
             "Hollow points are awaiting verification. Fees pending means net results remain unavailable. Paper, not live; edge unvalidated. " +
             'Retired engine results remain published in the <a href="daily-review/engine-audit/#range-history">Full audit record</a>, including losses.';
         }
