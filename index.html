@@ -637,9 +637,9 @@ footer{padding-top:36px}
 @media(max-width:850px){.simple-scorecards{grid-template-columns:1fr}}
 </style>
 <div class="simple-scorecards">
-<article class="simple-scorecard"><h3>SURGE Simple 1</h3><p class="subtitle">2 trades/day maximum · $100 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 1 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
-<article class="simple-scorecard"><h3>SURGE Simple 2</h3><p class="subtitle">8 trades/day maximum · $150 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Separate paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 2 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
-<article class="simple-scorecard"><h3>SURGE Simple 3</h3><p class="subtitle">No daily trade cap · $200 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Separate paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 3 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
+<article class="simple-scorecard" data-engine="surge-simple"><h3>SURGE Simple 1</h3><p class="subtitle">2 positions/day maximum · $100 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 1 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
+<article class="simple-scorecard" data-engine="surge-simple-2"><h3>SURGE Simple 2</h3><p class="subtitle">8 positions/day maximum · $150 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Separate paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 2 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
+<article class="simple-scorecard" data-engine="surge-simple-3"><h3>SURGE Simple 3</h3><p class="subtitle">No daily position cap · $200 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Separate paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 3 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
 </div>
 <p style="max-width:1180px;margin:0 auto 28px;color:#b5c9d8;font-size:13px">These scorecards show the planned presentation only. Historical CORE, RANGE, SURGE and SURGE-R trades are kept separate in the <a href="daily-review/engine-audit/">engine audit archive</a>.</p>
 </section>
@@ -693,6 +693,29 @@ footer{padding-top:36px}
 .eot-averages{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;font-weight:650}
 @media(max-width:480px){.eot-averages{flex-direction:column;gap:4px}}
 </style>
+<script>
+/* Only broker-reconciled SURGE Simple 1 rows are eligible for the public homepage.
+   Simple 2 and 3 are intentionally gated until their publisher is enabled. */
+(function(){
+var card=document.querySelector('.simple-scorecard[data-engine="surge-simple"]');
+if(!card||!window.fetch)return;
+fetch('data/evidence-history.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw Error('evidence unavailable');return r.json()}).then(function(d){
+var engine=(d.engines||[]).find(function(e){return e.id==='surge-simple'});if(!engine)return;
+var sessions=(engine.sessions||[]).filter(function(x){return x.status==='reconciled'||x.status==='valid_zero_trade'});if(!sessions.length)return;
+var t=(d.trades||[]).filter(function(x){return x.engine==='surge-simple'&&x.status==='reconciled'}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
+var sum=t.reduce(function(a,b){return a+Number(b.gross)},0),win=t.filter(function(x){return x.gross>0.005}).length,loss=t.filter(function(x){return x.gross<-.005}).length;
+function money(v){return (v<-.005?'−':v>.005?'+':'')+'
+</body>
+</html>
++Math.abs(v).toFixed(2)}
+card.querySelector('.headline').textContent=t.length?money(sum):'No trades yet';
+card.querySelector('.headline + .muted').textContent='Gross before fees · '+sessions.length+' verified sessions';
+card.querySelector('.scorestats').innerHTML='Trades '+t.length+' · Wins '+win+' · Losses '+loss+'<p class="muted">Win rate '+(t.length?(100*win/t.length).toFixed(1)+'%':'—')+' · Gross P&amp;L '+money(sum)+' · Net P&amp;L pending</p>';
+var ph=card.querySelector('.chart-placeholder');if(t.length){var pts=[0],v=0;t.forEach(function(x){v+=Number(x.gross);pts.push(v)});var lo=Math.min.apply(null,pts),hi=Math.max.apply(null,pts);if(hi===lo){lo-=1;hi+=1}var x=function(i){return 6+i*288/(pts.length-1)},y=function(z){return 10+(hi-z)*125/(hi-lo)};var path=pts.map(function(z,i){return(i?'L':'M')+x(i).toFixed(1)+' '+y(z).toFixed(1)}).join(' ');ph.style.background='none';ph.innerHTML='<svg viewBox="0 0 300 145" role="img" aria-label="Cumulative gross P&L by trade" style="width:100%;height:100%"><path d="'+path+'" stroke="#63e6a6" fill="none" stroke-width="2"/></svg>'}
+card.querySelector('.chart-placeholder + .muted').textContent='Latest verified session: '+sessions[sessions.length-1].date+'. Early sample; edge unvalidated.';
+}).catch(function(){});
+})();
+</script>
 <script src="assets/evidence-over-time.js" defer></script>
 </body>
 </html>
