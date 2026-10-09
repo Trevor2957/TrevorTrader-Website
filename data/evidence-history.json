@@ -1,7 +1,7 @@
 {
   "updated": "2026-10-08",
   "basis": "gross_before_fees",
-  "note": "Gross before fees; Oct 7 SURGE and CORE passed EOD reconciliation. Oct 6 SURGE passed EOD reconciliation after the corrected PC rerun. RANGE retired. SURGE-R is not yet covered by the EOD evidence feed. No validated edge.",
+  "note": "Gross before fees; Oct 7 SURGE and CORE passed EOD reconciliation. Oct 6 SURGE passed EOD reconciliation after the corrected PC rerun. RANGE retired. SURGE-R is not yet covered by the EOD evidence feed. No validated edge. SURGE Simple v1 is a separate new prospective cohort with no verified trades yet; previous SURGE builds remain historical.",
   "engines": [
     {
       "id": "core",
@@ -152,6 +152,23 @@
       "starting_balance": 2000,
       "current_balance": null,
       "balance_note": "Separate paper account; not included in Oct 7 EOD-PAPER-V2 reconciliation.",
+      "sessions": []
+    },
+    {
+      "id": "surge-simple",
+      "name": "SURGE Simple v1",
+      "role": "Momentum Engine · New Cohort",
+      "experiment": "SURGE Simple v1 · paper-only prospective experiment",
+      "color": "#ffbe61",
+      "builds": [
+        {
+          "id": "surge-simple-v1",
+          "label": "SURGE Simple v1 · pending verified deployment"
+        }
+      ],
+      "starting_balance": null,
+      "current_balance": null,
+      "balance_note": "New experimental cohort. Account baseline and deployment time not yet verified; prior SURGE trades excluded.",
       "sessions": []
     }
   ],
@@ -548,7 +565,7 @@
       "symbol": "SPY261008C00776000",
       "qty": 15,
       "reason": "STOP",
-      "gross": -60.0,
+      "gross": -60,
       "fees": null,
       "status": "reconciled"
     },
