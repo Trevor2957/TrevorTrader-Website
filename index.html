@@ -627,12 +627,21 @@ footer{padding-top:36px}
 <div class="engine-research-note"><strong>Historical engines:</strong> CORE (parked), SURGE-R (retired), and RANGE (retired) are no longer in the active lineup. Their earlier paper results, including losses, remain in the <a href="daily-review/engine-audit/">full engine audit</a>. <strong>Our research standard:</strong> publish losses alongside wins, keep version histories separate, and never claim an edge before validation.</div>
 </div></section>
 <section class="eot" id="evidence">
-<div class="eot-head">
-<p class="eyebrow">EVIDENCE OVER TIME</p>
-<h2>SURGE Simple v1 paper record.</h2>
-<p>This chart shows SURGE Simple v1 only and starts with its first reconciled paper trade. Results from earlier versions and other engines are not mixed in. Missing results are unavailable, not zero. <a href="daily-review/engine-audit/#range-history">Retired engine history remains published in the full audit record, including losses.</a></p>
+<div class="eot-head"><p class="eyebrow">COMING NEXT · PAPER PERFORMANCE</p><h2>Three engines. Three independent scorecards.</h2><p>Starting October 12, SURGE Simple 1, 2 and 3 will each have their own performance chart and trade history. These are empty templates, not simulated results. We will publish actual trades only after their individual evidence checks pass.</p></div>
+<style id="simple-scorecard-templates">
+.simple-scorecards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:1180px;margin:24px auto}
+.simple-scorecard{background:#0d1d31;border:1px solid #36546d;border-top:3px solid #ffbe61;border-radius:15px;padding:19px;color:#eaf5fc;min-width:0}
+.simple-scorecard:nth-child(2){border-top-color:#4bd6c8}.simple-scorecard:nth-child(3){border-top-color:#b594ff}
+.simple-scorecard h3{font-size:21px;margin:0 0 3px}.simple-scorecard .subtitle{font-size:12px;color:#a9c3d7;margin:0 0 18px}.simple-scorecard .headline{font-size:29px;font-weight:800;letter-spacing:-.6px;margin:0}.simple-scorecard .muted{color:#b3c5d5;font-size:12px}.simple-scorecard .scorestats{font-size:13px;font-weight:700;margin:20px 0 14px}.simple-scorecard .chart-placeholder{height:145px;border-left:1px solid #34506a;border-bottom:1px solid #34506a;position:relative;margin:20px 8px 16px;background:repeating-linear-gradient(to top,transparent 0,transparent 35px,#ffffff0a 36px)}
+.simple-scorecard .chart-placeholder span{position:absolute;top:50%;left:0;right:0;text-align:center;color:#a4b8c8;font-size:13px;transform:translateY(-50%)}.simple-scorecard .footer{border-top:1px solid #30465b;padding-top:13px;margin-top:17px;font-size:12px;color:#a9c3d7}
+@media(max-width:850px){.simple-scorecards{grid-template-columns:1fr}}
+</style>
+<div class="simple-scorecards">
+<article class="simple-scorecard"><h3>SURGE Simple 1</h3><p class="subtitle">2 trades/day maximum · $100 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 1 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
+<article class="simple-scorecard"><h3>SURGE Simple 2</h3><p class="subtitle">8 trades/day maximum · $150 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Separate paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 2 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
+<article class="simple-scorecard"><h3>SURGE Simple 3</h3><p class="subtitle">No daily trade cap · $200 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Separate paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 3 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
 </div>
-<div data-eot-root data-src="data/evidence-history.json"></div>
+<p style="max-width:1180px;margin:0 auto 28px;color:#b5c9d8;font-size:13px">These scorecards show the planned presentation only. Historical CORE, RANGE, SURGE and SURGE-R trades are kept separate in the <a href="daily-review/engine-audit/">engine audit archive</a>.</p>
 </section>
 <section class="simple-review">
 <div>
