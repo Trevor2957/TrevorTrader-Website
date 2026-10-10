@@ -1,732 +1,199 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="TrevorTrader is a trading software platform in development, built around disciplined execution, explainable decisions, risk controls, reconciliation, and evidence-based continuous improvement." name="description"/>
-<title>TrevorTrader | SURGE Simple Paper Trading Research</title>
-<link href="trevortrader-v11.css?v=20260919-2" rel="stylesheet"/>
-<link rel="stylesheet" href="assets/evidence-over-time.css"/>
-<style>
-#works.dashboard-showcase{
-  display:block !important;
-  width:100% !important;
-  box-sizing:border-box !important;
-  padding:88px 0 !important;
-  overflow:hidden !important;
-}
-#works .dashboard-wrap{
-  display:block !important;
-  width:calc(100% - 80px) !important;
-  max-width:1240px !important;
-  margin-left:auto !important;
-  margin-right:auto !important;
-  padding:0 !important;
-  text-align:center !important;
-  box-sizing:border-box !important;
-}
-#works .dashboard-wrap > .eyebrow,
-#works .dashboard-wrap > h2,
-#works .dashboard-lead{
-  width:100% !important;
-  max-width:800px !important;
-  margin-left:auto !important;
-  margin-right:auto !important;
-  text-align:center !important;
-  box-sizing:border-box !important;
-}
-#works .dashboard-single{
-  display:block !important;
-  width:100% !important;
-  max-width:1200px !important;
-  margin:34px auto 0 !important;
-  padding:0 !important;
-  box-sizing:border-box !important;
-}
-#works .dashboard-single img{
-  display:block !important;
-  width:100% !important;
-  max-width:1200px !important;
-  height:auto !important;
-  margin:0 auto !important;
-}
-@media(max-width:900px){
-  #works .dashboard-wrap{width:calc(100% - 36px) !important}
-}
-@media(max-width:560px){
-  #works.dashboard-showcase{padding:60px 0 !important}
-  #works .dashboard-wrap{width:calc(100% - 22px) !important}
-}
-
-/* v13 decision dashboard polish */
-.decision-pill{display:flex;align-items:center;justify-content:center;text-align:center;padding-left:16px;padding-right:16px;min-width:118px}
-.decision-head h3{font-size:32px}
-.tree-card strong{font-size:14px}
-.tree-card span{font-size:11px}
-.tree-exec strong{font-size:12px}
-.tree-exec span{font-size:10.5px}
-.research-top strong{font-size:13px}
-.research-bar strong{font-size:12px}
-.decision-architecture{padding:30px}
-@media(max-width:560px){.decision-pill{justify-content:center;text-align:center;padding-left:16px}.decision-head h3{font-size:26px}}
-
-/* v14 medical-style decision branching */
-.decision-choice-tree{width:min(620px,86%);margin:0 auto;position:relative;padding-top:34px}
-.decision-choice-tree:before{content:"";position:absolute;top:0;left:50%;width:2px;height:18px;transform:translateX(-50%);background:#2abce9}
-.decision-choice-tree:after{content:"";position:absolute;top:18px;left:16.67%;right:16.67%;height:2px;background:linear-gradient(90deg,rgba(39,226,139,.75),rgba(56,189,248,.8),rgba(250,204,21,.72))}
-.decision-choice-tree .tree-decision{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;position:relative}
-.decision-choice-tree .decision-pill{position:relative;width:100%;min-width:0;box-sizing:border-box}
-.decision-choice-tree .decision-pill:before{content:"";position:absolute;left:50%;top:-16px;width:2px;height:14px;transform:translateX(-50%);background:currentColor;opacity:.72}
-.decision-choice-tree .decision-pill:after{content:"";position:absolute;left:50%;top:-5px;width:7px;height:7px;transform:translateX(-50%) rotate(45deg);border-right:2px solid currentColor;border-bottom:2px solid currentColor}
-.decision-outcomes{width:min(620px,86%);display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:9px auto 16px}
-.decision-outcomes .continue-path,.decision-outcomes .stop-path{font-size:9px;letter-spacing:1px;text-align:center;color:#7fa2b8}
-.decision-outcomes .continue-path{grid-column:1}.decision-outcomes .stop-path{grid-column:2;color:#cbbf70}
-.execution-label{width:100%;text-align:left;color:#55c8ff;font-size:9px;letter-spacing:1.6px;font-weight:800;margin:2px 0 8px}
-@media(max-width:560px){.decision-choice-tree,.decision-outcomes{width:100%}.decision-choice-tree .tree-decision{grid-template-columns:repeat(3,1fr);gap:6px}.decision-choice-tree .decision-pill{padding-left:8px;padding-right:8px;font-size:10px}.decision-outcomes{gap:6px}}
-
-.life-trade{margin-top:16px;padding-top:14px;border-top:1px solid rgba(100,150,200,.22);display:flex;flex-direction:column;gap:5px}.life-trade strong{font-size:12px;letter-spacing:.14em;color:#2da8ff}.life-trade span{color:#9fb0c5;font-size:14px}</style>
-<style>
-.daily-dash-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:24px;align-items:stretch}.dash-status{border:1px solid #17517a;border-radius:16px;padding:24px;background:#061a2b}.dash-status h3{font-size:30px;margin:14px 0 2px}.dash-date{color:#7fa2b8;margin:0 0 18px}.status-line{display:flex;align-items:center;gap:9px;color:#d8e9f4}.status-dot{width:9px;height:9px;border-radius:50%;background:#27e28b;box-shadow:0 0 12px rgba(39,226,139,.6)}.dash-note{color:#9eb8c9;font-size:13px;line-height:1.5;margin-top:16px}.dash-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.dash-section-title{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-top:28px;padding-top:24px;border-top:1px solid #16435f}.dash-section-title strong{font-size:12px;letter-spacing:2px;color:#55c8ff}.dash-section-title span{font-size:12px;color:#9bb6c8}.dash-pipeline{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:8px;align-items:stretch;margin-top:14px}.dash-node{border:1px solid #174a69;border-radius:12px;padding:16px 12px;background:#071d30}.dash-node b{display:block;color:#51d2ff;font-size:10px;letter-spacing:1px}.dash-node strong{display:block;font-size:12px;margin-top:6px}.dash-node span{display:block;color:#9eb8c9;font-size:11px;line-height:1.4;margin-top:6px}.dash-arrow{display:grid;place-items:center;color:#42cfff;font-weight:900}.dash-status-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.dash-control{border:1px solid #154563;border-radius:12px;padding:15px;background:#061a2b}.dash-control b{display:block;color:#55c8ff;font-size:9px;letter-spacing:1.4px}.dash-control span{display:block;color:#c4d7e5;font-size:12px;line-height:1.4;margin-top:6px}
-@media(max-width:900px){.daily-dash-grid{grid-template-columns:1fr}.dash-pipeline{grid-template-columns:1fr 1fr}.dash-arrow{display:none}.dash-status-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.dash-pipeline{grid-template-columns:1fr}.dash-status-grid{grid-template-columns:1fr}.dash-section-title{align-items:flex-start;flex-direction:column}}
-
-/* v14 medical-style decision branching */
-.decision-choice-tree{width:min(620px,86%);margin:0 auto;position:relative;padding-top:34px}
-.decision-choice-tree:before{content:"";position:absolute;top:0;left:50%;width:2px;height:18px;transform:translateX(-50%);background:#2abce9}
-.decision-choice-tree:after{content:"";position:absolute;top:18px;left:16.67%;right:16.67%;height:2px;background:linear-gradient(90deg,rgba(39,226,139,.75),rgba(56,189,248,.8),rgba(250,204,21,.72))}
-.decision-choice-tree .tree-decision{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;position:relative}
-.decision-choice-tree .decision-pill{position:relative;width:100%;min-width:0;box-sizing:border-box}
-.decision-choice-tree .decision-pill:before{content:"";position:absolute;left:50%;top:-16px;width:2px;height:14px;transform:translateX(-50%);background:currentColor;opacity:.72}
-.decision-choice-tree .decision-pill:after{content:"";position:absolute;left:50%;top:-5px;width:7px;height:7px;transform:translateX(-50%) rotate(45deg);border-right:2px solid currentColor;border-bottom:2px solid currentColor}
-.decision-outcomes{width:min(620px,86%);display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:9px auto 16px}
-.decision-outcomes .continue-path,.decision-outcomes .stop-path{font-size:9px;letter-spacing:1px;text-align:center;color:#7fa2b8}
-.decision-outcomes .continue-path{grid-column:1}.decision-outcomes .stop-path{grid-column:2;color:#cbbf70}
-.execution-label{width:100%;text-align:left;color:#55c8ff;font-size:9px;letter-spacing:1.6px;font-weight:800;margin:2px 0 8px}
-@media(max-width:560px){.decision-choice-tree,.decision-outcomes{width:100%}.decision-choice-tree .tree-decision{grid-template-columns:repeat(3,1fr);gap:6px}.decision-choice-tree .decision-pill{padding-left:8px;padding-right:8px;font-size:10px}.decision-outcomes{gap:6px}}
-
-.life-trade{margin-top:16px;padding-top:14px;border-top:1px solid rgba(100,150,200,.22);display:flex;flex-direction:column;gap:5px}.life-trade strong{font-size:12px;letter-spacing:.14em;color:#2da8ff}.life-trade span{color:#9fb0c5;font-size:14px}</style>
-<style id="trevortrader-bundled-css">
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#04111f;color:#eef7ff;line-height:1.55}a{color:inherit;text-decoration:none}.nav{height:76px;display:flex;align-items:center;gap:36px;padding:0 5vw;position:sticky;top:0;z-index:20;background:rgba(3,14,27,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(64,177,255,.15)}.brand{font-weight:800;font-size:25px;letter-spacing:-1px;display:flex;align-items:center;gap:8px}.mark{color:#55e96f;font-size:31px}.blue{color:#22aaf4}.nav nav{display:flex;gap:28px;margin-left:auto;font-size:14px;color:#b8ccdc}.nav nav a:hover{color:white}.status{font-size:11px;letter-spacing:1.6px;padding:8px 12px;border:1px solid #1c9ce5;border-radius:999px;color:#62c9ff}.hero{min-height:690px;display:grid;grid-template-columns:1.03fr .97fr;align-items:center;padding:55px 5vw 45px;background:radial-gradient(circle at 75% 20%,#0d3557 0,transparent 36%),linear-gradient(135deg,#03111f,#071b2d 58%,#03101d)}.hero-copy{max-width:690px;z-index:2}.eyebrow{font-size:12px;letter-spacing:3px;color:#55c8ff;font-weight:800;margin:0 0 14px}.hero h1{font-size:clamp(58px,6.2vw,92px);line-height:.94;letter-spacing:-4px;margin:0 0 22px}.hero h2{font-size:26px;margin:0 0 18px}.lead{font-size:19px;color:#c3d5e2;max-width:650px}.sublead{color:#80a1b7}.button{display:inline-flex;gap:28px;align-items:center;margin-top:22px;background:#079cf1;padding:15px 23px;border-radius:9px;font-weight:800;box-shadow:0 12px 35px rgba(0,157,244,.22)}.button:hover{transform:translateY(-1px)}.micro{font-size:12px;color:#7596ab;margin-top:14px}.hero-art{height:590px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:28px;position:relative}.hero-art:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 70px 35px #061524;pointer-events:none}.hero-art img{width:100%;height:100%;object-fit:cover;object-position:52% 50%;filter:saturate(.92) contrast(1.03)}.pillars{display:grid;grid-template-columns:repeat(4,1fr);padding:34px 5vw 42px;background:#06192a;border-top:1px solid #12344c;border-bottom:1px solid #12344c}.pillars article{padding:12px 34px;border-right:1px solid #183a52}.pillars article:last-child{border:0}.icon{font-size:30px;color:#1aafff}.pillars h3{margin:7px 0 4px}.pillars p{font-size:13px;color:#9bb5c8;margin:0}.light{background:#f6f9fc;color:#07182a;padding:78px 5vw}.section-head{text-align:center;max-width:800px;margin:0 auto 45px}.section-head h2,.development h2,.daily h2,.journey h2{font-size:clamp(36px,4vw,56px);letter-spacing:-2px;margin:0 0 12px}.section-head p{color:#5b7182}.dark-eye{color:#078bd7}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1300px;margin:auto}.feature-grid article{background:white;border:1px solid #dce7ef;border-radius:16px;padding:26px;box-shadow:0 10px 30px rgba(10,40,70,.06)}.feature-grid span{font-weight:900;color:#079cf1}.feature-grid h3{margin:14px 0 8px}.feature-grid p{font-size:14px;color:#617485}.works{padding:78px 5vw 84px;background:#04111f}.works .section-head p{color:#55c8ff}.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:center;gap:18px;max-width:1320px;margin:auto}.flow article{background:#071d31;border:1px solid #123c5b;border-radius:16px;padding:24px;min-height:175px}.flow b{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#0aa5fa}.flow i{font-size:28px;color:#4fbdf8;font-style:normal}.flow h3{margin:15px 0 7px}.flow p{font-size:14px;color:#9db7c9}.works blockquote{text-align:center;color:#46bfff;font-size:20px;font-style:italic;margin:46px auto 0}.development{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;background:#f4f8fb;color:#07182a;padding:82px 6vw}.development>div:first-child>p:not(.eyebrow):not(.fine){font-size:17px;color:#4d6374}.current{margin-top:26px;padding:18px 20px;border-radius:12px;background:#e6f4fd;border-left:4px solid #0aa5fa}.fine{font-size:12px;color:#718595}.roadmap{background:white;border:1px solid #dce8f0;border-radius:18px;padding:28px 34px;box-shadow:0 16px 45px rgba(20,55,80,.07)}.roadmap h3{font-size:24px;margin-top:0}.roadmap ol{list-style:none;padding:0;margin:0}.roadmap li{position:relative;padding:0 0 23px 44px;border-left:2px solid #d8e6ef}.roadmap li:before{content:"";position:absolute;left:-8px;top:3px;width:14px;height:14px;border-radius:50%;background:white;border:2px solid #8fb9d5}.roadmap li.done:before{background:#48db6d;border-color:#48db6d}.roadmap li.active:before{background:#079cf1;border-color:#079cf1;box-shadow:0 0 0 5px #dff3ff}.roadmap small{display:block;color:#6e8291;margin-top:3px}.daily{display:grid;grid-template-columns:1.15fr .85fr;gap:55px;padding:82px 6vw;background:linear-gradient(135deg,#071b2d,#03101d)}.daily>div:first-child>p:last-child{font-size:17px;color:#a9c1d1;max-width:720px}.review-card{background:linear-gradient(145deg,#0b2942,#06182a);border:1px solid #17517a;border-radius:18px;padding:34px;box-shadow:0 25px 70px rgba(0,0,0,.22)}.review-card span{font-size:11px;letter-spacing:2px;color:#5fd1ff}.review-card h3{font-size:28px;line-height:1.25}.review-card p{color:#9bb6c8}.journey{text-align:center;padding:90px 5vw;background:radial-gradient(circle at 50% 100%,#123b58,transparent 45%),#04111f}.journey>p:not(.eyebrow){max-width:720px;margin:0 auto;color:#aac1d1;font-size:17px}.ghost{background:transparent;border:1px solid #18a9fa}.foot-brand{justify-content:center}footer{text-align:center;padding:42px 6vw 30px;background:#020b13;border-top:1px solid #123148}footer>p{color:#7893a5}.disclaimer{font-size:11px;max-width:950px;margin:24px auto;line-height:1.6}.copyright{font-size:11px}@media(max-width:900px){.nav nav{display:none}.status{margin-left:auto}.hero{grid-template-columns:1fr;padding-top:55px}.hero-art{height:430px;margin-top:28px}.pillars,.feature-grid{grid-template-columns:1fr 1fr}.pillars article:nth-child(2){border-right:0}.flow{grid-template-columns:1fr}.flow i{transform:rotate(90deg);text-align:center}.development,.daily{grid-template-columns:1fr}.hero h1{letter-spacing:-2px}}@media(max-width:560px){.nav{padding:0 20px}.brand{font-size:21px}.status{display:none}.hero{padding:42px 22px}.hero h1{font-size:54px}.hero h2{font-size:21px}.hero-art{height:330px}.pillars,.feature-grid{grid-template-columns:1fr;padding-left:22px;padding-right:22px}.pillars article{border-right:0;border-bottom:1px solid #183a52;padding:20px 0}.light,.works,.development,.daily,.journey{padding-left:22px;padding-right:22px}.development{gap:36px}.section-head h2,.development h2,.daily h2,.journey h2{font-size:38px}.roadmap{padding:24px 22px}}
-
-/* TrevorTrader public dashboard showcase */
-.dashboard-showcase{
-  padding:96px 0;
-  background:
-    radial-gradient(circle at 50% 25%,rgba(0,190,255,.11),transparent 42%),
-    linear-gradient(180deg,#061522 0%,#071b2a 52%,#06131f 100%);
-  border-top:1px solid rgba(47,188,244,.18);
-  border-bottom:1px solid rgba(47,188,244,.18);
-}
-.dashboard-wrap{text-align:center}
-.dashboard-showcase .section-label{
-  color:#27cfff;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
-  margin-bottom:10px
-}
-.dashboard-showcase h2{margin:0 0 14px;font-size:clamp(34px,5vw,54px);letter-spacing:-1.8px}
-.dashboard-showcase h2 span{color:#25caff}
-.dashboard-lead{
-  max-width:760px;margin:0 auto 34px;color:#9eb4c5;font-size:17px;line-height:1.7
-}
-.dashboard-frame{
-  position:relative;display:block;max-width:1120px;margin:0 auto;
-  border:1px solid rgba(41,203,255,.55);border-radius:18px;overflow:hidden;
-  background:#03111d;box-shadow:0 30px 90px rgba(0,0,0,.45),0 0 44px rgba(0,190,255,.09);
-  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease
-}
-.dashboard-frame:hover{
-  transform:translateY(-3px);border-color:#35d8ff;
-  box-shadow:0 34px 100px rgba(0,0,0,.5),0 0 52px rgba(0,190,255,.14)
-}
-.dashboard-frame img{display:block;width:100%;height:auto}
-.dashboard-open{
-  position:absolute;right:16px;bottom:16px;padding:10px 14px;border-radius:9px;
-  background:rgba(3,17,29,.9);border:1px solid rgba(64,215,255,.55);
-  color:#dff8ff;font-size:12px;font-weight:750;backdrop-filter:blur(10px)
-}
-.dashboard-points{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:980px;margin:24px auto 0
-}
-.dashboard-points div{
-  text-align:left;padding:18px 20px;border:1px solid rgba(56,165,209,.22);
-  border-radius:13px;background:rgba(7,27,42,.72)
-}
-.dashboard-points strong{display:block;color:#eaf8ff;margin-bottom:4px;font-size:14px}
-.dashboard-points span{display:block;color:#809bac;font-size:12px;line-height:1.5}
-.dashboard-note{
-  max-width:880px;margin:20px auto 0;color:#6f899b;font-size:11px;line-height:1.55
-}
-.dashboard-note strong{color:#8fb0c3}
-@media(max-width:760px){
-  .dashboard-showcase{padding:70px 0}
-  .dashboard-points{grid-template-columns:1fr}
-  .dashboard-open{position:static;display:block;border:0;border-top:1px solid rgba(64,215,255,.2);border-radius:0}
-}
-
-
-/* Seamless responsive dashboard viewer */
-body.dashboard-modal-open{overflow:hidden}
-.dashboard-modal{
-  position:fixed;inset:0;z-index:9999;background:rgba(2,10,17,.97);
-  opacity:0;visibility:hidden;pointer-events:none;
-  transition:opacity .18s ease,visibility .18s ease;
-  display:flex;flex-direction:column
-}
-.dashboard-modal.is-open{opacity:1;visibility:visible;pointer-events:auto}
-.dashboard-modal-bar{
-  flex:0 0 auto;min-height:62px;display:grid;grid-template-columns:1fr auto 1fr;
-  align-items:center;gap:12px;padding:10px 18px;
-  background:rgba(5,20,32,.98);border-bottom:1px solid rgba(42,205,255,.28);
-  color:#9fc6d9;font-size:12px;letter-spacing:.4px
-}
-.dashboard-modal-close,.dashboard-modal-x{
-  appearance:none;border:1px solid rgba(53,207,255,.45);background:#082438;color:#e9faff;
-  border-radius:10px;font:inherit;font-weight:750;cursor:pointer
-}
-.dashboard-modal-close{justify-self:start;padding:10px 14px}
-.dashboard-modal-x{justify-self:end;width:40px;height:40px;font-size:24px;line-height:1}
-.dashboard-modal-close:hover,.dashboard-modal-x:hover{border-color:#37d7ff;background:#0b3047}
-.dashboard-modal-content{
-  flex:1;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch;
-  display:flex;align-items:flex-start;justify-content:center;padding:18px
-}
-.dashboard-modal-content img{
-  display:block;width:min(1280px,100%);height:auto;margin:auto;
-  border:1px solid rgba(43,207,255,.35);border-radius:14px;
-  box-shadow:0 24px 80px rgba(0,0,0,.5)
-}
-.simple-pillars h3{font-size:20px}.simple-pillars p{font-size:15px;line-height:1.5}
-
-@media(max-width:700px){
-  .dashboard-modal-bar{
-    grid-template-columns:1fr auto;min-height:58px;padding:8px 10px
-  }
-  .dashboard-modal-bar>span{display:none}
-  .dashboard-modal-close{padding:9px 11px;font-size:12px}
-  .dashboard-modal-x{width:38px;height:38px}
-  .dashboard-modal-content{padding:8px}
-  .dashboard-modal-content img{width:100%;border-radius:10px}
-}
-@media(prefers-reduced-motion:reduce){
-  .dashboard-modal{transition:none}
-}
-
-
-/* Desktop alignment refinement — explicit centered content rail */
-.dashboard-showcase{
-  width:100%;
-  overflow:hidden;
-}
-.dashboard-wrap{
-  width:min(1320px, calc(100% - 10vw));
-  max-width:1320px;
-  margin-left:auto;
-  margin-right:auto;
-  padding-left:0;
-  padding-right:0;
-  text-align:center;
-}
-.dashboard-frame{
-  width:100%;
-  max-width:1280px;
-  margin-left:auto;
-  margin-right:auto;
-}
-.dashboard-frame img{
-  width:100%;
-  max-width:100%;
-  margin:0 auto;
-}
-.dashboard-points{
-  width:min(980px,100%);
-  margin-left:auto;
-  margin-right:auto;
-}
-.current-detail{
-  display:inline-block;
-  margin-top:7px;
-  color:#607d90;
-  font-size:.9em;
-  line-height:1.45;
-}
-
-/* Large desktop / 19–27 inch monitor tuning */
-@media(min-width:1440px){
-  .dashboard-showcase{padding:104px 0}
-  .dashboard-wrap{width:min(1320px, calc(100% - 160px))}
-  .dashboard-frame{max-width:1280px}
-}
-
-/* Tablet */
-@media(max-width:900px){
-  .dashboard-wrap{width:calc(100% - 44px)}
-}
-
-/* Phones */
-@media(max-width:560px){
-  .dashboard-wrap{width:calc(100% - 28px)}
-  .dashboard-showcase{padding-left:0;padding-right:0}
-}
-
-
-/* Final content cleanup */
-.dashboard-showcase .dashboard-lead{max-width:800px}
-.dashboard-showcase .dashboard-note{margin-top:18px}
-.dashboard-frame{margin-top:30px}
-
-
-/* Rebuilt single-dashboard presentation */
-.dashboard-showcase{
-  width:100%;
-  padding:96px 0;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 25%,rgba(0,190,255,.10),transparent 43%),
-    linear-gradient(180deg,#061522 0%,#071b2a 55%,#06131f 100%);
-  border-top:1px solid rgba(47,188,244,.18);
-  border-bottom:1px solid rgba(47,188,244,.18);
-}
-.dashboard-wrap{
-  width:min(1240px,calc(100% - 80px));
-  margin:0 auto;
-  text-align:center;
-}
-.dashboard-wrap>.eyebrow{margin-bottom:8px}
-.dashboard-wrap>h2{margin:0 0 14px}
-.dashboard-lead{
-  max-width:760px;
-  margin:0 auto 34px;
-  color:#9eb4c5;
-  font-size:17px;
-  line-height:1.65;
-}
-.dashboard-single{
-  width:100%;
-  max-width:1200px;
-  margin:0 auto;
-  padding:0;
-  overflow:hidden;
-  border:1px solid rgba(41,203,255,.48);
-  border-radius:18px;
-  background:#03111d;
-  box-shadow:0 30px 90px rgba(0,0,0,.42),0 0 42px rgba(0,190,255,.08);
-}
-.dashboard-single img{
-  display:block;
-  width:100%;
-  height:auto;
-  margin:0;
-}
-.dashboard-single figcaption{
-  padding:13px 18px;
-  border-top:1px solid rgba(41,203,255,.18);
-  color:#718c9e;
-  font-size:11px;
-  line-height:1.5;
-  text-align:center;
-}
-.dashboard-single figcaption strong{color:#9bb8c9}
-@media(min-width:1440px){
-  .dashboard-wrap{width:min(1240px,calc(100% - 160px))}
-}
-@media(max-width:900px){
-  .dashboard-showcase{padding:76px 0}
-  .dashboard-wrap{width:calc(100% - 40px)}
-}
-@media(max-width:560px){
-  .dashboard-showcase{padding:62px 0}
-  .dashboard-wrap{width:calc(100% - 24px)}
-  .dashboard-lead{font-size:15px;margin-bottom:24px}
-  .dashboard-single{border-radius:12px}
-}
-
-/* v10 Daily Intelligence */
-.intelligence{padding:84px 5vw;background:radial-gradient(circle at 50% 0%,rgba(0,169,255,.10),transparent 34%),#04111f;border-top:1px solid #12344c;border-bottom:1px solid #12344c}
-.intel-wrap{max-width:1240px;margin:auto}.intel-head{text-align:center;max-width:820px;margin:0 auto 34px}.intel-head h2{font-size:clamp(38px,4vw,58px);letter-spacing:-2px;margin:0 0 10px}.intel-head p{color:#a9c1d1;font-size:17px;margin:0}.intel-card{border:1px solid #17517a;border-radius:22px;padding:34px;background:linear-gradient(145deg,rgba(8,36,59,.96),rgba(3,16,29,.98));box-shadow:0 28px 80px rgba(0,0,0,.25)}
-.intel-top{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:center}.score{text-align:center}.score-ring{width:250px;aspect-ratio:1;margin:auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#25df86 0 80%,#153b56 80% 100%);position:relative}.score-ring:after{content:"";position:absolute;inset:18px;border-radius:50%;background:#061625}.score-inner{position:relative;z-index:1}.score-inner strong{display:block;font-size:72px;line-height:1;color:#36d9ff;letter-spacing:-4px}.score-inner span{display:block;color:#c8dbea;font-size:12px;letter-spacing:2px;font-weight:800;margin-top:8px}.score-inner b{display:block;font-size:21px;margin-top:16px}.paper-badge{display:inline-block;margin-top:17px;border:1px solid #19b9ff;border-radius:999px;padding:7px 12px;color:#58d5ff;font-size:11px;letter-spacing:1.5px;font-weight:800}.intel-date{font-size:13px;color:#7fa2b8;margin-top:10px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric{border:1px solid #154563;border-radius:14px;padding:20px 12px;text-align:center;background:#061a2b}.metric strong{display:block;font-size:34px;line-height:1.05}.metric span{display:block;color:#9db8ca;font-size:11px;letter-spacing:1px;margin-top:8px}.metric.good strong{color:#27e28b}.metric.bad strong{color:#ff5668}.metric.accent strong{color:#42d6ff}.metric.profit{border-color:#178a5c;background:linear-gradient(145deg,#06271f,#071a28)}.metric.profit strong{color:#27e28b}.metric.profit small{display:block;color:#78a995;font-size:10px;margin-top:5px}.trade-strip{margin-top:28px;padding-top:24px;border-top:1px solid #16435f}.trade-strip-head{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:15px}.trade-strip-head strong{font-size:12px;letter-spacing:2.4px;color:#55c8ff}.trade-strip-head span{font-size:12px;color:#9bb6c8}.trade-marks{display:grid;grid-template-columns:repeat(15,1fr);gap:10px}.trade-mark{height:54px;border-radius:8px;background:linear-gradient(#2ae797,#0cb96a);box-shadow:0 7px 18px rgba(37,223,134,.16);display:grid;place-items:end center;color:#dff9ee;font-size:10px;padding-bottom:5px}.trade-mark.miss{background:linear-gradient(#ff6071,#c83448);box-shadow:0 7px 18px rgba(255,86,104,.14)}.intel-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.fact{padding:17px 18px;border:1px solid #154563;border-radius:13px;background:#061a2b}.fact b{display:block;color:#55c8ff;font-size:10px;letter-spacing:1.8px;margin-bottom:5px}.fact span{font-size:14px;color:#c4d7e5}.intel-disclosure{text-align:center;color:#7797aa;font-size:11px;max-width:940px;margin:22px auto 0;line-height:1.55}
-.learning-loop{margin-top:30px;border:1px solid #17517a;border-radius:22px;padding:30px;background:linear-gradient(135deg,#061a2c,#051522)}.learning-title{text-align:center}.learning-title h3{font-size:28px;margin:5px 0 6px}.learning-title p{color:#9eb8c9;margin:0}.loop-flow{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin:26px 0 24px}.loop-step{position:relative;text-align:center;border:1px solid #174a69;border-radius:12px;padding:17px 8px;background:#071d30}.loop-step:not(:last-child):after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:#42cfff;font-weight:900;z-index:2}.loop-step b{display:block;color:#51d2ff;font-size:11px;letter-spacing:1.2px}.loop-step span{display:block;color:#d5e5ef;font-size:12px;margin-top:5px}.diagnose{display:grid;grid-template-columns:.72fr 1.28fr;gap:20px;align-items:center;padding:20px;border-radius:14px;background:#05131f;border:1px solid #123c57}.diagnose h4{margin:0;color:#eef7ff;font-size:21px}.diagnose h4 span{color:#ff6575}.diagnose-tags{display:flex;flex-wrap:wrap;gap:8px}.diagnose-tags span{padding:7px 10px;border-radius:999px;background:#0a2940;border:1px solid #174c6c;color:#b9d1df;font-size:11px}.learning-note{text-align:center;color:#a9c1d1;font-size:13px;margin:18px auto 0;max-width:920px}.learning-note strong{color:#52d4ff}
-@media(max-width:900px){.intel-top{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.loop-flow{grid-template-columns:repeat(3,1fr)}.loop-step:nth-child(3):after{display:none}.diagnose{grid-template-columns:1fr}.intel-facts{grid-template-columns:1fr}.trade-marks{gap:6px}.score-ring{width:220px}}
-@media(max-width:560px){.intelligence{padding:58px 22px}.intel-card,.learning-loop{padding:20px}.metrics{grid-template-columns:1fr 1fr}.metric strong{font-size:29px}.trade-strip-head{align-items:flex-start;flex-direction:column}.trade-marks{grid-template-columns:repeat(5,1fr)}.loop-flow{grid-template-columns:1fr 1fr}.loop-step:nth-child(3):after{display:block}.loop-step:nth-child(even):after{display:none}.score-ring{width:205px}.score-inner strong{font-size:60px}}
-
-
-/* Daily Intelligence verified trade-outcome visualization */
-.trade-results-live{margin:22px 0 24px;padding:18px;border:1px solid rgba(56,189,248,.30);border-radius:14px;background:rgba(3,19,32,.45)}
-.trade-results-live .trade-strip-head{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:14px}
-.trade-results-live .trade-strip-head strong{font-size:12px;letter-spacing:.12em;color:#eaf6ff}
-.trade-results-live .trade-strip-head span{font-size:11px;color:#8fc9ed;text-align:right}
-.trade-results-live .trade-marks{display:flex;gap:9px;flex-wrap:wrap}
-.trade-results-live .trade-mark{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;border:1px solid rgba(255,255,255,.10)}
-.trade-results-live .trade-mark.win{background:rgba(34,197,94,.16);border-color:rgba(34,197,94,.65);color:#5df58d}
-.trade-results-live .trade-mark.loss{background:rgba(239,68,68,.16);border-color:rgba(239,68,68,.65);color:#ff7777}
-.trade-results-live .trade-mark.neutral{width:72px;background:rgba(56,189,248,.08);border-color:rgba(56,189,248,.35);color:#8fd8ff}
-.trade-results-note{margin-top:12px;font-size:10px;line-height:1.5;color:#72acd0}
-@media(max-width:700px){.trade-results-live .trade-strip-head{align-items:flex-start;flex-direction:column}.trade-results-live .trade-strip-head span{text-align:left}}
-
-/* v12 Strategy #1 decision architecture */
-.decision-architecture{margin-top:28px;padding:28px;border:1px solid rgba(56,189,248,.30);border-radius:18px;background:linear-gradient(145deg,rgba(4,24,40,.82),rgba(3,17,29,.92))}
-.decision-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:end;padding-bottom:22px;border-bottom:1px solid #16435f}.decision-head .eyebrow{margin:0 0 5px}.decision-head h3{font-size:30px;margin:0;letter-spacing:-.8px}.decision-head>p{margin:0;color:#9eb8c9;font-size:13px;line-height:1.6;text-align:right}
-.timeframe-grid{display:grid;grid-template-columns:1fr auto 1fr auto 1.08fr auto 1.15fr;gap:9px;align-items:stretch;margin-top:22px}.tf-card{border:1px solid #174a69;border-radius:13px;padding:18px 13px;background:#061a2b;text-align:center}.tf-card b{display:block;color:#55c8ff;font-size:10px;letter-spacing:1.7px}.tf-card strong{display:block;color:#edf8ff;font-size:13px;margin-top:6px}.tf-card span{display:block;color:#8faabd;font-size:11px;line-height:1.4;margin-top:6px}.tf-card.primary{border-color:rgba(39,226,139,.58);box-shadow:inset 0 0 24px rgba(39,226,139,.035)}.tf-card.primary b{color:#52ec9d}.tf-card.timing{border-style:dashed}.tf-link,.exec-arrow{display:grid;place-items:center;color:#42cfff;font-weight:900}.decision-result{display:flex;justify-content:center;align-items:center;gap:15px;margin:16px auto 0;color:#eaf7ff;font-size:11px;font-weight:800;letter-spacing:1.8px}.decision-result i{color:#2abce9;font-style:normal}
-.execution-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:8px;align-items:stretch;margin-top:20px;padding-top:20px;border-top:1px solid #16435f}.exec-card{padding:15px 11px;border-radius:12px;background:#071d30;border:1px solid #154563;text-align:center}.exec-card b{display:block;color:#55c8ff;font-size:9px;letter-spacing:1.3px}.exec-card strong{display:block;font-size:11px;margin-top:5px}.exec-card span{display:block;color:#91adbf;font-size:10px;line-height:1.4;margin-top:5px}
-.session-research{display:grid;grid-template-columns:.8fr 1.45fr;gap:12px 24px;align-items:center;margin-top:22px;padding:19px 20px;border:1px solid rgba(39,226,139,.28);border-radius:14px;background:linear-gradient(135deg,rgba(5,39,31,.58),rgba(5,24,39,.74))}.session-research b{display:block;color:#52ec9d;font-size:9px;letter-spacing:1.7px}.session-research strong{display:block;margin-top:5px;font-size:13px}.session-windows{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.session-windows span{padding:9px 6px;border:1px solid #17644d;border-radius:9px;text-align:center;color:#d7f8e9;font-size:10px;font-weight:800}.session-research p{grid-column:1/-1;margin:0;color:#8faabd;font-size:10px;text-align:center}
-.decision-architecture .dash-status-grid{margin-top:14px}
-@media(max-width:900px){.decision-head{grid-template-columns:1fr}.decision-head>p{text-align:left}.timeframe-grid,.execution-flow{grid-template-columns:1fr 1fr}.tf-link,.exec-arrow{display:none}.session-research{grid-template-columns:1fr}.session-research p{grid-column:auto}.session-windows{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.decision-architecture{padding:19px}.timeframe-grid,.execution-flow,.session-windows{grid-template-columns:1fr}.decision-head h3{font-size:25px}}
-
-/* Decision Tree Dashboard v2 */
-.decision-architecture{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 0%,rgba(56,189,248,.12),transparent 34%),linear-gradient(145deg,rgba(4,24,40,.94),rgba(3,17,29,.98));box-shadow:0 22px 70px rgba(0,0,0,.22)}
-.decision-tree{margin-top:24px;display:flex;flex-direction:column;align-items:center}
-.tree-row{width:100%;display:flex;justify-content:center;gap:14px;align-items:stretch}
-.tree-card{position:relative;min-width:150px;max-width:205px;flex:1;padding:17px 14px;border-radius:15px;text-align:center;background:#071d30;border:1px solid rgba(85,200,255,.28);box-shadow:0 10px 24px rgba(0,0,0,.16)}
-.tree-card b{display:block;font-size:10px;letter-spacing:1.8px;margin-bottom:6px}.tree-card strong{display:block;font-size:13px;color:#f2f9fd}.tree-card span{display:block;margin-top:6px;font-size:10.5px;line-height:1.4;color:#8faabd}
-.tree-card.context{border-color:rgba(167,139,250,.62);background:linear-gradient(145deg,rgba(77,49,120,.28),#071d30)}.tree-card.context b{color:#b9a1ff}
-.tree-card.confirm{border-color:rgba(56,189,248,.60);background:linear-gradient(145deg,rgba(15,87,128,.30),#071d30)}.tree-card.confirm b{color:#55c8ff}
-.tree-card.primary{border-color:rgba(39,226,139,.62);background:linear-gradient(145deg,rgba(13,100,68,.30),#071d30);box-shadow:0 0 30px rgba(39,226,139,.08)}.tree-card.primary b{color:#52ec9d}
-.tree-card.timing{border-color:rgba(250,204,21,.58);background:linear-gradient(145deg,rgba(113,85,10,.26),#071d30)}.tree-card.timing b{color:#f7d85c}
-.tree-connector{height:26px;width:2px;background:linear-gradient(#2abce9,rgba(42,188,233,.18));position:relative}.tree-connector:after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%) rotate(45deg);width:7px;height:7px;border-right:2px solid #2abce9;border-bottom:2px solid #2abce9}
-.tree-decision{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.decision-pill{min-width:118px;padding:12px 16px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:1.5px;border:1px solid}.decision-pill.call{color:#74f3b2;border-color:rgba(39,226,139,.62);background:rgba(39,226,139,.09)}.decision-pill.put{color:#ff8d9a;border-color:rgba(251,113,133,.62);background:rgba(251,113,133,.09)}.decision-pill.wait{color:#f7d85c;border-color:rgba(250,204,21,.55);background:rgba(250,204,21,.08)}
-.tree-branch{width:min(760px,88%);height:28px;position:relative;margin-top:2px}.tree-branch:before{content:"";position:absolute;top:0;left:16.66%;right:16.66%;height:1px;background:linear-gradient(90deg,rgba(39,226,139,.55),rgba(56,189,248,.55),rgba(250,204,21,.55))}.tree-branch i{position:absolute;top:0;width:1px;height:22px;background:rgba(56,189,248,.45)}.tree-branch i:nth-child(1){left:16.66%}.tree-branch i:nth-child(2){left:50%}.tree-branch i:nth-child(3){right:16.66%}
-.tree-execution{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%}.tree-exec{padding:15px 12px;border-radius:13px;background:#061a2b;border:1px solid #174a69;text-align:left}.tree-exec b{display:inline-grid;place-items:center;width:25px;height:25px;border-radius:8px;background:rgba(56,189,248,.11);color:#55c8ff;font-size:9px}.tree-exec strong{display:block;margin-top:10px;font-size:11px}.tree-exec span{display:block;margin-top:5px;color:#8faabd;font-size:10px;line-height:1.4}
-.research-dashboard{margin-top:22px;padding:18px;border-radius:15px;border:1px solid rgba(167,139,250,.30);background:linear-gradient(135deg,rgba(29,22,57,.42),rgba(5,24,39,.78))}.research-top{display:flex;justify-content:space-between;gap:20px;align-items:end}.research-top b{display:block;color:#b9a1ff;font-size:9px;letter-spacing:1.7px}.research-top strong{display:block;margin-top:5px;font-size:13px}.research-top span{color:#8faabd;font-size:10px}.research-bars{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.research-window{padding:11px 8px;border-radius:10px;text-align:center;border:1px solid rgba(56,189,248,.25);background:rgba(6,26,43,.8)}.research-window strong{display:block;color:#eaf7ff;font-size:11px}.research-window span{display:block;color:#7fa2b8;font-size:9px;margin-top:4px}.research-tags{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;margin-top:12px}.research-tags span{padding:6px 9px;border-radius:999px;background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.16);color:#9eb8c9;font-size:9px}
-@media(max-width:900px){.tree-row{flex-wrap:wrap}.tree-card{min-width:42%}.tree-execution{grid-template-columns:1fr 1fr}.research-top{align-items:flex-start;flex-direction:column}.research-bars{grid-template-columns:1fr 1fr}.tree-branch{display:none}}
-@media(max-width:560px){.tree-card{min-width:100%}.tree-execution,.research-bars{grid-template-columns:1fr}.tree-decision{width:100%}.decision-pill{flex:1;min-width:90px}}
-
-
-/* v14 medical-style decision branching */
-.decision-choice-tree{width:min(620px,86%);margin:0 auto;position:relative;padding-top:34px}
-.decision-choice-tree:before{content:"";position:absolute;top:0;left:50%;width:2px;height:18px;transform:translateX(-50%);background:#2abce9}
-.decision-choice-tree:after{content:"";position:absolute;top:18px;left:16.67%;right:16.67%;height:2px;background:linear-gradient(90deg,rgba(39,226,139,.75),rgba(56,189,248,.8),rgba(250,204,21,.72))}
-.decision-choice-tree .tree-decision{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;position:relative}
-.decision-choice-tree .decision-pill{position:relative;width:100%;min-width:0;box-sizing:border-box}
-.decision-choice-tree .decision-pill:before{content:"";position:absolute;left:50%;top:-16px;width:2px;height:14px;transform:translateX(-50%);background:currentColor;opacity:.72}
-.decision-choice-tree .decision-pill:after{content:"";position:absolute;left:50%;top:-5px;width:7px;height:7px;transform:translateX(-50%) rotate(45deg);border-right:2px solid currentColor;border-bottom:2px solid currentColor}
-.decision-outcomes{width:min(620px,86%);display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:9px auto 16px}
-.decision-outcomes .continue-path,.decision-outcomes .stop-path{font-size:9px;letter-spacing:1px;text-align:center;color:#7fa2b8}
-.decision-outcomes .continue-path{grid-column:1}.decision-outcomes .stop-path{grid-column:2;color:#cbbf70}
-.execution-label{width:100%;text-align:left;color:#55c8ff;font-size:9px;letter-spacing:1.6px;font-weight:800;margin:2px 0 8px}
-@media(max-width:560px){.decision-choice-tree,.decision-outcomes{width:100%}.decision-choice-tree .tree-decision{grid-template-columns:repeat(3,1fr);gap:6px}.decision-choice-tree .decision-pill{padding-left:8px;padding-right:8px;font-size:10px}.decision-outcomes{gap:6px}}
-
-.life-trade{margin-top:16px;padding-top:14px;border-top:1px solid rgba(100,150,200,.22);display:flex;flex-direction:column;gap:5px}.life-trade strong{font-size:12px;letter-spacing:.14em;color:#2da8ff}.life-trade span{color:#9fb0c5;font-size:14px}</style>
-<style id="pdsa-public-css">
-.pdsa-public{padding:92px 0;background:radial-gradient(circle at 50% 10%,rgba(24,166,255,.12),transparent 38%),linear-gradient(180deg,#03101d,#061827);border-top:1px solid rgba(51,190,255,.18);border-bottom:1px solid rgba(51,190,255,.18)}
-.pdsa-public-wrap{width:min(1320px,calc(100% - 10vw));margin:0 auto;text-align:center}.pdsa-public h2{font-size:clamp(36px,4.8vw,58px);letter-spacing:-2px;margin:0 0 14px}.pdsa-public-lead{max-width:900px;margin:0 auto 22px;color:#9fb7c8;font-size:17px;line-height:1.7}.pdsa-preview-label{max-width:980px;margin:0 auto 20px;padding:12px 16px;border:1px solid rgba(250,204,21,.42);background:rgba(250,204,21,.06);border-radius:12px;display:flex;gap:12px;justify-content:center;align-items:center;color:#c8d7e1;font-size:12px}.pdsa-preview-label strong{color:#facc15;letter-spacing:.12em}.pdsa-public-frame{margin:0 auto;max-width:1280px;border:1px solid rgba(55,205,255,.48);border-radius:18px;overflow:hidden;background:#03111d;box-shadow:0 30px 90px rgba(0,0,0,.45)}.pdsa-public-frame img{display:block;width:100%;height:auto}.pdsa-public-frame figcaption{padding:13px 18px;color:#839eaf;font-size:11px;line-height:1.55;border-top:1px solid rgba(55,205,255,.16);text-align:left}.pdsa-public-frame figcaption strong{color:#b8cfdd}.pdsa-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px auto 0;max-width:1180px}.pdsa-cards>div{text-align:left;padding:18px;border:1px solid rgba(47,165,220,.28);border-radius:13px;background:rgba(6,26,43,.78)}.pdsa-cards b{display:block;color:#4bcaff;font-size:10px;letter-spacing:.14em}.pdsa-cards strong{display:block;margin:5px 0;color:#edf8ff;font-size:15px}.pdsa-cards span{display:block;color:#8fa9ba;font-size:12px;line-height:1.5}@media(max-width:900px){.pdsa-cards{grid-template-columns:1fr 1fr}.pdsa-public-wrap{width:calc(100% - 40px)}}@media(max-width:560px){.pdsa-public{padding:62px 0}.pdsa-public-wrap{width:calc(100% - 24px)}.pdsa-cards{grid-template-columns:1fr}.pdsa-preview-label{align-items:flex-start;flex-direction:column;text-align:left}.pdsa-public-lead{font-size:15px}}
-.life-trade{margin-top:16px;padding-top:14px;border-top:1px solid rgba(100,150,200,.22);display:flex;flex-direction:column;gap:5px}.life-trade strong{font-size:12px;letter-spacing:.14em;color:#2da8ff}.life-trade span{color:#9fb0c5;font-size:14px}</style>
-<style id="simple-mobile-final">
-.simple-pillars{grid-template-columns:repeat(3,1fr);max-width:none}
-.simple-review{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:70px 6vw;background:#06192a;border-top:1px solid #12344c;border-bottom:1px solid #12344c}
-.simple-review>div{max-width:720px}.simple-review h2,.professor-simple h2{font-size:clamp(32px,4vw,50px);letter-spacing:-1.5px;margin:4px 0 12px}.simple-review p:not(.eyebrow),.professor-simple p:not(.eyebrow){color:#a9c1d1;font-size:17px;line-height:1.65}
-.professor-simple{padding:70px 6vw;background:#07172a;border-top:1px solid #173653}
-.youtube-coming{max-width:1320px;margin:0 auto}.youtube-coming img{display:block;width:100%;height:auto;border-radius:20px;border:1px solid #1a4a6c;background:#04111f}
-footer{padding-top:36px}
-@media(max-width:900px){
- .simple-pillars{grid-template-columns:1fr 1fr 1fr}
- .simple-review{align-items:flex-start;flex-direction:column}
-
-}
-@media(max-width:700px){
- body{font-size:16px}
- .nav{height:64px;padding:0 16px}.brand{font-size:20px}.mark{font-size:25px}
- .hero{padding:34px 18px 28px}.hero h1{font-size:clamp(42px,13vw,58px);line-height:.98}.hero h2{font-size:20px}.lead{font-size:16px}.sublead{font-size:14px}
- .hero-art{height:280px;border-radius:18px}
- .simple-pillars{grid-template-columns:1fr;padding:18px}
- .simple-pillars article{padding:16px 0;border-right:0;border-bottom:1px solid #183a52}
- .development{padding:56px 18px;gap:28px}.development h2{font-size:34px}.roadmap{padding:20px}
- .simple-review{padding:52px 18px;gap:12px}.simple-review h2,.professor-simple h2{font-size:32px}.simple-review p:not(.eyebrow),.professor-simple p:not(.eyebrow){font-size:16px}
- .simple-review .button{margin-top:8px;width:100%;justify-content:space-between}
- .journey{padding:58px 18px}.journey h2{font-size:34px}
- .professor-simple{padding:52px 18px}
- footer{padding:34px 18px 24px}.disclaimer{font-size:11px}
-}
-@media(max-width:390px){
- .hero h1{font-size:40px}.button{padding:13px 16px}
-}
-.life-trade{margin-top:16px;padding-top:14px;border-top:1px solid rgba(100,150,200,.22);display:flex;flex-direction:column;gap:5px}.life-trade strong{font-size:12px;letter-spacing:.14em;color:#2da8ff}.life-trade span{color:#9fb0c5;font-size:14px}</style>
-<style id="strategy-validation-css">
-.strategy-validation{
-  padding:88px 5vw;
-  background:
-    radial-gradient(circle at 50% 0%,rgba(0,169,255,.10),transparent 34%),
-    #04111f;
-  border-top:1px solid #12344c;
-  border-bottom:1px solid #12344c
-}
-.strategy-wrap{max-width:1240px;margin:0 auto}
-.strategy-head{text-align:center;max-width:820px;margin:0 auto 38px}
-.strategy-head h2{font-size:clamp(36px,4.5vw,56px);letter-spacing:-2px;margin:0 0 12px}
-.strategy-head>p:not(.eyebrow){color:#a9c1d1;font-size:17px;margin:0}
-.strategy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.current-validation-grid{grid-template-columns:repeat(3,minmax(0,300px));justify-content:center}.current-validation-grid .strategy-card{text-align:center}.current-validation-grid .strategy-flow{justify-content:center}
-.strategy-card{
-  position:relative;overflow:hidden;
-  border:1px solid #17517a;border-radius:20px;padding:28px;
-  background:linear-gradient(145deg,#08243a,#051522);
-  box-shadow:0 24px 65px rgba(0,0,0,.22)
-}
-.strategy-number{font-size:10px;letter-spacing:2px;color:#55c8ff;font-weight:800}
-.strategy-card h3{font-size:27px;margin:7px 0 8px}
-.strategy-desc{color:#9eb8c9;font-size:14px;line-height:1.6;min-height:68px}
-.validation-badge{
-  display:inline-block;margin-top:4px;padding:6px 10px;border-radius:999px;
-  border:1px solid rgba(39,226,139,.55);background:rgba(39,226,139,.08);
-  color:#63eca8;font-size:9px;letter-spacing:1.5px;font-weight:800
-}
-.strategy-chart{
-  margin:24px 0 18px;padding:18px 12px 10px;
-  border:1px solid rgba(56,189,248,.20);border-radius:14px;
-  background:rgba(3,17,29,.55)
-}
-.strategy-chart svg{display:block;width:100%;height:auto}
-.strategy-path-label{font-size:10px;letter-spacing:1.3px;color:#55c8ff;font-weight:800;margin:18px 0 9px}
-.strategy-exit-profile{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 4px}
-.strategy-exit-profile div{padding:10px 8px;border:1px solid #174a69;border-radius:10px;background:rgba(3,17,29,.5)}
-.strategy-exit-profile small{display:block;color:#86a4b7;font-size:8px;font-weight:800;letter-spacing:.1em}
-.strategy-exit-profile strong{display:block;margin-top:3px;font-size:17px}
-.strategy-exit-profile .profit strong{color:#63eca8}
-.strategy-exit-profile .stop strong{color:#ff9aa6}
-.strategy-flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.flow-chip{
-  padding:8px 10px;border-radius:9px;border:1px solid #174a69;
-  background:#071d30;color:#cce0eb;font-size:10px;font-weight:750
-}
-.flow-chip.action{border-color:rgba(39,226,139,.55);color:#68edaa;background:rgba(39,226,139,.07)}
-.flow-chip.put{border-color:rgba(251,113,133,.50);color:#ff9aa6;background:rgba(251,113,133,.07)}
-.flow-arrow{color:#42cfff;font-weight:900}
-.strategy-mirror{
-  margin-top:18px;padding-top:16px;border-top:1px solid #16435f;
-  color:#91adbf;font-size:12px;line-height:1.55
-}
-.strategy-mirror strong{color:#d9ebf5}
-.strategy-question{
-  margin:24px auto 0;max-width:980px;text-align:center;padding:18px 22px;
-  border:1px solid rgba(56,189,248,.24);border-radius:14px;background:#061a2b;
-  color:#9eb8c9;font-size:13px
-}
-.strategy-question strong{color:#55c8ff}
-@media(max-width:800px){
-  .strategy-grid{grid-template-columns:1fr}
-  .strategy-desc{min-height:0}
-}
-@media(max-width:560px){
-  .strategy-validation{padding:58px 18px}
-  .strategy-card{padding:20px}
-  .strategy-card h3{font-size:24px}
-  .strategy-head>p:not(.eyebrow){font-size:15px}
-  .strategy-flow{gap:5px}
-  .flow-chip{font-size:9px;padding:7px 8px}
-}
-
-/* Future customer platform positioning */
-.platform-future{padding:88px 5vw;background:#f6f9fc;color:#07182a}
-.platform-future .platform-wrap{max-width:1200px;margin:0 auto;text-align:center}
-.platform-future h2{font-size:clamp(36px,4vw,56px);letter-spacing:-2px;margin:0 0 14px}
-.platform-future .platform-lead{max-width:820px;margin:0 auto 34px;color:#536b7c;font-size:17px;line-height:1.65}
-.platform-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:left}
-.platform-card{background:#fff;border:1px solid #dce7ef;border-radius:16px;padding:24px;box-shadow:0 10px 30px rgba(10,40,70,.06)}
-.platform-card b{display:block;color:#079cf1;font-size:11px;letter-spacing:1.5px;margin-bottom:8px}
-.platform-card h3{margin:0 0 8px;font-size:19px}
-.platform-card p{margin:0;color:#617485;font-size:14px;line-height:1.55}
-.platform-future .platform-note{max-width:900px;margin:28px auto 0;padding:16px 18px;border-radius:12px;background:#eaf5fc;color:#4f6a7c;font-size:13px;line-height:1.55}
-@media(max-width:900px){.platform-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.platform-future{padding:62px 22px}.platform-grid{grid-template-columns:1fr}}
-</style>
-<style id="engine-brand-clarity">
-.engine-subtitle{font-size:.52em;letter-spacing:1.4px;font-weight:700;opacity:.72;margin-left:6px;white-space:nowrap}
-.engine-group{max-width:1080px;margin:0 auto 30px;padding:26px;border:1px solid rgba(56,189,248,.18);border-radius:20px;background:rgba(5,25,42,.42)}
-.engine-group-head{max-width:980px;margin:0 auto 18px;padding:0 2px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.engine-group-head h3{margin:4px 0 0;font-size:22px}
-.engine-label{display:block;font-size:9px;letter-spacing:1.8px;color:#55c8ff;font-weight:800}
-.engine-status{flex:none}
-.core-engine-grid{max-width:980px!important;margin:0 auto!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important}
-.core-engine-grid .strategy-card{min-width:0}
-.surge-r-engine-card{max-width:980px!important;margin:0 auto!important}
-.surge-r-engine-main{grid-template-columns:minmax(0,1fr) 260px!important}
-.strategy-card{border-radius:16px;padding:24px}
-.strategy-card h3{font-size:24px}
-.strategy-desc{min-height:0}
-.strategy-head{margin-bottom:30px}
-.strategy-head h2{font-size:clamp(32px,4vw,50px)}
-.strategy-head>p:not(.eyebrow){font-size:15px;line-height:1.6}
-.strategy-question{max-width:980px}
-@media(max-width:800px){
-  .engine-group{padding:20px}
-  .core-engine-grid{grid-template-columns:1fr!important}
-  .surge-r-engine-main{grid-template-columns:1fr!important}
-}
-@media(max-width:560px){
-  .engine-group{padding:16px;border-radius:16px}
-  .engine-group-head{align-items:flex-start;flex-direction:column}
-  .engine-subtitle{display:block;margin:4px 0 0;font-size:.46em}
-}
-</style><style id="engine-lineup-20261004">
-.engine-launch{padding:24px;border:1px solid #2b435b;border-radius:18px;background:linear-gradient(115deg,#0c2338,#10202d);display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:28px}.engine-launch p{margin:6px 0 0;color:#b2c7d6}.engine-launch b{color:#ffca75}.engine-launch time{font-size:12px;color:#adc1ce;white-space:nowrap}.engine-lineup{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.engine-tile{--engine:#56aeff;min-width:0;position:relative;border:1px solid #294158;border-top:4px solid var(--engine);border-radius:20px;background:linear-gradient(155deg,#0b2237,#05131f);padding:28px;display:flex;flex-direction:column;box-shadow:0 16px 45px #0003}.engine-tile.surge-r{--engine:#48dfc6}.engine-tile.surge{--engine:#ffbe61}.engine-tile .family{color:var(--engine);font-size:11px;letter-spacing:2px;font-weight:800}.engine-tile h3{font-size:42px;letter-spacing:-2px;margin:12px 0 0;line-height:1.1}.engine-tile h3 sup{font-size:14px;vertical-align:top;line-height:2}.engine-tile .technical{color:var(--engine);font-weight:700;margin:8px 0}.engine-tile .tagline{font-size:18px;color:#edf5fc;min-height:56px;margin:10px 0 20px}.engine-tile .paper-status{font-size:10px;letter-spacing:1.4px;align-self:flex-start;color:var(--engine);border:1px solid var(--engine);background:#ffffff05;border-radius:30px;padding:6px 10px}.engine-tile h4{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--engine);margin:24px 0 8px}.engine-tile p{font-size:14px;color:#afc5d5;margin:8px 0;line-height:1.65}.engine-experiment{margin:20px 0 0;padding:15px;border-radius:12px;background:#ffffff04;border:1px solid #ffffff16}.engine-experiment strong{display:block;font-size:17px}.engine-experiment small{display:block;color:#91aabd;font-size:11px;letter-spacing:.6px;margin-bottom:4px}.engine-tile details{margin-top:18px;border-top:1px solid #ffffff17;padding-top:14px}.engine-tile summary{cursor:pointer;color:var(--engine);font-weight:700;font-size:13px;padding:4px 0}.engine-tile summary:focus-visible{outline:2px solid var(--engine);outline-offset:5px}.engine-chart{background:#03101a;border-radius:12px;padding:10px;margin-top:14px}.engine-chart svg{display:block;width:100%;height:auto}.engine-chart figcaption{font-size:11px;color:#9cb5c8;margin-top:8px}.engine-evidence{margin-top:auto;padding-top:8px}.engine-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px}.engine-metrics div{padding:10px;background:#ffffff04;border-radius:8px}.engine-metrics dt{font-size:10px;color:#8faabc}.engine-metrics dd{margin:4px 0 0;font-size:12px;color:#d4e5ef}.engine-history{font-size:12px;color:#93adbf;border-top:1px solid #254359;padding-top:16px;margin-top:26px}.engine-research-note{margin-top:28px;padding:22px;border:1px solid #2c465c;border-radius:14px;color:#adc5d5;font-size:13px;line-height:1.7}.engine-research-note strong{color:#eef7ff}.engine-tile a{color:var(--engine);text-decoration:underline;text-underline-offset:4px}.engine-mini-nav{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}.engine-mini-nav a{padding:8px 14px;border:1px solid #cad9e4;border-radius:30px;font-size:13px;font-weight:750;color:#19344c}.engine-tile{scroll-margin-top:100px}
-.engine-tile .engine-instrument{font-size:12px;color:#c4d8e5;margin:4px 0 0}.engine-steps{margin:6px 0 4px;padding-left:20px}.engine-steps li{font-size:14px;color:#afc5d5;line-height:1.6;margin:6px 0}.engine-steps li::marker{color:var(--engine);font-weight:800}.engine-steps strong{color:#edf5fc}.engine-tile .engine-fill-caveat{padding:12px;border-left:2px solid var(--engine);background:#ffbe6109;font-size:12px;color:#d8cbb3}
-@media(max-width:1000px){.engine-lineup{grid-template-columns:1fr}.engine-tile .tagline{min-height:0}.engine-launch{align-items:flex-start;flex-direction:column;gap:12px}.engine-tile{padding:26px}.engine-evidence{margin-top:8px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
-<style id="homepage-consistency-20261005">
-.mobile-daily-link{display:none}
-.hero-research-panel{background:radial-gradient(circle at 50% 25%,rgba(34,170,244,.18),transparent 38%),linear-gradient(145deg,#071d31,#03101d);border:1px solid rgba(85,200,255,.22);padding:34px}
-.hero-research-panel:after{display:none}
-.hero-process{width:min(100%,520px);display:grid;gap:12px}
-.hero-process-label{font-size:10px;letter-spacing:2.4px;color:#55c8ff;font-weight:800;margin-bottom:4px}
-.hero-process-step{display:grid;grid-template-columns:42px 1fr;column-gap:12px;align-items:center;padding:16px 18px;border:1px solid rgba(85,200,255,.18);border-radius:12px;background:rgba(255,255,255,.025)}
-.hero-process-step b{grid-row:1/3;color:#55c8ff;font-size:22px}
-.hero-process-step strong{font-size:13px;letter-spacing:1px}
-.hero-process-step small{color:#8eabbf;font-size:11px;line-height:1.45;margin-top:3px}
-.hero-process>p{margin:8px 0 0;text-align:center;color:#55c8ff;font-size:11px;font-weight:800;letter-spacing:2px}
-@media(max-width:900px){
-  .mobile-daily-link{display:inline-flex;margin-left:auto;font-size:13px;font-weight:750;color:#bfe8ff;border:1px solid rgba(85,200,255,.45);border-radius:999px;padding:7px 11px}
-  .status{margin-left:0}
-}
-@media(max-width:560px){
-  .mobile-daily-link{font-size:12px;padding:7px 10px}
-  .hero-research-panel{padding:20px;height:auto;min-height:330px}
-}
-</style>
-<style id="tt-site-nav">.nav nav{display:flex!important;flex-wrap:wrap;gap:8px 20px;align-items:center}.nav nav a{font-size:13px;white-space:nowrap}.nav nav a[aria-current="page"]{color:#fff;text-decoration:underline;text-underline-offset:6px}.tt-disclaimer{font-size:12px;max-width:900px;margin:18px auto;color:#b3c7d5;line-height:1.7}@media(max-width:900px){.nav{height:auto;min-height:76px;flex-wrap:wrap;gap:5px;padding:12px 18px}.nav nav{margin-left:0;width:100%;gap:8px 16px}.nav nav a{font-size:12px}}@media(max-width:390px){.nav nav{gap:8px 12px}.nav nav a{font-size:11px}}</style><link rel="icon" type="image/svg+xml" href="favicon.svg"><meta property="og:type" content="website"><meta property="og:title" content="TrevorTrader | SURGE Simple Paper Trading Research"><meta property="og:description" content="SURGE Simple paper trading research in three independent simulated accounts. Verified evidence, wins and losses, and an unvalidated trading edge."><meta property="og:image" content="https://trevortrader.com/assets/trevortrader-ai-bot-v1.png"></head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrevorTrader | Scan. Enter. Exit. Momentum Trading, Automated With Discipline.</title>
+<meta name="description" content="Meet the TrevorTrader BOT, a rules-based momentum trading system that scans, enters and exits with discipline. In development and paper testing.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TrevorTrader | Scan. Enter. Exit.">
+<meta property="og:description" content="Momentum trading, automated with discipline. In development and paper testing.">
+<meta property="og:image" content="https://trevortrader.com/assets/trevortrader-ai-bot-v1.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tt-site-2026.css?v=20261010">
+</head>
 <body>
-<aside style="background:#0b2941;border-bottom:1px solid #1f6282;padding:13px 20px;text-align:center;color:#d7f5ff;font:600 14px/1.5 system-ui,sans-serif">OCT 9 RESET &nbsp;·&nbsp; All engines stopped &nbsp;·&nbsp; Next paper experiment: <strong style="color:#ffca75">SURGE Simple</strong>, one strategy in three paper accounts &nbsp;·&nbsp; <a style="color:#6fdcff;text-decoration:underline" href="daily-review/2026-10-08/">Last published results: October 8 →</a></aside>
-<header class="nav"><a class="brand" href="#top" aria-label="TrevorTrader home" style="gap:0"><span class="mark" style="margin-right:8px">↗</span>Trevor<span class="blue">Trader</span></a><nav aria-label="Main navigation"><a href="#top" aria-current="page">Home</a><a href="daily-review/">Daily Reviews</a><a href="#strategies">How it works</a><a href="#journey">Journey</a><a href="daily-review/engine-audit/">Audit archive</a></nav></header>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="TrevorTrader home"><span class="mark">↗</span><span>Trevor<span class="blue">Trader</span></span></a>
+    <nav aria-label="Main navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#performance">Performance</a>
+      <a href="#watch">Watch</a>
+    </nav>
+    <a class="btn btn-primary" href="#coming-soon">Coming soon</a>
+  </div>
+</header>
+
 <main id="top">
 <section class="hero">
-<div class="hero-copy">
-<p class="eyebrow">RULE-BASED TRADING SOFTWARE · IN DEVELOPMENT</p>
-<h1>Trade the strategy.<br/><span class="blue">Without emotion.</span></h1>
-<p class="lead">TrevorTrader is a trading software platform in development, designed to turn defined strategies into disciplined, traceable execution while learning from verified market evidence.</p>
-<p class="sublead">Real data. Defined rules. Risk controls. Explainable decisions. A better process.</p>
-<a class="button" href="#evidence">See Paper Results <span>→</span></a>
-<p class="micro">One strategy. Three paper settings. One evidence-first process.</p>
-</div>
-<div class="hero-art"><img alt="TrevorTrader trading bot at a trading workstation" src="assets/trevortrader-ai-bot-v1.png" loading="eager"/></div>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">TrevorTrader</p>
+      <h1>SCAN. <span class="grad">ENTER.</span> EXIT.</h1>
+      <p class="tagline">Momentum Trading. <span class="grad">Automated With Discipline.</span></p>
+      <p class="lede">Meet the TrevorTrader BOT, a rules-based trading system designed to discover momentum opportunities, identify entries, and manage exits.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#how-it-works">See how it works <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#coming-soon">Coming soon</a>
+      </div>
+      <p class="status-pill"><span class="dot"></span><span>Current status: In Development <span class="sep" aria-hidden="true">|</span> Paper Testing</span></p>
+      <p class="hero-note">Not available to buy. No live automated trading is offered.</p>
+    </div>
+    <div class="hero-art">
+      <figure class="botframe"><img src="assets/trevortrader-ai-bot-v1.png" width="1343" height="583" alt="The TrevorTrader bot at its trading desk" fetchpriority="high"></figure>
+      <div class="flowcard" role="img" aria-label="Scan, then entry, then exit">
+        <div style="--c:var(--cyan)"><i>1</i><b>SCAN</b><small>Find the movers</small></div>
+        <span aria-hidden="true">→</span>
+        <div style="--c:var(--green)"><i>2</i><b>ENTRY</b><small>Pick the moment</small></div>
+        <span aria-hidden="true">→</span>
+        <div style="--c:var(--amber)"><i>3</i><b>EXIT</b><small>Protect the trade</small></div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="pillars simple-pillars">
-<article><div class="icon">↗</div><h3>Trade</h3><p>Follow defined strategy and risk rules.</p></article>
-<article><div class="icon">◎</div><h3>Learn</h3><p>Turn every verified paper trade into evidence.</p></article>
-<article><div class="icon">↻</div><h3>Improve</h3><p>Backtest and validate changes before promotion.</p></article>
+
+<section class="split" id="how-it-works">
+  <span id="system" aria-hidden="true"></span><span id="strategies" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps. <span class="grad">One system.</span></h2>
+      <p class="lede">Established momentum-trading principles, applied by software with the same rules on every trade.</p>
+    </div>
+    <ol class="steps3">
+      <li class="card" style="--c:var(--cyan)"><span class="n">1</span><span class="k">SCAN</span><h3>Find the movers</h3><p>Low-float, high-relative-volume stocks making strong moves.</p></li>
+      <li class="card" style="--c:var(--green)"><span class="n">2</span><span class="k">ENTRY</span><h3>Pick the moment</h3><p>Momentum setups and breakouts, found with clearly defined rules.</p></li>
+      <li class="card" style="--c:var(--amber)"><span class="n">3</span><span class="k">EXIT</span><h3>Protect the trade</h3><p>Stops, profit targets and risk managed the same way every time.</p></li>
+    </ol>
+  </div>
 </section>
-<section class="development" id="development"><div><p class="eyebrow dark-eye">CURRENT DEVELOPMENT</p><h2>Defined strategies.<br/><span class="blue">Measured honestly.</span></h2><p>One strategy at a time. Each setting has its own paper account and version history, so every result belongs to exactly one set of rules.</p></div><div class="roadmap"><h3>Evidence before promotion.</h3><ol><li class="done"><strong>Separate accounts</strong><small>Keep each experiment’s rules and results distinct.</small></li><li class="active"><strong>Collect paper evidence</strong><small>Record trades, skipped setups, wins and losses.</small></li><li><strong>Review the results</strong><small>Check the record and keep missing information visible.</small></li><li><strong>Improve with evidence</strong><small>Test changes before adopting them.</small></li></ol></div></section>
-<section class="strategy-validation" id="strategies"><div class="strategy-wrap">
-<div class="strategy-head"><p class="eyebrow">TREVORTRADER™ ENGINE LAB</p><h2>One strategy. Three settings. Clear evidence.</h2><p>October 9, 2026 reset: SURGE Simple is the only strategy being developed. From October 12 it runs in three separate paper accounts testing different entry signals with the same exit framework. Simple 1 enters on a 1-minute close at a new high of day; Simple 2 enters on an intrabar pullback breakout; Simple 3 enters on a 1-minute close above the pullback trigger. Simple 1 also uses a stricter Ross-style scanner: $3–$20, up 30% or more, at least 5× normal volume for the time of day, and a float under 5 million shares. Daily limits are 2 positions and $100 (Simple 1), 8 positions and $150 (Simple 2), and no daily position cap with $200 (Simple 3). Published results cover SURGE Simple v1 only. CORE is parked; SURGE-R and RANGE are retired. Previous results remain available in the audit history.</p></div>
-<div class="engine-lineup" style="display:grid;grid-template-columns:minmax(0,1fr);max-width:850px;margin:0 auto">
-<article class="engine-tile surge" id="engine-surge"><span class="family">SOLE DEVELOPMENT FOCUS · PAPER ONLY</span><h3>SURGE Simple v1</h3><p class="technical">Small-Cap Momentum Research</p><p class="engine-instrument"><strong>Instrument:</strong> US stocks priced $2–$10 (Simple 1: $3–$20)</p><p class="tagline">One clear setup. Defined risk. Every outcome recorded.</p><span class="paper-status">INSTALLED · SCHEDULED · FIRST PAPER SESSION PENDING</span>
-<p>The simplified rules look for stocks up at least 10% on 500,000+ shares traded (Simple 1: up 30%+, 5× relative volume, float under 5 million shares), then a completed 1-minute close above the day's previous highs. When multiple stocks qualify, the largest percentage gainer is considered first.</p>
-<p>It takes at most two filled trades per day. Existing spread checks, position sizing, stop/target/time exits, the $100 daily loss gate, and paper-only safeguards are retained. SURGE Simple v1 has not yet established a trading edge.</p>
-<h4>How it works</h4><ol class="engine-steps"><li><strong>Scan:</strong> Simple 2 and 3: stocks $2–$10, up 10%+, with 500K+ shares traded. Simple 1 (Ross scanner): $3–$20, up 30%+, 500K+ shares, 5× relative volume, float under 5M.</li><li><strong>Signal:</strong> Simple 1 buys a 1-minute close at a new high of day; Simple 2 buys an intrabar pullback breakout; Simple 3 waits for a 1-minute close above the pullback trigger. Biggest gainer goes first.</li><li><strong>Buy:</strong> a limit order at the ask, risking about $20, canceled if not filled in 5 seconds.</li><li><strong>Exit:</strong> at 2× the risk, the stop, or 10 minutes, whichever comes first. Everything is flat by 12:55 PT.</li><li><strong>Limits:</strong> one position at a time. Simple 1: up to 2 positions a day, $100 daily loss limit. Simple 2: up to 8, $150. Simple 3: no daily position cap, $200.</li></ol>
-<div class="engine-evidence"><p><strong>Research status:</strong> code built and tested offline; scheduled for its first prospective paper session. Results from October 5–9 belong to earlier SURGE versions and must not be presented as SURGE Simple v1 performance.</p><p>Fees pending · Paper, not live · Edge unvalidated.</p><p><a href="daily-review/engine-audit/#engine-surge">SURGE historical audit and prior-version results</a></p></div></article>
-</div>
-<figure class="entry-chart" aria-labelledby="entry-chart-title">
-<style>
-.entry-chart{max-width:1100px;margin:34px auto 26px;padding:0}
-.entry-chart h3{margin:0 0 6px;font-size:clamp(22px,3vw,30px);color:#eef6fc;text-align:center}
-.entry-chart .sub{margin:0 0 18px;color:#9eb1c5;font-size:15px;text-align:center}
-.entry-chart img{display:block;width:100%;height:auto;border-radius:16px}
-.entry-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
-.entry-card{border:2px solid var(--c);border-radius:14px;background:#061426;padding:16px 18px}
-.entry-card h4{margin:0 0 6px;font-size:17px;color:var(--c)}
-.entry-card h4 span{color:#eef6fc;font-weight:700}
-.entry-card p{margin:0;color:#b8cbd9;font-size:15px;line-height:1.5}
-.entry-chart figcaption{margin-top:14px;color:#9eb1c5;font-size:13px;text-align:center}
-@media(max-width:760px){.entry-cards{grid-template-columns:1fr}}
-</style>
-<h3 id="entry-chart-title">Where each SURGE Simple engine buys</h3>
-<p class="sub">Illustrative 1-minute chart. Same stock, three entry rules.</p>
-<picture>
-<source media="(max-width:640px)" srcset="assets/surge-simple-entries-mobile.svg">
-<img src="assets/surge-simple-entries.svg" width="1200" height="500" loading="lazy" alt="Illustrative chart: a stock runs to a $4.50 high of day, pulls back with a pullback high of $4.35, then breaks out. Simple 2 buys as price breaks $4.35 (about $4.36), Simple 3 when a candle closes above $4.35 (about $4.42), and Simple 1 when a candle closes above $4.50 (about $4.53).">
-</picture>
-<div class="entry-cards">
-<div class="entry-card" style="--c:#60a5fa"><h4>1 · SIMPLE 1 <span>· New high of day</span></h4><p>Waits for a 1-minute candle to close above the old high of day.</p></div>
-<div class="entry-card" style="--c:#fb923c"><h4>2 · SIMPLE 2 <span>· Pullback break, intrabar</span></h4><p>After a 1–3 bar pullback, buys as soon as price trades above the pullback high.</p></div>
-<div class="entry-card" style="--c:#a78bfa"><h4>3 · SIMPLE 3 <span>· Pullback break, close</span></h4><p>After the same pullback, waits for a 1-minute candle to close above the pullback high.</p></div>
-</div>
-<figcaption>Earlier entry: better price, more fake-outs. Later entry: more confirmation, higher price. Prices are illustrative, not actual fills. Paper trading only.</figcaption>
-</figure>
-<div class="engine-research-note"><strong>Historical engines:</strong> CORE (parked), SURGE-R (retired), and RANGE (retired) are no longer in the active lineup. Their earlier paper results, including losses, remain in the <a href="daily-review/engine-audit/">full engine audit</a>. <strong>Our research standard:</strong> publish losses alongside wins, keep version histories separate, and never claim an edge before validation.</div>
-</div></section>
-<section class="eot" id="evidence">
-<div class="eot-head"><p class="eyebrow">COMING NEXT · PAPER PERFORMANCE</p><h2>Three engines. Three independent scorecards.</h2><p>Starting October 12, SURGE Simple 1, 2 and 3 will each have their own performance chart and trade history. These are empty templates, not simulated results. We will publish actual trades only after their individual evidence checks pass.</p></div>
-<style id="simple-scorecard-templates">
-.simple-scorecards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:1180px;margin:24px auto}
-.simple-scorecard{background:#0d1d31;border:1px solid #36546d;border-top:3px solid #ffbe61;border-radius:15px;padding:19px;color:#eaf5fc;min-width:0}
-.simple-scorecard:nth-child(2){border-top-color:#4bd6c8}.simple-scorecard:nth-child(3){border-top-color:#b594ff}
-.simple-scorecard h3{font-size:21px;margin:0 0 3px}.simple-scorecard .subtitle{font-size:12px;color:#a9c3d7;margin:0 0 18px}.simple-scorecard .headline{font-size:29px;font-weight:800;letter-spacing:-.6px;margin:0}.simple-scorecard .muted{color:#b3c5d5;font-size:12px}.simple-scorecard .scorestats{font-size:13px;font-weight:700;margin:20px 0 14px}.simple-scorecard .chart-placeholder{height:145px;border-left:1px solid #34506a;border-bottom:1px solid #34506a;position:relative;margin:20px 8px 16px;background:repeating-linear-gradient(to top,transparent 0,transparent 35px,#ffffff0a 36px)}
-.simple-scorecard .chart-placeholder span{position:absolute;top:50%;left:0;right:0;text-align:center;color:#a4b8c8;font-size:13px;transform:translateY(-50%)}.simple-scorecard .footer{border-top:1px solid #30465b;padding-top:13px;margin-top:17px;font-size:12px;color:#a9c3d7}
-@media(max-width:850px){.simple-scorecards{grid-template-columns:1fr}}
-</style>
-<div class="simple-scorecards">
-<article class="simple-scorecard" data-engine="surge-simple"><h3>SURGE Simple 1</h3><p class="subtitle">Ross scanner · New high-of-day close · 2 positions/day maximum · $100 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 1 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
-<article class="simple-scorecard" data-engine="surge-simple-2"><h3>SURGE Simple 2</h3><p class="subtitle">Pullback breakout, intrabar · 8 positions/day maximum · $150 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Separate paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 2 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
-<article class="simple-scorecard" data-engine="surge-simple-3"><h3>SURGE Simple 3</h3><p class="subtitle">Pullback breakout, 1-minute close · No daily position cap · $200 daily loss gate</p><p class="headline">Awaiting first session</p><p class="muted">Separate paper account · Results pending</p><div class="scorestats">Trades — · Wins — · Losses —<p class="muted">Win rate — · Gross P&amp;L — · Net P&amp;L —</p></div><div class="chart-placeholder"><span>Trade-by-trade P&amp;L chart coming soon</span></div><p class="muted">No verified Simple 3 trades published yet.</p><div class="footer">Prospective cohort · Starts October 12 · Edge unvalidated</div></article>
-</div>
-<p style="max-width:1180px;margin:0 auto 28px;color:#b5c9d8;font-size:13px">These scorecards show the planned presentation only. Historical CORE, RANGE, SURGE and SURGE-R trades are kept separate in the <a href="daily-review/engine-audit/">engine audit archive</a>.</p>
+
+<section id="features">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">Platform features</p>
+      <h2>Built for <span class="grad">disciplined trading.</span></h2>
+    </div>
+    <div class="feat6">
+      <article class="card"><div class="ic">⌕</div><h3>Momentum scanner</h3><p>Filters by price, daily gain, volume, relative volume and float.</p></article>
+      <article class="card"><div class="ic">↗</div><h3>Rules-based entries</h3><p>Clear signals on the 1-minute chart. No guessing.</p></article>
+      <article class="card"><div class="ic">⛨</div><h3>Built-in risk control</h3><p>Fixed risk per trade, automatic stops and daily loss limits.</p></article>
+      <article class="card"><div class="ic">⟳</div><h3>Automated by the BOT</h3><p>Runs each paper-trading session on its own, flat before the close.</p></article>
+      <article class="card"><div class="ic">✓</div><h3>Verified results</h3><p>Every trade checked against broker records.</p></article>
+      <article class="card"><div class="ic">☺</div><h3>No emotion</h3><p>The same rules on every trade, win or lose.</p></article>
+    </div>
+  </div>
 </section>
-<section class="simple-review">
-<div>
-<p class="eyebrow">DAILY REVIEW</p>
-<h2>Want the story behind the numbers?</h2>
-<p>Open the daily review for individual trades, record checks, lessons and proposed next steps.</p>
-<div class="life-trade"><strong>LIFE OF THE TRADE™</strong><span>See what happened before, during, and after every trade.</span></div>
-</div>
-<a class="button" href="daily-review/">Open Daily Review Archive <span>→</span></a>
+
+<section class="dash" id="performance">
+  <span id="evidence" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">Performance</p>
+      <h2>Tested before <span class="grad">it's released.</span></h2>
+      <p class="lede">Our automated approach is still being tested in paper trading accounts. Results appear here only after they're verified.</p>
+    </div>
+    <div class="perf card" data-engines="surge-simple">
+      <div class="perf-status"><span class="dot"></span><b class="perf-title">Simple 1 · Paper testing underway</b></div>
+      <p class="perf-scope"><b>Simple 1 only.</b> These figures come from one paper-trading configuration, Simple 1. They are not combined results for all three configurations or for the TrevorTrader platform as a whole.</p>
+      <div class="perf-grid">
+        <div><b data-k="trades">—</b><small>Verified trades</small></div>
+        <div><b data-k="rate">—</b><small>Win rate</small></div>
+        <div><b data-k="pnl">—</b><small>Gross P&amp;L</small></div>
+        <div><b data-k="days">—</b><small>Verified sessions</small></div>
+      </div>
+      <div class="spark">First Simple 1 results after Monday, October 12</div>
+      <p class="foot">Simple 1 paper trading (simulated), verified against broker records after each session. Simple 2 and Simple 3 are tested separately and are not included. Gross results before fees. Early results are not proof of future performance.</p>
+    </div>
+  </div>
 </section>
-<section class="platform-future" id="platform">
-<div class="platform-wrap">
-<p class="eyebrow dark-eye">BUILT FOR THE FUTURE</p>
-<h2>From trading system to <span class="blue">software platform.</span></h2>
-<p class="platform-lead">TrevorTrader is being engineered as a modular platform, not a collection of disconnected bots. Strategies can remain independent while sharing disciplined execution, portfolio-level risk controls, reconciliation, Trade Memory, monitoring, and review.</p>
-<div class="platform-grid">
-<article class="platform-card"><b>01 · MODULAR</b><h3>Independent strategies</h3><p>Each strategy keeps its own rules, evidence, version history, and performance record.</p></article>
-<article class="platform-card"><b>02 · CONTROLLED</b><h3>Risk before execution</h3><p>The platform is designed so orders pass centralized validation and risk controls before reaching the broker.</p></article>
-<article class="platform-card"><b>03 · TRACEABLE</b><h3>Every decision has a record</h3><p>Signals, orders, outcomes, rejected decisions, and reconciliation events are designed to remain auditable.</p></article>
-<article class="platform-card"><b>04 · LEARNING</b><h3>Evidence before promotion</h3><p>The goal is to measure, backtest, and paper-validate potential improvements before they change production behavior.</p></article>
-</div>
-<p class="platform-note"><strong>Future product direction:</strong> TrevorTrader is being built with a commercial-quality architecture in mind. It is not currently offered for sale. Current work remains focused on development, paper trading, validation, and proving the system before any future customer release.</p>
-</div>
+
+<section id="watch">
+  <span id="youtube-coming-soon" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">YouTube · TrevorTrader Academy</p>
+      <h2>Watch TrevorTrader <span class="grad">in Action</span></h2>
+      <p class="lede">The BOT will teach momentum trading step by step: how it scans, when it enters, how it exits, and how it manages risk.</p>
+    </div>
+    <figure class="ytframe"><img src="assets/trevortrader-youtube-coming-soon.png" width="2103" height="748" loading="lazy" alt="TrevorTrader YouTube channel coming soon"></figure>
+    <div class="academy-head"><span class="badge b-plan">Planned</span><h3>TrevorTrader Academy lessons</h3></div>
+    <div class="academy">
+      <article class="card" style="--c:var(--cyan)"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="7" width="30" height="20" rx="2"/><path d="M10 22l6-6 4 3 8-8M20 27v6M14 33h12"/></svg><h4>Whiteboard lessons</h4><p>An overhead view of a dry-erase board as the BOT draws and explains each setup.</p></article>
+      <article class="card" style="--c:var(--blue)"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="8" width="32" height="22" rx="2"/><path d="M10 14v10M16 12v14M22 16v6M28 11v12M14 34h12"/></svg><h4>Real charts</h4><p>Transitions from the board to actual stock charts and trading screens.</p></article>
+      <article class="card" style="--c:var(--green)"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="13" y="5" width="14" height="20" rx="7"/><path d="M8 20a12 12 0 0024 0M20 32v4"/></svg><h4>BOT narration</h4><p>The BOT explains scanning, entries, exits and risk management in plain language.</p></article>
+      <article class="card" style="--c:var(--amber)"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30l8-9 6 5 14-15"/><path d="M26 11h8v8"/></svg><h4>Actual trades</h4><p>Lessons built on real paper trades, wins and losses alike.</p></article>
+    </div>
+  </div>
 </section>
-<section class="journey" id="journey">
-<p class="eyebrow">BUILDING IN PUBLIC</p>
-<h2>Follow the Journey</h2>
-<p>Follow the paper experiments as TrevorTrader reviews losses alongside wins and tests improvements.</p>
-<a class="button ghost" href="#development">See What We're Building <span>→</span></a>
+
+<section class="split" id="coming-soon">
+  <span id="access" aria-hidden="true"></span><span id="development" aria-hidden="true"></span><span id="journey" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="product">
+      <div>
+        <span class="badge b-plan">Coming soon</span>
+        <h2>TrevorTrader <span class="grad">for traders</span></h2>
+        <p class="lede">We're preparing a version you can use yourself, starting with the TrevorTrader Scanner. It isn't available yet. We'll launch only when the testing supports it.</p>
+      </div>
+      <ul class="features">
+        <li><b>TrevorTrader Scanner</b><span>Live momentum shortlist</span><em class="badge b-plan">Planned</em></li>
+        <li><b>Entry and exit tools</b><span>Signals and a risk plan for every trade</span><em class="badge b-plan">Planned</em></li>
+        <li><b>Alerts</b><span>Know when a stock makes the list</span><em class="badge b-cons">Under consideration</em></li>
+        <li><b>Subscriber access</b><span>Accounts and plans</span><em class="badge b-cons">Under consideration</em></li>
+      </ul>
+    </div>
+  </div>
 </section>
 </main>
-<section class="professor-simple" id="youtube-coming-soon">
-<div class="youtube-coming">
-<img alt="TrevorTrader YouTube Channel Coming Soon" src="assets/trevortrader-youtube-coming-soon.png"/>
-</div>
-</section>
+
 <footer>
-<div class="brand foot-brand"><span class="mark">↗</span><span aria-label="TrevorTrader">Trevor<span class="blue">Trader</span></span></div>
-<p>Trade the strategy. Without emotion.</p>
-<p class="disclaimer"><strong>Development disclosure:</strong> TrevorTrader is under development and currently uses paper trading for research and validation. Nothing on this website is investment advice, a recommendation, an offer to manage money, or a guarantee of future results. Trading and options involve risk, including loss of capital.</p>
-<p class="copyright">© 2026 TrevorTrader. All rights reserved.</p>
-<p class="tt-disclaimer">Paper trading research only. Simulated results, not real money. Not investment advice. Past or simulated results do not guarantee future results.</p></footer>
-<style>
-.eot-performance{margin:15px 0 18px;padding:14px;border:1px solid #284c63;border-radius:12px;background:rgba(8,29,48,.5)}
-.eot-performance-heading{font-weight:750;font-size:14px;margin-bottom:9px}
-.eot-winbar{height:12px;display:flex;overflow:hidden;border-radius:99px;background:#294359}
-.eot-winbar-win{background:#45c99a}.eot-winbar-loss{background:#f08090}
-.eot-performance-counts{font-size:12px;color:#b9cbd9;margin:9px 0}
-.eot-averages{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;font-weight:650}
-@media(max-width:480px){.eot-averages{flex-direction:column;gap:4px}}
-</style>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="#top"><span class="mark">↗</span><span>Trevor<span class="blue">Trader</span></span></a>
+      <nav aria-label="Footer"><a href="#how-it-works">How it works</a><a href="#features">Features</a><a href="#performance">Performance</a><a href="#watch">Watch</a><a href="#coming-soon">Coming soon</a><a href="research/">Research archive</a></nav>
+    </div>
+    <p class="disc">TrevorTrader is in development and is not available for purchase. Its rules-based strategy is built on established momentum-trading principles. No profitability or trading edge is claimed. Results shown are from paper (simulated) trading, are not real money, and do not guarantee future results. Nothing on this website is investment advice. Trading involves risk, including loss of capital.</p>
+    <p>© 2026 TrevorTrader. All rights reserved.</p>
+  </div>
+</footer>
+
 <script>
-/* Only broker-reconciled SURGE Simple 1 rows are eligible for the public homepage.
-   Simple 2 and 3 are intentionally gated until their publisher is enabled. */
+/* Performance summary: SIMPLE 1 ONLY. Built only from broker-reconciled rows in data/evidence-history.json
+   for evidence engine "surge-simple" (Simple 1's account, all of its builds). Simple 2 and 3 are not included;
+   if they are ever added to data-engines, the "Simple 1 only" wording above must change too.
+   Nothing verified = "Paper testing underway". No numbers are written into this page. */
 (function(){
-var card=document.querySelector('.simple-scorecard[data-engine="surge-simple"]');
-if(!card||!window.fetch)return;
-fetch('data/evidence-history.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw Error('evidence unavailable');return r.json()}).then(function(d){
-var engine=(d.engines||[]).find(function(e){return e.id==='surge-simple'});if(!engine)return;
-var sessions=(engine.sessions||[]).filter(function(x){return x.status==='reconciled'||x.status==='valid_zero_trade'});if(!sessions.length)return;
-var t=(d.trades||[]).filter(function(x){return x.engine==='surge-simple'&&x.status==='reconciled'}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
-var sum=t.reduce(function(a,b){return a+Number(b.gross)},0),win=t.filter(function(x){return x.gross>0.005}).length,loss=t.filter(function(x){return x.gross<-.005}).length;
-function money(v){return (v<-.005?'−':v>.005?'+':'')+'$'+Math.abs(v).toFixed(2)}
-card.querySelector('.headline').textContent=t.length?money(sum):'No trades yet';
-card.querySelector('.headline + .muted').textContent='Gross before fees · '+sessions.length+' verified sessions';
-card.querySelector('.scorestats').innerHTML='Trades '+t.length+' · Wins '+win+' · Losses '+loss+'<p class="muted">Win rate '+(t.length?(100*win/t.length).toFixed(1)+'%':'—')+' · Gross P&amp;L '+money(sum)+' · Net P&amp;L pending</p>';
-var ph=card.querySelector('.chart-placeholder');if(t.length){var pts=[0],v=0;t.forEach(function(x){v+=Number(x.gross);pts.push(v)});var lo=Math.min.apply(null,pts),hi=Math.max.apply(null,pts);if(hi===lo){lo-=1;hi+=1}var x=function(i){return 6+i*288/(pts.length-1)},y=function(z){return 10+(hi-z)*125/(hi-lo)};var path=pts.map(function(z,i){return(i?'L':'M')+x(i).toFixed(1)+' '+y(z).toFixed(1)}).join(' ');ph.style.background='none';ph.innerHTML='<svg viewBox="0 0 300 145" role="img" aria-label="Cumulative gross P&L by trade" style="width:100%;height:100%"><path d="'+path+'" stroke="#63e6a6" fill="none" stroke-width="2"/></svg>'}
-card.querySelector('.chart-placeholder + .muted').textContent='Latest verified session: '+sessions[sessions.length-1].date+'. Early sample; edge unvalidated.';
-}).catch(function(){});
+  var box=document.querySelector('.perf[data-engines]');
+  if(!box||!window.fetch)return;
+  var ids=box.getAttribute('data-engines').split(/\s+/);
+  function money(v){return (v<-.005?'−':v>.005?'+':'')+'$'+Math.abs(v).toFixed(2)}
+  fetch('data/evidence-history.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw Error('evidence unavailable');return r.json()}).then(function(d){
+    var days={},t=[];
+    (d.engines||[]).filter(function(e){return ids.indexOf(e.id)>=0}).forEach(function(e){
+      (e.sessions||[]).forEach(function(x){if(x.status==='reconciled'||x.status==='valid_zero_trade')days[x.date]=1});
+    });
+    t=(d.trades||[]).filter(function(x){return ids.indexOf(x.engine)>=0&&x.status==='reconciled'}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
+    var n=Object.keys(days).length;if(!n)return;
+    var sum=t.reduce(function(a,b){return a+Number(b.gross)},0),win=t.filter(function(x){return x.gross>0.005}).length;
+    box.querySelector('.perf-title').textContent='Simple 1 · Verified paper results';
+    box.querySelector('[data-k="trades"]').textContent=t.length;
+    box.querySelector('[data-k="rate"]').textContent=t.length?(100*win/t.length).toFixed(0)+'%':'—';
+    var pnl=box.querySelector('[data-k="pnl"]');pnl.textContent=t.length?money(sum):'—';pnl.className=t.length?(sum>0.005?'pos':sum<-0.005?'neg':''):'';
+    box.querySelector('[data-k="days"]').textContent=n;
+    var ph=box.querySelector('.spark');
+    if(t.length){var pts=[0],v=0;t.forEach(function(x){v+=Number(x.gross);pts.push(v)});var lo=Math.min.apply(null,pts),hi=Math.max.apply(null,pts);if(hi===lo){lo-=1;hi+=1}
+      var X=function(i){return 6+i*588/Math.max(1,pts.length-1)},Y=function(z){return 8+(hi-z)*94/(hi-lo)};
+      var path=pts.map(function(z,i){return(i?'L':'M')+X(i).toFixed(1)+' '+Y(z).toFixed(1)}).join(' ');
+      ph.style.border='0';ph.innerHTML='<svg viewBox="0 0 600 110" preserveAspectRatio="none" role="img" aria-label="Cumulative gross P&L by trade"><line x1="0" x2="600" y1="'+Y(0).toFixed(1)+'" y2="'+Y(0).toFixed(1)+'" stroke="#28476e" stroke-dasharray="3 4"/><path d="'+path+'" stroke="'+(sum>=0?'#3fdc9a':'#ff7f91')+'" fill="none" stroke-width="2.5" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>';}
+    else ph.textContent='No trades yet in verified sessions';
+  }).catch(function(){});
 })();
 </script>
-<script src="assets/evidence-over-time.js" defer></script>
 </body>
 </html>

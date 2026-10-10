@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research Archive | TrevorTrader</title>
+<meta name="description" content="Exact rules, risk limits, data sources and verification behind TrevorTrader's paper-trading research.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/tt-site-2026.css?v=20261010">
+<style>
+.doc{max-width:900px;margin:0 auto;padding:64px 24px 96px}
+.doc h1{font-size:clamp(34px,5vw,52px);margin:0 0 14px}
+.doc h2{font-size:clamp(24px,3vw,30px);margin:56px 0 12px}
+.doc h3{margin:28px 0 8px}
+.doc p,.doc li{color:var(--muted)}
+.doc li{margin:6px 0}
+.doc strong{color:var(--text)}
+.doc .settings{margin-top:18px}
+.doc .settings table{min-width:640px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0}
+.toc a{font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.toc a:hover{border-color:var(--blue);color:var(--text)}
+@media(max-width:600px){.doc{padding:44px 16px 72px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="TrevorTrader home"><span class="mark">↗</span><span>Trevor<span class="blue">Trader</span></span></a>
+    <nav aria-label="Main navigation">
+      <a href="../#how-it-works">How it works</a>
+      <a href="../#performance">Performance</a>
+      <a href="../daily-review/">Daily reviews</a>
+      <a href="../daily-review/engine-audit/">Audit archive</a>
+      <a href="./" aria-current="page">Research archive</a>
+    </nav>
+    <a class="btn btn-ghost" href="../">Home</a>
+  </div>
+</header>
+
+<main class="doc">
+  <p class="eyebrow">Research archive</p>
+  <h1>The research behind TrevorTrader</h1>
+  <p class="lede">Exact rules, current test configurations, how results are verified, and the full history of earlier engines, including losses. Nothing here is investment advice. All trading is in paper (simulated) accounts.</p>
+  <div class="links3">
+    <a class="card linkcard" href="../daily-review/"><h3>Daily reviews</h3><p>Life of the Trade: every session, every trade, and what we learned.</p><span>Open daily reviews →</span></a>
+    <a class="card linkcard" href="../daily-review/engine-audit/"><h3>Audit archive</h3><p>Historical performance of every engine and version, including losses.</p><span>Open audit archive →</span></a>
+    <a class="card linkcard" href="../daily-review/latest/"><h3>Latest review</h3><p>The most recent published session.</p><span>Open latest →</span></a>
+  </div>
+  <nav class="toc" aria-label="On this page">
+    <a href="#configs">Current configurations</a><a href="#scan">Scan rules</a><a href="#entry">Entry rules</a><a href="#exit">Exit and risk rules</a><a href="#verify">How results are verified</a><a href="#sequence">Research plan</a><a href="#history">Earlier engines</a><a href="#platform">Platform design</a>
+  </nav>
+
+  <h2 id="configs">Current configurations (from October 12, 2026)</h2>
+  <p>On October 9, 2026 we stopped all earlier engines and started over with one simple strategy, historically named <strong>SURGE Simple</strong>, running in three separate paper accounts. Each configuration has its own account, code version, trade ledger and scorecard, so every result belongs to exactly one set of rules.</p>
+  <div class="settings">
+    <table>
+      <thead><tr><th></th><th>Scanner</th><th>Entry</th><th>Positions / day</th><th>Daily loss limit</th></tr></thead>
+      <tbody>
+        <tr><th>Simple 1</th><td>$3–$20, up 30%+, 500K+ shares, 5× relative volume, float under 5M</td><td>1-minute close above the high of day</td><td>2</td><td>$100</td></tr>
+        <tr><th>Simple 2</th><td>$2–$10, up 10%+, 500K+ shares</td><td>Pullback, then price breaks the pullback high (intrabar)</td><td>8</td><td>$150</td></tr>
+        <tr><th>Simple 3</th><td>$2–$10, up 10%+, 500K+ shares</td><td>Pullback, then a 1-minute close above the pullback high</td><td>No cap</td><td>$200</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Because the scanner, caps and limits differ, configurations are compared on matched opportunities as well as totals. Simple 2 versus Simple 3 is the cleanest entry comparison: same scanner, same exits, different entry. Simple 1 tests stricter stock selection together with a new-high entry.</p>
+
+  <h2 id="scan">Scan rules</h2>
+  <ul>
+    <li><strong>Universe:</strong> active, tradable, exchange-listed US stocks (no OTC), plus the market's top movers and most-active lists. Checked every 30 seconds from 4:00 AM ET.</li>
+    <li><strong>Price and gain:</strong> the latest trade must be from today and the quote no more than 15 seconds old. Gain is measured from the prior session's close.</li>
+    <li><strong>Volume:</strong> shares traded today, including premarket.</li>
+    <li><strong>Relative volume (Simple 1):</strong> today's shares traded in completed 1-minute bars since 4:00 AM ET, divided by the average shares traded up to the same clock time over the last 10 trading days (split-adjusted). Fewer than 5 days of history or any data error means the stock is skipped.</li>
+    <li><strong>Float (Simple 1):</strong> looked up from Yahoo Finance and accepted only if retrieved the same day. Yahoo doesn't publish the date of its float figure, so it can lag after a share offering or reverse split. A stock with no float is skipped.</li>
+    <li><strong>Ranking:</strong> stocks that pass are tried from the biggest percentage gain down.</li>
+  </ul>
+
+  <h2 id="entry">Entry rules</h2>
+  <ul>
+    <li><strong>New high of day (Simple 1):</strong> the newest completed 1-minute bar closes above every earlier high since 4:00 AM ET.</li>
+    <li><strong>Pullback (Simple 2 and 3):</strong> after a bar makes a new high of day, 1 to 3 bars follow with no higher high, staying above that bar's low. The trigger is the last pullback bar's high.</li>
+    <li><strong>Simple 2</strong> buys when a trade prints above the trigger during the current minute. It checks every 30-second scan, so it can lag the exact break by up to about 30 seconds. <strong>Simple 3</strong> waits for a 1-minute close above the trigger.</li>
+    <li><strong>Order checks (all three):</strong> a fresh quote, spread no more than 1.5%, ask no more than 1% above the signal price. Limit order at the ask, canceled if not filled within 5 seconds.</li>
+  </ul>
+  <figure class="entry-figure">
+    <picture>
+      <source media="(max-width:640px)" srcset="../assets/surge-simple-entries-mobile.svg">
+      <img src="../assets/surge-simple-entries.svg" width="1200" height="500" loading="lazy" alt="Illustrative chart: a stock runs to a $4.50 high of day, pulls back with a pullback high of $4.35, then breaks out. Simple 2 buys as price breaks $4.35, Simple 3 when a candle closes above $4.35, and Simple 1 when a candle closes above $4.50.">
+    </picture>
+    <figcaption>Illustrative 1-minute chart. Earlier entry: better price, more fake-outs. Later entry: more confirmation, higher price.</figcaption>
+  </figure>
+
+  <h2 id="exit">Exit and risk rules (same for all three)</h2>
+  <ul>
+    <li>About $20 of risk per trade; order size is capped at 50% of account equity.</li>
+    <li>Stop based on the recent 1-minute lows, with a hard backstop. Target at 2× the risk. Time exit after 10 minutes.</li>
+    <li>One position at a time. A stock is locked out for the day after 2 losses.</li>
+    <li>Daily loss limit per configuration (see the table). Positions opened are counted, not orders or partial fills; exits are never blocked.</li>
+    <li>No new entries after 12:45 PT. Everything is flat by 12:55 PT.</li>
+  </ul>
+
+  <h2 id="verify">How results are verified</h2>
+  <ul>
+    <li>After each session, an end-of-day check matches every broker order and fill against the trading engine's own ledger and logs, confirms the account is flat with no open orders, and checks the code version that traded.</li>
+    <li>If anything doesn't match, nothing is published for that day. A failed check is never shown as a zero.</li>
+    <li>Results are gross, before fees. Fees and net results stay marked "pending" until confirmed; they are never estimated.</li>
+    <li>Each code version has its own identifier, and results are never moved between versions.</li>
+  </ul>
+
+  <h2 id="sequence">Research plan</h2>
+  <ol>
+    <li><strong>Entry comparison</strong> (from October 12): keep all three configurations unchanged and judge them on a meaningful sample, aiming for about 100 trades each.</li>
+    <li><strong>Momentum and volume filters:</strong> MACD and breakout-candle volume are recorded for every trade from day one, without affecting trading, then tested as filters on the best entry.</li>
+    <li><strong>Exit research:</strong> trailing-stop variants that lock in gains, simulated on recorded data before any use.</li>
+  </ol>
+  <p>A losing trade is evidence, not a reason to change rules mid-test. Level 2 and Time &amp; Sales data are not available in our data feed and remain future research.</p>
+
+  <h2 id="history">Earlier engines</h2>
+  <p>CORE (SPY option reversals) is parked. RANGE (SPY option range breakouts) and SURGE-R are retired. Earlier SURGE versions ran from October 5 to 9. All of their paper results, including losses, are kept unchanged in the <a href="../daily-review/engine-audit/">audit archive</a> and the <a href="../daily-review/">daily reviews</a>, and are never presented as results of the current configurations.</p>
+
+  <h2 id="platform">Platform design</h2>
+  <p>TrevorTrader is engineered as one modular system, not a collection of disconnected bots. Scan, entry and exit components can change independently while sharing the same execution safeguards, risk controls, reconciliation and review.</p>
+  <ul>
+    <li><strong>Modular:</strong> each configuration keeps its own rules, evidence, version history and performance record.</li>
+    <li><strong>Controlled:</strong> orders pass validation and risk checks before reaching the broker; paper endpoints and account IDs are verified.</li>
+    <li><strong>Traceable:</strong> signals, orders, rejected decisions and outcomes are logged and auditable.</li>
+    <li><strong>Evidence first:</strong> changes are tested on recorded data and in paper trading before they change behavior.</li>
+  </ul>
+  <p>TrevorTrader is not currently offered for sale.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="../"><span class="mark">↗</span><span>Trevor<span class="blue">Trader</span></span></a>
+      <nav aria-label="Footer"><a href="../">Home</a><a href="../#performance">Performance</a><a href="./">Research archive</a><a href="../daily-review/">Daily reviews</a><a href="../daily-review/engine-audit/">Audit archive</a></nav>
+    </div>
+    <p class="disc"><strong>Development disclosure:</strong> TrevorTrader, including the TrevorTrader Scanner, is under development and is not available for purchase. Our trading engines currently use paper trading for research and validation. Nothing on this website is investment advice, a recommendation, an offer to manage money, or a guarantee of future results. Paper results are simulated, not real money, and do not guarantee future results. Trading involves risk, including loss of capital.</p>
+    <p>© 2026 TrevorTrader. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
