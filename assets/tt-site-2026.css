@@ -347,3 +347,22 @@ main>section+section{border-top:1px solid rgba(120,160,220,.08)}
   #features{padding-top:40px;padding-bottom:56px}
   #features .feat6{margin-top:24px;gap:14px}
 }
+
+/* iPhone flow: arrows centered in the content column between steps */
+@media(max-width:600px){
+  .flowcard{row-gap:0}
+  .flowcard>div{min-height:52px}
+  .flowcard>span{
+    display:grid;
+    grid-column:2;
+    place-items:center;
+    width:100%;
+    height:34px;
+    padding:0;
+    margin:0;
+    line-height:1;
+    transform:none;
+    text-align:center;
+  }
+  .flowcard>span::before{display:block;line-height:1;font-size:23px}
+}
