@@ -340,3 +340,10 @@ main>section+section{border-top:1px solid rgba(120,160,220,.08)}
   #how-it-works{padding-top:42px}
   #how-it-works .steps3{margin-top:28px}
 }
+
+/* Mobile: remove oversized gaps between content sections */
+@media(max-width:600px){
+  #how-it-works{padding-bottom:36px}
+  #features{padding-top:40px;padding-bottom:56px}
+  #features .feat6{margin-top:24px;gap:14px}
+}
