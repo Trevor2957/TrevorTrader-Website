@@ -393,3 +393,9 @@ main>section+section{border-top:1px solid rgba(120,160,220,.08)}
   #performance{padding-bottom:12px}
   #watch{padding-top:16px}
 }
+
+/* iPhone: close Academy-to-product transition */
+@media(max-width:600px){
+  #watch{padding-bottom:16px}
+  #coming-soon{padding-top:16px}
+}
