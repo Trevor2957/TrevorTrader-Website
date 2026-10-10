@@ -381,3 +381,9 @@ main>section+section{border-top:1px solid rgba(120,160,220,.08)}
   #performance{padding-top:36px}
   #performance .perf{margin-top:26px}
 }
+
+/* Mobile: remove remaining gap below How It Works cards */
+@media(max-width:600px){
+  #how-it-works{padding-bottom:12px}
+  #features{padding-top:16px}
+}
