@@ -374,3 +374,10 @@ main>section+section{border-top:1px solid rgba(120,160,220,.08)}
   #watch .ytframe{margin-top:24px}
   #watch .academy-head{margin-top:32px}
 }
+
+/* iPhone: tighten the transition from features to performance */
+@media(max-width:600px){
+  #features{padding-bottom:28px}
+  #performance{padding-top:36px}
+  #performance .perf{margin-top:26px}
+}
