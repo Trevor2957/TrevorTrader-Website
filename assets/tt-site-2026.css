@@ -405,3 +405,12 @@ main>section+section{border-top:1px solid rgba(120,160,220,.08)}
   #coming-soon{padding-bottom:16px}
   footer{padding-top:24px;padding-bottom:28px}
 }
+
+/* Branded BOT portrait, cropped from our existing Academy artwork */
+#features .card .ic.tt-bot-head{
+  background-image:url("trevortrader-youtube-coming-soon.png");
+  background-repeat:no-repeat;
+  background-size:500% auto;
+  background-position:76% 48%;
+  border:1px solid rgba(59,224,240,.24);
+}
