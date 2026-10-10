@@ -399,3 +399,9 @@ main>section+section{border-top:1px solid rgba(120,160,220,.08)}
   #watch{padding-bottom:16px}
   #coming-soon{padding-top:16px}
 }
+
+/* iPhone: compact final product-to-footer transition */
+@media(max-width:600px){
+  #coming-soon{padding-bottom:16px}
+  footer{padding-top:24px;padding-bottom:28px}
+}
