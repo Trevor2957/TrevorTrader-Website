@@ -366,3 +366,11 @@ main>section+section{border-top:1px solid rgba(120,160,220,.08)}
   }
   .flowcard>span::before{display:block;line-height:1;font-size:23px}
 }
+
+/* Mobile: close gap between performance results and YouTube section */
+@media(max-width:600px){
+  #performance{padding-bottom:32px}
+  #watch{padding-top:36px}
+  #watch .ytframe{margin-top:24px}
+  #watch .academy-head{margin-top:32px}
+}
