@@ -301,3 +301,42 @@ main>section+section{border-top:1px solid rgba(120,160,220,.08)}
 .academy-head{margin-top:64px}
 @media(max-width:900px){section{padding:96px 0}.hero{padding-bottom:80px}}
 @media(max-width:600px){section{padding:84px 0}.hero{padding-top:48px;padding-bottom:72px}.ytframe{margin-top:32px}.ytframe img{border-radius:12px}.academy-head{margin-top:48px}}
+
+/* Mobile flow alignment and tighter section rhythm (Oct 10) */
+@media(max-width:600px){
+  .hero{padding-bottom:36px}
+  .hero-grid{gap:24px}
+  .flowcard{
+    display:grid;
+    grid-template-columns:48px minmax(0,1fr);
+    column-gap:12px;
+    row-gap:0;
+    margin:12px 0 0;
+    padding:16px 18px;
+    align-items:center;
+  }
+  .flowcard>div{
+    display:grid;
+    grid-column:1 / -1;
+    grid-template-columns:48px minmax(0,1fr);
+    grid-template-rows:auto auto;
+    column-gap:12px;
+    width:100%;
+    min-height:54px;
+    text-align:center;
+  }
+  .flowcard i{grid-column:1;grid-row:1 / span 2;justify-self:center;width:32px;height:32px}
+  .flowcard b{grid-column:2;grid-row:1;align-self:end}
+  .flowcard small{grid-column:2;grid-row:2;align-self:start;white-space:normal}
+  .flowcard>span{
+    grid-column:2;
+    justify-self:center;
+    transform:none;
+    line-height:1;
+    padding:5px 0;
+    font-size:0;
+  }
+  .flowcard>span::before{content:"↓";font-size:24px}
+  #how-it-works{padding-top:42px}
+  #how-it-works .steps3{margin-top:28px}
+}
