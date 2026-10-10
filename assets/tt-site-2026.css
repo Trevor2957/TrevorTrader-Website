@@ -387,3 +387,9 @@ main>section+section{border-top:1px solid rgba(120,160,220,.08)}
   #how-it-works{padding-bottom:12px}
   #features{padding-top:16px}
 }
+
+/* Mobile: compact gap between verified results and Academy */
+@media(max-width:600px){
+  #performance{padding-bottom:12px}
+  #watch{padding-top:16px}
+}
