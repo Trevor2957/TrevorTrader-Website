@@ -169,6 +169,10 @@
         {
           "id": "surge-simple-v1",
           "label": "SURGE Simple v1 · pending verified deployment"
+        },
+        {
+          "id": "surge-simple-1-ross",
+          "label": "Simple 1 · Ross scanner ($3–$20, +30%, 5× relative volume, float under 5M)"
         }
       ],
       "starting_balance": null,
