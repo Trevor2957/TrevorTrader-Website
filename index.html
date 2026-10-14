@@ -99,16 +99,16 @@
       <p class="lede">Our automated approach is still being tested in paper trading accounts. Results appear here only after they're verified.</p>
     </div>
     <div class="perf card" data-engines="surge-simple-3">
-      <div class="perf-status"><span class="dot"></span><b class="perf-title">SURGE Simple 3 · Awaiting verified results</b></div>
-      <p class="perf-scope"><b>SURGE Simple 3 only.</b> Results begin October 13, 2026, and include only broker-reconciled paper trades. Other engines are excluded.</p>
+      <div class="perf-status"><span class="dot"></span><b class="perf-title">SURGE Simple 3 · Broker-matched paper results</b></div>
+      <p class="perf-scope"><b>SURGE Simple 3 only.</b> Results begin October 13, 2026, using Alpaca broker-matched paper fills. Local runner ledger cross-check remains pending. Other engines are excluded.</p>
       <div class="perf-grid">
         <div><b data-k="trades">—</b><small>Verified trades</small></div>
         <div><b data-k="rate">—</b><small>Win rate</small></div>
         <div><b data-k="pnl">—</b><small>Gross P&amp;L</small></div>
         <div><b data-k="days">—</b><small>Verified sessions</small></div>
       </div>
-      <div class="spark"><svg viewBox="0 0 600 110" preserveAspectRatio="none" role="img" aria-label="SURGE Simple 3 cumulative gross P and L chart awaiting verified trades"><line x1="6" x2="594" y1="55" y2="55" stroke="#28476e" stroke-dasharray="3 4"/><circle cx="6" cy="55" r="4" fill="#3fdc9a"/></svg><small>Baseline $0 · October 13, 2026 · Awaiting verified trades</small></div>
-      <p class="foot">SURGE Simple 3 paper trading (simulated), beginning October 13, 2026. Gross results before fees. Other strategies are excluded. Early results do not establish a trading edge.</p>
+      <div class="spark"><svg viewBox="0 0 600 110" preserveAspectRatio="none" role="img" aria-label="SURGE Simple 3 cumulative gross P and L chart awaiting verified trades"><line x1="6" x2="594" y1="55" y2="55" stroke="#28476e" stroke-dasharray="3 4"/><circle cx="6" cy="55" r="4" fill="#3fdc9a"/></svg><small>October 13–14 · Broker-matched fills · Gross before fees</small></div>
+      <p class="foot">SURGE Simple 3 paper trading (simulated), beginning October 13, 2026. Gross results before fees; local runner ledger cross-check pending. Other strategies are excluded. Early results do not establish a trading edge.</p>
     </div>
   </div>
 </section>
@@ -173,12 +173,12 @@
   fetch('data/evidence-history.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw Error('evidence unavailable');return r.json()}).then(function(d){
     var days={},t=[];
     (d.engines||[]).filter(function(e){return ids.indexOf(e.id)>=0}).forEach(function(e){
-      (e.sessions||[]).forEach(function(x){if(x.status==='reconciled'||x.status==='valid_zero_trade')days[x.date]=1});
+      (e.sessions||[]).forEach(function(x){if(x.status==='reconciled'||x.status==='broker_matched'||x.status==='valid_zero_trade')days[x.date]=1});
     });
-    t=(d.trades||[]).filter(function(x){return ids.indexOf(x.engine)>=0&&x.session>='2026-10-13'&&x.status==='reconciled'}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
+    t=(d.trades||[]).filter(function(x){return ids.indexOf(x.engine)>=0&&x.session>='2026-10-13'&&(x.status==='reconciled'||x.status==='broker_matched')}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
     var n=Object.keys(days).length;if(!n)return;
     var sum=t.reduce(function(a,b){return a+Number(b.gross)},0),win=t.filter(function(x){return x.gross>0.005}).length;
-    box.querySelector('.perf-title').textContent='SURGE Simple 3 · Verified paper results';
+    box.querySelector('.perf-title').textContent='SURGE Simple 3 · Broker-matched paper results';
     box.querySelector('[data-k="trades"]').textContent=t.length;
     box.querySelector('[data-k="rate"]').textContent=t.length?(100*win/t.length).toFixed(0)+'%':'—';
     var pnl=box.querySelector('[data-k="pnl"]');pnl.textContent=t.length?money(sum):'—';pnl.className=t.length?(sum>0.005?'pos':sum<-0.005?'neg':''):'';
