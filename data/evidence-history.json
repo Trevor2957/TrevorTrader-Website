@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-08",
+  "updated": "2026-10-15",
   "basis": "gross_before_fees",
-  "note": "Gross before fees; Oct 7 SURGE and CORE passed EOD reconciliation. Oct 6 SURGE passed EOD reconciliation after the corrected PC rerun. RANGE retired. SURGE-R is not yet covered by the EOD evidence feed. No validated edge. SURGE Simple v1 is a separate new prospective cohort with no verified trades yet; previous SURGE builds remain historical.",
+  "note": "SURGE Simple 3 October 13-14 broker fills reconstructed from Alpaca paper orders. Gross P&L before fees; local runner ledger cross-check pending.",
   "engines": [
     {
       "id": "core",
@@ -179,6 +179,26 @@
       "current_balance": null,
       "balance_note": "New experimental cohort. Account baseline and deployment time not yet verified; prior SURGE trades excluded.",
       "sessions": []
+    },
+    {
+      "id": "surge-simple-3",
+      "name": "SURGE Simple 3",
+      "role": "Paper momentum experiment",
+      "experiment": "SURGE Simple 3 · broker fill cohort October 13 onward",
+      "color": "#3fdc9a",
+      "starting_balance": null,
+      "current_balance": null,
+      "sessions": [
+        {
+          "date": "2026-10-13",
+          "status": "broker_matched"
+        },
+        {
+          "date": "2026-10-14",
+          "status": "broker_matched"
+        }
+      ],
+      "balance_note": "15 round trips reconstructed from Alpaca paper order fills; strategy ledger comparison pending; gross before fees."
     }
   ],
   "trades": [
@@ -602,6 +622,186 @@
       "fees": null,
       "status": "runner_recorded_broker_matched_manual_excluded",
       "note": "Original SURGE runner trade; separate manual trade excluded. Full-account EOD not reconciled."
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-13",
+      "symbol": "MUZ",
+      "qty": 114,
+      "gross": -9.12,
+      "exit_pt": "13:38:16",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-13",
+      "symbol": "BBAI",
+      "qty": 285,
+      "gross": -19.95,
+      "exit_pt": "13:57:05",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-13",
+      "symbol": "VEEA",
+      "qty": 111,
+      "gross": -21.09,
+      "exit_pt": "15:11:43",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-13",
+      "symbol": "CANG",
+      "qty": 60,
+      "gross": -7.84,
+      "exit_pt": "16:30:55",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-14",
+      "symbol": "SMCZ",
+      "qty": 175,
+      "gross": 21,
+      "exit_pt": "14:05:36",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-14",
+      "symbol": "SMCZ",
+      "qty": 173,
+      "gross": -18.14,
+      "exit_pt": "14:08:42",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-14",
+      "symbol": "BEZ",
+      "qty": 163,
+      "gross": 13.04,
+      "exit_pt": "15:05:23",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-14",
+      "symbol": "BEZ",
+      "qty": 133,
+      "gross": -2.66,
+      "exit_pt": "15:19:14",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-14",
+      "symbol": "BEZ",
+      "qty": 154,
+      "gross": 4.81,
+      "exit_pt": "16:35:36",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-14",
+      "symbol": "MSTZ",
+      "qty": 320,
+      "gross": 0,
+      "exit_pt": "17:46:17",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-14",
+      "symbol": "BEZ",
+      "qty": 152,
+      "gross": -5.5,
+      "exit_pt": "17:50:07",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-14",
+      "symbol": "SMCZ",
+      "qty": 101,
+      "gross": 4.04,
+      "exit_pt": "18:00:23",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-14",
+      "symbol": "SMCZ",
+      "qty": 169,
+      "gross": -5.07,
+      "exit_pt": "18:02:26",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-14",
+      "symbol": "BKYI",
+      "qty": 222,
+      "gross": -19.98,
+      "exit_pt": "18:20:30",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "surge-simple-3-broker-fills",
+      "session": "2026-10-14",
+      "symbol": "MSTZ",
+      "qty": 312,
+      "gross": 3.12,
+      "exit_pt": "19:07:23",
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "NOT_YET_LEDGER_VERIFIED"
     }
   ]
 }
