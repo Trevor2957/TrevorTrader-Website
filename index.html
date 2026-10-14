@@ -98,17 +98,17 @@
       <h2>Tested before <span class="grad">it's released.</span></h2>
       <p class="lede">Our automated approach is still being tested in paper trading accounts. Results appear here only after they're verified.</p>
     </div>
-    <div class="perf card" data-engines="surge-simple">
-      <div class="perf-status"><span class="dot"></span><b class="perf-title">Simple 1 · Paper testing underway</b></div>
-      <p class="perf-scope"><b>Simple 1 only.</b> These figures come from one paper-trading configuration, Simple 1. They are not combined results for all three configurations or for the TrevorTrader platform as a whole.</p>
+    <div class="perf card" data-engines="surge-simple-3">
+      <div class="perf-status"><span class="dot"></span><b class="perf-title">SURGE Simple 3 · Awaiting verified results</b></div>
+      <p class="perf-scope"><b>SURGE Simple 3 only.</b> Results begin October 14, 2026, and include only broker-reconciled paper trades. Other engines are excluded.</p>
       <div class="perf-grid">
         <div><b data-k="trades">—</b><small>Verified trades</small></div>
         <div><b data-k="rate">—</b><small>Win rate</small></div>
         <div><b data-k="pnl">—</b><small>Gross P&amp;L</small></div>
         <div><b data-k="days">—</b><small>Verified sessions</small></div>
       </div>
-      <div class="spark">First Simple 1 results after Monday, October 12</div>
-      <p class="foot">Simple 1 paper trading (simulated), verified against broker records after each session. Simple 2 and Simple 3 are tested separately and are not included. Gross results before fees. Early results are not proof of future performance.</p>
+      <div class="spark">SURGE Simple 3 results will appear after reconciliation</div>
+      <p class="foot">SURGE Simple 3 paper trading (simulated), beginning October 14, 2026. Gross results before fees. Other strategies are excluded. Early results do not establish a trading edge.</p>
     </div>
   </div>
 </section>
@@ -164,10 +164,7 @@
 </footer>
 
 <script>
-/* Performance summary: SIMPLE 1 ONLY. Built only from broker-reconciled rows in data/evidence-history.json
-   for evidence engine "surge-simple" (Simple 1's account, all of its builds). Simple 2 and 3 are not included;
-   if they are ever added to data-engines, the "Simple 1 only" wording above must change too.
-   Nothing verified = "Paper testing underway". No numbers are written into this page. */
+/* Performance summary: SURGE Simple 3 ONLY, October 14 2026 onward. Reconciled evidence only. */
 (function(){
   var box=document.querySelector('.perf[data-engines]');
   if(!box||!window.fetch)return;
@@ -178,10 +175,10 @@
     (d.engines||[]).filter(function(e){return ids.indexOf(e.id)>=0}).forEach(function(e){
       (e.sessions||[]).forEach(function(x){if(x.status==='reconciled'||x.status==='valid_zero_trade')days[x.date]=1});
     });
-    t=(d.trades||[]).filter(function(x){return ids.indexOf(x.engine)>=0&&x.status==='reconciled'}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
+    t=(d.trades||[]).filter(function(x){return ids.indexOf(x.engine)>=0&&x.session>='2026-10-14'&&x.status==='reconciled'}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
     var n=Object.keys(days).length;if(!n)return;
     var sum=t.reduce(function(a,b){return a+Number(b.gross)},0),win=t.filter(function(x){return x.gross>0.005}).length;
-    box.querySelector('.perf-title').textContent='Simple 1 · Verified paper results';
+    box.querySelector('.perf-title').textContent='SURGE Simple 3 · Verified paper results';
     box.querySelector('[data-k="trades"]').textContent=t.length;
     box.querySelector('[data-k="rate"]').textContent=t.length?(100*win/t.length).toFixed(0)+'%':'—';
     var pnl=box.querySelector('[data-k="pnl"]');pnl.textContent=t.length?money(sum):'—';pnl.className=t.length?(sum>0.005?'pos':sum<-0.005?'neg':''):'';
