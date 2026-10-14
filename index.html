@@ -184,10 +184,32 @@
     var pnl=box.querySelector('[data-k="pnl"]');pnl.textContent=t.length?money(sum):'—';pnl.className=t.length?(sum>0.005?'pos':sum<-0.005?'neg':''):'';
     box.querySelector('[data-k="days"]').textContent=n;
     var ph=box.querySelector('.spark');
-    if(t.length){var pts=[0],v=0;t.forEach(function(x){v+=Number(x.gross);pts.push(v)});var lo=Math.min.apply(null,pts),hi=Math.max.apply(null,pts);if(hi===lo){lo-=1;hi+=1}
-      var X=function(i){return 6+i*588/Math.max(1,pts.length-1)},Y=function(z){return 8+(hi-z)*94/(hi-lo)};
-      var path=pts.map(function(z,i){return(i?'L':'M')+X(i).toFixed(1)+' '+Y(z).toFixed(1)}).join(' ');
-      ph.style.border='0';ph.innerHTML='<svg viewBox="0 0 600 110" preserveAspectRatio="none" role="img" aria-label="Cumulative gross P&L by trade"><line x1="0" x2="600" y1="'+Y(0).toFixed(1)+'" y2="'+Y(0).toFixed(1)+'" stroke="#28476e" stroke-dasharray="3 4"/><path d="'+path+'" stroke="'+(sum>=0?'#3fdc9a':'#ff7f91')+'" fill="none" stroke-width="2.5" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>';}
+    if(t.length){
+      var points=[{time:new Date(t[0].session+'T00:00:00Z').getTime(),pnl:0}],running=0;
+      t.forEach(function(x){running+=Number(x.gross);points.push({time:Date.parse(x.session+'T'+x.exit_pt+'Z'),pnl:running})});
+      var minTime=points[0].time,maxTime=points[points.length-1].time;
+      var vals=points.map(function(p){return p.pnl}),lo=Math.min.apply(null,vals),hi=Math.max.apply(null,vals);
+      var pad=Math.max(5,(hi-lo)*.12);lo-=pad;hi+=pad;
+      var W=640,H=230,L=66,R=16,T=18,B=44,plotW=W-L-R,plotH=H-T-B;
+      var X=function(ms){return L+(ms-minTime)/Math.max(1,maxTime-minTime)*plotW};
+      var Y=function(v){return T+(hi-v)/(hi-lo)*plotH};
+      var line=points.map(function(p,i){return(i?'L':'M')+X(p.time).toFixed(1)+' '+Y(p.pnl).toFixed(1)}).join(' ');
+      var esc=function(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')};
+      var fmt=function(ms){return new Date(ms).toLocaleString('en-US',{timeZone:'America/Los_Angeles',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true})};
+      var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="SURGE Simple 3 cumulative gross profit and loss in dollars by Pacific time" style="width:100%;height:auto;min-height:230px">';
+      for(var j=0;j<=4;j++){var yv=lo+(hi-lo)*j/4,py=Y(yv).toFixed(1);
+        svg+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+py+'" y2="'+py+'" stroke="#28476e" stroke-dasharray="3 4"/>';
+        svg+='<text x="'+(L-9)+'" y="'+(+py+4)+'" text-anchor="end" fill="#9bb4d4" font-size="12">'+esc(money(yv))+'</text>';
+      }
+      for(var k=0;k<=3;k++){var tx=minTime+(maxTime-minTime)*k/3,px=X(tx).toFixed(1);
+        svg+='<text x="'+px+'" y="'+(H-17)+'" text-anchor="'+(k===0?'start':k===3?'end':'middle')+'" fill="#9bb4d4" font-size="11">'+esc(fmt(tx))+'</text>';
+      }
+      svg+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(0).toFixed(1)+'" y2="'+Y(0).toFixed(1)+'" stroke="#a0b7d0" stroke-dasharray="5 5" opacity=".8"/>';
+      svg+='<path d="'+line+'" stroke="'+(sum>=0?'#3fdc9a':'#ff7f91')+'" fill="none" stroke-width="2.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>';
+      svg+='<text x="'+(L+plotW/2)+'" y="'+(H-2)+'" text-anchor="middle" fill="#9bb4d4" font-size="12">Time (Pacific)</text>';
+      svg+='</svg><small>Cumulative gross P&amp;L ($), not account cash balance · Broker-matched paper trades · Before fees</small>';
+      ph.style.border='0';ph.innerHTML=svg;
+    }
     else ph.textContent='No trades yet in verified sessions';
   }).catch(function(){});
 })();
