@@ -430,3 +430,8 @@ main>.hero{padding-top:48px;padding-bottom:38px}
 #performance .spark svg{display:block;flex:none;width:100%;height:135px;min-height:135px}
 #performance .spark small{display:block;text-align:center;font-size:12px;color:var(--muted)}
 @media(max-width:600px){main>section{padding-top:24px;padding-bottom:24px}main>.hero{padding-top:30px;padding-bottom:24px}.hero-grid{gap:18px}.steps3,.feat6{margin-top:18px}.perf{margin-top:18px}.academy-head{margin-top:20px}#performance .spark{min-height:160px}#performance .spark svg{height:110px;min-height:110px}}
+.prov-badge{font-size:11px;font-weight:800;letter-spacing:.12em;color:#1a1200;background:var(--amber);border-radius:999px;padding:3px 9px}
+.perf .dot.dot-prov{background:var(--amber);box-shadow:0 0 0 6px rgba(255,190,80,.15)}
+.perf-grid.perf-grid-6{grid-template-columns:repeat(3,1fr)}
+@media(max-width:600px){.perf-grid.perf-grid-6{grid-template-columns:repeat(2,1fr)}.perf-status{flex-wrap:wrap}}
+#performance .spark svg.perf-chart{height:auto;min-height:0}

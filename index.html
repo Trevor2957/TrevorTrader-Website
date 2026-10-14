@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tt-site-2026.css?v=20261015-surge3">
+<link rel="stylesheet" href="assets/tt-site-2026.css?v=20261015-surge3-prov">
 </head>
 <body>
 <header class="top">
@@ -96,19 +96,21 @@
     <div class="center">
       <p class="eyebrow">Performance</p>
       <h2>Tested before <span class="grad">it's released.</span></h2>
-      <p class="lede">Our automated approach is still being tested in paper trading accounts. Results appear here only after they're verified.</p>
+      <p class="lede">Our automated approach is still being tested in paper trading accounts. Results appear here, and stay marked provisional until they're fully reconciled.</p>
     </div>
     <div class="perf card" data-engines="surge-simple-3">
-      <div class="perf-status"><span class="dot"></span><b class="perf-title">SURGE Simple 3 · Broker-matched paper results</b></div>
-      <p class="perf-scope"><b>SURGE Simple 3 only.</b> Results begin October 13, 2026, using Alpaca broker-matched paper fills. Local runner ledger cross-check remains pending. Other engines are excluded.</p>
-      <div class="perf-grid">
-        <div><b data-k="trades">—</b><small>Verified trades</small></div>
-        <div><b data-k="rate">—</b><small>Win rate</small></div>
+      <div class="perf-status"><span class="dot dot-prov"></span><b class="perf-title">SURGE Simple 3 · Paper results</b><span class="prov-badge">PROVISIONAL</span></div>
+      <p class="perf-scope"><b>SURGE Simple 3 only. Provisional:</b> results begin October 13, 2026 and are matched to Alpaca paper fills, but the local runner ledger and end-of-day reconciliation are not complete yet. Other engines are excluded.</p>
+      <div class="perf-grid perf-grid-6">
+        <div><b data-k="trades">—</b><small>Trades</small></div>
+        <div><b data-k="rate">—</b><small data-k="wlb">Win rate</small></div>
         <div><b data-k="pnl">—</b><small>Gross P&amp;L</small></div>
-        <div><b data-k="days">—</b><small>Verified sessions</small></div>
+        <div><b data-k="avgw">—</b><small>Average winner</small></div>
+        <div><b data-k="avgl">—</b><small>Average loser</small></div>
+        <div><b data-k="days">—</b><small>Sessions</small></div>
       </div>
-      <div class="spark"><svg viewBox="0 0 600 110" preserveAspectRatio="none" role="img" aria-label="SURGE Simple 3 cumulative gross P and L chart awaiting verified trades"><line x1="6" x2="594" y1="55" y2="55" stroke="#28476e" stroke-dasharray="3 4"/><circle cx="6" cy="55" r="4" fill="#3fdc9a"/></svg><small>October 13–14 · Broker-matched fills · Gross before fees</small></div>
-      <p class="foot">SURGE Simple 3 paper trading (simulated), beginning October 13, 2026. Gross results before fees; local runner ledger cross-check pending. Other strategies are excluded. Early results do not establish a trading edge.</p>
+      <div class="spark"><svg viewBox="0 0 600 110" preserveAspectRatio="none" role="img" aria-label="SURGE Simple 3 cumulative gross P and L chart awaiting trades"><line x1="6" x2="594" y1="55" y2="55" stroke="#28476e" stroke-dasharray="3 4"/><circle cx="6" cy="55" r="4" fill="#3fdc9a"/></svg><small>Provisional · Broker-matched fills · Gross before fees</small></div>
+      <p class="foot">SURGE Simple 3 paper trading (simulated), beginning October 13, 2026. PROVISIONAL: broker-matched gross results before fees; local runner ledger and end-of-day reconciliation pending. Other strategies are excluded. Early results do not establish a trading edge.</p>
     </div>
   </div>
 </section>
@@ -164,53 +166,71 @@
 </footer>
 
 <script>
-/* Performance summary: SURGE Simple 3 ONLY, October 13 2026 onward. Reconciled evidence only. */
+/* Performance summary: SURGE Simple 3 ONLY, October 13 2026 onward. PROVISIONAL (broker-matched, not yet EOD-reconciled).
+   Chart x-axis = trade number, so overnight gaps draw no slope. */
 (function(){
   var box=document.querySelector('.perf[data-engines]');
   if(!box||!window.fetch)return;
   var ids=box.getAttribute('data-engines').split(/\s+/);
+  /* Build id the EOD publisher must give trades from the 10-minute profit-cooldown runner.
+     The marker is drawn only before the first trade that carries it; until then it shows as pending. */
+  var COOLDOWN_BUILDS=['surge-simple-3-profit-cooldown-10m'];
   function money(v){return (v<-.005?'−':v>.005?'+':'')+'$'+Math.abs(v).toFixed(2)}
+  function whole(v){return (v<0?'−':v>0?'+':'')+'$'+Math.abs(v).toFixed(0)}
   fetch('data/evidence-history.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw Error('evidence unavailable');return r.json()}).then(function(d){
     var days={},t=[];
     (d.engines||[]).filter(function(e){return ids.indexOf(e.id)>=0}).forEach(function(e){
-      (e.sessions||[]).forEach(function(x){if(x.status==='reconciled'||x.status==='broker_matched'||x.status==='valid_zero_trade')days[x.date]=1});
+      (e.sessions||[]).forEach(function(x){if(x.date>='2026-10-13'&&(x.status==='reconciled'||x.status==='broker_matched'||x.status==='valid_zero_trade'))days[x.date]=1});
     });
     t=(d.trades||[]).filter(function(x){return ids.indexOf(x.engine)>=0&&x.session>='2026-10-13'&&(x.status==='reconciled'||x.status==='broker_matched')}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
     var n=Object.keys(days).length;if(!n)return;
-    var sum=t.reduce(function(a,b){return a+Number(b.gross)},0),win=t.filter(function(x){return x.gross>0.005}).length;
-    box.querySelector('.perf-title').textContent='SURGE Simple 3 · Broker-matched paper results';
-    box.querySelector('[data-k="trades"]').textContent=t.length;
-    box.querySelector('[data-k="rate"]').textContent=t.length?(100*win/t.length).toFixed(0)+'%':'—';
-    var pnl=box.querySelector('[data-k="pnl"]');pnl.textContent=t.length?money(sum):'—';pnl.className=t.length?(sum>0.005?'pos':sum<-0.005?'neg':''):'';
-    box.querySelector('[data-k="days"]').textContent=n;
+    var g=t.map(function(x){return Number(x.gross)});
+    var sum=g.reduce(function(a,b){return a+b},0);
+    var wins=g.filter(function(v){return v>0.005}),losses=g.filter(function(v){return v<-0.005}),be=g.length-wins.length-losses.length;
+    var avg=function(a){return a.reduce(function(x,y){return x+y},0)/a.length};
+    var set=function(k,v,cls){var el=box.querySelector('[data-k="'+k+'"]');el.textContent=v;if(cls!==undefined)el.className=cls};
+    set('trades',t.length);
+    set('rate',t.length?(100*wins.length/t.length).toFixed(1)+'%':'—');
+    set('wlb',t.length?'Win rate · '+wins.length+'W '+losses.length+'L '+be+' BE':'Win rate');
+    set('pnl',t.length?money(sum):'—',t.length?(sum>0.005?'pos':sum<-0.005?'neg':''):'');
+    set('avgw',wins.length?money(avg(wins)):'—',wins.length?'pos':'');
+    set('avgl',losses.length?money(avg(losses)):'—',losses.length?'neg':'');
+    set('days',n);
     var ph=box.querySelector('.spark');
-    if(t.length){
-      var points=[{time:new Date(t[0].session+'T00:00:00Z').getTime(),pnl:0}],running=0;
-      t.forEach(function(x){running+=Number(x.gross);points.push({time:Date.parse(x.session+'T'+x.exit_pt+'Z'),pnl:running})});
-      var minTime=points[0].time,maxTime=points[points.length-1].time;
-      var vals=points.map(function(p){return p.pnl}),lo=Math.min.apply(null,vals),hi=Math.max.apply(null,vals);
-      var pad=Math.max(5,(hi-lo)*.12);lo-=pad;hi+=pad;
-      var W=640,H=230,L=66,R=16,T=18,B=44,plotW=W-L-R,plotH=H-T-B;
-      var X=function(ms){return L+(ms-minTime)/Math.max(1,maxTime-minTime)*plotW};
-      var Y=function(v){return T+(hi-v)/(hi-lo)*plotH};
-      var line=points.map(function(p,i){return(i?'L':'M')+X(p.time).toFixed(1)+' '+Y(p.pnl).toFixed(1)}).join(' ');
-      var esc=function(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')};
-      var fmt=function(ms){return new Date(ms).toLocaleString('en-US',{timeZone:'America/Los_Angeles',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true})};
-      var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="SURGE Simple 3 cumulative gross profit and loss in dollars by Pacific time" style="width:100%;height:auto;min-height:230px">';
-      for(var j=0;j<=4;j++){var yv=lo+(hi-lo)*j/4,py=Y(yv).toFixed(1);
-        svg+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+py+'" y2="'+py+'" stroke="#28476e" stroke-dasharray="3 4"/>';
-        svg+='<text x="'+(L-9)+'" y="'+(+py+4)+'" text-anchor="end" fill="#9bb4d4" font-size="12">'+esc(money(yv))+'</text>';
-      }
-      for(var k=0;k<=3;k++){var tx=minTime+(maxTime-minTime)*k/3,px=X(tx).toFixed(1);
-        svg+='<text x="'+px+'" y="'+(H-17)+'" text-anchor="'+(k===0?'start':k===3?'end':'middle')+'" fill="#9bb4d4" font-size="11">'+esc(fmt(tx))+'</text>';
-      }
-      svg+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(0).toFixed(1)+'" y2="'+Y(0).toFixed(1)+'" stroke="#a0b7d0" stroke-dasharray="5 5" opacity=".8"/>';
-      svg+='<path d="'+line+'" stroke="'+(sum>=0?'#3fdc9a':'#ff7f91')+'" fill="none" stroke-width="2.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>';
-      svg+='<text x="'+(L+plotW/2)+'" y="'+(H-2)+'" text-anchor="middle" fill="#9bb4d4" font-size="12">Time (Pacific)</text>';
-      svg+='</svg><small>Cumulative gross P&amp;L ($), not account cash balance · Broker-matched paper trades · Before fees</small>';
-      ph.style.border='0';ph.innerHTML=svg;
+    if(!t.length){ph.textContent='No trades yet';return}
+    var pts=[0],run=0;g.forEach(function(v){run+=v;pts.push(run)});
+    var lo=Math.min(0,Math.min.apply(null,pts)),hi=Math.max(0,Math.max.apply(null,pts));
+    var step=[5,10,20,25,50,100,250,500].filter(function(s){return (Math.ceil(hi/s)-Math.floor(lo/s))<=6})[0]||1000;
+    lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;if(hi===lo)hi=lo+step;
+    if(hi-Math.max.apply(null,pts)<step*.15)hi+=step; if(Math.min.apply(null,pts)-lo<step*.15)lo-=step;
+    var narrow=ph.clientWidth<480,W=narrow?340:640,H=narrow?280:250,L=narrow?48:58,R=narrow?10:16,T=34,B=46,plotW=W-L-R,plotH=H-T-B,N=t.length;
+    var X=function(i){return L+i/Math.max(1,N)*plotW};
+    var Y=function(v){return T+(hi-v)/(hi-lo)*plotH};
+    var esc=function(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')};
+    var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="SURGE Simple 3 provisional cumulative gross profit and loss in dollars, by trade number, '+N+' trades, ending '+esc(money(sum))+'" class="perf-chart">';
+    for(var v=lo;v<=hi+1e-9;v+=step){var py=Y(v).toFixed(1);
+      svg+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+py+'" y2="'+py+'" stroke="'+(v===0?'#a0b7d0':'#28476e')+'" stroke-dasharray="'+(v===0?'5 5':'3 4')+'"'+(v===0?' opacity=".8"':'')+'/>';
+      svg+='<text x="'+(L-9)+'" y="'+(+py+4)+'" text-anchor="end" fill="'+(v===0?'#dbe8f5':'#9bb4d4')+'" font-size="12">'+esc(whole(v))+'</text>';
     }
-    else ph.textContent='No trades yet in verified sessions';
+    var tickEvery=N>(narrow?60:30)?10:N>(narrow?8:15)?5:1;
+    for(var i=0;i<=N;i++){if(i%tickEvery&&i!==N)continue;
+      svg+='<text x="'+X(i).toFixed(1)+'" y="'+(H-24)+'" text-anchor="middle" fill="#9bb4d4" font-size="11">'+i+'</text>';
+    }
+    var mon=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var lab=function(day){var p=day.split('-');return mon[+p[1]-1]+' '+(+p[2])};
+    t.forEach(function(x,i){if(i===0||x.session!==t[i-1].session){var px=X(i).toFixed(1);
+      if(i)svg+='<line x1="'+px+'" x2="'+px+'" y1="'+T+'" y2="'+(T+plotH)+'" stroke="#3a5a7d" stroke-width="1"/>';
+      svg+='<text x="'+(+px+4)+'" y="'+(T-6)+'" fill="#9bb4d4" font-size="11">'+esc(lab(x.session))+'</text>';}});
+    var cIdx=-1;t.forEach(function(x,i){if(cIdx<0&&COOLDOWN_BUILDS.indexOf(x.build)>=0)cIdx=i});
+    if(cIdx>=0){var cx=X(cIdx).toFixed(1);  /* right after the last trade of the earlier build */
+      svg+='<line x1="'+cx+'" x2="'+cx+'" y1="'+(T-14)+'" y2="'+(T+plotH)+'" stroke="#ffbe50" stroke-width="1.6" stroke-dasharray="6 4"/>';
+      svg+='<text x="'+(+cx-4)+'" y="'+(T-18)+'" text-anchor="end" fill="#ffbe50" font-size="11" font-weight="700">10-min profit cooldown →</text>';}
+    svg+='<path d="'+pts.map(function(v,i){return(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)}).join(' ')+'" stroke="'+(sum>=0?'#3fdc9a':'#ff7f91')+'" fill="none" stroke-width="2.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>';
+    pts.forEach(function(v,i){svg+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(v).toFixed(1)+'" r="'+(i?3:4)+'" fill="'+(i===0?'#9bb4d4':g[i-1]>0.005?'#3fdc9a':g[i-1]<-0.005?'#ff7f91':'#9bb4d4')+'"><title>'+(i?'Trade '+i+' · '+esc(t[i-1].symbol||'')+' '+esc(money(g[i-1]))+' · cumulative '+esc(money(v)):'Start · $0')+'</title></circle>'});
+    svg+='<text x="'+(L+plotW/2)+'" y="'+(H-4)+'" text-anchor="middle" fill="#9bb4d4" font-size="12">Trade number</text>';
+    svg+='</svg><small>PROVISIONAL · Cumulative gross P&amp;L ($) from $0, not account balance · Broker-matched paper trades · Before fees'+
+      (cIdx>=0?'':' · 10-min profit cooldown build: pending, no trades under it yet')+'</small>';
+    ph.style.border='0';ph.innerHTML=svg;
   }).catch(function(){});
 })();
 </script>
