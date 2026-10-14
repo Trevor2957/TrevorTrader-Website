@@ -100,7 +100,7 @@
     </div>
     <div class="perf card" data-engines="surge-simple-3">
       <div class="perf-status"><span class="dot"></span><b class="perf-title">SURGE Simple 3 · Awaiting verified results</b></div>
-      <p class="perf-scope"><b>SURGE Simple 3 only.</b> Results begin October 14, 2026, and include only broker-reconciled paper trades. Other engines are excluded.</p>
+      <p class="perf-scope"><b>SURGE Simple 3 only.</b> Results begin October 13, 2026, and include only broker-reconciled paper trades. Other engines are excluded.</p>
       <div class="perf-grid">
         <div><b data-k="trades">—</b><small>Verified trades</small></div>
         <div><b data-k="rate">—</b><small>Win rate</small></div>
@@ -108,7 +108,7 @@
         <div><b data-k="days">—</b><small>Verified sessions</small></div>
       </div>
       <div class="spark">SURGE Simple 3 results will appear after reconciliation</div>
-      <p class="foot">SURGE Simple 3 paper trading (simulated), beginning October 14, 2026. Gross results before fees. Other strategies are excluded. Early results do not establish a trading edge.</p>
+      <p class="foot">SURGE Simple 3 paper trading (simulated), beginning October 13, 2026. Gross results before fees. Other strategies are excluded. Early results do not establish a trading edge.</p>
     </div>
   </div>
 </section>
@@ -164,7 +164,7 @@
 </footer>
 
 <script>
-/* Performance summary: SURGE Simple 3 ONLY, October 14 2026 onward. Reconciled evidence only. */
+/* Performance summary: SURGE Simple 3 ONLY, October 13 2026 onward. Reconciled evidence only. */
 (function(){
   var box=document.querySelector('.perf[data-engines]');
   if(!box||!window.fetch)return;
@@ -175,7 +175,7 @@
     (d.engines||[]).filter(function(e){return ids.indexOf(e.id)>=0}).forEach(function(e){
       (e.sessions||[]).forEach(function(x){if(x.status==='reconciled'||x.status==='valid_zero_trade')days[x.date]=1});
     });
-    t=(d.trades||[]).filter(function(x){return ids.indexOf(x.engine)>=0&&x.session>='2026-10-14'&&x.status==='reconciled'}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
+    t=(d.trades||[]).filter(function(x){return ids.indexOf(x.engine)>=0&&x.session>='2026-10-13'&&x.status==='reconciled'}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
     var n=Object.keys(days).length;if(!n)return;
     var sum=t.reduce(function(a,b){return a+Number(b.gross)},0),win=t.filter(function(x){return x.gross>0.005}).length;
     box.querySelector('.perf-title').textContent='SURGE Simple 3 · Verified paper results';
