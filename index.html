@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tt-site-2026.css?v=20261015-surge3-prov">
+<link rel="stylesheet" href="assets/tt-site-2026.css?v=20261014-pdca-nav">
 </head>
 <body>
 <header class="top">
@@ -375,7 +375,7 @@
     });
     pdca.innerHTML=(CHANGES.length?'<h3 class="pdca-head">Strategy changes (PDCA)</h3>':'')+html;
     /* Clicking a chart marker or pending chip opens its record. */
-    box.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#pdca-"]');if(!a)return;
+    document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#pdca-"]');if(!a)return;
       var el=document.getElementById(a.getAttribute('href').slice(1));if(!el)return;e.preventDefault();el.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});el.querySelector('summary').focus()});
   }).catch(function(){});
 })();
