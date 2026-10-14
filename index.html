@@ -23,6 +23,7 @@
       <a href="#how-it-works">How it works</a>
       <a href="#features">Features</a>
       <a href="#performance">Performance</a>
+      <a href="#research-lab">Research Lab</a>
       <a href="#watch">Watch</a>
     </nav>
     <a class="btn btn-primary" href="#coming-soon">Coming soon</a>
@@ -116,6 +117,82 @@
   </div>
 </section>
 
+<section class="lab" id="research-lab">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">PDCA Research Lab</p>
+      <h2>Every change is <span class="grad">tested before it counts.</span></h2>
+      <p class="lede">Each idea follows Plan, Do, Check, Act and our research steps: propose, test, audit, shadow, validate, then promote. An idea becomes a numbered marker on the performance chart only after the new code is verified as active.</p>
+    </div>
+    <ol class="lab-legend" aria-label="Status meanings">
+      <li><span class="lab-status st-proposed">Proposed</span> Idea written down, not tested</li>
+      <li><span class="lab-status st-testing">Testing</span> In offline test, audit or shadow</li>
+      <li><span class="lab-status st-implemented">Implemented</span> Running in paper trading; code hash, activation time, build id and first trade verified; still being judged</li>
+      <li><span class="lab-status st-validated">Validated</span> Met its pre-agreed bars on 100+ new trades, with uncertainty shown</li>
+      <li><span class="lab-status st-rejected">Rejected</span> Did not meet its bars; record kept</li>
+    </ol>
+
+    <h3 class="lab-h">Active PDCA record</h3>
+    <article class="lab-card lab-active" id="lab-pdca-001">
+      <header><span class="lab-num">PDCA #001</span><span class="lab-status st-testing">Testing</span></header>
+      <h4>10-Minute Profit Cooldown · SURGE Simple 3</h4>
+      <p class="lab-goal">After a fully closed winning trade, no new buy in the same stock for 10 minutes.</p>
+      <dl>
+        <div><dt>Hypothesis</dt><dd>Blocking quick re-entries after a win avoids losing trades. Not proven.</dd></div>
+        <div><dt>Implementation verification</dt><dd>Offline tests and code audit complete. Activation in paper trading: <b>pending verification</b>.</dd></div>
+        <div><dt>Performance evaluation</dt><dd><b>Not started.</b> Interim checkpoint at 40 trades or 4 weeks (progress only, not proof). First validation assessment at 100 or more new trades, with an uncertainty range, against the preserved October 13–14 baseline.</dd></div>
+        <div><dt>Measurement</dt><dd>Win rate, average win and loss, gross and net P&amp;L, profit factor (screen ≥1.2 after costs), drawdown ($200 guardrail and risk-adjusted), and each entry signal the cooldown blocked with what it would have done. <a href="#pdca-001">See the before and after table</a>.</dd></div>
+      </dl>
+    </article>
+
+    <h3 class="lab-h">Future Interventions — Not Yet Tested</h3>
+    <p class="lab-note">These are ideas only. None is part of TrevorTrader's trading rules, and none has results yet.</p>
+    <div class="lab-grid">
+        <article class="lab-card">
+          <header><span class="lab-num">FI-01</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Scanner optimization</h4><p class="lab-goal">Find stronger momentum stocks earlier.</p>
+          <dl><div><dt>Hypothesis</dt><dd>A scanner that ranks earlier and stronger movers may give better entries than today's price, gain and volume filters.</dd></div><div><dt>Proposed measurement</dt><dd>Minutes between a stock's first +10% move and the scanner picking it; best move after the pick (MFE); stocks caught vs. missed, replayed against the current scanner.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-02</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Entry optimization</h4><p class="lab-goal">Improve breakout timing and avoid late entries.</p>
+          <dl><div><dt>Hypothesis</dt><dd>Entering closer to the breakout trigger may cut losing trades that start in the red.</dd></div><div><dt>Proposed measurement</dt><dd>Fill price vs. trigger price; share of entries classed too early, right moment, too late or false breakout; worst move in the first minute (MAE); win rate.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-03</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Level II integration</h4><p class="lab-goal">Evaluate order-book information.</p>
+          <dl><div><dt>Hypothesis</dt><dd>Bid and ask depth at the moment of a signal may help separate breakouts that hold from ones that fail.</dd></div><div><dt>Proposed measurement</dt><dd>Whether order-book features at signal time differ between winning and losing trades in a replay. Needs an order-book data feed, which TrevorTrader does not have yet.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-04</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Time-of-day optimization</h4><p class="lab-goal">Identify better trading windows.</p>
+          <dl><div><dt>Hypothesis</dt><dd>Results may differ by time of day, so some windows may be worth avoiding.</dd></div><div><dt>Proposed measurement</dt><dd>Trades, win rate, average win and loss, and profit factor for each 30-minute window.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-05</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Lock in Green</h4><p class="lab-goal">Test protecting unrealized profits.</p>
+          <dl><div><dt>Hypothesis</dt><dd>Moving the stop up once a trade is ahead may keep gains that would otherwise turn into losses.</dd></div><div><dt>Proposed measurement</dt><dd>Trades that were ahead by 1R and then lost; total P&amp;L and average winner vs. the baseline exit. Not approved for the live engine.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-06</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Exit optimization</h4><p class="lab-goal">Improve profit targets, trailing stops and exit timing.</p>
+          <dl><div><dt>Hypothesis</dt><dd>A different target, trailing stop or time exit may capture more of each move.</dd></div><div><dt>Proposed measurement</dt><dd>Share of each trade's best move (MFE) that was captured; average winner; profit factor; how many trades end on the 10-minute time exit.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-07</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Cooldown optimization</h4><p class="lab-goal">Evaluate alternative re-entry restrictions.</p>
+          <dl><div><dt>Hypothesis</dt><dd>A different cooldown length or rule (for example after losses too) may work better than PDCA #001.</dd></div><div><dt>Proposed measurement</dt><dd>P&amp;L of re-entries; blocked re-entries and what they would have done; compared across cooldown lengths in replay. Starts only after PDCA #001 is evaluated.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-08</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Risk management</h4><p class="lab-goal">Evaluate sizing and capital protection improvements.</p>
+          <dl><div><dt>Hypothesis</dt><dd>Changing position size or daily limits may reduce drawdowns without removing the good trades.</dd></div><div><dt>Proposed measurement</dt><dd>Maximum drawdown; worst day; result per dollar risked; days stopped by the daily loss limit.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+    </div>
+    <p class="lab-note">Paper (simulated) trading only. A before-and-after difference does not by itself prove a change caused it. No profitability or trading edge is claimed.</p>
+  </div>
+</section>
+
 <section id="watch">
   <span id="youtube-coming-soon" aria-hidden="true"></span>
   <div class="wrap">
@@ -159,7 +236,7 @@
   <div class="wrap">
     <div class="row">
       <a class="brand" href="#top"><span class="mark">↗</span><span>Trevor<span class="blue">Trader</span></span></a>
-      <nav aria-label="Footer"><a href="#how-it-works">How it works</a><a href="#features">Features</a><a href="#performance">Performance</a><a href="#watch">Watch</a><a href="#coming-soon">Coming soon</a><a href="research/">Research archive</a></nav>
+      <nav aria-label="Footer"><a href="#how-it-works">How it works</a><a href="#features">Features</a><a href="#performance">Performance</a><a href="#research-lab">Research Lab</a><a href="#watch">Watch</a><a href="#coming-soon">Coming soon</a><a href="research/">Research archive</a></nav>
     </div>
     <p class="disc">TrevorTrader is in development and is not available for purchase. Its rules-based strategy is built on established momentum-trading principles. No profitability or trading edge is claimed. Results shown are from paper (simulated) trading, are not real money, and do not guarantee future results. Nothing on this website is investment advice. Trading involves risk, including loss of capital.</p>
     <p>© 2026 TrevorTrader. All rights reserved.</p>
@@ -180,11 +257,16 @@
      The cumulative line is never reset at a change. */
   var CHANGES=[{num:1,id:'PDCA-001',label:'10-Minute Profit Cooldown',builds:['surge-simple-3-profit-cooldown-10m'],
     version:'SURGE-SIMPLE-3-PROFIT-COOLDOWN-10M-2026-10-14',code_hash:'186ac730b51f3390',
-    verified:false,deployed_at:null,first_trade:null,metric_label:'Re-entries blocked by cooldown',metric_value:null,decision:'Pending',
+    verified:false,verified_code_hash:null,deployed_at:null,first_trade:null,
+    metric_label:'Entry signals blocked by cooldown (counterfactual P&L)',metric_value:null,decision:'Pending',
     plan:'After a fully closed winning trade, the bot may not buy the same stock again for 10 minutes. Other stocks trade normally, and a new entry signal is still required afterwards.',
     reason:'Quick repeat entries in a stock right after a win gave back profit (for example SMCZ on Oct 14).',
     hypothesis:'Blocking those re-entries avoids losing trades. Being tested; not proven.'}];
   function tag(c){return 'PDCA #'+('00'+c.num).slice(-3)}
+  /* IMPLEMENTED needs all four: verified code hash equal to the register's, an activation timestamp,
+     a first trade under the new build, and trades in the data carrying that build id (c.idx >= 0). */
+  function implemented(c){return c.verified===true&&!!c.verified_code_hash&&c.verified_code_hash===c.code_hash&&!!c.deployed_at&&!!c.first_trade&&c.idx>=0}
+  var PLANNED_RISK=20;  /* $ planned risk per trade (SURGE rule), used for drawdown in R */
   function money(v){return (v<-.005?'−':v>.005?'+':'')+'$'+Math.abs(v).toFixed(2)}
   function whole(v){return (v<0?'−':v>0?'+':'')+'$'+Math.abs(v).toFixed(0)}
   fetch('data/evidence-history.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw Error('evidence unavailable');return r.json()}).then(function(d){
@@ -237,7 +319,7 @@
     drawn.forEach(function(c,k){
       /* Only the most recent change gets the full callout; older ones collapse to a numbered badge.
          Every marker links to its expandable PDCA record below the chart. */
-      var full=k===drawn.length-1,cx=X(c.idx),ok=c.verified===true,col=ok?'#ffbe50':'#9bb4d4',cy=full?2:28,hh=full?20:16;
+      var full=k===drawn.length-1,cx=X(c.idx),ok=implemented(c),col=ok?'#ffbe50':'#9bb4d4',cy=full?2:28,hh=full?20:16;
       var txt=(full?tag(c)+': '+c.label:'#'+('00'+c.num).slice(-3))+(ok?'':full?' · PENDING':'?'),tw=Math.min(W-L-R,txt.length*(full?(narrow?6.1:6.7):6.1)+16);
       var left=cx>L+plotW/2,bx=full?(left?cx-12-tw:cx+12):cx-tw/2; bx=Math.max(4,Math.min(W-R-tw,bx));
       var tip=tag(c)+': '+c.label+(ok?' (implemented)':' (PENDING verification)')+'\nActivated: '+(c.deployed_at||'pending')+
@@ -264,14 +346,15 @@
       return {n:a.length,rate:a.length?(100*w.length/a.length).toFixed(1)+'%':'—',wlb:w.length+'W '+l.length+'L '+(gg.length-w.length-l.length)+' BE',
         aw:w.length?money(sw/w.length):'—',al:l.length?money(sl/l.length):'—',gross:a.length?money(sw+sl):'—',
         net:!a.length?'—':fees?money(sw+sl-a.reduce(function(x,y){return x+Number(y.fees)},0)):'Pending',
-        pf:!a.length?'—':l.length?(sw/-sl).toFixed(2):'n/a',dd:a.length?'$'+dd.toFixed(2):'—'}};
+        pf:!a.length?'—':l.length?(sw/-sl).toFixed(2):'n/a',dd:a.length?'$'+dd.toFixed(2):'—',
+        ddr:a.length?(dd/PLANNED_RISK).toFixed(1)+'R':'—',rdd:!a.length?'—':dd>0.005?((sw+sl)/dd).toFixed(2):'n/a'}};
     var pdca=box.querySelector('.pdca'),html='',bounds=CHANGES.filter(function(c){return c.idx>=0}).map(function(c){return c.idx});
     CHANGES.forEach(function(c){
       /* Before = trades of the build just before this change; After = trades under it until the next change. */
       var prev=Math.max.apply(null,[0].concat(bounds.filter(function(b){return b<(c.idx<0?t.length:c.idx)}))),
           next=Math.min.apply(null,[t.length].concat(bounds.filter(function(b){return b>c.idx})));
       var before=c.idx<0?t.slice(prev):t.slice(prev,c.idx),after=c.idx<0?[]:t.slice(c.idx,next),b=stats(before),a=stats(after);
-      var ok=c.verified===true,state=ok?'IMPLEMENTED':'PENDING';
+      var ok=implemented(c),state=ok?'IMPLEMENTED':'PENDING';
       var row=function(k,x,y){return '<tr><th scope="row">'+k+'</th><td>'+x+'</td><td>'+y+'</td></tr>'};
       var latest=c===CHANGES[CHANGES.length-1];
       html+='<details class="pdca-item" id="'+esc(c.id.toLowerCase())+'"'+(latest?' open':'')+'><summary><span class="pdca-name">'+esc(tag(c)+': '+c.label)+'</span> <span class="pdca-state '+(ok?'on':'pend')+'">'+state+'</span>'+
@@ -283,10 +366,12 @@
         '<div class="pdca-scroll"><table class="pdca-table"><thead><tr><th scope="col">Check</th><th scope="col">Before</th><th scope="col">After</th></tr></thead><tbody>'+
         row('Trades',b.n,a.n||'—')+row('Win rate',b.rate+'<small>'+b.wlb+'</small>',a.n?a.rate+'<small>'+a.wlb+'</small>':'—')+
         row('Average winner',b.aw,a.aw)+row('Average loser',b.al,a.al)+row('Gross P&amp;L',b.gross,a.gross)+row('Net P&amp;L (after fees)',b.net,a.net)+
-        row('Profit factor',b.pf,a.pf)+row('Max drawdown',b.dd,a.dd)+
+        row('Profit factor (screen: ≥1.2 after costs)',b.pf,a.pf)+row('Max drawdown (guardrail: under $200)',b.dd,a.dd)+
+        row('Drawdown in R ($'+PLANNED_RISK+' planned risk)',b.ddr,a.ddr)+row('Gross P&amp;L ÷ max drawdown',b.rdd,a.rdd)+
         (c.metric_label?row(esc(c.metric_label),'Not applicable',c.metric_value==null?(a.n?'Pending':'—'):esc(c.metric_value)):'')+
         '</tbody></table></div>'+
-        '<p><b>Act:</b> decision '+esc(c.decision)+'. Retain, modify or reject only after enough new trades, judged against the preserved baseline. A before-and-after difference alone does not prove the change caused it.</p></details>';
+        '<p><b>Check progress:</b> '+a.n+' of 100 trades for the first validation assessment'+(a.n>=40?' (interim checkpoint reached)':'; interim checkpoint at 40 trades or 4 weeks')+'.</p>'+
+        '<p><b>Act:</b> decision '+esc(c.decision)+'. The 40-trade / 4-week checkpoint is a progress review, not proof. The first validation assessment needs at least 100 new trades with an uncertainty range, judged against the preserved baseline. Profit factor ≥1.2 after costs is a screen, not a guarantee of an edge. A before-and-after difference alone does not prove the change caused it.</p></details>';
     });
     pdca.innerHTML=(CHANGES.length?'<h3 class="pdca-head">Strategy changes (PDCA)</h3>':'')+html;
     /* Clicking a chart marker or pending chip opens its record. */
