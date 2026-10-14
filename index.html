@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tt-site-2026.css?v=20261015-surge3">
+<link rel="stylesheet" href="assets/tt-site-2026.css?v=20261015-surge3-prov">
 </head>
 <body>
 <header class="top">
@@ -23,6 +23,7 @@
       <a href="#how-it-works">How it works</a>
       <a href="#features">Features</a>
       <a href="#performance">Performance</a>
+      <a href="#research-lab">Research Lab</a>
       <a href="#watch">Watch</a>
     </nav>
     <a class="btn btn-primary" href="#coming-soon">Coming soon</a>
@@ -96,20 +97,99 @@
     <div class="center">
       <p class="eyebrow">Performance</p>
       <h2>Tested before <span class="grad">it's released.</span></h2>
-      <p class="lede">Our automated approach is still being tested in paper trading accounts. Results appear here only after they're verified.</p>
+      <p class="lede">Our automated approach is still being tested in paper trading accounts. Results appear here, and stay marked provisional until they're fully reconciled.</p>
     </div>
     <div class="perf card" data-engines="surge-simple-3">
-      <div class="perf-status"><span class="dot"></span><b class="perf-title">SURGE Simple 3 · Broker-matched paper results</b></div>
-      <p class="perf-scope"><b>SURGE Simple 3 only.</b> Results begin October 13, 2026, using Alpaca broker-matched paper fills. Local runner ledger cross-check remains pending. Other engines are excluded.</p>
-      <div class="perf-grid">
-        <div><b data-k="trades">—</b><small>Verified trades</small></div>
-        <div><b data-k="rate">—</b><small>Win rate</small></div>
+      <div class="perf-status"><span class="dot dot-prov"></span><b class="perf-title">SURGE Simple 3 · Paper results</b><span class="prov-badge">PROVISIONAL</span></div>
+      <p class="perf-scope"><b>SURGE Simple 3 only. Provisional:</b> results begin October 13, 2026 and are matched to Alpaca paper fills, but the local runner ledger and end-of-day reconciliation are not complete yet. Other engines are excluded.</p>
+      <div class="perf-grid perf-grid-6">
+        <div><b data-k="trades">—</b><small>Trades</small></div>
+        <div><b data-k="rate">—</b><small data-k="wlb">Win rate</small></div>
         <div><b data-k="pnl">—</b><small>Gross P&amp;L</small></div>
-        <div><b data-k="days">—</b><small>Verified sessions</small></div>
+        <div><b data-k="avgw">—</b><small>Average winner</small></div>
+        <div><b data-k="avgl">—</b><small>Average loser</small></div>
+        <div><b data-k="days">—</b><small>Sessions</small></div>
       </div>
-      <div class="spark"><svg viewBox="0 0 600 110" preserveAspectRatio="none" role="img" aria-label="SURGE Simple 3 cumulative gross P and L chart awaiting verified trades"><line x1="6" x2="594" y1="55" y2="55" stroke="#28476e" stroke-dasharray="3 4"/><circle cx="6" cy="55" r="4" fill="#3fdc9a"/></svg><small>October 13–14 · Broker-matched fills · Gross before fees</small></div>
-      <p class="foot">SURGE Simple 3 paper trading (simulated), beginning October 13, 2026. Gross results before fees; local runner ledger cross-check pending. Other strategies are excluded. Early results do not establish a trading edge.</p>
+      <div class="spark"><svg viewBox="0 0 600 110" preserveAspectRatio="none" role="img" aria-label="SURGE Simple 3 cumulative gross P and L chart awaiting trades"><line x1="6" x2="594" y1="55" y2="55" stroke="#28476e" stroke-dasharray="3 4"/><circle cx="6" cy="55" r="4" fill="#3fdc9a"/></svg><small>Provisional · Broker-matched fills · Gross before fees</small></div>
+      <div class="pdca" aria-live="polite"></div>
+      <p class="foot">SURGE Simple 3 paper trading (simulated), beginning October 13, 2026. PROVISIONAL: broker-matched gross results before fees; local runner ledger and end-of-day reconciliation pending. Other strategies are excluded. Early results do not establish a trading edge.</p>
     </div>
+  </div>
+</section>
+
+<section class="lab" id="research-lab">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">PDCA Research Lab</p>
+      <h2>Every change is <span class="grad">tested before it counts.</span></h2>
+      <p class="lede">Each idea follows Plan, Do, Check, Act and our research steps: propose, test, audit, shadow, validate, then promote. An idea becomes a numbered marker on the performance chart only after the new code is verified as active.</p>
+    </div>
+    <ol class="lab-legend" aria-label="Status meanings">
+      <li><span class="lab-status st-proposed">Proposed</span> Idea written down, not tested</li>
+      <li><span class="lab-status st-testing">Testing</span> In offline test, audit or shadow</li>
+      <li><span class="lab-status st-implemented">Implemented</span> Running in paper trading; code hash, activation time, build id and first trade verified; still being judged</li>
+      <li><span class="lab-status st-validated">Validated</span> Met its pre-agreed bars on 100+ new trades, with uncertainty shown</li>
+      <li><span class="lab-status st-rejected">Rejected</span> Did not meet its bars; record kept</li>
+    </ol>
+
+    <h3 class="lab-h">Active PDCA record</h3>
+    <article class="lab-card lab-active" id="lab-pdca-001">
+      <header><span class="lab-num">PDCA #001</span><span class="lab-status st-testing">Testing</span></header>
+      <h4>10-Minute Profit Cooldown · SURGE Simple 3</h4>
+      <p class="lab-goal">After a fully closed winning trade, no new buy in the same stock for 10 minutes.</p>
+      <dl>
+        <div><dt>Hypothesis</dt><dd>Blocking quick re-entries after a win avoids losing trades. Not proven.</dd></div>
+        <div><dt>Implementation verification</dt><dd>Offline tests and code audit complete. Activation in paper trading: <b>pending verification</b>.</dd></div>
+        <div><dt>Performance evaluation</dt><dd><b>Not started.</b> Interim checkpoint at 40 trades or 4 weeks (progress only, not proof). First validation assessment at 100 or more new trades, with an uncertainty range, against the preserved October 13–14 baseline.</dd></div>
+        <div><dt>Measurement</dt><dd>Win rate, average win and loss, gross and net P&amp;L, profit factor (screen ≥1.2 after costs), drawdown ($200 guardrail and risk-adjusted), and each entry signal the cooldown blocked with what it would have done. <a href="#pdca-001">See the before and after table</a>.</dd></div>
+      </dl>
+    </article>
+
+    <h3 class="lab-h">Future Interventions — Not Yet Tested</h3>
+    <p class="lab-note">These are ideas only. None is part of TrevorTrader's trading rules, and none has results yet.</p>
+    <div class="lab-grid">
+        <article class="lab-card">
+          <header><span class="lab-num">FI-01</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Scanner optimization</h4><p class="lab-goal">Find stronger momentum stocks earlier.</p>
+          <dl><div><dt>Hypothesis</dt><dd>A scanner that ranks earlier and stronger movers may give better entries than today's price, gain and volume filters.</dd></div><div><dt>Proposed measurement</dt><dd>Minutes between a stock's first +10% move and the scanner picking it; best move after the pick (MFE); stocks caught vs. missed, replayed against the current scanner.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-02</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Entry optimization</h4><p class="lab-goal">Improve breakout timing and avoid late entries.</p>
+          <dl><div><dt>Hypothesis</dt><dd>Entering closer to the breakout trigger may cut losing trades that start in the red.</dd></div><div><dt>Proposed measurement</dt><dd>Fill price vs. trigger price; share of entries classed too early, right moment, too late or false breakout; worst move in the first minute (MAE); win rate.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-03</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Level II integration</h4><p class="lab-goal">Evaluate order-book information.</p>
+          <dl><div><dt>Hypothesis</dt><dd>Bid and ask depth at the moment of a signal may help separate breakouts that hold from ones that fail.</dd></div><div><dt>Proposed measurement</dt><dd>Whether order-book features at signal time differ between winning and losing trades in a replay. Needs an order-book data feed, which TrevorTrader does not have yet.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-04</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Time-of-day optimization</h4><p class="lab-goal">Identify better trading windows.</p>
+          <dl><div><dt>Hypothesis</dt><dd>Results may differ by time of day, so some windows may be worth avoiding.</dd></div><div><dt>Proposed measurement</dt><dd>Trades, win rate, average win and loss, and profit factor for each 30-minute window.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-05</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Lock in Green</h4><p class="lab-goal">Test protecting unrealized profits.</p>
+          <dl><div><dt>Hypothesis</dt><dd>Moving the stop up once a trade is ahead may keep gains that would otherwise turn into losses.</dd></div><div><dt>Proposed measurement</dt><dd>Trades that were ahead by 1R and then lost; total P&amp;L and average winner vs. the baseline exit. Not approved for the live engine.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-06</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Exit optimization</h4><p class="lab-goal">Improve profit targets, trailing stops and exit timing.</p>
+          <dl><div><dt>Hypothesis</dt><dd>A different target, trailing stop or time exit may capture more of each move.</dd></div><div><dt>Proposed measurement</dt><dd>Share of each trade's best move (MFE) that was captured; average winner; profit factor; how many trades end on the 10-minute time exit.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-07</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Cooldown optimization</h4><p class="lab-goal">Evaluate alternative re-entry restrictions.</p>
+          <dl><div><dt>Hypothesis</dt><dd>A different cooldown length or rule (for example after losses too) may work better than PDCA #001.</dd></div><div><dt>Proposed measurement</dt><dd>P&amp;L of re-entries; blocked re-entries and what they would have done; compared across cooldown lengths in replay. Starts only after PDCA #001 is evaluated.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+        <article class="lab-card">
+          <header><span class="lab-num">FI-08</span><span class="lab-status st-proposed">Proposed · not yet tested</span></header>
+          <h4>Risk management</h4><p class="lab-goal">Evaluate sizing and capital protection improvements.</p>
+          <dl><div><dt>Hypothesis</dt><dd>Changing position size or daily limits may reduce drawdowns without removing the good trades.</dd></div><div><dt>Proposed measurement</dt><dd>Maximum drawdown; worst day; result per dollar risked; days stopped by the daily loss limit.</dd></div><div><dt>Results</dt><dd>None yet. Not tested.</dd></div></dl>
+        </article>
+    </div>
+    <p class="lab-note">Paper (simulated) trading only. A before-and-after difference does not by itself prove a change caused it. No profitability or trading edge is claimed.</p>
   </div>
 </section>
 
@@ -156,7 +236,7 @@
   <div class="wrap">
     <div class="row">
       <a class="brand" href="#top"><span class="mark">↗</span><span>Trevor<span class="blue">Trader</span></span></a>
-      <nav aria-label="Footer"><a href="#how-it-works">How it works</a><a href="#features">Features</a><a href="#performance">Performance</a><a href="#watch">Watch</a><a href="#coming-soon">Coming soon</a><a href="research/">Research archive</a></nav>
+      <nav aria-label="Footer"><a href="#how-it-works">How it works</a><a href="#features">Features</a><a href="#performance">Performance</a><a href="#research-lab">Research Lab</a><a href="#watch">Watch</a><a href="#coming-soon">Coming soon</a><a href="research/">Research archive</a></nav>
     </div>
     <p class="disc">TrevorTrader is in development and is not available for purchase. Its rules-based strategy is built on established momentum-trading principles. No profitability or trading edge is claimed. Results shown are from paper (simulated) trading, are not real money, and do not guarantee future results. Nothing on this website is investment advice. Trading involves risk, including loss of capital.</p>
     <p>© 2026 TrevorTrader. All rights reserved.</p>
@@ -164,53 +244,139 @@
 </footer>
 
 <script>
-/* Performance summary: SURGE Simple 3 ONLY, October 13 2026 onward. Reconciled evidence only. */
+/* Performance summary: SURGE Simple 3 ONLY, October 13 2026 onward. PROVISIONAL (broker-matched, not yet EOD-reconciled).
+   Chart x-axis = trade number, so overnight gaps draw no slope. */
 (function(){
   var box=document.querySelector('.perf[data-engines]');
   if(!box||!window.fetch)return;
   var ids=box.getAttribute('data-engines').split(/\s+/);
+  /* PDCA strategy-change register (Plan-Do-Check-Act). Add one numbered entry per material change (#002, #003...).
+     Chart boundary = the first trade whose build is listed, drawn right after the last trade of the earlier build.
+     The marker reads IMPLEMENTED only when data/evidence-history.json carries a matching "strategy_changes"
+     entry (same id) with verified:true and the activation record; anything else is drawn or listed as PENDING.
+     The cumulative line is never reset at a change. */
+  var CHANGES=[{num:1,id:'PDCA-001',label:'10-Minute Profit Cooldown',builds:['surge-simple-3-profit-cooldown-10m'],
+    version:'SURGE-SIMPLE-3-PROFIT-COOLDOWN-10M-2026-10-14',code_hash:'186ac730b51f3390',
+    verified:false,verified_code_hash:null,deployed_at:null,first_trade:null,
+    metric_label:'Entry signals blocked by cooldown (counterfactual P&L)',metric_value:null,decision:'Pending',
+    plan:'After a fully closed winning trade, the bot may not buy the same stock again for 10 minutes. Other stocks trade normally, and a new entry signal is still required afterwards.',
+    reason:'Quick repeat entries in a stock right after a win gave back profit (for example SMCZ on Oct 14).',
+    hypothesis:'Blocking those re-entries avoids losing trades. Being tested; not proven.'}];
+  function tag(c){return 'PDCA #'+('00'+c.num).slice(-3)}
+  /* IMPLEMENTED needs all four: verified code hash equal to the register's, an activation timestamp,
+     a first trade under the new build, and trades in the data carrying that build id (c.idx >= 0). */
+  function implemented(c){return c.verified===true&&!!c.verified_code_hash&&c.verified_code_hash===c.code_hash&&!!c.deployed_at&&!!c.first_trade&&c.idx>=0}
+  var PLANNED_RISK=20;  /* $ planned risk per trade (SURGE rule), used for drawdown in R */
   function money(v){return (v<-.005?'−':v>.005?'+':'')+'$'+Math.abs(v).toFixed(2)}
+  function whole(v){return (v<0?'−':v>0?'+':'')+'$'+Math.abs(v).toFixed(0)}
   fetch('data/evidence-history.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw Error('evidence unavailable');return r.json()}).then(function(d){
     var days={},t=[];
     (d.engines||[]).filter(function(e){return ids.indexOf(e.id)>=0}).forEach(function(e){
-      (e.sessions||[]).forEach(function(x){if(x.status==='reconciled'||x.status==='broker_matched'||x.status==='valid_zero_trade')days[x.date]=1});
+      (e.sessions||[]).forEach(function(x){if(x.date>='2026-10-13'&&(x.status==='reconciled'||x.status==='broker_matched'||x.status==='valid_zero_trade'))days[x.date]=1});
     });
     t=(d.trades||[]).filter(function(x){return ids.indexOf(x.engine)>=0&&x.session>='2026-10-13'&&(x.status==='reconciled'||x.status==='broker_matched')}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
     var n=Object.keys(days).length;if(!n)return;
-    var sum=t.reduce(function(a,b){return a+Number(b.gross)},0),win=t.filter(function(x){return x.gross>0.005}).length;
-    box.querySelector('.perf-title').textContent='SURGE Simple 3 · Broker-matched paper results';
-    box.querySelector('[data-k="trades"]').textContent=t.length;
-    box.querySelector('[data-k="rate"]').textContent=t.length?(100*win/t.length).toFixed(0)+'%':'—';
-    var pnl=box.querySelector('[data-k="pnl"]');pnl.textContent=t.length?money(sum):'—';pnl.className=t.length?(sum>0.005?'pos':sum<-0.005?'neg':''):'';
-    box.querySelector('[data-k="days"]').textContent=n;
+    (d.strategy_changes||[]).forEach(function(x){CHANGES.forEach(function(c){if(c.id===x.id)for(var k in x)c[k]=x[k]})});
+    CHANGES.forEach(function(c){c.idx=-1;t.forEach(function(x,i){if(c.idx<0&&c.builds.indexOf(x.build)>=0)c.idx=i})});
+    var g=t.map(function(x){return Number(x.gross)});
+    var sum=g.reduce(function(a,b){return a+b},0);
+    var wins=g.filter(function(v){return v>0.005}),losses=g.filter(function(v){return v<-0.005}),be=g.length-wins.length-losses.length;
+    var avg=function(a){return a.reduce(function(x,y){return x+y},0)/a.length};
+    var set=function(k,v,cls){var el=box.querySelector('[data-k="'+k+'"]');el.textContent=v;if(cls!==undefined)el.className=cls};
+    set('trades',t.length);
+    set('rate',t.length?(100*wins.length/t.length).toFixed(1)+'%':'—');
+    set('wlb',t.length?'Win rate · '+wins.length+'W '+losses.length+'L '+be+' BE':'Win rate');
+    set('pnl',t.length?money(sum):'—',t.length?(sum>0.005?'pos':sum<-0.005?'neg':''):'');
+    set('avgw',wins.length?money(avg(wins)):'—',wins.length?'pos':'');
+    set('avgl',losses.length?money(avg(losses)):'—',losses.length?'neg':'');
+    set('days',n);
     var ph=box.querySelector('.spark');
-    if(t.length){
-      var points=[{time:new Date(t[0].session+'T00:00:00Z').getTime(),pnl:0}],running=0;
-      t.forEach(function(x){running+=Number(x.gross);points.push({time:Date.parse(x.session+'T'+x.exit_pt+'Z'),pnl:running})});
-      var minTime=points[0].time,maxTime=points[points.length-1].time;
-      var vals=points.map(function(p){return p.pnl}),lo=Math.min.apply(null,vals),hi=Math.max.apply(null,vals);
-      var pad=Math.max(5,(hi-lo)*.12);lo-=pad;hi+=pad;
-      var W=640,H=230,L=66,R=16,T=18,B=44,plotW=W-L-R,plotH=H-T-B;
-      var X=function(ms){return L+(ms-minTime)/Math.max(1,maxTime-minTime)*plotW};
-      var Y=function(v){return T+(hi-v)/(hi-lo)*plotH};
-      var line=points.map(function(p,i){return(i?'L':'M')+X(p.time).toFixed(1)+' '+Y(p.pnl).toFixed(1)}).join(' ');
-      var esc=function(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')};
-      var fmt=function(ms){return new Date(ms).toLocaleString('en-US',{timeZone:'America/Los_Angeles',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true})};
-      var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="SURGE Simple 3 cumulative gross profit and loss in dollars by Pacific time" style="width:100%;height:auto;min-height:230px">';
-      for(var j=0;j<=4;j++){var yv=lo+(hi-lo)*j/4,py=Y(yv).toFixed(1);
-        svg+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+py+'" y2="'+py+'" stroke="#28476e" stroke-dasharray="3 4"/>';
-        svg+='<text x="'+(L-9)+'" y="'+(+py+4)+'" text-anchor="end" fill="#9bb4d4" font-size="12">'+esc(money(yv))+'</text>';
-      }
-      for(var k=0;k<=3;k++){var tx=minTime+(maxTime-minTime)*k/3,px=X(tx).toFixed(1);
-        svg+='<text x="'+px+'" y="'+(H-17)+'" text-anchor="'+(k===0?'start':k===3?'end':'middle')+'" fill="#9bb4d4" font-size="11">'+esc(fmt(tx))+'</text>';
-      }
-      svg+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(0).toFixed(1)+'" y2="'+Y(0).toFixed(1)+'" stroke="#a0b7d0" stroke-dasharray="5 5" opacity=".8"/>';
-      svg+='<path d="'+line+'" stroke="'+(sum>=0?'#3fdc9a':'#ff7f91')+'" fill="none" stroke-width="2.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>';
-      svg+='<text x="'+(L+plotW/2)+'" y="'+(H-2)+'" text-anchor="middle" fill="#9bb4d4" font-size="12">Time (Pacific)</text>';
-      svg+='</svg><small>Cumulative gross P&amp;L ($), not account cash balance · Broker-matched paper trades · Before fees</small>';
-      ph.style.border='0';ph.innerHTML=svg;
+    if(!t.length){ph.textContent='No trades yet';return}
+    var pts=[0],run=0;g.forEach(function(v){run+=v;pts.push(run)});
+    var lo=Math.min(0,Math.min.apply(null,pts)),hi=Math.max(0,Math.max.apply(null,pts));
+    var step=[5,10,20,25,50,100,250,500].filter(function(s){return (Math.ceil(hi/s)-Math.floor(lo/s))<=6})[0]||1000;
+    lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;if(hi===lo)hi=lo+step;
+    if(hi-Math.max.apply(null,pts)<step*.15)hi+=step; if(Math.min.apply(null,pts)-lo<step*.15)lo-=step;
+    var narrow=ph.clientWidth<480,W=narrow?340:640,H=narrow?300:270,L=narrow?48:58,R=narrow?10:16,T=CHANGES.some(function(c){return c.idx>=0})?(CHANGES.filter(function(c){return c.idx>=0}).length>1?64:42):34,B=46,plotW=W-L-R,plotH=H-T-B,N=t.length;
+    var X=function(i){return L+i/Math.max(1,N)*plotW};
+    var Y=function(v){return T+(hi-v)/(hi-lo)*plotH};
+    var esc=function(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')};
+    var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="SURGE Simple 3 provisional cumulative gross profit and loss in dollars, by trade number, '+N+' trades, ending '+esc(money(sum))+'" class="perf-chart">';
+    for(var v=lo;v<=hi+1e-9;v+=step){var py=Y(v).toFixed(1);
+      svg+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+py+'" y2="'+py+'" stroke="'+(v===0?'#a0b7d0':'#28476e')+'" stroke-dasharray="'+(v===0?'5 5':'3 4')+'"'+(v===0?' opacity=".8"':'')+'/>';
+      svg+='<text x="'+(L-9)+'" y="'+(+py+4)+'" text-anchor="end" fill="'+(v===0?'#dbe8f5':'#9bb4d4')+'" font-size="12">'+esc(whole(v))+'</text>';
     }
-    else ph.textContent='No trades yet in verified sessions';
+    var tickEvery=N>(narrow?60:30)?10:N>(narrow?8:15)?5:1;
+    for(var i=0;i<=N;i++){if((i%tickEvery&&i!==N)||(i!==N&&tickEvery>1&&N-i<tickEvery/2))continue;
+      svg+='<text x="'+X(i).toFixed(1)+'" y="'+(H-24)+'" text-anchor="middle" fill="#9bb4d4" font-size="11">'+i+'</text>';
+    }
+    var mon=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var lab=function(day){var p=day.split('-');return mon[+p[1]-1]+' '+(+p[2])};
+    t.forEach(function(x,i){if(i===0||x.session!==t[i-1].session){var px=X(i).toFixed(1);
+      if(i)svg+='<line x1="'+px+'" x2="'+px+'" y1="'+T+'" y2="'+(T+plotH)+'" stroke="#3a5a7d" stroke-width="1"/>';
+      svg+='<text x="'+(+px+4)+'" y="'+(T-6)+'" fill="#9bb4d4" font-size="11">'+esc(lab(x.session))+'</text>';}});
+    var drawn=CHANGES.filter(function(c){return c.idx>=0});
+    drawn.forEach(function(c,k){
+      /* Only the most recent change gets the full callout; older ones collapse to a numbered badge.
+         Every marker links to its expandable PDCA record below the chart. */
+      var full=k===drawn.length-1,cx=X(c.idx),ok=implemented(c),col=ok?'#ffbe50':'#9bb4d4',cy=full?2:28,hh=full?20:16;
+      var txt=(full?tag(c)+': '+c.label:'#'+('00'+c.num).slice(-3))+(ok?'':full?' · PENDING':'?'),tw=Math.min(W-L-R,txt.length*(full?(narrow?6.1:6.7):6.1)+16);
+      var left=cx>L+plotW/2,bx=full?(left?cx-12-tw:cx+12):cx-tw/2; bx=Math.max(4,Math.min(W-R-tw,bx));
+      var tip=tag(c)+': '+c.label+(ok?' (implemented)':' (PENDING verification)')+'\nActivated: '+(c.deployed_at||'pending')+
+        '\nFirst trade under new code: '+(c.first_trade||(lab(t[c.idx].session)+' trade '+(c.idx+1)))+'\nVersion: '+c.version+'\nCode hash: '+c.code_hash;
+      svg+='<a href="#'+esc(c.id.toLowerCase())+'" class="pdca-mark" aria-label="'+esc(tip.replace(/\n/g,'. '))+'"><title>'+esc(tip)+'</title>';
+      svg+='<line x1="'+cx.toFixed(1)+'" x2="'+cx.toFixed(1)+'" y1="'+(cy+hh/2)+'" y2="'+(T+plotH)+'" stroke="'+col+'" stroke-width="1.8" stroke-dasharray="6 4"/>';
+      svg+='<line x1="'+cx.toFixed(1)+'" x2="'+cx.toFixed(1)+'" y1="'+T+'" y2="'+(T+plotH)+'" stroke="transparent" stroke-width="14"/>';
+      svg+='<rect x="'+bx.toFixed(1)+'" y="'+cy+'" width="'+tw.toFixed(1)+'" height="'+hh+'" rx="5" fill="#0b1a2c" stroke="'+col+'"/>';
+      svg+='<text x="'+(bx+tw/2).toFixed(1)+'" y="'+(cy+hh-(full?6:4))+'" text-anchor="middle" fill="'+col+'" font-size="'+(full?(narrow?10:11):10)+'" font-weight="700">'+esc(txt)+'</text>';
+      if(full){var ax=left?bx+tw:bx,ay=cy+hh/2; svg+='<path d="M'+ax.toFixed(1)+' '+ay+' L'+(cx+(left?-3:3)).toFixed(1)+' '+ay+'" stroke="'+col+'" stroke-width="1.6"/>'+
+        '<path d="M'+cx.toFixed(1)+' '+ay+' l'+(left?-6:6)+' -4 v8 z" fill="'+col+'"/>';}
+      svg+='</a>';});
+    svg+='<path d="'+pts.map(function(v,i){return(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)}).join(' ')+'" stroke="'+(sum>=0?'#3fdc9a':'#ff7f91')+'" fill="none" stroke-width="2.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>';
+    pts.forEach(function(v,i){svg+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(v).toFixed(1)+'" r="'+(i?3:4)+'" fill="'+(i===0?'#9bb4d4':g[i-1]>0.005?'#3fdc9a':g[i-1]<-0.005?'#ff7f91':'#9bb4d4')+'"><title>'+(i?'Trade '+i+' · '+esc(t[i-1].symbol||'')+' '+esc(money(g[i-1]))+' · cumulative '+esc(money(v)):'Start · $0')+'</title></circle>'});
+    svg+='<text x="'+(L+plotW/2)+'" y="'+(H-4)+'" text-anchor="middle" fill="#9bb4d4" font-size="12">Trade number</text>';
+    svg+='</svg><small>PROVISIONAL · Cumulative gross P&amp;L ($) from $0, not account balance · Broker-matched paper trades · Before fees'+
+      '</small>'+CHANGES.filter(function(c){return c.idx<0}).map(function(c){return '<a class="pdca-chip" href="#'+esc(c.id.toLowerCase())+'">'+esc(tag(c)+': '+c.label)+' · PENDING, no trades under the new code yet</a>'}).join('');
+    ph.style.border='0';ph.innerHTML=svg;
+    /* PDCA Check: earlier build (baseline) vs. trades under the change. Gross only; net waits for fees. */
+    var stats=function(a){var gg=a.map(function(x){return Number(x.gross)}),w=gg.filter(function(v){return v>0.005}),l=gg.filter(function(v){return v<-0.005});
+      var sw=w.reduce(function(x,y){return x+y},0),sl=l.reduce(function(x,y){return x+y},0),r=0,peak=0,dd=0;
+      gg.forEach(function(v){r+=v;peak=Math.max(peak,r);dd=Math.max(dd,peak-r)});
+      var fees=a.every(function(x){return x.fees!==null&&x.fees!==undefined&&x.fees!==''});
+      return {n:a.length,rate:a.length?(100*w.length/a.length).toFixed(1)+'%':'—',wlb:w.length+'W '+l.length+'L '+(gg.length-w.length-l.length)+' BE',
+        aw:w.length?money(sw/w.length):'—',al:l.length?money(sl/l.length):'—',gross:a.length?money(sw+sl):'—',
+        net:!a.length?'—':fees?money(sw+sl-a.reduce(function(x,y){return x+Number(y.fees)},0)):'Pending',
+        pf:!a.length?'—':l.length?(sw/-sl).toFixed(2):'n/a',dd:a.length?'$'+dd.toFixed(2):'—',
+        ddr:a.length?(dd/PLANNED_RISK).toFixed(1)+'R':'—',rdd:!a.length?'—':dd>0.005?((sw+sl)/dd).toFixed(2):'n/a'}};
+    var pdca=box.querySelector('.pdca'),html='',bounds=CHANGES.filter(function(c){return c.idx>=0}).map(function(c){return c.idx});
+    CHANGES.forEach(function(c){
+      /* Before = trades of the build just before this change; After = trades under it until the next change. */
+      var prev=Math.max.apply(null,[0].concat(bounds.filter(function(b){return b<(c.idx<0?t.length:c.idx)}))),
+          next=Math.min.apply(null,[t.length].concat(bounds.filter(function(b){return b>c.idx})));
+      var before=c.idx<0?t.slice(prev):t.slice(prev,c.idx),after=c.idx<0?[]:t.slice(c.idx,next),b=stats(before),a=stats(after);
+      var ok=implemented(c),state=ok?'IMPLEMENTED':'PENDING';
+      var row=function(k,x,y){return '<tr><th scope="row">'+k+'</th><td>'+x+'</td><td>'+y+'</td></tr>'};
+      var latest=c===CHANGES[CHANGES.length-1];
+      html+='<details class="pdca-item" id="'+esc(c.id.toLowerCase())+'"'+(latest?' open':'')+'><summary><span class="pdca-name">'+esc(tag(c)+': '+c.label)+'</span> <span class="pdca-state '+(ok?'on':'pend')+'">'+state+'</span>'+
+        '<span class="pdca-sum">'+(a.n?a.n+' trades after · '+a.gross+' gross · win rate '+a.rate:'no trades under the new code yet')+'</span></summary>'+
+        '<span class="prov-badge">PROVISIONAL</span>'+
+        '<p><b>Plan:</b> '+esc(c.plan)+' <b>Why:</b> '+esc(c.reason)+' <b>Hypothesis:</b> '+esc(c.hypothesis)+'</p>'+
+        '<p><b>Do:</b> version '+esc(c.version)+' · code hash '+esc(c.code_hash)+' · activated: '+esc(ok&&c.deployed_at?c.deployed_at:'pending verification')+
+        ' · first trade under new code: '+esc(c.first_trade||(c.idx<0?'none yet':lab(t[c.idx].session)+', trade '+(c.idx+1)+' (unverified)'))+'.</p>'+
+        '<div class="pdca-scroll"><table class="pdca-table"><thead><tr><th scope="col">Check</th><th scope="col">Before</th><th scope="col">After</th></tr></thead><tbody>'+
+        row('Trades',b.n,a.n||'—')+row('Win rate',b.rate+'<small>'+b.wlb+'</small>',a.n?a.rate+'<small>'+a.wlb+'</small>':'—')+
+        row('Average winner',b.aw,a.aw)+row('Average loser',b.al,a.al)+row('Gross P&amp;L',b.gross,a.gross)+row('Net P&amp;L (after fees)',b.net,a.net)+
+        row('Profit factor (screen: ≥1.2 after costs)',b.pf,a.pf)+row('Max drawdown (guardrail: under $200)',b.dd,a.dd)+
+        row('Drawdown in R ($'+PLANNED_RISK+' planned risk)',b.ddr,a.ddr)+row('Gross P&amp;L ÷ max drawdown',b.rdd,a.rdd)+
+        (c.metric_label?row(esc(c.metric_label),'Not applicable',c.metric_value==null?(a.n?'Pending':'—'):esc(c.metric_value)):'')+
+        '</tbody></table></div>'+
+        '<p><b>Check progress:</b> '+a.n+' of 100 trades for the first validation assessment'+(a.n>=40?' (interim checkpoint reached)':'; interim checkpoint at 40 trades or 4 weeks')+'.</p>'+
+        '<p><b>Act:</b> decision '+esc(c.decision)+'. The 40-trade / 4-week checkpoint is a progress review, not proof. The first validation assessment needs at least 100 new trades with an uncertainty range, judged against the preserved baseline. Profit factor ≥1.2 after costs is a screen, not a guarantee of an edge. A before-and-after difference alone does not prove the change caused it.</p></details>';
+    });
+    pdca.innerHTML=(CHANGES.length?'<h3 class="pdca-head">Strategy changes (PDCA)</h3>':'')+html;
+    /* Clicking a chart marker or pending chip opens its record. */
+    box.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#pdca-"]');if(!a)return;
+      var el=document.getElementById(a.getAttribute('href').slice(1));if(!el)return;e.preventDefault();el.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});el.querySelector('summary').focus()});
   }).catch(function(){});
 })();
 </script>
