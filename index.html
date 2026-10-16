@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tt-site-2026.css?v=20261014-pdca-nav">
+<link rel="stylesheet" href="assets/tt-site-2026.css?v=20261016-target-exp">
 </head>
 <body>
 <header class="top">
@@ -113,6 +113,13 @@
       <div class="spark"><svg viewBox="0 0 600 110" preserveAspectRatio="none" role="img" aria-label="SURGE Simple 3 cumulative gross P and L chart awaiting trades"><line x1="6" x2="594" y1="55" y2="55" stroke="#28476e" stroke-dasharray="3 4"/><circle cx="6" cy="55" r="4" fill="#3fdc9a"/></svg><small>Provisional · Broker-matched fills · Gross before fees</small></div>
       <div class="pdca" aria-live="polite"></div>
       <p class="foot">SURGE Simple 3 paper trading (simulated), beginning October 13, 2026. PROVISIONAL: broker-matched gross results before fees; local runner ledger and end-of-day reconciliation pending. Other strategies are excluded. Early results do not establish a trading edge.</p>
+    </div>
+    <div class="perf card tx" id="target-experiment" data-start="2026-10-16">
+      <div class="perf-status"><span class="dot dot-prov"></span><b class="perf-title">Profit-target experiment · 1R vs 1.5R vs 2R</b><span class="prov-badge">PROVISIONAL</span></div>
+      <p class="perf-scope"><b>Three separate paper accounts, identical except the profit target.</b> Same scanner, entries, stop, size, cooldown, risk limits and hours. Each bot is its own line and is never combined with another. Start date: October 16, 2026. Results appear only after end-of-day reconciliation.</p>
+      <div class="pdca-scroll"><table class="pdca-table tx-table"><thead><tr><th scope="col">Bot</th><th scope="col">Target</th><th scope="col">Status</th><th scope="col">Trades</th><th scope="col">Win rate</th><th scope="col">Gross P&amp;L</th><th scope="col">Avg winner</th><th scope="col">Avg loser</th></tr></thead><tbody></tbody></table></div>
+      <div class="spark tx-spark"><small>No trades in the experiment yet</small></div>
+      <p class="foot">Paper trading (simulated). Gross results before fees; net stays pending until fees are reconciled. A comparison needs many trades per bot before it means anything. No trading edge is claimed.</p>
     </div>
   </div>
 </section>
@@ -377,6 +384,56 @@
     /* Clicking a chart marker or pending chip opens its record. */
     document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#pdca-"]');if(!a)return;
       var el=document.getElementById(a.getAttribute('href').slice(1));if(!el)return;e.preventDefault();el.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});el.querySelector('summary').focus()});
+  }).catch(function(){});
+})();
+</script>
+<script>
+/* Profit-target experiment (Oct 16, 2026 onward): SURGE 1 (1R), SURGE 2 (1.5R) and SURGE Simple 3 (2R, control),
+   three separate paper accounts identical except the target. One line per bot, never combined. Only sessions and
+   trades that end-of-day reconciliation marked reconciled or broker_matched are shown; a bot with none reads
+   "Not started". Gross before fees. */
+(function(){
+  var box=document.getElementById('target-experiment');
+  if(!box||!window.fetch)return;
+  var START=box.getAttribute('data-start');
+  var BOTS=[
+    {id:'surge-1-target-1r',label:'SURGE 1',target:'1R',color:'#5bc0ff',version:'SURGE-1-TARGET-1R-2026-10-16',code_hash:'1c65684b86dbdbce'},
+    {id:'surge-2-target-1-5r',label:'SURGE 2',target:'1.5R',color:'#ffbe50',version:'SURGE-2-TARGET-1-5R-2026-10-16',code_hash:'7d0c631c69afa58c'},
+    {id:'surge-simple-3',label:'SIMPLE 3 (control)',target:'2R',color:'#3fdc9a',version:'SURGE-SIMPLE-3-PROFIT-COOLDOWN-10M-2026-10-14',code_hash:'186ac730b51f3390'}];
+  var OK=['reconciled','broker_matched'];
+  function money(v){return (v<-.005?'\u2212':v>.005?'+':'')+'$'+Math.abs(v).toFixed(2)}
+  function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
+  fetch('data/evidence-history.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw Error('evidence unavailable');return r.json()}).then(function(d){
+    var rows='',series=[];
+    BOTS.forEach(function(b){
+      var eng=(d.engines||[]).filter(function(e){return e.id===b.id})[0];
+      var days=((eng&&eng.sessions)||[]).filter(function(x){return x.date>=START&&(OK.indexOf(x.status)>=0||x.status==='valid_zero_trade')});
+      var t=(d.trades||[]).filter(function(x){return x.engine===b.id&&x.session>=START&&OK.indexOf(x.status)>=0})
+        .sort(function(a,c){return a.session.localeCompare(c.session)||String(a.exit_pt).localeCompare(String(c.exit_pt))});
+      var g=t.map(function(x){return Number(x.gross)}),w=g.filter(function(v){return v>0.005}),l=g.filter(function(v){return v<-0.005});
+      var sum=g.reduce(function(a,c){return a+c},0),avg=function(a){return a.reduce(function(x,y){return x+y},0)/a.length};
+      var status=days.length?days.length+' session'+(days.length>1?'s':''):'Not started';
+      rows+='<tr><th scope="row"><span class="tx-key" style="background:'+b.color+'"></span>'+esc(b.label)+'<small>'+esc(b.version)+' \u00b7 '+esc(b.code_hash)+'</small></th><td>'+b.target+'</td><td>'+status+'</td><td>'+(days.length?t.length:'\u2014')+'</td>'+
+        '<td>'+(t.length?(100*w.length/t.length).toFixed(1)+'%':'\u2014')+'</td><td>'+(t.length?money(sum):'\u2014')+'</td>'+
+        '<td>'+(w.length?money(avg(w)):'\u2014')+'</td><td>'+(l.length?money(avg(l)):'\u2014')+'</td></tr>';
+      if(t.length){var run=0,pts=[0];g.forEach(function(v){run+=v;pts.push(run)});series.push({b:b,pts:pts})}
+    });
+    box.querySelector('tbody').innerHTML=rows;
+    if(!series.length)return;
+    var all=[].concat.apply([0],series.map(function(s){return s.pts})),lo=Math.min.apply(null,all),hi=Math.max.apply(null,all);
+    var N=Math.max.apply(null,series.map(function(s){return s.pts.length-1}));
+    var step=[5,10,20,25,50,100,250,500].filter(function(s){return (Math.ceil(hi/s)-Math.floor(lo/s))<=6})[0]||1000;
+    lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;if(hi===lo)hi=lo+step;
+    var ph=box.querySelector('.tx-spark'),narrow=ph.clientWidth<480,W=narrow?340:640,H=narrow?280:250,L=narrow?48:58,R=12,T=16,B=44,pw=W-L-R,phh=H-T-B;
+    var X=function(i){return L+i/Math.max(1,N)*pw},Y=function(v){return T+(hi-v)/(hi-lo)*phh};
+    var svg='<svg viewBox="0 0 '+W+' '+H+'" class="perf-chart" role="img" aria-label="Cumulative gross P and L by trade number for each bot in the profit-target experiment">';
+    for(var v=lo;v<=hi+1e-9;v+=step){var py=Y(v).toFixed(1);
+      svg+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+py+'" y2="'+py+'" stroke="'+(v===0?'#a0b7d0':'#28476e')+'" stroke-dasharray="'+(v===0?'5 5':'3 4')+'"/>'+
+        '<text x="'+(L-9)+'" y="'+(+py+4)+'" text-anchor="end" fill="#9bb4d4" font-size="12">'+(v<0?'\u2212':v>0?'+':'')+'$'+Math.abs(v)+'</text>';}
+    series.forEach(function(s){
+      svg+='<path d="'+s.pts.map(function(v,i){return(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)}).join(' ')+'" stroke="'+s.b.color+'" fill="none" stroke-width="2.4" stroke-linejoin="round"><title>'+esc(s.b.label+' ('+s.b.target+'): '+money(s.pts[s.pts.length-1])+' after '+(s.pts.length-1)+' trades')+'</title></path>';});
+    svg+='<text x="'+(L+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" fill="#9bb4d4" font-size="12">Trade number (each bot counted separately)</text></svg>';
+    ph.innerHTML=svg+'<small>PROVISIONAL \u00b7 Cumulative gross P&amp;L ($) per bot from $0 \u00b7 Paper trades \u00b7 Before fees</small>';
   }).catch(function(){});
 })();
 </script>
