@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-15",
+  "updated": "2026-10-27",
   "basis": "gross_before_fees",
-  "note": "SURGE Simple 3 October 13-14 broker fills reconstructed from Alpaca paper orders. Gross P&L before fees; local runner ledger cross-check pending.",
+  "note": "Fresh homepage graph starts October 26, 2026. October 26\u201327 Simple 3 trades matched to broker orders, fill activities and the runner ledger. Gross before fees; older history retained. Strategy settings changed during these sessions; the new Lean Movers scanner was installed afterward and has no trades in this window.",
   "engines": [
     {
       "id": "core",
@@ -21,7 +21,7 @@
         },
         {
           "id": "core-1145-4x-300",
-          "label": "11:45 entry · 4 trades · $300 max",
+          "label": "11:45 entry \u00b7 4 trades \u00b7 $300 max",
           "installed": "2026-10-07",
           "cohort_start": "2026-10-08"
         }
@@ -97,7 +97,7 @@
         },
         {
           "id": "surge-2to10-100gate",
-          "label": "$2–$10 · $100 gate",
+          "label": "$2\u2013$10 \u00b7 $100 gate",
           "installed": "2026-10-06"
         },
         {
@@ -149,7 +149,7 @@
       "builds": [
         {
           "id": "surge-r-candidate6",
-          "label": "Candidate 6 · 30-bar impulse / all candidates",
+          "label": "Candidate 6 \u00b7 30-bar impulse / all candidates",
           "installed": "2026-10-07",
           "cohort_start": "2026-10-08"
         }
@@ -162,17 +162,17 @@
     {
       "id": "surge-simple",
       "name": "SURGE Simple v1",
-      "role": "Momentum Engine · New Cohort",
-      "experiment": "SURGE Simple v1 · paper-only prospective experiment",
+      "role": "Momentum Engine \u00b7 New Cohort",
+      "experiment": "SURGE Simple v1 \u00b7 paper-only prospective experiment",
       "color": "#ffbe61",
       "builds": [
         {
           "id": "surge-simple-v1",
-          "label": "SURGE Simple v1 · pending verified deployment"
+          "label": "SURGE Simple v1 \u00b7 pending verified deployment"
         },
         {
           "id": "surge-simple-1-ross",
-          "label": "Simple 1 · Low-float momentum scanner ($3–$20, +30%, 5× relative volume, float under 5M)"
+          "label": "Simple 1 \u00b7 Low-float momentum scanner ($3\u2013$20, +30%, 5\u00d7 relative volume, float under 5M)"
         }
       ],
       "starting_balance": null,
@@ -184,7 +184,7 @@
       "id": "surge-simple-3",
       "name": "SURGE Simple 3",
       "role": "Paper momentum experiment",
-      "experiment": "SURGE Simple 3 · broker fill cohort October 13 onward",
+      "experiment": "SURGE Simple 3 \u00b7 broker fill cohort October 13 onward",
       "color": "#3fdc9a",
       "starting_balance": null,
       "current_balance": null,
@@ -196,9 +196,31 @@
         {
           "date": "2026-10-14",
           "status": "broker_matched"
+        },
+        {
+          "date": "2026-10-26",
+          "status": "broker_matched"
+        },
+        {
+          "date": "2026-10-27",
+          "status": "broker_matched"
         }
       ],
-      "balance_note": "15 round trips reconstructed from Alpaca paper order fills; strategy ledger comparison pending; gross before fees."
+      "balance_note": "Graph shows completed gross trade P&L, not account balance. Fees pending.",
+      "builds": [
+        {
+          "id": "simple3-recorded-202963754762aea2",
+          "label": "Recorded paper strategy \u00b7 202963754762aea2"
+        },
+        {
+          "id": "simple3-recorded-05a33953a5f66b1f",
+          "label": "Recorded paper strategy \u00b7 05a33953a5f66b1f"
+        },
+        {
+          "id": "simple3-recorded-d59e536dedf23f2b",
+          "label": "Recorded paper strategy \u00b7 d59e536dedf23f2b"
+        }
+      ]
     }
   ],
   "trades": [
@@ -802,6 +824,156 @@
       "fees": null,
       "status": "broker_matched",
       "reason": "NOT_YET_LEDGER_VERIFIED"
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "simple3-recorded-202963754762aea2",
+      "session": "2026-10-26",
+      "entry_pt": "03:51:20",
+      "exit_pt": "03:51:27",
+      "symbol": "RENT",
+      "qty": 445.0,
+      "entry_avg": 3.11,
+      "exit_avg": 3.13,
+      "gross": 8.9,
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "TARGET",
+      "note": "Broker order quantities and fill activities reconciled; matched to the runner ledger. Fees pending."
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "simple3-recorded-202963754762aea2",
+      "session": "2026-10-26",
+      "entry_pt": "06:08:18",
+      "exit_pt": "06:08:22",
+      "symbol": "CLRO",
+      "qty": 343.0,
+      "entry_avg": 4.06,
+      "exit_avg": 4.08,
+      "gross": 6.86,
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "TARGET",
+      "note": "Broker order quantities and fill activities reconciled; matched to the runner ledger. Fees pending."
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "simple3-recorded-05a33953a5f66b1f",
+      "session": "2026-10-27",
+      "entry_pt": "07:50:12",
+      "exit_pt": "07:50:17",
+      "symbol": "TDIC",
+      "qty": 805.0,
+      "entry_avg": 1.74,
+      "exit_avg": 1.77,
+      "gross": 24.15,
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "TARGET",
+      "note": "Broker order quantities and fill activities reconciled; matched to the runner ledger. Fees pending."
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "simple3-recorded-05a33953a5f66b1f",
+      "session": "2026-10-27",
+      "entry_pt": "09:20:27",
+      "exit_pt": "09:21:16",
+      "symbol": "BRAI",
+      "qty": 361.0,
+      "entry_avg": 3.94,
+      "exit_avg": 3.96,
+      "gross": 7.22,
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "TARGET",
+      "note": "Broker order quantities and fill activities reconciled; matched to the runner ledger. Fees pending."
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "simple3-recorded-05a33953a5f66b1f",
+      "session": "2026-10-27",
+      "entry_pt": "09:39:15",
+      "exit_pt": "09:40:46",
+      "symbol": "BRAI",
+      "qty": 360.0,
+      "entry_avg": 3.97,
+      "exit_avg": 3.92625,
+      "gross": -15.75,
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "STOP",
+      "note": "Broker order quantities and fill activities reconciled; matched to the runner ledger. Fees pending."
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "simple3-recorded-05a33953a5f66b1f",
+      "session": "2026-10-27",
+      "entry_pt": "10:38:18",
+      "exit_pt": "10:46:48",
+      "symbol": "BRAI",
+      "qty": 363.0,
+      "entry_avg": 3.9,
+      "exit_avg": 3.8740495867768594,
+      "gross": -9.42,
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "STOP",
+      "note": "Broker order quantities and fill activities reconciled; matched to the runner ledger. Fees pending."
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "simple3-recorded-d59e536dedf23f2b",
+      "session": "2026-10-27",
+      "entry_pt": "12:35:27",
+      "exit_pt": "12:37:43",
+      "symbol": "CLRO",
+      "qty": 248.0,
+      "entry_avg": 5.67,
+      "exit_avg": 5.77,
+      "gross": 24.8,
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "TARGET",
+      "note": "Broker order quantities and fill activities reconciled; matched to the runner ledger. Fees pending."
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "simple3-recorded-d59e536dedf23f2b",
+      "session": "2026-10-27",
+      "entry_pt": "12:40:44",
+      "exit_pt": "12:47:33",
+      "symbol": "NRIX",
+      "qty": 53.0,
+      "entry_avg": 26.58,
+      "exit_avg": 26.68,
+      "gross": 5.3,
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "TARGET",
+      "note": "Broker order quantities and fill activities reconciled; matched to the runner ledger. Fees pending."
+    },
+    {
+      "engine": "surge-simple-3",
+      "build": "simple3-recorded-d59e536dedf23f2b",
+      "session": "2026-10-27",
+      "entry_pt": "12:49:13",
+      "exit_pt": "12:55:18",
+      "symbol": "FCEL",
+      "qty": 117.0,
+      "entry_avg": 12.19,
+      "exit_avg": 12.17,
+      "gross": -2.34,
+      "fees": null,
+      "status": "broker_matched",
+      "reason": "SESSION_CLOSE",
+      "note": "Broker order quantities and fill activities reconciled; matched to the runner ledger. Fees pending."
     }
-  ]
+  ],
+  "performance_window": {
+    "start": "2026-10-26",
+    "through": "2026-10-27",
+    "engine": "surge-simple-3",
+    "baseline": "zero_gross_pnl"
+  }
 }

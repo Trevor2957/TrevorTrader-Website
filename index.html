@@ -100,8 +100,8 @@
       <p class="lede">Our automated approach is still being tested in paper trading accounts. Results appear here, and stay marked provisional until they're fully reconciled.</p>
     </div>
     <div class="perf card" data-engines="surge-simple-3">
-      <div class="perf-status"><span class="dot dot-prov"></span><b class="perf-title">SURGE Simple 3 · Paper results</b><span class="prov-badge">PROVISIONAL</span></div>
-      <p class="perf-scope"><b>SURGE Simple 3 only. Provisional:</b> results begin October 13, 2026 and are matched to Alpaca paper fills, but the local runner ledger and end-of-day reconciliation are not complete yet. Other engines are excluded.</p>
+      <div class="perf-status"><span class="dot dot-prov"></span><b class="perf-title">SURGE Simple 3 · Fresh paper performance</b><span class="prov-badge">PROVISIONAL</span></div>
+      <p class="perf-scope"><b>SURGE Simple 3 only. Provisional:</b> fresh graph starts October 26, 2026 and runs through October 27. Completed trades are matched to Alpaca paper orders, fill activities and the runner ledger. Results are gross before fees; net results remain pending. Other engines are excluded.</p>
       <div class="perf-grid perf-grid-6">
         <div><b data-k="trades">—</b><small>Trades</small></div>
         <div><b data-k="rate">—</b><small data-k="wlb">Win rate</small></div>
@@ -112,7 +112,7 @@
       </div>
       <div class="spark"><svg viewBox="0 0 600 110" preserveAspectRatio="none" role="img" aria-label="SURGE Simple 3 cumulative gross P and L chart awaiting trades"><line x1="6" x2="594" y1="55" y2="55" stroke="#28476e" stroke-dasharray="3 4"/><circle cx="6" cy="55" r="4" fill="#3fdc9a"/></svg><small>Provisional · Broker-matched fills · Gross before fees</small></div>
       <div class="pdca" aria-live="polite"></div>
-      <p class="foot">SURGE Simple 3 paper trading (simulated), beginning October 13, 2026. PROVISIONAL: broker-matched gross results before fees; local runner ledger and end-of-day reconciliation pending. Other strategies are excluded. Early results do not establish a trading edge.</p>
+      <p class="foot">Fresh performance window: October 26–27, 2026 · $0 cumulative gross starting point. Paper trading, before fees. Earlier history is retained in the research archive. Strategy settings changed during these sessions; Lean Movers was installed afterward and has no results in this graph. Early results do not establish a trading edge.</p>
     </div>
   </div>
 </section>
@@ -244,7 +244,7 @@
 </footer>
 
 <script>
-/* Performance summary: SURGE Simple 3 ONLY, October 13 2026 onward. PROVISIONAL (broker-matched, not yet EOD-reconciled).
+/* Performance summary: SURGE Simple 3 ONLY, fresh window October 26 2026 onward. Broker fills and runner ledger matched; fees pending.
    Chart x-axis = trade number, so overnight gaps draw no slope. */
 (function(){
   var box=document.querySelector('.perf[data-engines]');
@@ -255,13 +255,7 @@
      The marker reads IMPLEMENTED only when data/evidence-history.json carries a matching "strategy_changes"
      entry (same id) with verified:true and the activation record; anything else is drawn or listed as PENDING.
      The cumulative line is never reset at a change. */
-  var CHANGES=[{num:1,id:'PDCA-001',label:'10-Minute Profit Cooldown',builds:['surge-simple-3-profit-cooldown-10m'],
-    version:'SURGE-SIMPLE-3-PROFIT-COOLDOWN-10M-2026-10-14',code_hash:'186ac730b51f3390',
-    verified:false,verified_code_hash:null,deployed_at:null,first_trade:null,
-    metric_label:'Entry signals blocked by cooldown (counterfactual P&L)',metric_value:null,decision:'Pending',
-    plan:'After a fully closed winning trade, the bot may not buy the same stock again for 10 minutes. Other stocks trade normally, and a new entry signal is still required afterwards.',
-    reason:'Quick repeat entries in a stock right after a win gave back profit (for example SMCZ on Oct 14).',
-    hypothesis:'Blocking those re-entries avoids losing trades. Being tested; not proven.'}];
+  var CHANGES=[]; // Older PDCA records remain in historical website revisions and the research archive.
   function tag(c){return 'PDCA #'+('00'+c.num).slice(-3)}
   /* IMPLEMENTED needs all four: verified code hash equal to the register's, an activation timestamp,
      a first trade under the new build, and trades in the data carrying that build id (c.idx >= 0). */
@@ -272,9 +266,9 @@
   fetch('data/evidence-history.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw Error('evidence unavailable');return r.json()}).then(function(d){
     var days={},t=[];
     (d.engines||[]).filter(function(e){return ids.indexOf(e.id)>=0}).forEach(function(e){
-      (e.sessions||[]).forEach(function(x){if(x.date>='2026-10-13'&&(x.status==='reconciled'||x.status==='broker_matched'||x.status==='valid_zero_trade'))days[x.date]=1});
+      (e.sessions||[]).forEach(function(x){if(x.date>='2026-10-26'&&x.date<=d.updated&&(x.status==='reconciled'||x.status==='broker_matched'||x.status==='valid_zero_trade'))days[x.date]=1});
     });
-    t=(d.trades||[]).filter(function(x){return ids.indexOf(x.engine)>=0&&x.session>='2026-10-13'&&(x.status==='reconciled'||x.status==='broker_matched')}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
+    t=(d.trades||[]).filter(function(x){return ids.indexOf(x.engine)>=0&&x.session>='2026-10-26'&&x.session<=d.updated&&(x.status==='reconciled'||x.status==='broker_matched')}).sort(function(a,b){return a.session.localeCompare(b.session)||String(a.exit_pt).localeCompare(String(b.exit_pt))});
     var n=Object.keys(days).length;if(!n)return;
     (d.strategy_changes||[]).forEach(function(x){CHANGES.forEach(function(c){if(c.id===x.id)for(var k in x)c[k]=x[k]})});
     CHANGES.forEach(function(c){c.idx=-1;t.forEach(function(x,i){if(c.idx<0&&c.builds.indexOf(x.build)>=0)c.idx=i})});
@@ -335,7 +329,7 @@
     svg+='<path d="'+pts.map(function(v,i){return(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)}).join(' ')+'" stroke="'+(sum>=0?'#3fdc9a':'#ff7f91')+'" fill="none" stroke-width="2.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>';
     pts.forEach(function(v,i){svg+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(v).toFixed(1)+'" r="'+(i?3:4)+'" fill="'+(i===0?'#9bb4d4':g[i-1]>0.005?'#3fdc9a':g[i-1]<-0.005?'#ff7f91':'#9bb4d4')+'"><title>'+(i?'Trade '+i+' · '+esc(t[i-1].symbol||'')+' '+esc(money(g[i-1]))+' · cumulative '+esc(money(v)):'Start · $0')+'</title></circle>'});
     svg+='<text x="'+(L+plotW/2)+'" y="'+(H-4)+'" text-anchor="middle" fill="#9bb4d4" font-size="12">Trade number</text>';
-    svg+='</svg><small>PROVISIONAL · Cumulative gross P&amp;L ($) from $0, not account balance · Broker-matched paper trades · Before fees'+
+    svg+='</svg><small>OCT 26 START · Cumulative gross P&amp;L ($) from $0 · Paper fills and ledger matched · Before fees'+
       '</small>'+CHANGES.filter(function(c){return c.idx<0}).map(function(c){return '<a class="pdca-chip" href="#'+esc(c.id.toLowerCase())+'">'+esc(tag(c)+': '+c.label)+' · PENDING, no trades under the new code yet</a>'}).join('');
     ph.style.border='0';ph.innerHTML=svg;
     /* PDCA Check: earlier build (baseline) vs. trades under the change. Gross only; net waits for fees. */
@@ -382,3 +376,4 @@
 </script>
 </body>
 </html>
+
