@@ -31,6 +31,11 @@ footer{max-width:none;margin:0;padding:14px 24px;background:#f8f9fa}
 footer p{margin:4px 0}
 @media(max-width:600px){main{margin:16px 12px}header{padding:20px 16px}.results{padding:22px 12px 16px}.youtube{padding:18px 16px}footer{padding:12px 16px}}
 @media(max-width:480px){main{padding:0}h1{font-size:28px}.bot{max-height:170px}.results{margin-top:0}.stats{gap:0}.stats div{padding:0 8px}}
+
+/* One consistent content width across every section. */
+header,.results,.youtube{padding-left:24px;padding-right:24px}
+.bot,.youtube img{width:100%;max-width:none;height:auto;max-height:none}
+@media(max-width:600px){header,.results,.youtube{padding-left:16px;padding-right:16px}}
 </style>
 </head>
 <body>
