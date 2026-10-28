@@ -11,6 +11,26 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
 *{box-sizing:border-box}body{margin:0;background:#fff;color:#202124;font:16px/1.5 Arial,Helvetica,sans-serif}main{max-width:820px;margin:auto;padding:34px 24px 20px}header{text-align:center}h1{margin:0 0 18px;font-size:34px;font-weight:500;letter-spacing:-1.5px}h1 span{color:#1a73e8}figure{margin:0}.bot{display:block;width:100%;max-width:540px;height:auto;margin:0 auto;max-height:210px;object-fit:contain}.results{margin:30px 0 28px}h2{font-size:15px;font-weight:400;color:#5f6368;margin:0;text-align:center}.period{color:#5f6368;font-size:13px;text-align:center;margin:5px 0 10px}.total{font-size:46px;line-height:1.2;letter-spacing:-1.8px;text-align:center;font-weight:400;font-variant-numeric:tabular-nums;margin:0}.positive{color:#137333}.negative{color:#b3261e}.basis{text-align:center;font-size:12px;color:#5f6368;margin:5px 0 18px}.stats{display:flex;justify-content:center;gap:34px;text-align:center;margin:0 0 12px}.stats div{min-width:75px}.stats strong{display:block;font-size:20px;font-weight:400;font-variant-numeric:tabular-nums}.stats span{font-size:12px;color:#5f6368}.chart{width:100%;min-height:265px}.chart svg{display:block;width:100%;height:auto;overflow:visible}.chart text{fill:#5f6368;font-family:Arial,Helvetica,sans-serif;font-size:12px}.readout{min-height:20px;text-align:center;font-size:12px;color:#5f6368;margin:7px 0 0}.youtube{max-width:600px;margin:26px auto 0}.youtube img{display:block;width:100%;height:auto}.youtube figcaption{text-align:center;color:#5f6368;font-size:12px;margin-top:8px}footer{max-width:760px;margin:20px auto 0;text-align:center;font-size:11px;color:#5f6368}footer p{margin:6px 0}a{color:#1a73e8;text-underline-offset:3px}:focus-visible{outline:2px solid #1a73e8;outline-offset:4px}#performance{scroll-margin-top:18px}@media(max-width:480px){main{padding:24px 16px 16px}h1{font-size:30px}.bot{max-height:155px}.results{margin-top:24px}.total{font-size:40px}.stats{gap:20px}.chart{min-height:260px}.readout{min-height:36px}}
+
+/* Compact results panel, inspired by a sports scoreboard. */
+body{background:#fff}
+main{max-width:820px;margin:32px auto;padding:0;border:1px solid #dadce0;border-radius:10px;overflow:hidden;background:#fff}
+header{background:#20165d;color:#fff;padding:22px 24px 24px;border-bottom:3px solid #d8d5e7}
+h1{font-size:30px;letter-spacing:-1px;margin:0 0 18px;font-weight:500}
+h1 span{color:#c4c8ff}
+.bot{max-width:500px;max-height:210px;border:1px solid #4b437a;border-radius:5px}
+.results{margin:0;padding:24px 28px 20px;border-bottom:1px solid #dadce0}
+h2{font-weight:500;color:#202124}
+.period{margin-top:5px}
+.stats{max-width:440px;margin:0 auto 16px;padding:15px 0;border-top:1px solid #e8eaed;border-bottom:1px solid #e8eaed;gap:0}
+.stats div{flex:1;min-width:0;padding:0 12px}
+.stats div+div{border-left:1px solid #e8eaed}
+.youtube{max-width:none;margin:0;padding:22px 28px;border-bottom:1px solid #dadce0;background:#fafbfc}
+.youtube img{max-width:600px;margin:auto;border:1px solid #dadce0;border-radius:5px}
+footer{max-width:none;margin:0;padding:14px 24px;background:#f8f9fa}
+footer p{margin:4px 0}
+@media(max-width:600px){main{margin:16px 12px}header{padding:20px 16px}.results{padding:22px 12px 16px}.youtube{padding:18px 16px}footer{padding:12px 16px}}
+@media(max-width:480px){main{padding:0}h1{font-size:28px}.bot{max-height:170px}.results{margin-top:0}.stats{gap:0}.stats div{padding:0 8px}}
 </style>
 </head>
 <body>
